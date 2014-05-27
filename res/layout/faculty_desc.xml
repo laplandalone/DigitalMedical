@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/bg_common" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/common_title" />
+    <com.health.digitalmedical.view.PageScrollView android:id="@id/pageScroll" android:background="@xml/repeat_bg" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="0.1" android:layout_below="@id/front_bar">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <android.support.v4.view.ViewPager android:id="@id/viewPage" android:layout_width="fill_parent" android:layout_height="140.0dip" />
+                <Button android:layout_gravity="left|center" android:id="@id/left" android:background="@drawable/btn_switch_left" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <Button android:layout_gravity="right|center" android:id="@id/right" android:background="@drawable/btn_switch_right" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </FrameLayout>
+            <TextView android:textSize="18.0sp" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="13.0dip" android:text="@string/layout_temp131" />
+        </LinearLayout>
+    </com.health.digitalmedical.view.PageScrollView>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip">
+        <Button android:textSize="19.0sp" android:textColor="@color/white" android:id="@id/all_doctor" android:background="@drawable/btn_expert" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="@string/layout_temp132" android:layout_weight="1.0" />
+        <Button android:textSize="19.0sp" android:textColor="@color/white" android:id="@id/online_doctor" android:background="@drawable/btn_expert" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@string/layout_temp133" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

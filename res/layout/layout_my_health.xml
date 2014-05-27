@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/layout_header" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip">
+            <LinearLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:id="@id/health_1" android:background="@drawable/btn_health_disease" android:layout_width="0.0dip" android:layout_height="86.0dip" android:layout_weight="1.0">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="@string/health_data_disease_title" />
+                </LinearLayout>
+                <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:id="@id/health_2" android:background="@drawable/btn_health_check" android:layout_width="0.0dip" android:layout_height="86.0dip" android:layout_marginLeft="20.0dip" android:layout_weight="1.0">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="@string/health_data_check_title" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="bottom|center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:id="@id/health_3" android:background="@drawable/btn_health_take" android:layout_width="0.0dip" android:layout_height="86.0dip" android:layout_weight="1.0">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="@string/health_data_medication_title" />
+                </LinearLayout>
+                <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:id="@id/health_4" android:background="@drawable/btn_health_discomfort" android:layout_width="0.0dip" android:layout_height="86.0dip" android:layout_marginLeft="20.0dip" android:layout_weight="1.0">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="@string/health_data_discomfort_title" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="bottom|center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:id="@id/health_5" android:background="@drawable/btn_health_remind" android:layout_width="0.0dip" android:layout_height="86.0dip" android:layout_weight="1.0">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="@string/health_data_remind_title" />
+                </LinearLayout>
+                <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:id="@id/health_6" android:background="@drawable/btn_health_doctor" android:layout_width="0.0dip" android:layout_height="86.0dip" android:layout_marginLeft="20.0dip" android:layout_weight="1.0">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="@string/health_data_doctor_title" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
