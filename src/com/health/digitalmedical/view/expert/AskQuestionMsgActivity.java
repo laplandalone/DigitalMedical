@@ -346,10 +346,17 @@ public class AskQuestionMsgActivity extends BaseActivity
 	@OnClick(R.id.submit_question)
 	public void submitQueestion(View v)
 	{
+		String content = contentET.getText() + "";
+		
+		if("".equals(content))
+		{
+			HealthUtil.infoAlert(this, "提问内容为空");
+			return;
+		}
 		dialog.setMessage("正在提交,请稍后...");
 		dialog.show();
 
-		String content = contentET.getText() + "";
+		
 
 		UserQuestionT qestionT = new UserQuestionT();
 

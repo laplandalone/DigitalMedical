@@ -3,6 +3,7 @@ package com.health.digitalmedical.view.user;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.google.gson.JsonElement;
@@ -23,75 +24,125 @@ import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
-public class LoginActivity extends BaseActivity
-{
+public class LoginActivity extends BaseActivity {
 	@ViewInject(R.id.sign_in)
 	private ImageButton loginBtn;
 	@ViewInject(R.id.rember_psw)
 	private ImageButton remberPsw;
 	@ViewInject(R.id.login_auto)
 	private ImageButton loginAuto;
-	
+
+	@ViewInject(R.id.userName)
+	private EditText userName;
+
+	@ViewInject(R.id.password)
+	private EditText password;
+
 	private Boolean closeFlag = false;
 	private User user;
-	
+	private boolean remberPswFlag = false;
+	private boolean loginAutoFlag = false;
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_sign_in);
 		ViewUtils.inject(this);
-		
+		initView();
+		initValue();
 	}
-	
+
 	@OnClick(R.id.rember_psw)
-	public void remberPsw(View v)
-	{
-		HealthUtil.getUserInfo();
+	public void remberPsw(View v) {
+		if (remberPswFlag) {
+			HealthUtil.writeUserPhone("");
+			HealthUtil.writeUserPassword("");
+			remberPsw.setBackgroundResource(R.drawable.symptom_select_false);
+			remberPswFlag = false;
+		} else {
+			HealthUtil.writeUserPhone(userName.getText().toString().trim());
+			HealthUtil.writeUserPassword(password.getText().toString().trim());
+			remberPsw.setBackgroundResource(R.drawable.symptom_select_true);
+			remberPswFlag = true;
+		}
+
 	}
-	
+
 	@OnClick(R.id.login_auto)
 	public void loginAuto(View v)
 	{
-		
+		if (loginAutoFlag) {
+			loginAuto.setBackgroundResource(R.drawable.symptom_select_false);
+			loginAutoFlag = false;
+		} else {
+			loginAuto.setBackgroundResource(R.drawable.symptom_select_true);
+			loginAutoFlag = true;
+		}
 	}
-	
+
 	@OnClick(R.id.registration)
-	public void userRegister(View v)
-	{
-		Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+	public void userRegister(View v) {
+		Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
 		startActivity(intent);
 		finish();
 	}
-	
+
 	@OnClick(R.id.back)
-	public void toHome(View v)
-	{
-		Intent intent = new Intent(LoginActivity.this,MainPageActivity.class);
+	public void toHome(View v) {
+		Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
 		startActivity(intent);
 		finish();
 	}
+
 	@Override
-	protected void initView()
-	{
+	protected void initView() {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	protected void initValue()
-	{
+	protected void initValue() {
 		// TODO Auto-generated method stub
-
+		if(!"".equals(HealthUtil.readUserPhone()) && !"".equals(HealthUtil.readUserPhone()))
+		{
+			this.userName.setText(HealthUtil.readUserPhone());
+			this.password.setText(HealthUtil.readUserPassword());
+			this.remberPsw.setBackgroundResource(R.drawable.symptom_select_true);
+			this.remberPswFlag = true;
+		}
+		
 	}
 
 	@OnClick(R.id.sign_in)
-	public void userLogin(View v)
-	{
-		  dialog.setMessage("登录中,请稍后..."); dialog.show();
-		  RequestParams param = webInterface.queryUser("18907181648", "123");
-		  invokeWebServer(param, USER_LOGIN);
+	public void userLogin(View v) {
+		
+
+		String userNameT=userName.getText().toString().trim();
+		String passwordT=password.getText().toString().trim();
+		if("".equals(userNameT))
+		{
+			HealthUtil.infoAlert(LoginActivity.this, "账号为空");
+			return;
+		}
+		if("".equals(passwordT))
+		{
+			HealthUtil.infoAlert(LoginActivity.this, "密码为空");
+			return;
+		}
+		dialog.setMessage("登录中,请稍后...");
+		dialog.show();
+		if (remberPswFlag)
+		{
+			HealthUtil.writeUserPhone(userNameT);
+			HealthUtil.writeUserPassword(passwordT);
+		} else 
+		{
+			HealthUtil.writeUserPhone("");
+			HealthUtil.writeUserPassword("");
+		}
+
+		RequestParams param = webInterface.queryUser(userNameT, passwordT);
+		invokeWebServer(param, USER_LOGIN);
 	}
 
 	/**
@@ -99,37 +150,33 @@ public class LoginActivity extends BaseActivity
 	 * 
 	 * @param param
 	 */
-	private void invokeWebServer(RequestParams param, int responseCode)
-	{
+	private void invokeWebServer(RequestParams param, int responseCode) {
 		HealthUtil.LOG_D(getClass(), "connect to web server");
-		MineRequestCallBack requestCallBack = new MineRequestCallBack(responseCode);
-		if (httpHandler != null)
-		{
+		MineRequestCallBack requestCallBack = new MineRequestCallBack(
+				responseCode);
+		if (httpHandler != null) {
 			httpHandler.stop();
 		}
-		httpHandler = mHttpUtils.send(HttpMethod.POST, HealthConstant.URL, param, requestCallBack);
+		httpHandler = mHttpUtils.send(HttpMethod.POST, HealthConstant.URL,
+				param, requestCallBack);
 	}
 
 	/**
 	 * 获取后台返回的数据
 	 */
-	class MineRequestCallBack extends RequestCallBack<String>
-	{
+	class MineRequestCallBack extends RequestCallBack<String> {
 
 		private int responseCode;
 
-		public MineRequestCallBack(int responseCode)
-		{
+		public MineRequestCallBack(int responseCode) {
 			super();
 			this.responseCode = responseCode;
 		}
 
 		@Override
-		public void onFailure(HttpException error, String msg)
-		{
+		public void onFailure(HttpException error, String msg) {
 			HealthUtil.LOG_D(getClass(), "onFailure-->msg=" + msg);
-			if (dialog.isShowing())
-			{
+			if (dialog.isShowing()) {
 				dialog.cancel();
 			}
 
@@ -137,16 +184,13 @@ public class LoginActivity extends BaseActivity
 		}
 
 		@Override
-		public void onSuccess(ResponseInfo<String> arg0)
-		{
+		public void onSuccess(ResponseInfo<String> arg0) {
 			// TODO Auto-generated method stub
 			HealthUtil.LOG_D(getClass(), "result=" + arg0.result);
-			if (dialog.isShowing())
-			{
+			if (dialog.isShowing()) {
 				dialog.cancel();
 			}
-			switch (responseCode)
-			{
+			switch (responseCode) {
 			case USER_LOGIN:
 				returnMsg(arg0.result, USER_LOGIN);
 				break;
@@ -158,23 +202,20 @@ public class LoginActivity extends BaseActivity
 	/*
 	 * 处理返回结果数据
 	 */
-	private void returnMsg(String json, int responseCode)
-	{
-		try
-		{
+	private void returnMsg(String json, int responseCode) {
+		try {
 			JsonParser jsonParser = new JsonParser();
 			JsonElement jsonElement = jsonParser.parse(json);
 			JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-			switch (responseCode)
-			{
+			switch (responseCode) {
 			case USER_LOGIN:
 				JsonObject returnObj = jsonObject.getAsJsonObject("returnMsg");
-				this.user = HealthUtil.json2Object(returnObj.toString(), User.class);
-				if (this.user != null)
-				{
+				this.user = HealthUtil.json2Object(returnObj.toString(),
+						User.class);
+				if (this.user != null) {
 					HealthUtil.writeUserInfo(returnObj.toString());
-					User user =HealthUtil.getUserInfo();
+					User user = HealthUtil.getUserInfo();
 					HealthUtil.writeUserId(user.getUserId());
 					HealthUtil.infoAlert(LoginActivity.this, "登录成功");
 					this.setResult(RESULT_OK, getIntent());
@@ -183,12 +224,10 @@ public class LoginActivity extends BaseActivity
 				break;
 
 			}
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
 			HealthUtil.infoAlert(LoginActivity.this, "登录失败，请重试...");
 		}
 
 	}
-
 
 }

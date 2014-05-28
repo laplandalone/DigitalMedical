@@ -36,7 +36,7 @@ public class HealthUtil {
 	
 	 public static final boolean DEBUG = true;
 	  private static final int LOG_SIZE_LIMIT = 3500;
-	  public static final String LOG_TAG = "itzc_realname";
+	  public static final String LOG_TAG = "Digital_Medical";
 	  private static SharedPreferences userPreferences;
 
 	  private static Context mContext = RegApplication.getInstance();
@@ -48,6 +48,24 @@ public class HealthUtil {
 			  userPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
 			}
 		 }
+		public static void writeUserPhone(String userPhone)
+		{
+			userPreferences.edit().putString("userPhone", userPhone).commit();
+		}
+		public static String readUserPhone() 
+		{
+			return userPreferences.getString("userPhone", "");
+		}
+		
+		public static void writeUserPassword(String psw)
+		{
+			userPreferences.edit().putString("userPasssword", psw).commit();
+		}
+		
+		public static String readUserPassword() 
+		{
+			return userPreferences.getString("userPasssword", "");
+		}
 		
 		public static void writeUserId(String info)
 		{
