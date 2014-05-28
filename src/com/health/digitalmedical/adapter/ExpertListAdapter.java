@@ -7,11 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.health.digitalmedical.R;
 import com.health.digitalmedical.model.Doctor;
 import com.health.digitalmedical.model.DoctorList;
+import com.lidroid.xutils.BitmapUtils;
 
 public class ExpertListAdapter  extends BaseAdapter
 {
@@ -19,10 +21,14 @@ public class ExpertListAdapter  extends BaseAdapter
 
 	private List<Doctor> doctors;
 
+	private BitmapUtils bitmapUtils;
+	
 	public ExpertListAdapter(Context context, DoctorList doctorList)
 	{
 		this.mContext=context;
 		this.doctors = doctorList.getDoctors();
+		bitmapUtils = new BitmapUtils(mContext);
+		bitmapUtils.closeCache();
 	}
 
 	@Override
@@ -58,11 +64,18 @@ public class ExpertListAdapter  extends BaseAdapter
 			 TextView textView = (TextView)convertView.findViewById( R.id.comdoctor_name);
 			 TextView facultyName = (TextView)convertView.findViewById( R.id.good_job);
 			 TextView doctorPosition = (TextView)convertView.findViewById( R.id.comdoctor_position);
+			 ImageView imageView = (ImageView) convertView.findViewById( R.id.doctor_photo);
 			 String value=doctors.get(position).getName();
 			 textView.setText(value);
 			 doctorPosition.setText(doctors.get(position).getPost());
 			 facultyName.setText(doctors.get(position).getSkill());
+			 String photoUrl=doctors.get(position).getPhotoUrl();
+			 if(photoUrl.endsWith("jpg") || photoUrl.endsWith("png"))
+			 {
+				 bitmapUtils.display(imageView,photoUrl);
+			 }
 		}
+		
 		return convertView;
 	}
 
