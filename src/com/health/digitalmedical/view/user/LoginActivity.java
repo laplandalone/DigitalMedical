@@ -27,6 +27,11 @@ public class LoginActivity extends BaseActivity
 {
 	@ViewInject(R.id.sign_in)
 	private ImageButton loginBtn;
+	@ViewInject(R.id.rember_psw)
+	private ImageButton remberPsw;
+	@ViewInject(R.id.login_auto)
+	private ImageButton loginAuto;
+	
 	private Boolean closeFlag = false;
 	private User user;
 	
@@ -39,6 +44,19 @@ public class LoginActivity extends BaseActivity
 		ViewUtils.inject(this);
 		
 	}
+	
+	@OnClick(R.id.rember_psw)
+	public void remberPsw(View v)
+	{
+		HealthUtil.getUserInfo();
+	}
+	
+	@OnClick(R.id.login_auto)
+	public void loginAuto(View v)
+	{
+		
+	}
+	
 	@OnClick(R.id.registration)
 	public void userRegister(View v)
 	{

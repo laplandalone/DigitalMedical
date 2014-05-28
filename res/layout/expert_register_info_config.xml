@@ -82,6 +82,6 @@
         </FrameLayout>
     </ScrollView>
     <LinearLayout android:gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
-        <Button android:textSize="19.0sp" android:textColor="@color/white" android:id="@id/submit" android:background="@drawable/btn_expert" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="确定预约" />
+        <Button android:textSize="19.0sp" android:textColor="@color/white" android:id="@id/submit" android:background="@drawable/new_bg_btn_login_press" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="确定预约" />
     </LinearLayout>
 </LinearLayout>

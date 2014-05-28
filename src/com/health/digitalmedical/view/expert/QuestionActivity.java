@@ -210,6 +210,12 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		JsonElement jsonElement = jsonParser.parse(json);
 
 		JsonObject jsonObject = jsonElement.getAsJsonObject();
+		String executeType = jsonObject.get("executeType").getAsString();
+		if (!"success".equals(executeType))
+		{
+			HealthUtil.infoAlert(QuestionActivity.this, "º”‘ÿ ß∞‹«Î÷ÿ ‘.");
+			return;
+		}
 		JsonArray jsonArray = jsonObject.getAsJsonArray("returnMsg");
 		Gson gson = new Gson();
 		this.questionTs = gson.fromJson(jsonArray, new TypeToken<List<UserQuestionT>>()

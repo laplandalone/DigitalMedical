@@ -18,7 +18,7 @@ public class UserQuestionT implements java.io.Serializable {
 	private String authType;
 	private String content;
 	private String state;
-	private Date createDate;
+	private String createDate;
 
 	// Constructors
 
@@ -34,7 +34,7 @@ public class UserQuestionT implements java.io.Serializable {
 	/** full constructor */
 	public UserQuestionT(String qestionId, String userId, String doctorId,
 			String userTelephone, String recordType, String authType,
-			String content, String state, Date createDate) {
+			String content, String state, String createDate) {
 		this.qestionId = qestionId;
 		this.userId = userId;
 		this.doctorId = doctorId;
@@ -112,11 +112,11 @@ public class UserQuestionT implements java.io.Serializable {
 		this.state = state;
 	}
 
-	public Date getCreateDate() {
+	public String getCreateDate() {
 		return this.createDate;
 	}
 
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 

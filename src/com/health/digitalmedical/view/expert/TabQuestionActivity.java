@@ -34,6 +34,7 @@ import com.health.digitalmedical.model.UserQuestionT;
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
 import com.health.digitalmedical.view.user.UserMainActivity;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -67,18 +68,22 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 	@ViewInject(R.id.tv_tab_Major)
 	TextView tabMajor;
 	
+	private BitmapUtils bitmapUtils;
+	
 	@OnClick(R.id.submit)
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.online_doctor_detail);
-	
 		ViewUtils.inject(this);
+		bitmapUtils = new BitmapUtils(this);
+		bitmapUtils.closeCache();
 		initView();
 		initValue();
 		settings.setVisibility(View.VISIBLE);
 		settings.setBackgroundResource(R.drawable.btn_my_online);
+		
 	}
 
 	@OnClick(R.id.settings)
@@ -150,7 +155,12 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 		outPatientPlace.setText(doctor.getWorkAddress());
 		TextView guahaoFee=(TextView) view1.findViewById(R.id.guahao_fee);
 		guahaoFee.setText(doctor.getRegisterFee());
-		
+		ImageView imageView = (ImageView) view1.findViewById( R.id.doctor_photo);
+		String photoUrl=doctor.getPhotoUrl();
+		if(photoUrl.endsWith("jpg") || photoUrl.endsWith("png"))
+		 {
+			 bitmapUtils.display(imageView,photoUrl);
+		 }
 		this.list = (ListView) view2.findViewById(R.id.list);
 		
 		Button questionBtn = (Button) view2.findViewById(R.id.submit);

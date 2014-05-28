@@ -66,8 +66,8 @@
                 <TextView android:textSize="16.0sp" android:textColor="#ff7a7a7a" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="我已阅读并同意声明" android:singleLine="true" />
             </LinearLayout>
             <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="18.0dip">
-                <Button android:textSize="19.0sp" android:textColor="@color/white" android:id="@id/expert" android:background="@drawable/btn_expert" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="@string/layout_temp216" android:layout_weight="1.0" />
-                <Button android:textSize="19.0sp" android:textColor="@color/white" android:id="@+id/normal" android:background="@drawable/btn_expert" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="@string/layout_temp215" android:layout_weight="1.0" />
+                <Button android:textSize="19.0sp" android:textColor="@color/white" android:id="@id/expert" android:background="@drawable/new_bg_btn_login_press" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="@string/layout_temp216" android:layout_weight="1.0" />
+                <Button android:textSize="19.0sp" android:textColor="@color/white" android:id="@+id/normal" android:background="@drawable/new_bg_btn_login_press" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="@string/layout_temp215" android:layout_weight="1.0" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

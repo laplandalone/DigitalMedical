@@ -3,14 +3,14 @@ package com.health.digitalmedical.view.faculty;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
 import com.health.digitalmedical.model.Doctor;
-import com.health.digitalmedical.view.order.RegisteredMain;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -29,7 +29,10 @@ public class DoctorDetailActivity extends BaseActivity
 	private TextView outPatientPlace;
 	@ViewInject(R.id.guahao_fee)
 	private TextView guahaoFee;
+	@ViewInject(R.id.doctor_photo)
+	private ImageView photo;
 	
+	private BitmapUtils bitmapUtils;
 	private Doctor  doctor;
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -59,6 +62,8 @@ public class DoctorDetailActivity extends BaseActivity
 	@Override
 	protected void initValue()
 	{
+		bitmapUtils = new BitmapUtils(this);
+		bitmapUtils.closeCache();
 		// TODO Auto-generated method stub
 		this.doctorName.setText(doctor.getName());
 		this.doctotIntroduction.setText(doctor.getIntroduce());
@@ -66,6 +71,13 @@ public class DoctorDetailActivity extends BaseActivity
 		this.outPatientTime.setText(doctor.getWorkTime());
 		this.guahaoFee.setText(doctor.getRegisterFee());
 		this.outPatientPlace.setText(doctor.getWorkAddress());
+		String photoUrl=doctor.getPhotoUrl();
+		 if(photoUrl.endsWith("jpg") || photoUrl.endsWith("png"))
+		 {
+			 bitmapUtils.display(photo,photoUrl);
+		 }
 	}
+	
+	
 
 }
