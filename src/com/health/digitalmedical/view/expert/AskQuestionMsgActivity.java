@@ -353,6 +353,11 @@ public class AskQuestionMsgActivity extends BaseActivity
 			HealthUtil.infoAlert(this, "提问内容为空");
 			return;
 		}
+		if (this.user == null )
+		{
+			Intent intent = new Intent(AskQuestionMsgActivity.this, LoginActivity.class);
+			startActivityForResult(intent, 0);
+		}
 		dialog.setMessage("正在提交,请稍后...");
 		dialog.show();
 
@@ -360,9 +365,9 @@ public class AskQuestionMsgActivity extends BaseActivity
 
 		UserQuestionT qestionT = new UserQuestionT();
 
-		qestionT.setUserId(this.userId);
+		qestionT.setUserId(this.user.getUserId());
 		qestionT.setDoctorId(this.doctorId);
-		qestionT.setUserTelephone(this.userTelephone);
+		qestionT.setUserTelephone(this.user.getTelephone());
 		qestionT.setContent(content);
 
 		Gson gson = new Gson();
@@ -377,7 +382,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 			FormFile formFile = new FormFile(String.valueOf(new Date().getTime()) + i + ".jpg", imageFile, "image", "application/octet-stream");
 			formFiles[i] = formFile;
 		}
-		UploadThread uploadThread = new UploadThread(formFiles, mHandler, questionStr);
+		UploadThread uploadThread = new UploadThread(formFiles, mHandler, questionStr,HealthUtil.readHospitalId(),"ASK_IMG_PATH");
 		new Thread(uploadThread).start();
 	}
 

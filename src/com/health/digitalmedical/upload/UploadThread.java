@@ -16,18 +16,20 @@ public class UploadThread implements Runnable{
 	private FormFile[] formFile;
 	private Handler mHandler;
 	private String questionT;
-	private String certType;
-	private String certNbr;
+	private String hospitalId;
+	private String uploadType;
 	private String custName;
 	private String certAddr;
 	
 
 	public UploadThread(FormFile[] formFile, Handler mHandler,
-			String questionT) {
+			String questionT,String hospitalId,String uploadType) {
 		super();
 		this.formFile = formFile;
 		this.mHandler = mHandler;
 		this.questionT = questionT;
+		this.hospitalId=hospitalId;
+		this.uploadType=uploadType;
 	}
 
 	@Override
@@ -60,7 +62,9 @@ public class UploadThread implements Runnable{
             Map<String, String> params = new HashMap<String, String>();
             params.put("method", "uploadFile");
             params.put("questionT", questionT);
-            HealthUtil.LOG_D(getClass(), "url certType=" + certType);
+            params.put("hospitalId", hospitalId);
+            params.put("uploadType", uploadType);
+            HealthUtil.LOG_D(getClass(), "url uploadType=" + uploadType);
 
             String result = SocketHttpRequester.post(HealthConstant.UPLOAD_URL, params, formFiles);
             return result;

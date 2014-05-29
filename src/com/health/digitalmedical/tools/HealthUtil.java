@@ -48,6 +48,16 @@ public class HealthUtil {
 			  userPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
 			}
 		 }
+		public static void writeHospitalId(String hospitalId)
+		{
+			userPreferences.edit().putString("hospitalId", hospitalId).commit();
+		}
+		
+		public static String readHospitalId() 
+		{
+			return userPreferences.getString("hospitalId", "101");
+		}
+		
 		public static void writeUserPhone(String userPhone)
 		{
 			userPreferences.edit().putString("userPhone", userPhone).commit();

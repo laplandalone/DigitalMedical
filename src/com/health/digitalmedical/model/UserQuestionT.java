@@ -14,10 +14,10 @@ public class UserQuestionT implements java.io.Serializable {
 	private String userId;
 	private String doctorId;
 	private String userTelephone;
-	private String recordType;
-	private String authType;
+	private String recordType="ask";
+	private String authType="private";
 	private String content;
-	private String state;
+	private String state="00A";
 	private String createDate;
 
 	// Constructors
