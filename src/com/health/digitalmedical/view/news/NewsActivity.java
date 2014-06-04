@@ -20,10 +20,8 @@ import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
 import com.health.digitalmedical.adapter.NewsListAdapter;
 import com.health.digitalmedical.model.HospitalNewsT;
-import com.health.digitalmedical.model.UserQuestionT;
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
-import com.health.digitalmedical.view.expert.TalkActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -73,8 +71,8 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 		// TODO Auto-generated method stub
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
-
-		RequestParams param = webInterface.getNewsByHospitalId("101");
+		String type=getIntent().getStringExtra("type");
+		RequestParams param = webInterface.getNewsByHospitalId("101",type);
 		invokeWebServer(param, GET_LIST);
 
 	}
