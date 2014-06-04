@@ -36,7 +36,7 @@ public interface IWebServiceInterface {
 	
 	public RequestParams getTeamByHospitalId(String hospitalId);
 	
-	public RequestParams getNewsByHospitalId(String hospitalId);
+	public RequestParams getNewsByHospitalId(String hospitalId,String type);
 	
 	public RequestParams addUserRegisterOrder( String userId, String registerId, String doctorId, String doctorName, String orderNum, String orderFee, String registerTime, String userName, String userNo, String userTelephone,String sex, String teamId, String teamName);
 	
