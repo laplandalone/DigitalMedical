@@ -1,7 +1,7 @@
 package com.health.digitalmedical.view.hospital;
 
 import java.util.List;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -38,8 +37,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
  * 医院导航
- * 
+ *
  */
+@SuppressLint("NewApi")
 public class HospitalDetailActivity extends BaseActivity implements OnItemClickListener
 {
 
@@ -50,6 +50,12 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 	
 	@ViewInject(R.id.hospital_more_text)
 	private TextView hospitalTextMore;
+	
+	@ViewInject(R.id.descText)
+	private TextView descText;
+	
+	@ViewInject(R.id.description)
+	private TextView description;
 	
 	private int  initItemCount=2;
 	private int itemHeight=132;
@@ -73,6 +79,24 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 		startActivity(intent);
 		finish();
 	}
+	
+	@OnClick(R.id.more_detail)
+	public void toMoreDetail(View v)
+	{
+		int maxLine=description.getMaxLines();
+		if(maxLine==9)
+		{
+			description.setMaxLines(description.getLineCount());
+			descText.setText("收起");
+		}else
+		{
+			description.setMaxLines(9);
+			descText.setText("更多");
+		}
+		
+	}
+	
+	
 	@Override
 	protected void initView()
 	{
