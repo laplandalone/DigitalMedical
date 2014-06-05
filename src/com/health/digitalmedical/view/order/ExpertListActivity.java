@@ -175,6 +175,7 @@ public class ExpertListActivity extends BaseActivity  implements OnItemClickList
 		bundle.putSerializable("expert", expert);
 		intent.putExtras(bundle);
 		startActivity(intent);
+		finish();
 	}
 	
 

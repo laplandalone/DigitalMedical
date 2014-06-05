@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
@@ -29,6 +30,7 @@ import com.health.digitalmedical.view.user.UserMainActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.lurencun.android.system.DoubleClickExit;
 
 /**
  * 功能： 主页
@@ -94,6 +96,8 @@ public class MainPageActivity extends BaseActivity
 
 	private List<View> listViews; // 图片组
 
+	private DoubleClickExit doubleClickExit;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -244,6 +248,7 @@ public class MainPageActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
+		doubleClickExit = new DoubleClickExit(this);
 		// TODO Auto-generated method stub
 		String user = HealthUtil.readUserInfo();
 		if (user != null && !"".equals(user))
@@ -252,6 +257,17 @@ public class MainPageActivity extends BaseActivity
 		}
 	}
 
+	@Override
+	public void finish(View v) {
+		
+		doubleClickExit.onKeyClick(KeyEvent.KEYCODE_BACK);
+	}
+	
+	@Override
+	public void onBackPressed() {
+		doubleClickExit.onKeyClick(KeyEvent.KEYCODE_BACK);
+	}
+	
 	@Override
 	protected void initValue()
 	{
