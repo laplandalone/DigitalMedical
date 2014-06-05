@@ -120,62 +120,6 @@
                     android:textColor="@color/black"
                     android:textSize="16.0sp" />
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/memo_bg"
-                    android:gravity="left|center"
-                    android:paddingLeft="10.0dip"
-                    android:text="@string/layout_temp224"
-                    android:textColor="@color/black"
-                    android:textSize="16.0sp" />
-
-                <TextView
-                    android:id="@id/hospital_level"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5.0dip"
-                    android:layout_marginTop="5.0dip"
-                    android:paddingLeft="16.0dip"
-                    android:paddingRight="13.0dip"
-                    android:text="@string/layout_temp225"
-                    android:textColor="@color/black"
-                    android:textSize="16.0sp" />
-
-                <TextView
-                    android:id="@id/hospital_level"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5.0dip"
-                    android:layout_marginTop="5.0dip"
-                    android:paddingLeft="16.0dip"
-                    android:paddingRight="13.0dip"
-                    android:text="@string/layout_temp226"
-                    android:textColor="@color/black"
-                    android:textSize="16.0sp" />
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/memo_bg"
-                    android:gravity="left|center"
-                    android:paddingLeft="10.0dip"
-                    android:text="@string/layout_temp227"
-                    android:textColor="@color/black"
-                    android:textSize="16.0sp" />
-
-                <TextView
-                    android:id="@id/hospital_level"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5.0dip"
-                    android:layout_marginTop="5.0dip"
-                    android:paddingLeft="16.0dip"
-                    android:paddingRight="13.0dip"
-                    android:text="@string/layout_temp228"
-                    android:textColor="@color/black"
-                    android:textSize="16.0sp" />
-
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -198,7 +142,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5.0dip"
-                    android:maxLines="4"
+                    android:maxLines="9"
                     android:paddingLeft="16.0dip"
                     android:paddingRight="13.0dip"
                     android:text="@string/layout_temp230"
@@ -215,11 +159,13 @@
                     android:paddingBottom="5.0dip" >
 
                     <ImageView
+                        android:id="@+id/descImg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_more" />
 
                     <TextView
+                         android:id="@+id/descText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="7.0dip"
