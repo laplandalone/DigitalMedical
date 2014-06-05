@@ -38,7 +38,15 @@ public class UserMainActivity extends BaseActivity
 		 initValue();
 	}
 	
-
+	
+	
+	@OnClick(R.id.health_data_lay)
+	public void toMyHealth(View v)
+	{
+		Intent intent = new Intent(UserMainActivity.this,MyHealthActivity.class);
+		startActivity(intent);
+	}
+	
 	@OnClick(R.id.item_layout1)
 	public void toMyOrder(View v)
 	{
