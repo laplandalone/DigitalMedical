@@ -14,18 +14,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.health.digitalmedical.adapter.ImgViewPager;
 import com.health.digitalmedical.tools.HealthUtil;
 import com.health.digitalmedical.view.expert.OnLineFacultyListActivity;
-import com.health.digitalmedical.view.healthtools.HealthToolsActivity;
 import com.health.digitalmedical.view.hospital.HospitalDetailActivity;
 import com.health.digitalmedical.view.news.NewsActivity;
 import com.health.digitalmedical.view.order.RegisteredMain;
 import com.health.digitalmedical.view.other.CheckNewVersion;
 import com.health.digitalmedical.view.other.OtherActivity;
 import com.health.digitalmedical.view.user.LoginActivity;
+import com.health.digitalmedical.view.user.MyHealthActivity;
 import com.health.digitalmedical.view.user.UserMainActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -35,7 +34,7 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
  * 功能： 主页
  * 
  * @author Lapland_Alone
- * 
+ * btn_health_remind
  */
 public class MainPageActivity extends BaseActivity
 {
@@ -95,6 +94,7 @@ public class MainPageActivity extends BaseActivity
 	LinearLayout ovalLayout; // 圆点容器
 	
 	private List<View> listViews; // 图片组
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -184,13 +184,15 @@ public class MainPageActivity extends BaseActivity
 	public void toHospitalNews(View v)
 	{
 		Intent intent = new Intent(MainPageActivity.this, NewsActivity.class);
+		intent.putExtra("type", "news");
 		startActivity(intent);
 	}
 
-	@OnClick(R.id.health_baike)
+	@OnClick(R.id.main_img6)
 	public void toHealthTools(View v)
 	{
-		Intent intent = new Intent(MainPageActivity.this, HealthToolsActivity.class);
+		Intent intent = new Intent(MainPageActivity.this, NewsActivity.class);
+		intent.putExtra("type", "baike");
 		startActivity(intent);
 	}
 
@@ -198,6 +200,13 @@ public class MainPageActivity extends BaseActivity
 	public void toHospital(View v)
 	{
 		Intent intent = new Intent(MainPageActivity.this, HospitalDetailActivity.class);
+		startActivity(intent);
+	}
+	
+	@OnClick(R.id.main_img5)
+	public void toMyHealth(View v)
+	{
+		Intent intent = new Intent(MainPageActivity.this, MyHealthActivity.class);
 		startActivity(intent);
 	}
 
@@ -241,6 +250,7 @@ public class MainPageActivity extends BaseActivity
 		}
 	}
 
+	
 	@Override
 	protected void initValue()
 	{
