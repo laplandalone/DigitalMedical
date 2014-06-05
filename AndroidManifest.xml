@@ -241,6 +241,12 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
+           <activity
+            android:name="com.health.digitalmedical.view.user.MyHealthActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+         
         <service android:name="com.health.digitalmedical.view.other.CheckNewVersion" >
         </service>
         <service android:name="com.health.digitalmedical.view.other.DownloadService" >
