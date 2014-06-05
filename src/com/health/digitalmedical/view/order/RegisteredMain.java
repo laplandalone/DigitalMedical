@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
@@ -23,12 +24,116 @@ public class RegisteredMain extends BaseActivity
 	private Button expertBtn;
 	@ViewInject(R.id.normal)
 	private Button normalBtn;
+	
+	
+	@ViewInject(R.id.open_memo)
+	private TextView open_memo;
+	
+	@ViewInject(R.id.regist_memo5)
+	private TextView regist_memo5;
+	
+	@ViewInject(R.id.regist_memo6)
+	private TextView regist_memo6;
+	
+	@ViewInject(R.id.regist_memo7)
+	private TextView regist_memo7;
+	
+	@ViewInject(R.id.regist_memo8)
+	private TextView regist_memo8;
+	
+	@ViewInject(R.id.regist_memo9)
+	private TextView regist_memo9;
+	
+	@ViewInject(R.id.regist_memo10)
+	private TextView regist_memo10;
+	
+	@ViewInject(R.id.regist_memo11)
+	private TextView regist_memo11;
+	
+	@ViewInject(R.id.regist_memo12)
+	private TextView regist_memo12;
+	
+	@ViewInject(R.id.regist_memo13)
+	private TextView regist_memo13;
+	
+	@ViewInject(R.id.regist_memo14)
+	private TextView regist_memo14;
+	
+	@ViewInject(R.id.regist_memo15)
+	private TextView regist_memo15;
+	
+	@ViewInject(R.id.regist_memo16)
+	private TextView regist_memo16;
+	
+	@ViewInject(R.id.regist_memo17)
+	private TextView regist_memo17;
+	
+	@ViewInject(R.id.regist_memo18)
+	private TextView regist_memo18;
+	
+	@ViewInject(R.id.regist_memo19)
+	private TextView regist_memo19;
+	
+	@ViewInject(R.id.regist_memo20)
+	private TextView regist_memo20;
+	
+	@ViewInject(R.id.regist_memo21)
+	private TextView regist_memo21;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guahao_mian);
 		ViewUtils.inject(this);
+	}
+	
+	@OnClick(R.id.open)
+	public void openInfo(View v)
+	{
+		if(regist_memo5.getVisibility()==8)
+		{
+			regist_memo5.setVisibility(View.VISIBLE);
+			regist_memo6.setVisibility(View.VISIBLE);
+			regist_memo7.setVisibility(View.VISIBLE);
+			regist_memo8.setVisibility(View.VISIBLE);
+			regist_memo9.setVisibility(View.VISIBLE);
+			regist_memo10.setVisibility(View.VISIBLE);
+			regist_memo11.setVisibility(View.VISIBLE);
+			regist_memo12.setVisibility(View.VISIBLE);
+			regist_memo13.setVisibility(View.VISIBLE);
+			regist_memo14.setVisibility(View.VISIBLE);
+			regist_memo15.setVisibility(View.VISIBLE);
+			regist_memo16.setVisibility(View.VISIBLE);
+			regist_memo17.setVisibility(View.VISIBLE);
+			regist_memo18.setVisibility(View.VISIBLE);
+			regist_memo19.setVisibility(View.VISIBLE);
+			regist_memo20.setVisibility(View.VISIBLE);
+			regist_memo21.setVisibility(View.VISIBLE);
+			open_memo.setText("收起");
+		}else
+		{
+			regist_memo5.setVisibility(View.GONE);
+			regist_memo6.setVisibility(View.GONE);
+			regist_memo7.setVisibility(View.GONE);
+			regist_memo8.setVisibility(View.GONE);
+			regist_memo9.setVisibility(View.GONE);
+			regist_memo10.setVisibility(View.GONE);
+			regist_memo11.setVisibility(View.GONE);
+			regist_memo12.setVisibility(View.GONE);
+			regist_memo13.setVisibility(View.GONE);
+			regist_memo14.setVisibility(View.GONE);
+			regist_memo15.setVisibility(View.GONE);
+			regist_memo16.setVisibility(View.GONE);
+			regist_memo17.setVisibility(View.GONE);
+			regist_memo18.setVisibility(View.GONE);
+			regist_memo19.setVisibility(View.GONE);
+			regist_memo20.setVisibility(View.GONE);
+			regist_memo21.setVisibility(View.GONE);
+			open_memo.setText("展开");
+		}
+		
+		
 	}
 	
 	@OnClick(R.id.expert)

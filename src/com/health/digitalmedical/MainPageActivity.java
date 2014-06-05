@@ -33,8 +33,7 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 /**
  * 功能： 主页
  * 
- * @author Lapland_Alone
- * btn_health_remind
+ * @author Lapland_Alone 
  */
 public class MainPageActivity extends BaseActivity
 {
@@ -68,34 +67,33 @@ public class MainPageActivity extends BaseActivity
 
 	@ViewInject(R.id.more)
 	private Button userRegisterBtn;
-	
+
 	@ViewInject(R.id.lineout1)
 	private LinearLayout layout1;
 
 	@ViewInject(R.id.lineout2)
 	private LinearLayout layout2;
-	
+
 	@ViewInject(R.id.lineout3)
 	private LinearLayout layout3;
-	
+
 	@ViewInject(R.id.lineout4)
 	private LinearLayout layout4;
 
 	@ViewInject(R.id.lineout5)
 	private LinearLayout layout5;
-	
+
 	@ViewInject(R.id.lineout6)
 	private LinearLayout layout6;
-	
+
 	@ViewInject(R.id.imgViewPager)
 	ImgViewPager myPager; // 图片容器
-	
+
 	@ViewInject(R.id.vb)
 	LinearLayout ovalLayout; // 圆点容器
-	
+
 	private List<View> listViews; // 图片组
-	
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -107,10 +105,10 @@ public class MainPageActivity extends BaseActivity
 		Display display = windowManager.getDefaultDisplay();
 		int screenWidth = display.getWidth();
 		int scrrenHeight = display.getHeight();
-		int w = screenWidth-4;
-		int ww=w/3;
-		int h = scrrenHeight-dip2px(this,300);
-		int hh=h/2;
+		int w = screenWidth - 4;
+		int ww = w / 3;
+		int h = scrrenHeight - dip2px(this, 300);
+		int hh = h / 2;
 		LinearLayout.LayoutParams hint_page_params = new LinearLayout.LayoutParams(ww, hh);
 		// hint_page_params.setMargins(10,0,0, 0);//设置边距
 		layout1.setLayoutParams(hint_page_params);
@@ -119,15 +117,14 @@ public class MainPageActivity extends BaseActivity
 		layout4.setLayoutParams(hint_page_params);
 		layout5.setLayoutParams(hint_page_params);
 		layout6.setLayoutParams(hint_page_params);
-		
-		InitViewPager();//初始化图片
-		myPager.start(this, listViews, 4000, ovalLayout,
-				R.layout.ad_bottom_item, R.id.ad_item_v,
+
+		InitViewPager();// 初始化图片
+		myPager.start(this, listViews, 4000, ovalLayout, R.layout.ad_bottom_item, R.id.ad_item_v,
 				R.drawable.dot_focused, R.drawable.dot_normal);
-		
+
 		Intent intent = new Intent(this, CheckNewVersion.class);
 		startService(intent);
-		
+
 	}
 
 	public static int dip2px(Context context, float dipValue)
@@ -149,12 +146,13 @@ public class MainPageActivity extends BaseActivity
 		startActivity(intent);
 	}
 
-//	@OnClick(R.id.main_img2)
-//	public void toDoctorListView(View v)
-//	{
-//		Intent intent = new Intent(MainPageActivity.this, OfficeDoctorListActivity.class);
-//		startActivity(intent);
-//	}
+	// @OnClick(R.id.main_img2)
+	// public void toDoctorListView(View v)
+	// {
+	// Intent intent = new Intent(MainPageActivity.this,
+	// OfficeDoctorListActivity.class);
+	// startActivity(intent);
+	// }
 
 	@OnClick(R.id.main_img2)
 	public void toExpertOnline(View v)
@@ -202,7 +200,7 @@ public class MainPageActivity extends BaseActivity
 		Intent intent = new Intent(MainPageActivity.this, HospitalDetailActivity.class);
 		startActivity(intent);
 	}
-	
+
 	@OnClick(R.id.main_img5)
 	public void toMyHealth(View v)
 	{
@@ -216,21 +214,25 @@ public class MainPageActivity extends BaseActivity
 		Intent intent = new Intent(MainPageActivity.this, OtherActivity.class);
 		startActivity(intent);
 	}
-	
+
 	/**
 	 * 初始化图片
 	 */
-	private void InitViewPager() {
+	private void InitViewPager()
+	{
 		listViews = new ArrayList<View>();
-		int[] imageResId = new int[] { R.drawable.a, R.drawable.b,
-				R.drawable.c, R.drawable.d, R.drawable.e };
-		for (int i = 0; i < imageResId.length; i++) {
+		int[] imageResId = new int[]
+		{ R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e };
+		for (int i = 0; i < imageResId.length; i++)
+		{
 			ImageView imageView = new ImageView(this);
-			imageView.setOnClickListener(new OnClickListener() {
-				public void onClick(View v) {// 设置图片点击事件
-//					Toast.makeText(MainPageActivity.this,
-//							"点击了:" + myPager.getCurIndex(), Toast.LENGTH_SHORT)
-//							.show();
+			imageView.setOnClickListener(new OnClickListener()
+			{
+				public void onClick(View v)
+				{// 设置图片点击事件
+				// Toast.makeText(MainPageActivity.this,
+				// "点击了:" + myPager.getCurIndex(), Toast.LENGTH_SHORT)
+				// .show();
 				}
 			});
 			imageView.setImageResource(imageResId[i]);
@@ -238,11 +240,11 @@ public class MainPageActivity extends BaseActivity
 			listViews.add(imageView);
 		}
 	}
-	
+
 	@Override
 	protected void initView()
 	{
-		// TODO Auto-generated method stub 
+		// TODO Auto-generated method stub
 		String user = HealthUtil.readUserInfo();
 		if (user != null && !"".equals(user))
 		{
@@ -250,7 +252,6 @@ public class MainPageActivity extends BaseActivity
 		}
 	}
 
-	
 	@Override
 	protected void initValue()
 	{

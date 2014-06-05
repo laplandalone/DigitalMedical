@@ -348,6 +348,7 @@ public class ExpertRegisterActivity extends BaseActivity
 					intent.putExtra("userTelephone", userTelephone);
 					intent.putExtra("sex", sex);
 					startActivity(intent);
+					finish();
 				} else
 				{
 					HealthUtil.infoAlert(ExpertRegisterActivity.this, "‘§‘º ß∞‹£¨«Î÷ÿ ‘...");
