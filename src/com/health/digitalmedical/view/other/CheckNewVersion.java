@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.Gravity;
+import android.widget.Toast;
 
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
@@ -25,6 +27,7 @@ public class CheckNewVersion extends Service{
 	private HttpUtils mHttpUtils = new HttpUtils();
 	private final static int CHECK_NEWVERSION = 1;
 	protected IWebServiceInterface webInterface = new WebServiceInterfaceImpl();
+	private String flag;
 	@Override
 	public IBinder onBind(Intent intent) {
 		return null;
@@ -34,7 +37,8 @@ public class CheckNewVersion extends Service{
 	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		Log.e("hbgz", "version------------>onStartCommand");
+		Log.e("health", "version------------>onStartCommand");
+		this.flag=intent.getStringExtra("flag");
 		checkNewVersion();
 		return super.onStartCommand(intent, flags, startId);
 	}
@@ -124,6 +128,14 @@ public class CheckNewVersion extends Service{
 					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					intent.putExtras(bundle);
 					startActivity(intent);
+				}else
+				{
+					if("hand".equals(this.flag))
+					{
+						Toast toast = Toast.makeText(this, "当前已是最新版本,版本号:"+versionName, Toast.LENGTH_SHORT);
+						toast.setGravity(Gravity.CENTER, 0, 0);
+						toast.show();
+					}
 				}
 				
 			}

@@ -1,14 +1,19 @@
 package com.health.digitalmedical.view.news;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.health.digitalmedical.BaseActivity;
+import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
 import com.health.digitalmedical.model.HospitalNewsT;
+import com.health.digitalmedical.view.user.LoginActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class NewsDetailActivity extends BaseActivity
 {
@@ -37,6 +42,14 @@ public class NewsDetailActivity extends BaseActivity
 		initValue();
 	}
 
+	@OnClick(R.id.back)
+	public void toHome(View v)
+	{
+		Intent intent = new Intent(NewsDetailActivity.this, MainPageActivity.class);
+		startActivity(intent);
+		finish();
+	}
+	
 	@Override
 	protected void initView()
 	{

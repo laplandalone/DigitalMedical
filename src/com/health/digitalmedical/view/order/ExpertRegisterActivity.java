@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -66,6 +67,8 @@ public class ExpertRegisterActivity extends BaseActivity
 	@ViewInject(R.id.check_btn)
 	private RadioButton radioGroup;
 
+	@ViewInject(R.id.step_2)
+	private ImageView stepTwo;
 	private String doctorName;
 	private String registerTime;
 	private String fee;
@@ -164,6 +167,7 @@ public class ExpertRegisterActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
+		stepTwo.setBackgroundResource(R.drawable.bg_step_2);
 		this.doctorName = getIntent().getStringExtra("doctorName");
 		this.registerTime = getIntent().getStringExtra("registerTime");
 		this.fee = getIntent().getStringExtra("fee");

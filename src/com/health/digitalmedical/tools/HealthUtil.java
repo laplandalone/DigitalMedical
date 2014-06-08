@@ -58,6 +58,16 @@ public class HealthUtil {
 			return userPreferences.getString("hospitalId", "101");
 		}
 		
+		public static void writeLoginAuto(String loginAuto)
+		{
+			userPreferences.edit().putString("loginAuto", loginAuto).commit();
+		}
+		
+		public static String readLoginAuto() 
+		{
+			return userPreferences.getString("loginAuto", "");
+		}
+		
 		public static void writeUserPhone(String userPhone)
 		{
 			userPreferences.edit().putString("userPhone", userPhone).commit();

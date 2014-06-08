@@ -25,8 +25,6 @@ public class MyHealthActivity extends BaseActivity
 	@OnClick(R.id.header_left_small)
 	public void toBack(View v)
 	{
-		Intent intent = new Intent(MyHealthActivity.this,MainPageActivity.class);
-		startActivity(intent);
 		finish();
 	}
 	@Override

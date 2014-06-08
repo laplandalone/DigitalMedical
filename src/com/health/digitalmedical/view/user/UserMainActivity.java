@@ -3,6 +3,7 @@ package com.health.digitalmedical.view.user;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,12 +22,15 @@ public class UserMainActivity extends BaseActivity
 {
 	@ViewInject(R.id.item_layout1)
 	private LinearLayout itemLayout1;
-	
+
 	@ViewInject(R.id.item_layout2)
 	private LinearLayout itemLayout2;
-	
+
 	@ViewInject(R.id.login_name)
 	private TextView loginNameTV;
+
+	@ViewInject(R.id.photo)
+	private ImageView photo;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -34,64 +38,96 @@ public class UserMainActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_login_main);
 		ViewUtils.inject(this);
-		 initView();
-		 initValue();
+		initView();
+		initValue();
 	}
-	
-	
-	
+
 	@OnClick(R.id.health_data_lay)
 	public void toMyHealth(View v)
 	{
-		Intent intent = new Intent(UserMainActivity.this,MyHealthActivity.class);
+		Intent intent = new Intent(UserMainActivity.this, MyHealthActivity.class);
 		startActivity(intent);
 	}
-	
+
 	@OnClick(R.id.item_layout1)
 	public void toMyOrder(View v)
 	{
-		Intent intent = new Intent(UserMainActivity.this,UserOrderActivity.class);
+		Intent intent = new Intent(UserMainActivity.this, UserOrderActivity.class);
 		startActivity(intent);
 	}
-	
+
 	@OnClick(R.id.item_layout2)
 	public void toMyQuestion(View v)
 	{
-		Intent intent = new Intent(UserMainActivity.this,QuestionActivity.class);
+		Intent intent = new Intent(UserMainActivity.this, QuestionActivity.class);
 		intent.putExtra("questionType", "user");
 		startActivity(intent);
 	}
-	
+
 	@OnClick(R.id.user_info_detail)
 	public void updateUser(View v)
 	{
-		Intent intent = new Intent(UserMainActivity.this,UserUpdateActivity.class);
-		startActivity(intent);
+		Intent intent = new Intent(UserMainActivity.this, UserUpdateActivity.class);
+		startActivityForResult(intent, 0);
 	}
-	
+
 	@OnClick(R.id.back)
 	public void toHome(View v)
 	{
-		Intent intent = new Intent(UserMainActivity.this,MainPageActivity.class);
+		Intent intent = new Intent(UserMainActivity.this, MainPageActivity.class);
 		startActivity(intent);
 		finish();
 	}
-	
+
 	@OnClick(R.id.outLogin)
 	public void loginOut(View v)
 	{
 		HealthUtil.writeUserInfo("");
-		Intent intent = new Intent(UserMainActivity.this,MainPageActivity.class);
+		Intent intent = new Intent(UserMainActivity.this, MainPageActivity.class);
 		startActivity(intent);
 		finish();
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent intent)
+	{
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, intent);
+		switch (resultCode)
+		{
+		case 0:
+			User user = HealthUtil.getUserInfo();
+			if (user != null && !"".equals(user))
+			{
+				loginNameTV.setText(user.getUserName());
+				if("ÄÐ".equals(user.getSex()))
+				{
+					photo.setBackgroundResource(R.drawable.male);
+				}else
+				{
+					photo.setBackgroundResource(R.drawable.female);
+				}
+			}
+			break;
+
+		default:
+			break;
+		}
 	}
 	
 	@Override
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		User user =HealthUtil.getUserInfo();
+		User user = HealthUtil.getUserInfo();
 		loginNameTV.setText(user.getUserName());
+		if("ÄÐ".equals(user.getSex()))
+		{
+			photo.setBackgroundResource(R.drawable.male);
+		}else
+		{
+			photo.setBackgroundResource(R.drawable.female);
+		}
 	}
 
 	@Override

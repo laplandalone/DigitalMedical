@@ -96,6 +96,16 @@ public class UserUpdateActivity extends BaseActivity
 		String idNum = idCardET.getText() + "";
 		String idCheckRst = IDCard.IDCardValidate(idNum);
 		RadioButton radioButton = (RadioButton) findViewById(group.getCheckedRadioButtonId());
+		String userNameT=realNameET.getText() + "";
+		if("".equals(userNameT))
+		{
+			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名为空！");
+			return;
+		}else if(userNameT.length()>4)
+		{
+			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名长度无效！");
+			return;
+		}
 		if (!HealthUtil.isMobileNum(phoneNum))
 		{
 			HealthUtil.infoAlert(UserUpdateActivity.this, "手机号码为空或格式错误!");
@@ -114,9 +124,10 @@ public class UserUpdateActivity extends BaseActivity
 		{
 			this.sex = radioButton.getText().toString();
 		}
+		
 		this.userT.setUserId(user.getUserId());
 		this.userT.setTelephone(telephoneET.getText() + "");
-		this.userT.setUserName(realNameET.getText() + "");
+		this.userT.setUserName(userNameT);
 		this.userT.setUserNo(idCardET.getText() + "");
 		this.userT.setPassword(user.getPassword());
 		this.userT.setSex(this.sex);

@@ -66,7 +66,7 @@ public class DoctorDetailActivity extends BaseActivity
 		bitmapUtils.closeCache();
 		// TODO Auto-generated method stub
 		this.doctorName.setText(doctor.getName());
-		this.doctotIntroduction.setText(doctor.getIntroduce());
+		this.doctotIntroduction.setText(doctor.getSkill());
 		this.doctorPosition.setText(doctor.getPost());
 		this.outPatientTime.setText(doctor.getWorkTime());
 		this.guahaoFee.setText(doctor.getRegisterFee());

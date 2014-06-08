@@ -127,6 +127,7 @@ public class MainPageActivity extends BaseActivity
 				R.drawable.dot_focused, R.drawable.dot_normal);
 
 		Intent intent = new Intent(this, CheckNewVersion.class);
+		intent.putExtra("flag", "auto");
 		startService(intent);
 
 	}
@@ -177,7 +178,7 @@ public class MainPageActivity extends BaseActivity
 		} else
 		{
 			Intent intent = new Intent(MainPageActivity.this, LoginActivity.class);
-			startActivity(intent);
+			startActivityForResult(intent, 0);
 		}
 
 	}
@@ -257,6 +258,25 @@ public class MainPageActivity extends BaseActivity
 		}
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent intent)
+	{
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, intent);
+		switch (resultCode)
+		{
+		case RESULT_OK:
+			String user = HealthUtil.readUserInfo();
+			if (user != null && !"".equals(user))
+			{
+				userLoginBtn.setBackgroundResource(R.drawable.user_login_unselect);
+			}
+			break;
+
+		default:
+			break;
+		}
+	}
 	@Override
 	public void finish(View v) {
 		

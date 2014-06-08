@@ -1,10 +1,15 @@
 package com.health.digitalmedical.view.other;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.R;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
  * ¸ü¶à
@@ -13,6 +18,9 @@ import com.lidroid.xutils.ViewUtils;
 public class OtherActivity extends BaseActivity
 {
 
+	@ViewInject(R.id.soft_update)
+	private LinearLayout soft_update;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -35,4 +43,11 @@ public class OtherActivity extends BaseActivity
 
 	}
 
+	@OnClick(R.id.soft_update)
+	public void checkVersion(View v)
+	{
+		Intent intent = new Intent(this, CheckNewVersion.class);
+		intent.putExtra("flag", "hand");
+		startService(intent);
+	}
 }

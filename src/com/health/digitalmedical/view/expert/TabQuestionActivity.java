@@ -146,7 +146,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 		TextView doctorName=(TextView) view1.findViewById(R.id.doctor_name);
 		doctorName.setText(doctor.getName());
 		TextView introddoction=(TextView) view1.findViewById(R.id.doctot_introduction);
-		introddoction.setText(doctor.getIntroduce()); 
+		introddoction.setText(doctor.getSkill()); 
 		TextView position=(TextView) view1.findViewById(R.id.doctor_position);
 		position.setText(doctor.getPost()); 
 		TextView outPatientTime=(TextView) view1.findViewById(R.id.out_patient_time);
