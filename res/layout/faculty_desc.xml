@@ -5,7 +5,10 @@
     <com.health.digitalmedical.view.PageScrollView android:id="@id/pageScroll" android:background="@xml/repeat_bg" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="0.1" android:layout_below="@id/front_bar">
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <android.support.v4.view.ViewPager android:id="@id/viewPage" android:layout_width="fill_parent" android:layout_height="140.0dip" />
+              <com.health.digitalmedical.adapter.ImgViewPager
+			        android:id="@+id/imgViewPager"
+			        android:layout_width="fill_parent"
+			        android:layout_height="155dp" />
                 <Button android:layout_gravity="left|center" android:id="@id/left" android:background="@drawable/btn_switch_left" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
                 <Button android:layout_gravity="right|center" android:id="@id/right" android:background="@drawable/btn_switch_right" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
             </FrameLayout>

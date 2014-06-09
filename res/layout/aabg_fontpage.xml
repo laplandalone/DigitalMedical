@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout style="@style/layout_common_color"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/front_bar" android:background="@xml/repeat_line" android:layout_width="fill_parent" android:layout_height="wrap_content">
-    <ImageView android:visibility="gone" android:background="@drawable/front_hospital" android:layout_centerInParent="true" style="@style/layout_wrap" />
-    </RelativeLayout>
+
+     <LinearLayout
+         android:gravity="center"
+        android:orientation="horizontal"
+        android:id="@id/front_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@xml/repeat_line" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            style="@style/layout_wrap"
+            android:background="@drawable/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imageView1"
+            android:gravity="center_vertical"
+            android:paddingBottom="1.0dip"
+            android:text="健康管家"
+            android:textColor="@color/white"
+            android:textSize="20.0sp" />
+    </LinearLayout>
+
     <com.health.digitalmedical.view.PageScrollView android:id="@id/pageScroll" android:background="@xml/repeat_bg" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="50.0dip" android:layout_below="@id/front_bar">
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
