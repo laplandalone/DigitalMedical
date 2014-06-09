@@ -61,6 +61,7 @@ public class OnLineExpertListActivity extends BaseActivity  implements OnItemCli
 		this.list=(ListView) findViewById(R.id.asklist);
 		this.teamId=getIntent().getStringExtra("teamId");
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 	}
@@ -87,7 +88,7 @@ public class OnLineExpertListActivity extends BaseActivity  implements OnItemCli
 	{
 		Intent intent = new Intent(OnLineExpertListActivity.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	
 	/**

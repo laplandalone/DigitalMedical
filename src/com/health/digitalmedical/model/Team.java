@@ -13,6 +13,17 @@ public class Team implements Serializable
 	@Expose
 	public String introduce;
 	
+	@Expose
+	public String imgUrl;
+	
+	public String getImgUrl()
+	{
+		return imgUrl;
+	}
+	public void setImgUrl(String imgUrl)
+	{
+		this.imgUrl = imgUrl;
+	}
 	public String getTeamId()
 	{
 		return teamId;

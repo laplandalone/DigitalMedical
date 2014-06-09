@@ -104,7 +104,9 @@ public class MainPageActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.aabg_fontpage);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
+		initView(savedInstanceState);
 		WindowManager windowManager = getWindowManager();
 		Display display = windowManager.getDefaultDisplay();
 		int screenWidth = display.getWidth();
@@ -174,7 +176,6 @@ public class MainPageActivity extends BaseActivity
 		{
 			Intent intent = new Intent(MainPageActivity.this, UserMainActivity.class);
 			startActivity(intent);
-
 		} else
 		{
 			Intent intent = new Intent(MainPageActivity.this, LoginActivity.class);
@@ -246,10 +247,13 @@ public class MainPageActivity extends BaseActivity
 		}
 	}
 
+	private void initView(Bundle savedInstanceState)
+	{
+		doubleClickExit = new DoubleClickExit(this);
+	}
 	@Override
 	protected void initView()
 	{
-		doubleClickExit = new DoubleClickExit(this);
 		// TODO Auto-generated method stub
 		String user = HealthUtil.readUserInfo();
 		if (user != null && !"".equals(user))
@@ -277,14 +281,11 @@ public class MainPageActivity extends BaseActivity
 			break;
 		}
 	}
-	@Override
-	public void finish(View v) {
-		
-		doubleClickExit.onKeyClick(KeyEvent.KEYCODE_BACK);
-	}
+
 	
 	@Override
-	public void onBackPressed() {
+	public void onBackPressed() 
+	{
 		doubleClickExit.onKeyClick(KeyEvent.KEYCODE_BACK);
 	}
 	

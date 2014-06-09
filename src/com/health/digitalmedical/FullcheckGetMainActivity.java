@@ -17,6 +17,7 @@ public class FullcheckGetMainActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fullcheck_list_item);
 		ViewUtils.inject(this);
+		addActivity(this);
 	}
 
 	@Override

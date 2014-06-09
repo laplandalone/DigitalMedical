@@ -53,6 +53,7 @@ public class AskExpertListActivity extends BaseActivity  implements OnItemClickL
 		this.list=(ListView) findViewById(R.id.asklist);
 		this.teamId=getIntent().getStringExtra("teamId");
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 		
@@ -79,7 +80,7 @@ public class AskExpertListActivity extends BaseActivity  implements OnItemClickL
 	{
 		Intent intent = new Intent(AskExpertListActivity.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	/**
 	 * Á´½Óweb·þÎñ

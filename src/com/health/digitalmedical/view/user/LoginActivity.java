@@ -51,6 +51,7 @@ public class LoginActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_sign_in);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 	}
@@ -101,7 +102,7 @@ public class LoginActivity extends BaseActivity
 	{
 		Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 
 	@Override

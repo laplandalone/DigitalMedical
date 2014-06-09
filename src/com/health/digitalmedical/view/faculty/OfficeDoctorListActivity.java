@@ -42,6 +42,7 @@ public class OfficeDoctorListActivity extends BaseActivity implements OnItemClic
 		setContentView(R.layout.common_list);
 		this.list=(ListView) findViewById(R.id.comlist);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 	}
@@ -51,7 +52,7 @@ public class OfficeDoctorListActivity extends BaseActivity implements OnItemClic
 	{
 		Intent intent = new Intent(OfficeDoctorListActivity.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	@Override
 	protected void initView()

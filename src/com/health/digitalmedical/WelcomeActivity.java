@@ -15,6 +15,7 @@ public class WelcomeActivity extends BaseActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.welcome);
+		addActivity(this);
 		initView();
 		initValue();
 	}

@@ -58,6 +58,7 @@ public class NewVersionActivity extends BaseActivity implements OnClickListener{
 		setContentView(R.layout.new_version);
 		mHttpUtils = new HttpUtils();
 		mBundle = this.getIntent().getExtras();
+		addActivity(this);
 		initView();
 		initValue();
 	}

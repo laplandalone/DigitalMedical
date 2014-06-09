@@ -38,6 +38,7 @@ public class DoctorListActivity extends BaseActivity implements OnItemClickListe
 		setContentView(R.layout.common_list);
 		this.list=(ListView) findViewById(R.id.comlist);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 	}
@@ -46,7 +47,7 @@ public class DoctorListActivity extends BaseActivity implements OnItemClickListe
 	{
 		Intent intent = new Intent(DoctorListActivity.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	@Override
 	protected void initView()

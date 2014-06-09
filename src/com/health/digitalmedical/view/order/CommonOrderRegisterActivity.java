@@ -105,6 +105,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register_department_detail);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 	}
@@ -160,7 +161,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 	{
 		Intent intent = new Intent(CommonOrderRegisterActivity.this, MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 
 	@OnClick(R.id.calendar_btn)

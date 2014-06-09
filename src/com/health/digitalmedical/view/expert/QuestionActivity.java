@@ -59,6 +59,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		this.list = (ListView) findViewById(R.id.list);
 		// TODO Auto-generated method stub
 		ViewUtils.inject(this);
+		addActivity(this);
 		initValue();
 	}
 
@@ -76,7 +77,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 	{
 		Intent intent = new Intent(QuestionActivity.this, MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 
 	@Override

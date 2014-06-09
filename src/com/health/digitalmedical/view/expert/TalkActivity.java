@@ -49,6 +49,7 @@ public class TalkActivity extends BaseActivity
 		setContentView(R.layout.talk_list);
 		this.list=(ListView) findViewById(R.id.talklist);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 	}
@@ -58,7 +59,7 @@ public class TalkActivity extends BaseActivity
 	{
 		Intent intent = new Intent(TalkActivity.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	
 	@Override

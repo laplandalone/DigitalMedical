@@ -53,6 +53,7 @@ public class OnLineFacultyListActivity extends BaseActivity implements OnItemCli
 		setContentView(R.layout.common_list);
 		this.list = (ListView) findViewById(R.id.comlist);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 
@@ -63,7 +64,7 @@ public class OnLineFacultyListActivity extends BaseActivity implements OnItemCli
 	{
 		Intent intent = new Intent(OnLineFacultyListActivity.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 
 	@Override
@@ -80,7 +81,8 @@ public class OnLineFacultyListActivity extends BaseActivity implements OnItemCli
 		// getListRst();
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
-		RequestParams param = webInterface.queryTeamList(null,null);
+		String hospitalId=HealthUtil.readHospitalId();
+		RequestParams param = webInterface.queryTeamList(hospitalId,"0");
 		invokeWebServer(param, GET_LIST);
 	}
 

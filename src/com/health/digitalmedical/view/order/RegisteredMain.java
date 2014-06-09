@@ -86,6 +86,7 @@ public class RegisteredMain extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guahao_mian);
 		ViewUtils.inject(this);
+		addActivity(this);
 	}
 	
 	@OnClick(R.id.open)
@@ -150,7 +151,7 @@ public class RegisteredMain extends BaseActivity
 	{
 		Intent intent = new Intent(RegisteredMain.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	
 	@OnClick(R.id.normal)

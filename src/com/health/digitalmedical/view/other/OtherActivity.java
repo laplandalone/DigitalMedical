@@ -27,6 +27,7 @@ public class OtherActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.other);
 		ViewUtils.inject(this);
+		addActivity(this);
 	}
 
 	@Override

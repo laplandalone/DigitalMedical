@@ -64,6 +64,7 @@ public class HisOrderActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.expert_info_config);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initValue();
 	}
 
@@ -98,7 +99,7 @@ public class HisOrderActivity extends BaseActivity
 	{
 		Intent intent = new Intent(HisOrderActivity.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	
 	@OnClick(R.id.submit)

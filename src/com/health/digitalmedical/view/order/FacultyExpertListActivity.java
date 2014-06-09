@@ -47,6 +47,7 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 		setContentView(R.layout.common_list);
 		this.list = (ListView) findViewById(R.id.comlist);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 
@@ -56,7 +57,7 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 	{
 		Intent intent = new Intent(FacultyExpertListActivity.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	@Override
 	protected void initView()

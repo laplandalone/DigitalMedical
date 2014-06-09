@@ -38,6 +38,7 @@ public class NewsDetailActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.article);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 	}
@@ -47,7 +48,7 @@ public class NewsDetailActivity extends BaseActivity
 	{
 		Intent intent = new Intent(NewsDetailActivity.this, MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	
 	@Override

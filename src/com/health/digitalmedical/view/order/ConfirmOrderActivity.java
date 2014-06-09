@@ -68,6 +68,7 @@ public class ConfirmOrderActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.expert_register_proof);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 	}
@@ -77,7 +78,7 @@ public class ConfirmOrderActivity extends BaseActivity
 	{
 		Intent intent = new Intent(ConfirmOrderActivity.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	
 	@Override

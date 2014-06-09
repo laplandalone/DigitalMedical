@@ -38,6 +38,7 @@ public class UserMainActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_login_main);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 	}
@@ -76,7 +77,7 @@ public class UserMainActivity extends BaseActivity
 	{
 		Intent intent = new Intent(UserMainActivity.this, MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 
 	@OnClick(R.id.outLogin)

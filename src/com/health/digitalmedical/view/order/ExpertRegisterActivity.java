@@ -90,6 +90,7 @@ public class ExpertRegisterActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.expert_register_info_config);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 	}
@@ -116,7 +117,7 @@ public class ExpertRegisterActivity extends BaseActivity
 	{
 		Intent intent = new Intent(ExpertRegisterActivity.this, MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 
 	@OnClick(R.id.submit)

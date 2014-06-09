@@ -25,6 +25,7 @@ public class RegisterActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_sign_up);
 		ViewUtils.inject(this);
+		addActivity(this);
 	}
 
 	@OnClick(R.id.sign_up)
@@ -46,7 +47,7 @@ public class RegisterActivity extends BaseActivity
 	{
 		Intent intent = new Intent(RegisterActivity.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	
 	@Override

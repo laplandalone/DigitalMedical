@@ -47,6 +47,7 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 		setContentView(R.layout.common_article_list);
 		this.list=(ListView) findViewById(R.id.newlist);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initValue();
 	}
 
@@ -55,7 +56,7 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 	{
 		Intent intent = new Intent(NewsActivity.this, MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 
 	@Override

@@ -20,6 +20,7 @@ public class HealthToolsActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.common_article_list);
 		ViewUtils.inject(this);
+		addActivity(this);
 	}
 	
 	@OnClick(R.id.back)
@@ -27,7 +28,7 @@ public class HealthToolsActivity extends BaseActivity
 	{
 		Intent intent = new Intent(HealthToolsActivity.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	
 	@Override

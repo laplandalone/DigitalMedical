@@ -20,6 +20,7 @@ public class MyHealthActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_my_health);
 		ViewUtils.inject(this);
+		addActivity(this);
 	}
 
 	@OnClick(R.id.header_left_small)

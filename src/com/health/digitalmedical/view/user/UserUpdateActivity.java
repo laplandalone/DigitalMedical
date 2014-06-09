@@ -60,6 +60,7 @@ public class UserUpdateActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.edit_people_info);
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 	}

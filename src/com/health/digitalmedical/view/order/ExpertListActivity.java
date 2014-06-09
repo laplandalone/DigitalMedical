@@ -56,6 +56,7 @@ public class ExpertListActivity extends BaseActivity  implements OnItemClickList
 		this.list=(ListView) findViewById(R.id.asklist);
 		this.team=(Team) getIntent().getSerializableExtra("team");
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 	}
@@ -64,7 +65,7 @@ public class ExpertListActivity extends BaseActivity  implements OnItemClickList
 	{
 		Intent intent = new Intent(ExpertListActivity.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	@Override
 	protected void initView()

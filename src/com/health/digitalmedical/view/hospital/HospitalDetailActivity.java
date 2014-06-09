@@ -70,6 +70,7 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 		initValue();
 		initView();
 		ViewUtils.inject(this);
+		addActivity(this);
 	}
 
 	@OnClick(R.id.back)
@@ -77,7 +78,7 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 	{
 		Intent intent = new Intent(HospitalDetailActivity.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	
 	@OnClick(R.id.more_detail)

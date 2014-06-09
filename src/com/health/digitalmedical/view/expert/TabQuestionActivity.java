@@ -77,6 +77,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.online_doctor_detail);
 		ViewUtils.inject(this);
+		addActivity(this);
 		bitmapUtils = new BitmapUtils(this);
 		bitmapUtils.closeCache();
 		initView();
@@ -108,7 +109,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 	{
 		Intent intent = new Intent(TabQuestionActivity.this, MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 
 

@@ -95,6 +95,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 		setContentView(R.layout.ask_question_msg);
 		// TODO Auto-generated method stub
 		ViewUtils.inject(this);
+		addActivity(this);
 		if (savedInstanceState != null)
 		{
 			restartBool = savedInstanceState.getBoolean("is_restart", true);
@@ -340,7 +341,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 	{
 		Intent intent = new Intent(AskQuestionMsgActivity.this, MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 
 	@OnClick(R.id.submit_question)

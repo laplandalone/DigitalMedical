@@ -40,6 +40,7 @@ public class DoctorDetailActivity extends BaseActivity
 		setContentView(R.layout.common_doctor_detail);
 		this.doctor=(Doctor) getIntent().getSerializableExtra("doctor");
 		ViewUtils.inject(this);
+		addActivity(this);
 		initView();
 		initValue();
 	}
@@ -49,7 +50,7 @@ public class DoctorDetailActivity extends BaseActivity
 	{
 		Intent intent = new Intent(DoctorDetailActivity.this,MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 	
 	@Override

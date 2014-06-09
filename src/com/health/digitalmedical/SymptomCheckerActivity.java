@@ -13,6 +13,7 @@ public class SymptomCheckerActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.take_picture);
 		ViewUtils.inject(this);
+		addActivity(this);
 	}
 	
 	@Override

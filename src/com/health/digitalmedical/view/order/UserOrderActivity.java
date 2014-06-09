@@ -40,6 +40,7 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_register_order);
 		this.list=(ListView) findViewById(R.id.list_view);
+		addActivity(this);
 		initView();
 		initValue();
 	}
