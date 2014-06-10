@@ -6,7 +6,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.health.digitalmedical.BaseActivity;
+import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
+import com.health.digitalmedical.view.user.RegisterActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -44,6 +46,13 @@ public class OtherActivity extends BaseActivity
 
 	}
 
+	@OnClick(R.id.back)
+	public void toHome(View v)
+	{
+		Intent intent = new Intent(OtherActivity.this,MainPageActivity.class);
+		startActivity(intent);
+		exit();
+	}
 	@OnClick(R.id.soft_update)
 	public void checkVersion(View v)
 	{

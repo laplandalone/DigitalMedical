@@ -106,7 +106,6 @@ public class MainPageActivity extends BaseActivity
 		ViewUtils.inject(this);
 		addActivity(this);
 		initView();
-		initView(savedInstanceState);
 		WindowManager windowManager = getWindowManager();
 		Display display = windowManager.getDefaultDisplay();
 		int screenWidth = display.getWidth();
@@ -228,32 +227,20 @@ public class MainPageActivity extends BaseActivity
 	{
 		listViews = new ArrayList<View>();
 		int[] imageResId = new int[]
-		{ R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e };
+		{ R.drawable.a, R.drawable.b, R.drawable.c};
 		for (int i = 0; i < imageResId.length; i++)
 		{
 			ImageView imageView = new ImageView(this);
-			imageView.setOnClickListener(new OnClickListener()
-			{
-				public void onClick(View v)
-				{// 设置图片点击事件
-				// Toast.makeText(MainPageActivity.this,
-				// "点击了:" + myPager.getCurIndex(), Toast.LENGTH_SHORT)
-				// .show();
-				}
-			});
 			imageView.setImageResource(imageResId[i]);
 			imageView.setScaleType(ScaleType.CENTER_CROP);
 			listViews.add(imageView);
 		}
 	}
 
-	private void initView(Bundle savedInstanceState)
-	{
-		doubleClickExit = new DoubleClickExit(this);
-	}
 	@Override
 	protected void initView()
 	{
+		doubleClickExit = new DoubleClickExit(this);
 		// TODO Auto-generated method stub
 		String user = HealthUtil.readUserInfo();
 		if (user != null && !"".equals(user))

@@ -1,8 +1,10 @@
 package com.health.digitalmedical.view.hospital;
 
 import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -145,13 +148,17 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 	{
 		try
 		{
-			String uri = "intent://map/marker?location=30.584072,114.266477,&title=123&content=4567&src=好吃佬#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end";
+			String uri = "intent://map/marker?location=30.584072,114.266477,&title=123&content=4567&src=健康管家#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end";
 			@SuppressWarnings("deprecation")
 			Intent intent = Intent.getIntent(uri);
 			startActivity(intent);
 		} catch (Exception e)
 		{
 			e.printStackTrace();
+			String path = "http://api.map.baidu.com/marker?location=30.584072,114.266477,&title=123&content=4567"+"&output=html";
+			Uri uri = Uri.parse(path);
+			Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+			startActivity(intent);
 		}
 	}
 	
@@ -261,9 +268,9 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
+		TeamT teamT = teamTs.get(position);
 		try
 		{
-			TeamT teamT = teamTs.get(position);
 			String uri = "intent://map/marker?location="+teamT.getY()+","+teamT.getX()+",&title="+teamT.getTeamName()+"&content=&src=好吃佬#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end";
 			@SuppressWarnings("deprecation")
 			Intent intent = Intent.getIntent(uri);
@@ -271,6 +278,10 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 		} catch (Exception e)
 		{
 			e.printStackTrace();
+			String path = "http://api.map.baidu.com/marker?location="+teamT.getY()+","+teamT.getX()+",&title="+teamT.getTeamName()+"&content=&output=html";
+			Uri uri = Uri.parse(path);
+			Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+			startActivity(intent);
 		}
 		
 	}

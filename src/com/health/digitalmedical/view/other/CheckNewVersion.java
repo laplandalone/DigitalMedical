@@ -88,7 +88,8 @@ public class CheckNewVersion extends Service{
 
 
 		@Override
-		public void onFailure(HttpException error, String msg) {
+		public void onFailure(HttpException error, String msg) 
+		{
 			HealthUtil.LOG_D(getClass(), "version-------------------->msg=" + msg);
 			stopSelf();
 		}
