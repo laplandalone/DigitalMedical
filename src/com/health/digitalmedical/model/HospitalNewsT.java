@@ -13,7 +13,7 @@ public class HospitalNewsT implements java.io.Serializable {
 	private String newsId;
 	private String hospitalId;
 	private String newsTitle;
-	private String newsContent;
+	private String content;
 	private String newsImages;
 	private String state;
 	private String createDate;
@@ -26,20 +26,20 @@ public class HospitalNewsT implements java.io.Serializable {
 
 	/** minimal constructor */
 	public HospitalNewsT(String newsId, String hospitalId, String newsTitle,
-			String newsContent) {
+			String content) {
 		this.newsId = newsId;
 		this.hospitalId = hospitalId;
 		this.newsTitle = newsTitle;
-		this.newsContent = newsContent;
+		this.content = content;
 	}
 
 	/** full constructor */
 	public HospitalNewsT(String newsId, String hospitalId, String newsTitle,
-			String newsContent, String newsImages, String state, String createDate) {
+			String content, String newsImages, String state, String createDate) {
 		this.newsId = newsId;
 		this.hospitalId = hospitalId;
 		this.newsTitle = newsTitle;
-		this.newsContent = newsContent;
+		this.content = content;
 		this.newsImages = newsImages;
 		this.state = state;
 		this.createDate = createDate;
@@ -72,11 +72,11 @@ public class HospitalNewsT implements java.io.Serializable {
 	}
 
 	public String getNewsContent() {
-		return this.newsContent;
+		return this.content;
 	}
 
-	public void setNewsContent(String newsContent) {
-		this.newsContent = newsContent;
+	public void setNewsContent(String content) {
+		this.content = content;
 	}
 
 	public String getNewsImages() {

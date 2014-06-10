@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
@@ -33,6 +34,7 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
+import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
@@ -42,6 +44,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 public class OnLineFacultyListActivity extends BaseActivity implements OnItemClickListener
 {
 
+	@ViewInject(R.id.title)
+	private TextView title;
+	
 	private ListView list;
 	
 	private List<Map<String, Object>> unhandList = new ArrayList<Map<String, Object>>();
@@ -71,7 +76,7 @@ public class OnLineFacultyListActivity extends BaseActivity implements OnItemCli
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-
+		title.setText("ø∆ “¡–±Ì");
 	}
 
 	@Override

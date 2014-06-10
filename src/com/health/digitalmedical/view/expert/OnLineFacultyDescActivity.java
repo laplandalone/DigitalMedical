@@ -31,6 +31,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 public class OnLineFacultyDescActivity extends BaseActivity
 {
 
+	@ViewInject(R.id.title)
+	private TextView title;
+	
 	@ViewInject(R.id.all_doctor)
 	private Button expertListBtn;
 	
@@ -116,6 +119,7 @@ public class OnLineFacultyDescActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
+		title.setText("ø∆ “ΩÈ…‹");
 		// TODO Auto-generated method stub
 		InitViewPager();// ≥ı ºªØÕº∆¨
 		myPager.start(this, listViews, 4000, null, R.layout.ad_bottom_item, R.id.ad_item_v,
