@@ -3,7 +3,6 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
         <SurfaceView android:id="@id/preview_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <com.google.zxing.client.android.ViewfinderView android:id="@id/viewfinder_view" android:background="@color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </FrameLayout>
     <RelativeLayout android:background="#ff000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <RelativeLayout android:id="@id/relativeLayoutTitleLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">

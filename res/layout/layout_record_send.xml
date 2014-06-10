@@ -15,7 +15,6 @@
                     <TextView android:textSize="17.0sp" android:textColor="@color/bg_gray" android:id="@id/record_send_num" android:layout_width="wrap_content" android:layout_height="wrap_content" />
                 </LinearLayout>
                 <TextView android:textSize="17.0sp" android:textColor="@color/bg_gray" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/margins" android:text="@string/report_send_item_2" />
-                <zj.health.zyyy.base.LinearListView android:orientation="vertical" android:id="@id/record_send_list" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/margins" />
                 <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/margins">
                     <TextView android:textSize="17.0sp" android:textColor="@color/bg_gray" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/report_send_title_8" />
                     <TextView android:textSize="17.0sp" android:textColor="@color/bg_gray" android:layout_width="wrap_content" android:layout_height="wrap_content" />

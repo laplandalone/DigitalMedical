@@ -3,7 +3,6 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include layout="@layout/drug_store_map_title" />
     <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.baidu.mapapi.MapView android:id="@id/bmapView" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="0.1" />
         <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:id="@id/comments" android:background="@drawable/guahao_buttom_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
                 <Button android:textColor="@color/white" android:id="@id/drive" android:background="@drawable/btn_driver" android:layout_width="wrap_content" android:layout_height="wrap_content" />

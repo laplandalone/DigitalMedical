@@ -6,8 +6,6 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">@dimen/bar_height</item>
         <item name="android:divider">@drawable/divider</item>
-        <item name="android:showDividers">middle</item>
-        <item name="android:dividerPadding">12.0dip</item>
     </style>
     <style name="ActionButton">
         <item name="android:background">@drawable/selectable_background</item>

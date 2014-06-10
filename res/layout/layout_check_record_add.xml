@@ -11,7 +11,6 @@
             </LinearLayout>
             <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <ImageButton android:id="@id/photo_img" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bg_photo_add" android:contentDescription="@string/app_name" />
-                <uk.co.senab.bitmapcache.widget.NetworkedCacheableImageView android:id="@id/photo_img_src" android:clickable="true" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="10.0dip" android:scaleType="fitXY" android:contentDescription="@string/app_name" />
             </LinearLayout>
             <FrameLayout android:layout_gravity="center_vertical" android:background="@drawable/user_info_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
                 <EditText android:textSize="17.0sp" android:gravity="top|left|center" android:id="@id/check_record_check_tip" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/check_record_check_tip" android:minLines="4" />
