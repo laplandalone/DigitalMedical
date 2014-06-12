@@ -6,12 +6,11 @@ import java.util.List;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
@@ -21,6 +20,7 @@ import com.health.digitalmedical.tools.HealthUtil;
 import com.health.digitalmedical.view.expert.OnLineFacultyListActivity;
 import com.health.digitalmedical.view.hospital.HospitalDetailActivity;
 import com.health.digitalmedical.view.news.NewsActivity;
+import com.health.digitalmedical.view.news.NewsTypeActivity;
 import com.health.digitalmedical.view.order.RegisteredMain;
 import com.health.digitalmedical.view.other.CheckNewVersion;
 import com.health.digitalmedical.view.other.OtherActivity;
@@ -65,10 +65,10 @@ public class MainPageActivity extends BaseActivity
 	private LinearLayout temp;
 
 	@ViewInject(R.id.user_login)
-	private Button userLoginBtn;
+	private ImageView userLoginBtn;
 
 	@ViewInject(R.id.more)
-	private Button userRegisterBtn;
+	private ImageView userRegisterBtn;
 
 	@ViewInject(R.id.lineout1)
 	private LinearLayout layout1;
@@ -98,6 +98,9 @@ public class MainPageActivity extends BaseActivity
 
 	private DoubleClickExit doubleClickExit;
 	
+	int  spacedip480=10;
+	int  spacedip720=12;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -110,12 +113,24 @@ public class MainPageActivity extends BaseActivity
 		Display display = windowManager.getDefaultDisplay();
 		int screenWidth = display.getWidth();
 		int scrrenHeight = display.getHeight();
-		int w = screenWidth - 4;
+		Log.e("screenWidth",screenWidth+"");
+		Log.e("scrrenHeight",scrrenHeight+"");
+		int space=0;
+		if(screenWidth==480)
+		{
+			space=dip2px(this, spacedip480);
+		}else
+		{
+			space=dip2px(this, spacedip720);
+		}
+		int spaceX =space*4;
+		Log.e("spaceX",spaceX+"");
+		int w=screenWidth-spaceX;
 		int ww = w / 3;
-		int h = scrrenHeight - dip2px(this, 300);
-		int hh = h / 2;
+		int hh=ww*296/206;
 		LinearLayout.LayoutParams hint_page_params = new LinearLayout.LayoutParams(ww, hh);
-		// hint_page_params.setMargins(10,0,0, 0);//…Ë÷√±ﬂæ‡
+		//int left, int top, int right, int bottom
+		hint_page_params.setMargins(space,0,0, 0);//…Ë÷√±ﬂæ‡
 		layout1.setLayoutParams(hint_page_params);
 		layout2.setLayoutParams(hint_page_params);
 		layout3.setLayoutParams(hint_page_params);
@@ -125,7 +140,7 @@ public class MainPageActivity extends BaseActivity
 
 		InitViewPager();// ≥ı ºªØÕº∆¨
 		myPager.start(this, listViews, 4000, ovalLayout, R.layout.ad_bottom_item, R.id.ad_item_v,
-				R.drawable.dot_focused, R.drawable.dot_normal);
+				R.drawable.pager_select, R.drawable.pager_item);
 
 		Intent intent = new Intent(this, CheckNewVersion.class);
 		intent.putExtra("flag", "auto");
@@ -167,7 +182,7 @@ public class MainPageActivity extends BaseActivity
 		startActivity(intent);
 	}
 
-	@OnClick(R.id.user_login)
+	@OnClick(R.id.LinearLayout_login)
 	public void toUserLogin(View v)
 	{
 		String user = HealthUtil.readUserInfo();
@@ -186,16 +201,16 @@ public class MainPageActivity extends BaseActivity
 	@OnClick(R.id.main_img4)
 	public void toHospitalNews(View v)
 	{
-		Intent intent = new Intent(MainPageActivity.this, NewsActivity.class);
-		intent.putExtra("type", "news");
+		Intent intent = new Intent(MainPageActivity.this, NewsTypeActivity.class);
+		intent.putExtra("type", "NEWS");
 		startActivity(intent);
 	}
 
 	@OnClick(R.id.main_img6)
 	public void toHealthTools(View v)
 	{
-		Intent intent = new Intent(MainPageActivity.this, NewsActivity.class);
-		intent.putExtra("type", "baike");
+		Intent intent = new Intent(MainPageActivity.this, NewsTypeActivity.class);
+		intent.putExtra("type", "BAIKE");
 		startActivity(intent);
 	}
 
@@ -213,7 +228,7 @@ public class MainPageActivity extends BaseActivity
 		startActivity(intent);
 	}
 
-	@OnClick(R.id.more)
+	@OnClick(R.id.LinearLayout_more)
 	public void toOther(View v)
 	{
 		Intent intent = new Intent(MainPageActivity.this, OtherActivity.class);

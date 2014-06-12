@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -28,6 +29,8 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class UserUpdateActivity extends BaseActivity
 {
+	@ViewInject(R.id.title)
+	private TextView title;
 
 	@ViewInject(R.id.real_name)
 	private EditText realNameET;
@@ -68,6 +71,7 @@ public class UserUpdateActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
+		title.setText("资料更新");
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		this.user = HealthUtil.getUserInfo();

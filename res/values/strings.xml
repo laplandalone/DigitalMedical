@@ -612,7 +612,6 @@
     <string name="other_temp13">当前版本已经是最新版</string>
     <string name="other_temp14">"
 版本号是:"</string>
-    <string name="other_temp15">我正在使用“掌上大众版”手机应用，手机预约专家号，随时随地取报告单，专家在线与医生零距离沟通等海量就医功能等你体验！http://ucmed.cn/zszy.html</string>
     <string name="other_temp16">分享成功</string>
     <string name="other_temp17">分享失败</string>
     <string name="other_temp18">新浪微博</string>
@@ -625,7 +624,7 @@
     <string name="other_temp25">推荐用户３手机号码格式错误</string>
     <string name="other_temp26">推荐用户４手机号码格式错误</string>
     <string name="other_temp27">推荐用户５手机号码格式错误</string>
-    <string name="other_temp28">我正在使用‘宁波医院’安卓版手机应用,该应用能模拟医生问诊进行症状自检，并提供详尽的疾病药物库、全国医院医生库等，还有每日更新的健康资讯和专题，功能非常强大，真正的掌上健康全能助手，这么好的应用当然需要一起来分享</string>
+    <string name="other_temp28">我正在使用‘健康管家’安卓版手机应用,手机预约专家号，专家在线与医生零距离沟通等功能等你体验！http://58.53.209.120:9100/ImgWeb/DigitalMedical.apk</string>
     <string name="registered_temp1">科室详情</string>
     <string name="registered_temp2">上午挂号时间:</string>
     <string name="registered_temp3">下午挂号时间:</string>
@@ -924,7 +923,7 @@
     <string name="layout_temp111">【就诊时间】</string>
     <string name="layout_temp112">【费用】</string>
     <string name="layout_temp113">【预约号】</string>
-    <string name="layout_temp114">个人信息</string>
+    <string name="layout_temp114">基本信息</string>
     <string name="layout_temp115">用户姓名:</string>
     <string name="layout_temp116">用户姓名</string>
     <string name="layout_temp117">用户性别:</string>
@@ -937,8 +936,7 @@
     <string name="layout_temp124">预约凭证号码:</string>
     <string name="layout_temp125">费用:</string>
     <string name="layout_temp126">"上午（下午）的预约号请于就诊当日上午10点前（下午15点前）凭就诊人的有效身份证和医保卡到我院付费取号；
-如需取消预约，请于就诊当日上午7点以前取消。
-如有疑问，也可在软件意见反馈处联系我们。"</string>
+如需取消预约，请于就诊当日上午7点以前取消。如有疑问，也可在软件意见反馈处联系我们。"</string>
     <string name="layout_temp127">您可以到个人中心–我的预约记录查看本次预约凭证</string>
     <string name="layout_temp128">查看记录</string>
     <string name="layout_temp129">确认</string>

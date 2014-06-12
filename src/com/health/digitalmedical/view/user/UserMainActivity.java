@@ -20,6 +20,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class UserMainActivity extends BaseActivity
 {
+	@ViewInject(R.id.title)
+	private TextView title;
+	
 	@ViewInject(R.id.item_layout1)
 	private LinearLayout itemLayout1;
 
@@ -84,9 +87,10 @@ public class UserMainActivity extends BaseActivity
 	public void loginOut(View v)
 	{
 		HealthUtil.writeUserInfo("");
+		HealthUtil.writeLoginAuto("");
 		Intent intent = new Intent(UserMainActivity.this, MainPageActivity.class);
 		startActivity(intent);
-		finish();
+		exit();
 	}
 
 	@Override
@@ -119,6 +123,7 @@ public class UserMainActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
+		title.setText("个人中心");
 		// TODO Auto-generated method stub
 		User user = HealthUtil.getUserInfo();
 		loginNameTV.setText(user.getUserName());

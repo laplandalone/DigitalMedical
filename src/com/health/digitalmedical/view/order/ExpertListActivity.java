@@ -52,7 +52,7 @@ public class ExpertListActivity extends BaseActivity  implements OnItemClickList
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.online_faculty_list);
+		setContentView(R.layout.order_faculty_list);
 		this.list=(ListView) findViewById(R.id.asklist);
 		this.team=(Team) getIntent().getSerializableExtra("team");
 		ViewUtils.inject(this);
@@ -72,6 +72,7 @@ public class ExpertListActivity extends BaseActivity  implements OnItemClickList
 	{
 		// TODO Auto-generated method stubtotal_count
 		textTitle.setVisibility(View.GONE);
+		title.setText("医生列表");
 	}
 
 	@Override

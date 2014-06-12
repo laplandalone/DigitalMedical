@@ -50,8 +50,8 @@
                 <TextView android:background="@xml/repeat_register_buttom_line" android:layout_width="0.0dip" android:layout_height="10.0dip" android:layout_weight="1.0" />
                 <TextView android:background="@drawable/bg_registe_buttom_right" android:layout_width="wrap_content" android:layout_height="10.0dip" />
             </LinearLayout>
-            <TextView android:textSize="18.0sp" android:gravity="left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:layout_marginBottom="13.0dip" android:text="@string/layout_temp126" />
-            <TextView android:textSize="18.0sp" android:gravity="left" android:id="@id/find" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:layout_marginBottom="13.0dip" android:text="@string/layout_temp127" />
+            <TextView android:textSize="18.0sp" android:gravity="left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="@string/layout_temp126" />
+            <TextView android:textSize="18.0sp" android:gravity="left" android:id="@id/find" android:layout_width="fill_parent" android:layout_height="wrap_content"  android:layout_marginBottom="5.0dip" android:text="@string/layout_temp127" />
         </LinearLayout>
     </ScrollView>
     <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">

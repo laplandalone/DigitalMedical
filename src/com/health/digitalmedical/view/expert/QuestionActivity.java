@@ -1,18 +1,15 @@
 package com.health.digitalmedical.view.expert;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -29,7 +26,6 @@ import com.health.digitalmedical.model.User;
 import com.health.digitalmedical.model.UserQuestionT;
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
-import com.health.digitalmedical.view.order.CommonOrderRegisterActivity;
 import com.health.digitalmedical.view.user.LoginActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -42,6 +38,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class QuestionActivity extends BaseActivity implements OnItemClickListener
 {
+	@ViewInject(R.id.title)
+	private TextView title;
+
 	@ViewInject(R.id.submit)
 	private Button submitBtn;
 	private ListView list;
@@ -61,6 +60,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		ViewUtils.inject(this);
 		addActivity(this);
 		initValue();
+		initView();
 	}
 
 	@OnClick(R.id.submit)
@@ -83,8 +83,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 	@Override
 	protected void initView()
 	{
-		// TODO Auto-generated method stub
-
+		title.setText("我的提问");
 	}
 
 	@Override

@@ -42,6 +42,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 public class CommonOrderRegisterActivity extends BaseActivity
 {
 
+	@ViewInject(R.id.title)
+	private TextView title;
+
 	@ViewInject(R.id.calendar_btn)
 	private ImageButton calendarBtn;
 
@@ -77,6 +80,9 @@ public class CommonOrderRegisterActivity extends BaseActivity
 	
 	@ViewInject(R.id.check_btn)
 	private RadioGroup group;
+	
+	@ViewInject(R.id.step_2)
+	private ImageView stepTwo;
 	
 	String thisDate = DateUtils.getCHNDate();
 
@@ -181,6 +187,8 @@ public class CommonOrderRegisterActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
+		title.setText("信息确认");
+		stepTwo.setBackgroundResource(R.drawable.bg_step_2);
 		// TODO Auto-generated method stub
 		registerDate.setText(thisDate);
 		String dateStr=thisDate+" 12:00:00";

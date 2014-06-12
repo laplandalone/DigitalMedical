@@ -10,8 +10,8 @@ import org.json.JSONObject;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -52,6 +53,8 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class AskQuestionMsgActivity extends BaseActivity
 {
+	@ViewInject(R.id.title)
+	private TextView title;
 
 	@ViewInject(R.id.content)
 	private EditText contentET;
@@ -120,8 +123,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
-
-		// TODO Auto-generated method stub
+		title.setText("√‚∑—Ã·Œ ");
 	}
 
 	@OnClick(R.id.input_img)

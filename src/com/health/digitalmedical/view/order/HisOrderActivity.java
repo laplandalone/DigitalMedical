@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -18,7 +19,6 @@ import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
 import com.health.digitalmedical.tools.IDCard;
 import com.health.digitalmedical.view.user.LoginActivity;
-import com.health.digitalmedical.view.user.UserUpdateActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -30,6 +30,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class HisOrderActivity extends BaseActivity
 {
+	@ViewInject(R.id.title)
+	private TextView title;
+
 	@ViewInject(R.id.name)
 	private EditText editName;
 	
@@ -65,13 +68,14 @@ public class HisOrderActivity extends BaseActivity
 		setContentView(R.layout.expert_info_config);
 		ViewUtils.inject(this);
 		addActivity(this);
+		initView();
 		initValue();
 	}
 
 	@Override
 	protected void initView()
 	{
-		// TODO Auto-generated method stub
+		title.setText("个人信息");
 	}
 
 	@Override

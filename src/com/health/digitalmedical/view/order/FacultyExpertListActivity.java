@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -69,6 +70,7 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 	{
 		// TODO Auto-generated method stub
 		title.setText("ø∆ “¡–±Ì");
+		
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -26,6 +27,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class RegisterNextActivity extends BaseActivity
 {
+	@ViewInject(R.id.title)
+	private TextView title;
+
 	@ViewInject(R.id.new_password)
 	private EditText passwordET;
 	
@@ -82,7 +86,7 @@ public class RegisterNextActivity extends BaseActivity
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-
+		title.setText(" ‰»Î√‹¬Î");
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -28,6 +29,7 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
+import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
@@ -36,6 +38,8 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
  */
 public class NewsActivity extends BaseActivity implements OnItemClickListener
 {
+	@ViewInject(R.id.title)
+	private TextView title;
 
 	private List<HospitalNewsT> hospitalNewsTs;
 	private String hospitalId;
@@ -49,6 +53,7 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 		ViewUtils.inject(this);
 		addActivity(this);
 		initValue();
+		initView();
 	}
 
 	@OnClick(R.id.back)
@@ -63,7 +68,15 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-
+		String type=getIntent().getStringExtra("type");
+		if("baike".equals(type))
+		{
+			title.setText("健康百科");
+		}else
+		{
+			title.setText("医院咨询");
+		}
+		
 	}
 
 	@Override
@@ -73,7 +86,9 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
 		String type=getIntent().getStringExtra("type");
-		RequestParams param = webInterface.getNewsByHospitalId("101",type);
+		String typeId=getIntent().getStringExtra("typeId");
+		String hospitalId=HealthUtil.readHospitalId();
+		RequestParams param = webInterface.getNewsByHospitalId(hospitalId,type,typeId);
 		invokeWebServer(param, GET_LIST);
 
 	}
@@ -147,6 +162,12 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 		JsonParser jsonParser = new JsonParser();
 		JsonElement jsonElement = jsonParser.parse(json);
 		JsonObject jsonObject = jsonElement.getAsJsonObject();
+		String executeType = jsonObject.get("executeType").getAsString();
+		if (!"success".equals(executeType))
+		{
+			HealthUtil.infoAlert(NewsActivity.this, "加载失败请重试.");
+			return;
+		}
 		JsonArray jsonArray = jsonObject.getAsJsonArray("returnMsg");
 		Gson gson = new Gson();
 		this.hospitalNewsTs = gson.fromJson(jsonArray, new TypeToken<List<HospitalNewsT>>()

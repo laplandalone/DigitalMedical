@@ -34,6 +34,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
  */
 public class ExpertDetailActivity extends BaseActivity implements OnItemClickListener
 {
+	@ViewInject(R.id.title)
+	private TextView title;
+
 	@ViewInject(R.id.doctorName)
 	private TextView doctorName;
 	@ViewInject(R.id.facultyName)
@@ -70,7 +73,7 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-
+		title.setText("Ô¤Ô¼Ê±¼ä");
 	}
 
 	@Override

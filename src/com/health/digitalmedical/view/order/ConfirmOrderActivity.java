@@ -20,6 +20,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 public class ConfirmOrderActivity extends BaseActivity
 {
 
+	@ViewInject(R.id.title)
+	private TextView title;
+
 	@ViewInject(R.id.faculty_name)  
 	private TextView falcultyNameT;
 	
@@ -84,6 +87,7 @@ public class ConfirmOrderActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
+		title.setText("‘§‘ºœÍ«È");
 		// TODO Auto-generated method stub
 		String registerNum=getIntent().getStringExtra("userOrderNum"  );
 		String fee=getIntent().getStringExtra("fee"           );

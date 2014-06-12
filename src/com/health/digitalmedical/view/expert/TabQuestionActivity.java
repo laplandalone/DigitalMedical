@@ -47,6 +47,8 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 @SuppressLint({ "ResourceAsColor", "NewApi" })
 public class TabQuestionActivity extends BaseActivity implements OnItemClickListener
 {
+	@ViewInject(R.id.title)
+	private TextView title;
 	@ViewInject(R.id.submit)
 	private Button submitBtn;
 	@ViewInject(R.id.vPager)
@@ -82,8 +84,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 		bitmapUtils.closeCache();
 		initView();
 		initValue();
-		settings.setVisibility(View.VISIBLE);
-		settings.setBackgroundResource(R.drawable.btn_my_online);
+	
 		
 	}
 
@@ -133,11 +134,21 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 		  tabMajor.setBackgroundResource(R.drawable.btn_main);
 	}
 	
+	@OnClick(R.id.tv_tab_my)
+	public void toTabmy(View v)
+	{
+		HealthUtil.infoAlert(TabQuestionActivity.this, "正在建设中");
+	}
+	
+	
 	@Override
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-
+		title.setText("在线提问");
+		settings.setVisibility(View.VISIBLE);
+		settings.setBackgroundResource(R.drawable.btn_my_online);
+		
 		this.doctor=(Doctor) getIntent().getSerializableExtra("doctor");
 		LayoutInflater lf = getLayoutInflater().from(this);
 		

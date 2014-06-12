@@ -33,6 +33,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class ExpertRegisterActivity extends BaseActivity
 {
+	@ViewInject(R.id.title)
+	private TextView title;
+
 	@ViewInject(R.id.submit)
 	private Button submitBtn;
 
@@ -168,6 +171,7 @@ public class ExpertRegisterActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
+		title.setText("信息确认");
 		stepTwo.setBackgroundResource(R.drawable.bg_step_2);
 		this.doctorName = getIntent().getStringExtra("doctorName");
 		this.registerTime = getIntent().getStringExtra("registerTime");

@@ -1,28 +1,31 @@
 package com.health.digitalmedical.view.other;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
-import com.health.digitalmedical.view.user.RegisterActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
  * 更多
- *
+ * 
  */
 public class OtherActivity extends BaseActivity
 {
+	@ViewInject(R.id.title)
+	private TextView title;
 
 	@ViewInject(R.id.soft_update)
 	private LinearLayout soft_update;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -36,7 +39,7 @@ public class OtherActivity extends BaseActivity
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-
+		title.setText("更多");
 	}
 
 	@Override
@@ -46,13 +49,23 @@ public class OtherActivity extends BaseActivity
 
 	}
 
+	@OnClick(R.id.share)
+	public void share(View v)
+	{
+		Uri uri = Uri.parse("smsto://");
+		Intent intent = new Intent(Intent.ACTION_SENDTO,uri);
+		intent.putExtra("sms_body", this.getResources().getText(R.string.other_temp28));
+		startActivity(intent);
+	}
+
 	@OnClick(R.id.back)
 	public void toHome(View v)
 	{
-		Intent intent = new Intent(OtherActivity.this,MainPageActivity.class);
+		Intent intent = new Intent(OtherActivity.this, MainPageActivity.class);
 		startActivity(intent);
 		exit();
 	}
+
 	@OnClick(R.id.soft_update)
 	public void checkVersion(View v)
 	{

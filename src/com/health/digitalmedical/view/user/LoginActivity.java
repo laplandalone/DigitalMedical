@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -26,6 +27,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class LoginActivity extends BaseActivity
 {
+	@ViewInject(R.id.title)
+	private TextView title;
+	
 	@ViewInject(R.id.sign_in)
 	private ImageButton loginBtn;
 	@ViewInject(R.id.rember_psw)
@@ -109,7 +113,7 @@ public class LoginActivity extends BaseActivity
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-
+		title.setText("ÓÃ»§µÇÂ¼");
 	}
 
 	@Override

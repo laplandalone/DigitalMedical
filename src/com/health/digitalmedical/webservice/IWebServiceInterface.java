@@ -36,10 +36,11 @@ public interface IWebServiceInterface {
 	
 	public RequestParams getTeamByHospitalId(String hospitalId);
 	
-	public RequestParams getNewsByHospitalId(String hospitalId,String type);
+	public RequestParams getNewsByHospitalId(String hospitalId,String type,String typeId);
 	
 	public RequestParams addUserRegisterOrder( String userId, String registerId, String doctorId, String doctorName, String orderNum, String orderFee, String registerTime, String userName, String userNo, String userTelephone,String sex, String teamId, String teamName);
 	
 	public RequestParams checkNewVersion(String param);
 	
+	public RequestParams getNewsType(String hospitalId,String type);
 }

@@ -25,6 +25,8 @@ public class RegisteredMain extends BaseActivity
 	@ViewInject(R.id.normal)
 	private Button normalBtn;
 	
+	@ViewInject(R.id.title)
+	private TextView title;
 	
 	@ViewInject(R.id.open_memo)
 	private TextView open_memo;
@@ -87,6 +89,7 @@ public class RegisteredMain extends BaseActivity
 		setContentView(R.layout.guahao_mian);
 		ViewUtils.inject(this);
 		addActivity(this);
+		initView();
 	}
 	
 	@OnClick(R.id.open)
@@ -166,7 +169,7 @@ public class RegisteredMain extends BaseActivity
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-
+		title.setText("ÊÖ»ú¹ÒºÅ");
 	}
 
 	@Override

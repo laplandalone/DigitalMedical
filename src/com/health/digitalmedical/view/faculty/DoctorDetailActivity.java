@@ -17,6 +17,8 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class DoctorDetailActivity extends BaseActivity
 {
+	@ViewInject(R.id.title)
+	private TextView title;
 	@ViewInject(R.id.doctor_name)
 	private TextView doctorName;
 	@ViewInject(R.id.doctot_introduction)
@@ -57,7 +59,7 @@ public class DoctorDetailActivity extends BaseActivity
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		
+		title.setText("“Ω…˙œÍ«È");
 	}
 
 	@Override

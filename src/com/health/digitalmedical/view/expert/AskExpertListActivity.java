@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -28,6 +29,7 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
+import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
@@ -38,6 +40,8 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 public class AskExpertListActivity extends BaseActivity  implements OnItemClickListener
 {
 
+	@ViewInject(R.id.title)
+	private TextView title;
 	private ListView list;
 
 	private String teamId;
@@ -63,7 +67,7 @@ public class AskExpertListActivity extends BaseActivity  implements OnItemClickL
 	protected void initView()
 	{
 		// TODO Auto-generated method stub 2130903241
-
+		title.setText("医生列表");
 	}
 
 	@Override

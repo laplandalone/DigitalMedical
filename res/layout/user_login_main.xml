@@ -96,7 +96,7 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-            <Button android:textSize="19.0sp" android:textColor="@color/white" android:id="@+id/outLogin" android:background="@drawable/btn_nomorl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="5.0dip" android:text="@string/layout_temp594" />
+            <Button android:textSize="19.0sp" android:textColor="@color/white" android:id="@+id/outLogin" android:background="@drawable/new_bg_btn_login_press" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="5.0dip" android:text="@string/layout_temp594" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

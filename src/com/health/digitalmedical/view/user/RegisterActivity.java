@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
@@ -15,6 +16,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class RegisterActivity extends BaseActivity
 {
+	@ViewInject(R.id.title)
+	private TextView title;
+	
 	@ViewInject(R.id.user_name)
 	private EditText userNameET;
 	
@@ -26,6 +30,7 @@ public class RegisterActivity extends BaseActivity
 		setContentView(R.layout.user_sign_up);
 		ViewUtils.inject(this);
 		addActivity(this);
+		initView();
 	}
 
 	@OnClick(R.id.sign_up)
@@ -54,7 +59,7 @@ public class RegisterActivity extends BaseActivity
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-
+		title.setText("ÓÃ»§×¢²á");
 	}
 
 	@Override

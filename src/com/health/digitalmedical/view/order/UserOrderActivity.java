@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
@@ -22,14 +23,19 @@ import com.health.digitalmedical.model.RegisterOrderT;
 import com.health.digitalmedical.model.User;
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
+import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
+import com.lidroid.xutils.view.annotation.ViewInject;
 
 public class UserOrderActivity extends BaseActivity implements OnItemClickListener
 {
+	@ViewInject(R.id.title)
+	private TextView title;
+	
 	private User user;
 	private ListView list;
 	private List<RegisterOrderT> registerOrderTs;
@@ -40,6 +46,7 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_register_order);
 		this.list=(ListView) findViewById(R.id.list_view);
+		ViewUtils.inject(this);
 		addActivity(this);
 		initView();
 		initValue();
@@ -49,7 +56,7 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		
+		title.setText("ÎÒµÄÔ¤Ô¼");
 	}
 
 	@Override

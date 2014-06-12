@@ -70,7 +70,7 @@ public class OnLineExpertListActivity extends BaseActivity  implements OnItemCli
 	protected void initView()
 	{
 		// TODO Auto-generated method stubtotal_count
-
+		title.setText("医生列表");
 	}
 
 	@Override
