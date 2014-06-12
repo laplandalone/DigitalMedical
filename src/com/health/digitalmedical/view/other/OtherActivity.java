@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
+import com.health.digitalmedical.tools.HealthUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -72,5 +73,18 @@ public class OtherActivity extends BaseActivity
 		Intent intent = new Intent(this, CheckNewVersion.class);
 		intent.putExtra("flag", "hand");
 		startService(intent);
+	}
+	
+	@OnClick(R.id.about_law)
+	public void aboutLaw(View v)
+	{
+		HealthUtil.infoAlert(OtherActivity.this, "正在建设中...");
+	}
+	
+
+	@OnClick(R.id.qanda)
+	public void qanda(View v)
+	{
+		HealthUtil.infoAlert(OtherActivity.this, "正在建设中...");
 	}
 }

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
+import com.health.digitalmedical.view.news.NewsActivity;
 import com.health.digitalmedical.webservice.IWebServiceInterface;
 import com.health.digitalmedical.webservice.WebServiceInterfaceImpl;
 import com.lidroid.xutils.HttpUtils;
@@ -37,7 +38,7 @@ public class CheckNewVersion extends Service{
 	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		Log.e("health", "version------------>onStartCommand");
+		Log.e("health", "version------------>checkVersion");
 		this.flag=intent.getStringExtra("flag");
 		checkNewVersion();
 		return super.onStartCommand(intent, flags, startId);
@@ -109,7 +110,15 @@ public class CheckNewVersion extends Service{
 	private void newVersionResult(String result) {
 		try {
 			JSONObject jsonObject = new JSONObject(result);
+			String executeType = jsonObject.getString("executeType");
 			JSONObject returnJson = jsonObject.getJSONObject("returnMsg");
+			if (!"success".equals(executeType))
+			{
+				Toast toast = Toast.makeText(this, "加载失败请重试.", Toast.LENGTH_SHORT);
+				toast.setGravity(Gravity.CENTER, 0, 0);
+				toast.show();
+				return;
+			}
 			/** xjz 2014-05-21 当returnJson为空的时候会报异常 end*/
 			if(returnJson.length() > 0)
 			{

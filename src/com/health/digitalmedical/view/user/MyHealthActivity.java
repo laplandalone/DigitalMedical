@@ -1,18 +1,19 @@
 package com.health.digitalmedical.view.user;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.health.digitalmedical.BaseActivity;
-import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
+import com.health.digitalmedical.tools.HealthUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class MyHealthActivity extends BaseActivity
 {
-
+	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -28,6 +29,43 @@ public class MyHealthActivity extends BaseActivity
 	{
 		finish();
 	}
+	
+	@OnClick(R.id.health_1)
+	public void health1(View v)
+	{
+		HealthUtil.infoAlert(MyHealthActivity.this, "正在建设中...");
+	}
+	
+	@OnClick(R.id.health_2)
+	public void health2(View v)
+	{
+		HealthUtil.infoAlert(MyHealthActivity.this, "正在建设中...");
+	}
+	
+	@OnClick(R.id.health_3)
+	public void health3(View v)
+	{
+		HealthUtil.infoAlert(MyHealthActivity.this, "正在建设中...");
+	}
+	
+	@OnClick(R.id.health_4)
+	public void health4(View v)
+	{
+		HealthUtil.infoAlert(MyHealthActivity.this, "正在建设中...");
+	}
+	
+	@OnClick(R.id.health_5)
+	public void health5(View v)
+	{
+		HealthUtil.infoAlert(MyHealthActivity.this, "正在建设中...");
+	}
+	
+	@OnClick(R.id.health_6)
+	public void health6(View v)
+	{
+		HealthUtil.infoAlert(MyHealthActivity.this, "正在建设中...");
+	}
+	
 	@Override
 	protected void initView()
 	{

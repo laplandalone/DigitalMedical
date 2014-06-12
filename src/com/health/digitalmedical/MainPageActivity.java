@@ -142,10 +142,6 @@ public class MainPageActivity extends BaseActivity
 		myPager.start(this, listViews, 4000, ovalLayout, R.layout.ad_bottom_item, R.id.ad_item_v,
 				R.drawable.pager_select, R.drawable.pager_item);
 
-		Intent intent = new Intent(this, CheckNewVersion.class);
-		intent.putExtra("flag", "auto");
-		startService(intent);
-
 	}
 
 	public static int dip2px(Context context, float dipValue)
