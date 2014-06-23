@@ -59,7 +59,7 @@ public class NewsTypeActivity extends BaseActivity implements OnItemClickListene
 			title.setText("健康百科分类");
 		}else
 		{
-			title.setText("医院咨询分类");
+			title.setText("患教中心分类");
 		}
 	}
 

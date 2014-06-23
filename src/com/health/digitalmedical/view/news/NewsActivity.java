@@ -74,7 +74,7 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 			title.setText("健康百科");
 		}else
 		{
-			title.setText("医院咨询");
+			title.setText("患教中心");
 		}
 		
 	}

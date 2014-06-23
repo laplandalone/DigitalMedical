@@ -1,5 +1,6 @@
 package com.health.digitalmedical.view.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.health.digitalmedical.BaseActivity;
+import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
 import com.health.digitalmedical.model.User;
 import com.health.digitalmedical.tools.HealthConstant;
@@ -88,6 +90,14 @@ public class UserUpdateActivity extends BaseActivity
 		}
 	}
 
+	@OnClick(R.id.back)
+	public void toHome(View v)
+	{
+		Intent intent = new Intent(UserUpdateActivity.this, MainPageActivity.class);
+		startActivity(intent);
+		exit();
+	}
+	
 	@Override
 	protected void initValue()
 	{

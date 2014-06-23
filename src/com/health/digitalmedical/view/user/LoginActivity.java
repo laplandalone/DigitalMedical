@@ -120,7 +120,7 @@ public class LoginActivity extends BaseActivity
 	protected void initValue()
 	{
 		// TODO Auto-generated method stub
-		if (!"".equals(HealthUtil.readUserPhone()) && !"".equals(HealthUtil.readUserPhone()))
+		if (!"".equals(HealthUtil.readUserPhone()) && !"".equals(HealthUtil.readUserPassword()))
 		{
 			this.userName.setText(HealthUtil.readUserPhone());
 			this.password.setText(HealthUtil.readUserPassword());
@@ -245,7 +245,7 @@ public class LoginActivity extends BaseActivity
 
 			switch (responseCode)
 			{
-			case USER_LOGIN:
+			    case USER_LOGIN:
 				JsonObject returnObj = jsonObject.getAsJsonObject("returnMsg");
 				this.user = HealthUtil.json2Object(returnObj.toString(), User.class);
 				if (this.user != null)

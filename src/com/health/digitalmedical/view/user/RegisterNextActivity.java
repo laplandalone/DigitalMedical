@@ -1,5 +1,8 @@
 package com.health.digitalmedical.view.user;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,9 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
@@ -37,6 +37,8 @@ public class RegisterNextActivity extends BaseActivity
 	private EditText confirmPasswordET;
 	
 	private String telephone;
+	
+	private User user ;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -56,21 +58,28 @@ public class RegisterNextActivity extends BaseActivity
 		String confirmPd=confirmPasswordET.getText()+"";
 		if("".equals(password) || "".equals(confirmPd))
 		{
+			HealthUtil.infoAlert(RegisterNextActivity.this, "密码为空，请输入");
+			
+		}else if( password.length()<6 || password.length()>12)
+		{
+			HealthUtil.infoAlert(RegisterNextActivity.this, "密码长度有误，重新输入");
+			
+		}else if(!password.equals(confirmPd))
+		{
+			HealthUtil.infoAlert(RegisterNextActivity.this, "密码不一致，请重新输入");
 			
 		}else if(password.equals(confirmPd))
 		{
-			User user = new User();
+			dialog.setMessage("登录中,请稍后...");
+			dialog.show();
+			user = new User();
 			user.setTelephone(this.telephone);
-			user.setUserName(this.telephone);
 			user.setPassword(password);
-			user.setUserNo(this.telephone);
 			Gson gson = new Gson();
 			String userStr=gson.toJson(user);
 			RequestParams param = webInterface.addUser(userStr);
 			invokeWebServer(param, ADD_USER);
 		}
-		
-		
 	}
 	
 	
@@ -95,10 +104,6 @@ public class RegisterNextActivity extends BaseActivity
 		// TODO Auto-generated method stub
 		this.telephone=getIntent().getStringExtra("telephone");
 	}
-
-
-
-
 
 /**
  * 链接web服务
@@ -156,6 +161,9 @@ class MineRequestCallBack extends RequestCallBack<String>
 		case ADD_USER:
 			returnMsg(arg0.result, ADD_USER);
 			break;
+		case USER_LOGIN:
+			returnMsg(arg0.result, USER_LOGIN);
+			break;
 		}
 	}
 
@@ -164,13 +172,35 @@ class MineRequestCallBack extends RequestCallBack<String>
 	 */
 	private void returnMsg(String json, int code)
 	{
-		JsonParser jsonParser = new JsonParser();
-		JsonElement jsonElement = jsonParser.parse(json);
 		
-		JsonObject jsonObject = jsonElement.getAsJsonObject();
-		//JsonArray jsonArray = jsonObject.getAsJsonArray("returnMsg");
-		//Gson gson = new Gson();  
-		
+		JSONObject jsonObject;
+		try
+		{
+			jsonObject = new JSONObject(json);
+			String executeType = jsonObject.get("executeType").toString();
+			if (!"success".equals(executeType))
+			{
+				HealthUtil.infoAlert(RegisterNextActivity.this, "注册失败，请重试");
+			
+			}else
+			{
+				String returnMsg = jsonObject.get("returnMsg").toString();
+				if(returnMsg.equals("1"))
+				{
+					HealthUtil.infoAlert(RegisterNextActivity.this, "该手机号已注册");
+				}else
+				{
+					HealthUtil.infoAlert(RegisterNextActivity.this, "注册成功");
+					Intent intent = new Intent(RegisterNextActivity.this,LoginActivity.class);
+					startActivity(intent);
+					exit();
+				}
+			}
+		} catch (JSONException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
 

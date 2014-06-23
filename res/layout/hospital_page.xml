@@ -28,7 +28,7 @@
         </LinearLayout>
         
     </com.health.digitalmedical.view.PageScrollView>
-     <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@+id/phone114" android:background="@drawable/guahao_buttom_bg" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
+     <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@+id/phone114"  android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true"  android:layout_marginBottom="50dip">
         <ImageView android:layout_gravity="right" android:background="@drawable/phone114" android:layout_width="wrap_content" android:layout_height="fill_parent" />
     </LinearLayout>
 </RelativeLayout>

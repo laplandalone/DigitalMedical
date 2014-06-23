@@ -231,6 +231,14 @@ public class MainPageActivity extends BaseActivity
 		startActivity(intent);
 	}
 
+	@OnClick(R.id.back)
+	public void toHospitalMain(View v)
+	{
+		Intent intent = new Intent(MainPageActivity.this, WelcomeActivity.class);
+		startActivity(intent);
+		exit();
+	}
+	
 	/**
 	 * ³õÊ¼»¯Í¼Æ¬
 	 */

@@ -1442,7 +1442,7 @@
     <string name="layout_temp619">输入密码：</string>
     <string name="layout_temp620">请输入密码(6–16位)</string>
     <string name="layout_temp621">确认密码：</string>
-    <string name="layout_temp622">请确认密码(6–16位)</string>
+    <string name="layout_temp622">请确认密码(6–12位)</string>
     <string name="layout_temp623">注 册</string>
     <string name="layout_temp624">请输入您的手机号码:</string>
     <string name="layout_temp625">请输入验证码:</string>
