@@ -13,6 +13,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.health.digitalmedical.BaseActivity;
+import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
 import com.health.digitalmedical.adapter.NewsTypeAdapter;
 import com.health.digitalmedical.tools.HealthConstant;
@@ -25,6 +26,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class NewsTypeActivity extends BaseActivity implements OnItemClickListener
 {
@@ -56,10 +58,10 @@ public class NewsTypeActivity extends BaseActivity implements OnItemClickListene
 		this.type=getIntent().getStringExtra("type");
 		if("BAIKE".equals(type))
 		{
-			title.setText("健康百科分类");
+			title.setText("健康百科");
 		}else
 		{
-			title.setText("患教中心分类");
+			title.setText("患教中心");
 		}
 	}
 
@@ -75,6 +77,14 @@ public class NewsTypeActivity extends BaseActivity implements OnItemClickListene
 		invokeWebServer(param, GET_LIST);
 	}
 
+	@OnClick(R.id.back)
+	public void toHome(View v)
+	{
+		Intent intent = new Intent(NewsTypeActivity.this, MainPageActivity.class);
+		startActivity(intent);
+		exit();
+	}
+	
 	/**
 	 * 链接web服务
 	 * 
@@ -173,8 +183,10 @@ public class NewsTypeActivity extends BaseActivity implements OnItemClickListene
 		JsonElement element= jsonArray.get(position);
 		JsonObject jsonObject = element.getAsJsonObject();
 		String typeId=jsonObject.get("configId").getAsString();
+		String configVal=jsonObject.get("configVal").getAsString();
 		intent.putExtra("typeId", typeId);
 		intent.putExtra("type", type);
+		intent.putExtra("typeName", configVal);
 		startActivity(intent);
 	}
 

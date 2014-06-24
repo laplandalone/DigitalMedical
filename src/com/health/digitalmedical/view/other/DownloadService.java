@@ -1,6 +1,7 @@
 package com.health.digitalmedical.view.other;
 
 
+import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -14,9 +15,9 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
-
 import com.lurencun.android.resource.SDCard;
 
+@SuppressLint("NewApi")
 public class DownloadService extends Service{
 	private DownloadManager downloadManager=null;
 	private long lastDownload = -1L;

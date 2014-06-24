@@ -100,7 +100,7 @@ public class MainPageActivity extends BaseActivity
 	
 	int  spacedip480=10;
 	int  spacedip720=12;
-	
+	int  imgPagerHeigth=0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -119,15 +119,18 @@ public class MainPageActivity extends BaseActivity
 		if(screenWidth==480)
 		{
 			space=dip2px(this, spacedip480);
+			imgPagerHeigth=dip2px(this, 40);//40：title高度+间隔高度
 		}else
 		{
 			space=dip2px(this, spacedip720);
+			imgPagerHeigth=dip2px(this, 30);//30:title高度+间隔高度
 		}
 		int spaceX =space*4;
 		Log.e("spaceX",spaceX+"");
 		int w=screenWidth-spaceX;
 		int ww = w / 3;
-		int hh=ww*296/206;
+		int hh=ww*296/206;// 296/206:图片比例
+		Log.e("itemHH",hh+"");
 		LinearLayout.LayoutParams hint_page_params = new LinearLayout.LayoutParams(ww, hh);
 		//int left, int top, int right, int bottom
 		hint_page_params.setMargins(space,0,0, 0);//设置边距
@@ -138,6 +141,7 @@ public class MainPageActivity extends BaseActivity
 		layout5.setLayoutParams(hint_page_params);
 		layout6.setLayoutParams(hint_page_params);
 
+		myPager.setLayoutParams(new LinearLayout.LayoutParams(screenWidth,scrrenHeight-hh*3-imgPagerHeigth));
 		InitViewPager();// 初始化图片
 		myPager.start(this, listViews, 4000, ovalLayout, R.layout.ad_bottom_item, R.id.ad_item_v,
 				R.drawable.pager_select, R.drawable.pager_item);

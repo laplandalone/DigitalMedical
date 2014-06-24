@@ -68,15 +68,8 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		String type=getIntent().getStringExtra("type");
-		if("baike".equals(type))
-		{
-			title.setText("健康百科");
-		}else
-		{
-			title.setText("患教中心");
-		}
-		
+		String typeName=getIntent().getStringExtra("typeName");
+		title.setText(typeName);
 	}
 
 	@Override

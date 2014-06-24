@@ -70,7 +70,6 @@ public class RegisterNextActivity extends BaseActivity
 			
 		}else if(password.equals(confirmPd))
 		{
-			dialog.setMessage("µÇÂ¼ÖÐ,ÇëÉÔºó...");
 			dialog.show();
 			user = new User();
 			user.setTelephone(this.telephone);

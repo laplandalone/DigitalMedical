@@ -63,7 +63,6 @@
         <LinearLayout android:gravity="center" android:id="@id/LinearLayout_login" android:layout_width="fill_parent" android:background="@drawable/btn_more" android:layout_height="wrap_content" android:layout_weight="1.0">
             <ImageView android:id="@id/user_login" android:background="@drawable/user_unlogin_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" />
         </LinearLayout>
-        <ImageView android:layout_gravity="right" android:visibility="gone" android:background="@drawable/button_driver"  android:layout_width="wrap_content" android:layout_height="fill_parent" />
         <LinearLayout android:gravity="center" android:id="@id/LinearLayout_more"  android:background="@drawable/btn_more" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
             <ImageView android:id="@id/more" android:background="@drawable/more_unselect" android:layout_width="wrap_content" android:layout_height="wrap_content" />
         </LinearLayout>
