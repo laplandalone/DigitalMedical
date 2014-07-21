@@ -144,7 +144,7 @@ public class RegisterActivity extends BaseActivity
 		}else
 		{
 			RequestParams param = webInterface.getAuthCode(userNameET.getText()+"");
-			invokeWebServer(param, USER_LOGIN);
+			invokeWebServer(param, AUTH_CODE);
 //			pswBtn.setTextColor(color.white);
 //			pswBtn.setBackgroundResource(R.drawable.time_default);
 		     if(null==timer){
@@ -223,9 +223,12 @@ public class RegisterActivity extends BaseActivity
 			}
 			switch (responseCode)
 			{
-			case USER_LOGIN:
-				returnMsg(arg0.result, USER_LOGIN);
+			case AUTH_CODE:
+				returnMsg(arg0.result, AUTH_CODE);
 				break;
+			case CHECK_AUTH_CODE:
+				returnMsg(arg0.result, CHECK_AUTH_CODE);
+				break;	
 			}
 		}
 
@@ -244,7 +247,7 @@ public class RegisterActivity extends BaseActivity
 
 			switch (responseCode)
 			{
-			    case USER_LOGIN:
+			    case AUTH_CODE:
 			    
 				String returnObj = jsonObject.get("returnMsg").getAsString();
 				
@@ -261,6 +264,20 @@ public class RegisterActivity extends BaseActivity
 				}
 				break;
 
+			    case CHECK_AUTH_CODE:
+			    String returnMsg = jsonObject.get("returnMsg").getAsString();
+			    if("true".equals(returnMsg))
+			    {
+		    	    String telephone = userNameET.getText() + "";	
+					Intent intent = new Intent(RegisterActivity.this, RegisterNextActivity.class);
+					intent.putExtra("telephone", telephone);
+					startActivity(intent);
+					finish();
+			    }else
+			    {
+			    	HealthUtil.infoAlert(RegisterActivity.this, "手机号或验证码输入有误，请重试...");
+			    }
+			    break;
 			}
 		} catch (Exception e)
 		{
@@ -273,15 +290,10 @@ public class RegisterActivity extends BaseActivity
 	@OnClick(R.id.sign_up)
 	public void toNext(View v)
 	{
-		String telephone = userNameET.getText() + "";
-		if (telephone != null || !"".equals(telephone))
-		{
-			Intent intent = new Intent(RegisterActivity.this, RegisterNextActivity.class);
-			intent.putExtra("telephone", telephone);
-			startActivity(intent);
-			finish();
-		}
-
+		String telephone = userNameET.getText().toString().trim();
+		String authCode=confirmNum.getText().toString().trim();
+		RequestParams param = webInterface.checkAuthCode(telephone, authCode);
+		invokeWebServer(param, CHECK_AUTH_CODE);
 	}
 
 	@OnClick(R.id.back)

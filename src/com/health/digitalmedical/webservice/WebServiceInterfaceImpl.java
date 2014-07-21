@@ -129,4 +129,8 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 		return HealthUtil.getRequestParams("BUS20021", new String[]{"accNbr"},new Object[]{accNbr});
 	}
 
+	public RequestParams checkAuthCode(String accNbr,String authCode)
+	{
+		return HealthUtil.getRequestParams("BUS20022", new String[]{"accNbr","authCode"},new Object[]{accNbr,authCode});
+	}
 }
