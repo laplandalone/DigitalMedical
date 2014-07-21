@@ -1,24 +1,40 @@
 package com.health.digitalmedical.view.user;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
+import com.health.digitalmedical.R.color;
+import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
+@SuppressLint("NewApi")
 public class RegisterActivity extends BaseActivity
 {
 	@ViewInject(R.id.title)
@@ -29,7 +45,19 @@ public class RegisterActivity extends BaseActivity
 
 	@ViewInject(R.id.confirm_password)
 	private EditText confirmNum;
-
+	
+	@ViewInject(R.id.get_config_num)
+	private Button pswBtn;
+	
+	private Timer timer=null;
+    private TimerTask task=null;
+    private long  Count=0;
+    private long  TimerNuit=1000;
+    private Handler handler=null;
+    private Message msg=null;
+    private int SETTING_100MILLISECOND_ID=0;
+    private int settingTimerNuit=SETTING_100MILLISECOND_ID;
+	    
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -39,30 +67,207 @@ public class RegisterActivity extends BaseActivity
 		ViewUtils.inject(this);
 		addActivity(this);
 		initView();
+		
+		handler=new Handler(){
+
+			@Override
+			public void handleMessage(Message msg) {
+				switch (msg.what) {
+				case 1:
+					Count++;
+					int totalSec=0;
+					int yunshu=0;
+					if(settingTimerNuit==SETTING_100MILLISECOND_ID)
+					{
+						totalSec=(int)(Count/60);
+						yunshu=(int)(Count%60);
+					}
+					int mai=totalSec/60;
+					int sec=totalSec%60;
+					try {
+						if(settingTimerNuit==SETTING_100MILLISECOND_ID)
+						{
+							if(yunshu==59)
+							{
+								cancelTimer();
+								return;
+							}
+							pswBtn.setTextSize(16);
+//							pswBtn.setTextColor(color.TextColorWhite);
+							pswBtn.setText(60-yunshu+"");	
+//							pswBtn.setText(String.format("%1$02d:%2$02d:%3$d",mai,sec,yunshu));						  	
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					break;			
+				}
+				super.handleMessage(msg);
+			}
+			
+		};
 	}
 
+	public void  cancelTimer()
+	{
+		try
+		{
+			if(null!=task)
+			{
+				task.cancel();
+				task=null;
+				timer.cancel();
+				timer.purge();
+				timer=null;
+			}	
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		Count=0;
+		pswBtn.setText("获取验证码");
+	}
 	@OnClick(R.id.get_config_num)
 	public void getConfiNum(View v)
 	{
+		
+		if(null!=task)
+		{
+			 return;
+		}	
 		String telephone = userNameET.getText() + "";
-		// TelephonyManager tm = (TelephonyManager)
-		// this.getSystemService(Context.TELEPHONY_SERVICE);
-		// String tel = tm.getLine1Number();
+	
 		if (!HealthUtil.isMobileNum(telephone))
 		{
 			HealthUtil.infoAlert(RegisterActivity.this, "手机号码为空或格式错误!");
 			return;
-		}
-		// else if(!tel.equals(telephone.trim()))
-		// {
-		// HealthUtil.infoAlert(RegisterActivity.this, "请用本人手机注册");
-		// }
-		else
+		}else
 		{
-			String num = String.valueOf((int) (Math.random() * 9999));
-			confirmNum.setText(num);
-			showSuccessDialog(num);
+			RequestParams param = webInterface.getAuthCode(userNameET.getText()+"");
+			invokeWebServer(param, USER_LOGIN);
+//			pswBtn.setTextColor(color.white);
+//			pswBtn.setBackgroundResource(R.drawable.time_default);
+		     if(null==timer){
+		    	 if(null==task){
+		    		 task=new TimerTask() {	
+						@Override
+						public void run() {
+							if(null==msg){
+								msg=new Message();
+							}else{
+								msg=Message.obtain();
+							}
+							msg.what=1;
+							handler.sendMessage(msg);						
+							}
+					};
+		    	 }
+		    	 
+		    	 timer=new Timer(true);
+		    	 timer.schedule(task,TimerNuit,TimerNuit);
+		     }
+
 		}
+	}
+
+	/**
+	 * 链接web服务
+	 * 
+	 * @param param
+	 */
+	private void invokeWebServer(RequestParams param, int responseCode)
+	{
+		HealthUtil.LOG_D(getClass(), "connect to web server");
+		MineRequestCallBack requestCallBack = new MineRequestCallBack(responseCode);
+		if (httpHandler != null)
+		{
+			httpHandler.stop();
+		}
+		httpHandler = mHttpUtils.send(HttpMethod.POST, HealthConstant.URL, param, requestCallBack);
+	}
+
+	/**
+	 * 获取后台返回的数据
+	 */
+	class MineRequestCallBack extends RequestCallBack<String>
+	{
+
+		private int responseCode;
+
+		public MineRequestCallBack(int responseCode)
+		{
+			super();
+			this.responseCode = responseCode;
+		}
+
+		@Override
+		public void onFailure(HttpException error, String msg)
+		{
+			HealthUtil.LOG_D(getClass(), "onFailure-->msg=" + msg);
+			if (dialog.isShowing())
+			{
+				dialog.cancel();
+			}
+			cancelTimer();
+			HealthUtil.infoAlert(RegisterActivity.this, "信息加载失败，请检查网络后重试");
+		}
+
+		@Override
+		public void onSuccess(ResponseInfo<String> arg0)
+		{
+			// TODO Auto-generated method stub
+			HealthUtil.LOG_D(getClass(), "result=" + arg0.result);
+			if (dialog.isShowing())
+			{
+				dialog.cancel();
+			}
+			switch (responseCode)
+			{
+			case USER_LOGIN:
+				returnMsg(arg0.result, USER_LOGIN);
+				break;
+			}
+		}
+
+	}
+
+	/*
+	 * 处理返回结果数据
+	 */
+	private void returnMsg(String json, int responseCode)
+	{
+		try
+		{
+			JsonParser jsonParser = new JsonParser();
+			JsonElement jsonElement = jsonParser.parse(json);
+			JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+			switch (responseCode)
+			{
+			    case USER_LOGIN:
+			    
+				String returnObj = jsonObject.get("returnMsg").getAsString();
+				
+				JsonElement jsonElementT = jsonParser.parse(returnObj);
+				JsonObject jsonObjectT = jsonElementT.getAsJsonObject();
+				String status=jsonObjectT.get("status").getAsString();
+				if(!"100".equals(status))
+				{
+					cancelTimer();
+					HealthUtil.infoAlert(RegisterActivity.this, "获取验证码失败，请重试...");
+				}else
+				{
+					showSuccessDialog();
+				}
+				break;
+
+			}
+		} catch (Exception e)
+		{
+			cancelTimer();
+			HealthUtil.infoAlert(RegisterActivity.this, "获取验证码失败，请重试...");
+		}
+
 	}
 
 	@OnClick(R.id.sign_up)
@@ -87,7 +292,7 @@ public class RegisterActivity extends BaseActivity
 		exit();
 	}
 
-	private void showSuccessDialog(String num)
+	private void showSuccessDialog()
 	{
 		AlertDialog alertDialog = new AlertDialog.Builder(this)
 				.setPositiveButton("确定", new OnClickListener()
@@ -99,7 +304,7 @@ public class RegisterActivity extends BaseActivity
 						// TODO Auto-generated method stub
 
 					}
-				}).setTitle("提示").setMessage("验证码为:" + num).create();
+				}).setTitle("提示").setMessage("验证码已发送成功请注意查收，60秒后可重新获取").create();
 		alertDialog.setCanceledOnTouchOutside(false);
 		alertDialog.show();
 	}
@@ -118,4 +323,7 @@ public class RegisterActivity extends BaseActivity
 
 	}
 
+	
+	
+	
 }

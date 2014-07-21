@@ -20,7 +20,7 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/health_data_lay" android:background="@drawable/btn_health_data" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="86.0dip" android:layout_marginTop="10.0dip">
+            <LinearLayout android:gravity="center" android:visibility="gone" android:orientation="horizontal" android:id="@id/health_data_lay" android:background="@drawable/btn_health_data" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="86.0dip" android:layout_marginTop="10.0dip">
                 <TextView android:textSize="18.0sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/health_data_title" android:drawableLeft="@drawable/ico_my_health_data" android:drawablePadding="10.0dip" />
             </LinearLayout>
             <TextView android:textSize="14.0sp" android:textColor="#ff168a92" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/layout_temp582" />

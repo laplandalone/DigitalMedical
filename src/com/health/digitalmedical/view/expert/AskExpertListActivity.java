@@ -67,7 +67,7 @@ public class AskExpertListActivity extends BaseActivity  implements OnItemClickL
 	protected void initView()
 	{
 		// TODO Auto-generated method stub 2130903241
-		title.setText("医生列表");
+		title.setText("在线医生");
 	}
 
 	@Override

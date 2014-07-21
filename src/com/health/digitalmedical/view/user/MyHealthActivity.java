@@ -1,9 +1,11 @@
 package com.health.digitalmedical.view.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.health.digitalmedical.BaseActivity;
+import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
 import com.health.digitalmedical.tools.HealthUtil;
 import com.lidroid.xutils.ViewUtils;
@@ -24,10 +26,12 @@ public class MyHealthActivity extends BaseActivity
 		addActivity(this);
 	}
 
-	@OnClick(R.id.header_left_small)
+	@OnClick(R.id.back)
 	public void toBack(View v)
 	{
-		finish();
+		Intent intent = new Intent(MyHealthActivity.this, MainPageActivity.class);
+		startActivity(intent);
+		exit();
 	}
 	
 	@OnClick(R.id.health_1)

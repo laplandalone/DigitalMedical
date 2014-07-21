@@ -43,4 +43,6 @@ public interface IWebServiceInterface {
 	public RequestParams checkNewVersion(String param);
 	
 	public RequestParams getNewsType(String hospitalId,String type);
+	
+	public RequestParams getAuthCode(String accNbr);
 }
