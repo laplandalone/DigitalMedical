@@ -124,9 +124,9 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	}
 	
 	@Override
-	public RequestParams getAuthCode(String accNbr)
+	public RequestParams getAuthCode(String accNbr,String type)
 	{
-		return HealthUtil.getRequestParams("BUS20021", new String[]{"accNbr"},new Object[]{accNbr});
+		return HealthUtil.getRequestParams("BUS20021", new String[]{"accNbr","type"},new Object[]{accNbr,"type"});
 	}
 
 	public RequestParams checkAuthCode(String accNbr,String authCode)

@@ -1,6 +1,9 @@
 package com.health.digitalmedical.view.user;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -29,6 +32,9 @@ public class LoginActivity extends BaseActivity
 {
 	@ViewInject(R.id.title)
 	private TextView title;
+	
+	@ViewInject(R.id.password_find)
+	private TextView pswFind;
 	
 	@ViewInject(R.id.sign_in)
 	private ImageButton loginBtn;
@@ -76,6 +82,21 @@ public class LoginActivity extends BaseActivity
 			remberPswFlag = true;
 		}
 
+	}
+	
+	@OnClick(R.id.password_find)
+	public void pswFind(View v)
+	{
+		String telephone=userName.getText().toString().trim();
+		if (!HealthUtil.isMobileNum(telephone))
+		{
+			HealthUtil.infoAlert(LoginActivity.this, "手机号码为空或格式错误!");
+			return;
+		}
+		dialog.setMessage("密码重置中,请稍候...");
+		dialog.show();
+		RequestParams param = webInterface.getAuthCode(telephone,"set_psw");
+		invokeWebServer(param, SET_PSW);
 	}
 
 	@OnClick(R.id.login_auto)
@@ -144,13 +165,14 @@ public class LoginActivity extends BaseActivity
 
 	public void Login()
 	{
-		String userNameT = userName.getText().toString().trim();
+		String telephone = userName.getText().toString().trim();
 		String passwordT = password.getText().toString().trim();
-		if ("".equals(userNameT))
+		if (!HealthUtil.isMobileNum(telephone))
 		{
-			HealthUtil.infoAlert(LoginActivity.this, "账号为空");
+			HealthUtil.infoAlert(LoginActivity.this, "手机号码为空或格式错误!");
 			return;
 		}
+		
 		if ("".equals(passwordT))
 		{
 			HealthUtil.infoAlert(LoginActivity.this, "密码为空");
@@ -160,7 +182,7 @@ public class LoginActivity extends BaseActivity
 		dialog.show();
 		if (remberPswFlag)
 		{
-			HealthUtil.writeUserPhone(userNameT);
+			HealthUtil.writeUserPhone(telephone);
 			HealthUtil.writeUserPassword(passwordT);
 		} else
 		{
@@ -168,7 +190,7 @@ public class LoginActivity extends BaseActivity
 			HealthUtil.writeUserPassword("");
 		}
 
-		RequestParams param = webInterface.queryUser(userNameT, passwordT);
+		RequestParams param = webInterface.queryUser(telephone, passwordT);
 		invokeWebServer(param, USER_LOGIN);
 	}
 	/**
@@ -227,6 +249,9 @@ public class LoginActivity extends BaseActivity
 			case USER_LOGIN:
 				returnMsg(arg0.result, USER_LOGIN);
 				break;
+			case SET_PSW:
+				returnMsg(arg0.result, SET_PSW);
+				break;
 			}
 		}
 
@@ -242,11 +267,11 @@ public class LoginActivity extends BaseActivity
 			JsonParser jsonParser = new JsonParser();
 			JsonElement jsonElement = jsonParser.parse(json);
 			JsonObject jsonObject = jsonElement.getAsJsonObject();
-
+			
 			switch (responseCode)
 			{
 			    case USER_LOGIN:
-				JsonObject returnObj = jsonObject.getAsJsonObject("returnMsg");
+			    JsonObject returnObj = jsonObject.getAsJsonObject("returnMsg");
 				this.user = HealthUtil.json2Object(returnObj.toString(), User.class);
 				if (this.user != null)
 				{
@@ -257,14 +282,42 @@ public class LoginActivity extends BaseActivity
 					this.setResult(RESULT_OK, getIntent());
 					finish();
 				}
+			    case SET_PSW:
+			    	String returnObjT = jsonObject.get("returnMsg").getAsString();
+					JsonElement jsonElementT = jsonParser.parse(returnObjT);
+					JsonObject jsonObjectT = jsonElementT.getAsJsonObject();
+					String status=jsonObjectT.get("status").getAsString();
+					if(!"100".equals(status))
+					{
+						HealthUtil.infoAlert(LoginActivity.this, "重置密码失败，请重试...");
+					}else
+					{
+						showSuccessDialog();
+					}
 				break;
 
 			}
 		} catch (Exception e)
 		{
-			HealthUtil.infoAlert(LoginActivity.this, "登录失败，请重试...");
+			HealthUtil.infoAlert(LoginActivity.this, "处理失败，请重试...");
 		}
 
 	}
 
+	private void showSuccessDialog()
+	{
+		AlertDialog alertDialog = new AlertDialog.Builder(this)
+				.setPositiveButton("确定", new OnClickListener()
+				{
+
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						// TODO Auto-generated method stub
+
+					}
+				}).setTitle("提示").setMessage("密码已重置请查收").create();
+		alertDialog.setCanceledOnTouchOutside(false);
+		alertDialog.show();
+	}
 }

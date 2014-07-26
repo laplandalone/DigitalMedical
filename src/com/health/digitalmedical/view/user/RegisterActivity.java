@@ -143,7 +143,7 @@ public class RegisterActivity extends BaseActivity
 			return;
 		}else
 		{
-			RequestParams param = webInterface.getAuthCode(userNameET.getText()+"");
+			RequestParams param = webInterface.getAuthCode(userNameET.getText()+"","");
 			invokeWebServer(param, AUTH_CODE);
 //			pswBtn.setTextColor(color.white);
 //			pswBtn.setBackgroundResource(R.drawable.time_default);
@@ -281,8 +281,18 @@ public class RegisterActivity extends BaseActivity
 			}
 		} catch (Exception e)
 		{
-			cancelTimer();
-			HealthUtil.infoAlert(RegisterActivity.this, "获取验证码失败，请重试...");
+			switch (responseCode)
+			{
+			    case AUTH_CODE:
+			    	cancelTimer();
+					HealthUtil.infoAlert(RegisterActivity.this, "获取验证码失败,请重试...");
+					break;
+			    case CHECK_AUTH_CODE:
+			    	HealthUtil.infoAlert(RegisterActivity.this, "手机号或验证码输入有误,请重试...");
+			    	break;
+			}
+			 
+			
 		}
 
 	}
@@ -292,6 +302,17 @@ public class RegisterActivity extends BaseActivity
 	{
 		String telephone = userNameET.getText().toString().trim();
 		String authCode=confirmNum.getText().toString().trim();
+		
+		if (!HealthUtil.isMobileNum(telephone))
+		{
+			HealthUtil.infoAlert(RegisterActivity.this, "手机号码为空或格式错误!");
+			return;
+		}
+		if("".equals(authCode))
+		{
+			HealthUtil.infoAlert(RegisterActivity.this, "验证码为空!");
+			return;
+		}
 		RequestParams param = webInterface.checkAuthCode(telephone, authCode);
 		invokeWebServer(param, CHECK_AUTH_CODE);
 	}
