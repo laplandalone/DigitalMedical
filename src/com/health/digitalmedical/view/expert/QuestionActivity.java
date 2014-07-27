@@ -141,7 +141,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 	}
 
 	/**
-	 * 链接web服务
+	 * 链接web服务  核对信息
 	 * 
 	 * @param param
 	 */
