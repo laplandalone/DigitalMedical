@@ -3,18 +3,21 @@ package com.health.digitalmedical.view.user;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
 import com.health.digitalmedical.tools.HealthUtil;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class MyHealthActivity extends BaseActivity
 {
 	
-	
+	@ViewInject(R.id.title)
+	private TextView title;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -24,6 +27,8 @@ public class MyHealthActivity extends BaseActivity
 		setContentView(R.layout.layout_my_health);
 		ViewUtils.inject(this);
 		addActivity(this);
+		initView();
+		initValue();
 	}
 
 	@OnClick(R.id.back)
@@ -81,7 +86,7 @@ public class MyHealthActivity extends BaseActivity
 	protected void initValue()
 	{
 		// TODO Auto-generated method stub
-
+		title.setText("½¡¿µµµ°¸");
 	}
 
 }

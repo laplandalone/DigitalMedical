@@ -15,6 +15,7 @@ import com.health.digitalmedical.model.HospitalNewsT;
 import com.health.digitalmedical.model.OrderExpert;
 import com.health.digitalmedical.model.RegisterOrderT;
 import com.health.digitalmedical.model.UserQuestionT;
+import com.lidroid.xutils.BitmapUtils;
 
 public class NewsListAdapter extends BaseAdapter
 {
@@ -22,10 +23,14 @@ public class NewsListAdapter extends BaseAdapter
 
 	private List<HospitalNewsT> hospitalNewsTs;
 
+	private BitmapUtils bitmapUtils;
+	
 	public NewsListAdapter(Context context, List<HospitalNewsT> hospitalNewsTs)
 	{
 		this.mContext = context;
 		this.hospitalNewsTs = hospitalNewsTs;
+		bitmapUtils = new BitmapUtils(mContext);
+		bitmapUtils.closeCache();
 	}
 
 	@Override
@@ -61,13 +66,18 @@ public class NewsListAdapter extends BaseAdapter
 			 TextView textView =  (TextView)convertView.findViewById( R.id.newsTitle);
 			 TextView textView2 = (TextView)convertView.findViewById( R.id.newsContent);
 			 TextView textView3 = (TextView)convertView.findViewById( R.id.newsDate);
+			 ImageView imageView = (ImageView) convertView.findViewById( R.id.news_photo);
 			 HospitalNewsT hospitalNewsT=hospitalNewsTs.get(position);
-			 
+			 String newsImgs=hospitalNewsT.getNewsImages();
+			 if(newsImgs.endsWith("jpg") || newsImgs.endsWith("png"))
+			 {
+				 bitmapUtils.display(imageView,newsImgs);
+			 }
 			// localImageView.setVisibility(0);
 			 textView.setText(hospitalNewsT.getNewsTitle());
 			 textView2.setText(hospitalNewsT.getNewsContent());
 			 textView3.setText(hospitalNewsT.getCreateDate());
-			 //textView4.setText(hospitalNewsT.getOrderNum());
+			 
 		}
 		return convertView;
 	}
