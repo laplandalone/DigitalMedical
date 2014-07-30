@@ -250,7 +250,7 @@ public class MainPageActivity extends BaseActivity
 	{
 		listViews = new ArrayList<View>();
 		int[] imageResId = new int[]
-		{ R.drawable.a, R.drawable.b, R.drawable.c};
+		{ R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d};
 		for (int i = 0; i < imageResId.length; i++)
 		{
 			ImageView imageView = new ImageView(this);
