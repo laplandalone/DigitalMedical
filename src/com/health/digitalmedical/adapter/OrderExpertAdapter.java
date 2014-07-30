@@ -54,8 +54,7 @@ public class OrderExpertAdapter  extends BaseAdapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		if (convertView == null)
-		{
+		
 			 convertView = LayoutInflater.from(mContext).inflate(R.layout.expert_doctor_list_item, null);
 			 TextView textView = (TextView)convertView.findViewById( R.id.name);
 			 TextView weekView =   (TextView)convertView.findViewById( R.id.date);
@@ -75,7 +74,7 @@ public class OrderExpertAdapter  extends BaseAdapter
 			 }
 			 layout.setVisibility(View.GONE);
 			 //facultyName.setText(orders.get(position).getSkill());
-		}
+		
 		return convertView;
 	}
 
