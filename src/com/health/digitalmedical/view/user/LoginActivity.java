@@ -281,6 +281,7 @@ public class LoginActivity extends BaseActivity
 					HealthUtil.infoAlert(LoginActivity.this, "µÇÂ¼³É¹¦");
 					this.setResult(RESULT_OK, getIntent());
 					finish();
+					break;
 				}
 			    case SET_PSW:
 			    	String returnObjT = jsonObject.get("returnMsg").getAsString();
