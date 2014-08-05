@@ -31,11 +31,7 @@ import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
-/**
- * 
- * ×¨ï¿½ï¿½ï¿½Ð±ï¿½
- *
- */
+
 public class ExpertListActivity extends BaseActivity  implements IXListViewListener,OnItemClickListener
 {
 
@@ -74,24 +70,20 @@ public class ExpertListActivity extends BaseActivity  implements IXListViewListe
 	{
 		// TODO Auto-generated method stubtotal_count
 		textTitle.setVisibility(View.GONE);
-		title.setText("Ò½ï¿½ï¿½ï¿½Ð±ï¿½");
+		title.setText("Ò½ÉúÁÐ±í");
 	}
 
 	@Override
 	protected void initValue()
 	{
-		dialog.setMessage("ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ôºï¿½...");
+		dialog.setMessage("ÕýÔÚ¼ÓÔØ,ÇëÉÔºó...");
 		dialog.show();
 		// TODO Auto-generated method stub
 		RequestParams param = webInterface.queryOrderDoctorList(team.getTeamId());
 		invokeWebServer(param, GET_LIST);
 	}
 	
-	/**
-	 * tï¿½ï¿½webï¿½ï¿½ï¿½ï¿½
-	 * 
-	 * @param param
-	 */
+	
 	private void invokeWebServer(RequestParams param, int responseCode)
 	{
 		HealthUtil.LOG_D(getClass(), "connect to web server");
@@ -103,9 +95,7 @@ public class ExpertListActivity extends BaseActivity  implements IXListViewListe
 		httpHandler = mHttpUtils.send(HttpMethod.POST, HealthConstant.URL, param, requestCallBack);
 	}
 
-	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½
-	 */
+	
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
 
@@ -129,7 +119,7 @@ public class ExpertListActivity extends BaseActivity  implements IXListViewListe
 			{
 				// list.stopLoadMore();
 			}
-			HealthUtil.infoAlert(ExpertListActivity.this, "ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+			HealthUtil.infoAlert(ExpertListActivity.this, "ÐÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
 		}
 
 		@Override
@@ -154,9 +144,7 @@ public class ExpertListActivity extends BaseActivity  implements IXListViewListe
 
 	}
 
-	/*
-	 * ï¿½ï¿½ï¿½?ï¿½Ø½ï¿½ï¿½ï¿½ï¿½ï¿½
-	 */
+	
 	private void returnMsg(String json, int code)
 	{
 		JsonParser jsonParser = new JsonParser();
@@ -167,6 +155,9 @@ public class ExpertListActivity extends BaseActivity  implements IXListViewListe
 		this.expertList = HealthUtil.json2Object(returnObj.toString(), OrderExpertList.class);
 		OrderExpertAdapter adapter = new OrderExpertAdapter(ExpertListActivity.this, expertList);
 		this.list.setAdapter(adapter);
+		this.list.setXListViewListener(this);
+		this.list.setPullLoadEnable(false);
+		this.list.setPullRefreshEnable(false);
 		this.list.setOnItemClickListener(this);
 	}
 	@Override

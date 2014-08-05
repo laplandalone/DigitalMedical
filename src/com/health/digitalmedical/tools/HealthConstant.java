@@ -9,7 +9,6 @@ public class HealthConstant
 //	public static final String URL ="http://58.53.209.120:9100/mobile.htm?method=axis";
 	public static final String URL ="http://58.53.209.107:10821/mobile.htm?method=axis";
 	
-//	public static final String UPLOAD_URL = "http://192.168.137.1:7001/mobile.htm";
 //	public static final String UPLOAD_URL = "http://192.168.137.1:7001/fileUpload";
 //	public static final String UPLOAD_URL = "http://58.53.209.120:9100/fileUpload";
 	public static final String UPLOAD_URL = "http://58.53.209.107:10821/fileUpload";

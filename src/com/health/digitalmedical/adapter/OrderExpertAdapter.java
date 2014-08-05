@@ -56,7 +56,8 @@ public class OrderExpertAdapter  extends BaseAdapter
 	{
 		View view = convertView;
 		ViewHolder viewHolder = null;
-		
+//		if (view == null)
+//		{
 			 viewHolder = new ViewHolder();
 			 view = LayoutInflater.from(mContext).inflate(R.layout.expert_doctor_list_item, null);		
 			 viewHolder.textView = (TextView)view.findViewById( R.id.name);
@@ -64,23 +65,27 @@ public class OrderExpertAdapter  extends BaseAdapter
 			 viewHolder.doctorPosition = (TextView)view.findViewById( R.id.position);
 			 viewHolder.layout =(LinearLayout) view.findViewById(R.id.countLayout);
 			 
-			 OrderExpert  expert=orders.get(position);
-			 String value=expert.getDoctorName();
-			 String weekDay=expert.getDay();
-			 String week=expert.getWeek();
-			 viewHolder.textView.setText(value);
-			 viewHolder.doctorPosition.setText(expert.getTeamName());
-			 if("".equals(day) || !day.equals(weekDay))
-			 {
-				 viewHolder.weekView.setVisibility(0);
-				 viewHolder.weekView.setText(weekDay+" ÐÇÆÚ"+week);
-				 day=weekDay;
-			 }
-			 viewHolder.layout.setVisibility(View.GONE);
 //			 view.setTag(viewHolder);
-			 
-		
+//		}else
+//		{
+//			viewHolder = (ViewHolder) view.getTag();
+//		}
 	
+		 OrderExpert  expert=orders.get(position);
+		 String value=expert.getDoctorName();
+		 String weekDay=expert.getDay();
+		 String week=expert.getWeek();
+		 String display=expert.getDisplay();
+		 viewHolder.textView.setText(value);
+		 viewHolder.doctorPosition.setText(expert.getTeamName());
+		 if("Y".equals(display))
+		 {
+			 viewHolder.weekView.setVisibility(View.VISIBLE);
+			 viewHolder.weekView.setText(weekDay+" ÐÇÆÚ"+week);
+			 day=weekDay;
+		 }
+		 viewHolder.layout.setVisibility(View.GONE);
+		 
 		return view;
 	}
 	

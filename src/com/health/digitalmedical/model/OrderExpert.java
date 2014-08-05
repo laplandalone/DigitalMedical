@@ -28,10 +28,17 @@ public class OrderExpert implements Serializable
 	private String post;
 	@Expose
 	String userOrderNum;
-	
 	@Expose
 	String week;
+	@Expose
+	String display;
 	
+	public String getDisplay() {
+		return display;
+	}
+	public void setDisplay(String display) {
+		this.display = display;
+	}
 	public String getWeek() {
 		return week;
 	}
