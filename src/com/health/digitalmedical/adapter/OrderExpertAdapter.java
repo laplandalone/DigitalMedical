@@ -54,28 +54,42 @@ public class OrderExpertAdapter  extends BaseAdapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
+		View view = convertView;
+		ViewHolder viewHolder = null;
 		
-			 convertView = LayoutInflater.from(mContext).inflate(R.layout.expert_doctor_list_item, null);
-			 TextView textView = (TextView)convertView.findViewById( R.id.name);
-			 TextView weekView =   (TextView)convertView.findViewById( R.id.date);
-			 TextView facultyName = (TextView)convertView.findViewById( R.id.faculty_name);
-			 TextView doctorPosition = (TextView)convertView.findViewById( R.id.position);
-			 LinearLayout layout =(LinearLayout) convertView.findViewById(R.id.countLayout);
+			 viewHolder = new ViewHolder();
+			 view = LayoutInflater.from(mContext).inflate(R.layout.expert_doctor_list_item, null);		
+			 viewHolder.textView = (TextView)view.findViewById( R.id.name);
+			 viewHolder.weekView =   (TextView)view.findViewById( R.id.date);
+			 viewHolder.doctorPosition = (TextView)view.findViewById( R.id.position);
+			 viewHolder.layout =(LinearLayout) view.findViewById(R.id.countLayout);
+			 
 			 OrderExpert  expert=orders.get(position);
 			 String value=expert.getDoctorName();
 			 String weekDay=expert.getDay();
-			 textView.setText(value);
-			 doctorPosition.setText(expert.getTeamName());
+			 String week=expert.getWeek();
+			 viewHolder.textView.setText(value);
+			 viewHolder.doctorPosition.setText(expert.getTeamName());
 			 if("".equals(day) || !day.equals(weekDay))
 			 {
-				 weekView.setVisibility(0);
-				 weekView.setText(weekDay);
+				 viewHolder.weekView.setVisibility(0);
+				 viewHolder.weekView.setText(weekDay+" ÐÇÆÚ"+week);
 				 day=weekDay;
 			 }
-			 layout.setVisibility(View.GONE);
-			 //facultyName.setText(orders.get(position).getSkill());
+			 viewHolder.layout.setVisibility(View.GONE);
+//			 view.setTag(viewHolder);
+			 
 		
-		return convertView;
+	
+		return view;
 	}
+	
 
+	private class ViewHolder
+	{
+		public TextView textView;
+		public TextView weekView;
+		public TextView doctorPosition;
+		LinearLayout layout;
+	}
 }
