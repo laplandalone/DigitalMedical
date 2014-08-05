@@ -8,9 +8,9 @@ import java.util.Date;
 
 public class UserQuestionT implements java.io.Serializable {
 
-	// Fields
-
-	private String qestionId;
+	// Fields qes
+	private String id;
+	private String questionId;
 	private String userId;
 	private String doctorId;
 	private String userTelephone;
@@ -27,15 +27,15 @@ public class UserQuestionT implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public UserQuestionT(String qestionId) {
-		this.qestionId = qestionId;
+	public UserQuestionT(String questionId) {
+		this.questionId = questionId;
 	}
 
 	/** full constructor */
-	public UserQuestionT(String qestionId, String userId, String doctorId,
+	public UserQuestionT(String questionId, String userId, String doctorId,
 			String userTelephone, String recordType, String authType,
 			String content, String state, String createDate) {
-		this.qestionId = qestionId;
+		this.questionId = questionId;
 		this.userId = userId;
 		this.doctorId = doctorId;
 		this.userTelephone = userTelephone;
@@ -48,12 +48,20 @@ public class UserQuestionT implements java.io.Serializable {
 
 	// Property accessors
 
-	public String getQestionId() {
-		return this.qestionId;
+	public String getQuestionId() {
+		return this.questionId;
 	}
 
-	public void setQestionId(String qestionId) {
-		this.qestionId = qestionId;
+	public void setQuestionId(String questionId) {
+		this.questionId = questionId;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getUserId() {

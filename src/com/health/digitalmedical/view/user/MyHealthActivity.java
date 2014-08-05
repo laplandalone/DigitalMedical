@@ -86,7 +86,7 @@ public class MyHealthActivity extends BaseActivity
 	protected void initValue()
 	{
 		// TODO Auto-generated method stub
-		title.setText("Ω°øµµµ∞∏");
+		title.setText("æÕ’Ôµµ∞∏");
 	}
 
 }

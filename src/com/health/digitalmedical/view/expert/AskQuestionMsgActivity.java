@@ -366,15 +366,15 @@ public class AskQuestionMsgActivity extends BaseActivity
 
 		
 
-		UserQuestionT qestionT = new UserQuestionT();
+		UserQuestionT questionT = new UserQuestionT();
 
-		qestionT.setUserId(this.user.getUserId());
-		qestionT.setDoctorId(this.doctorId);
-		qestionT.setUserTelephone(this.user.getTelephone());
-		qestionT.setContent(content);
+		questionT.setUserId(this.user.getUserId());
+		questionT.setDoctorId(this.doctorId);
+		questionT.setUserTelephone(this.user.getTelephone());
+		questionT.setContent(content);
 
 		Gson gson = new Gson();
-		String questionStr = gson.toJson(qestionT);
+		String questionStr = gson.toJson(questionT);
 		RequestParams param = webInterface.addUserQuestion(questionStr);
 		// invokeWebServer(param, ADD_QUESTION);
 		int imageSize = imagesUrl.size();

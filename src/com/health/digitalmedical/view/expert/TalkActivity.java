@@ -79,16 +79,9 @@ public class TalkActivity extends BaseActivity
 		UserQuestionT questionT = (UserQuestionT) getIntent().getSerializableExtra("questioin");
 		this.userId=questionT.getUserId();
 		
-		if("expert".equals(questionType))
-		{
-			RequestParams param = webInterface.getUserQuestionsByDoctorId(this.userId);
-			invokeWebServer(param, ADD_QUESTION);
-		}else if("user".equals(questionType))
-		{
-			String doctorId=questionT.getDoctorId();
-			RequestParams param = webInterface.getUserQuestionsByIds(this.userId,doctorId);
-			invokeWebServer(param, ADD_QUESTION);
-		}
+		String questionId=questionT.getQuestionId();
+		RequestParams param = webInterface.getUserQuestionsByIds(questionId);
+		invokeWebServer(param, ADD_QUESTION);
 		
 	}
 

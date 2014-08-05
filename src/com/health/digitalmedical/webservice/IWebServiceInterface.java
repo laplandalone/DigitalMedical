@@ -14,8 +14,6 @@ public interface IWebServiceInterface {
 	
 	public RequestParams getOrderNormalNum(String teamId,String registerTime);
 	
-	public RequestParams queryOrderByDoctorIdList(String doctorId);
-	
 	public RequestParams queryUser(String telephone,String password);
 	
 	public RequestParams addUserQuestion(String userQuestion);
@@ -26,7 +24,7 @@ public interface IWebServiceInterface {
 	
 	public RequestParams getUserQuestionsByDoctorId(String doctorId);
 	
-	public RequestParams getUserQuestionsByIds(String userId,String doctorId);
+	public RequestParams getUserQuestionsByIds(String questionId);
 	
 	public RequestParams getUserQuestionsByUserId(String userId);
 	
@@ -47,4 +45,7 @@ public interface IWebServiceInterface {
 	public RequestParams getAuthCode(String accNbr,String type);
 	
 	public RequestParams checkAuthCode(String accNbr,String authCode);
+
+	RequestParams queryOrderByDoctorIdList(String doctorId, String weekStr,
+			String dateStr);
 }

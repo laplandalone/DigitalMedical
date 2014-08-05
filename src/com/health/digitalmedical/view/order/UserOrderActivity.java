@@ -17,6 +17,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.health.digitalmedical.BaseActivity;
+import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
 import com.health.digitalmedical.adapter.UserOrderListAdapter;
 import com.health.digitalmedical.model.RegisterOrderT;
@@ -30,6 +31,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 
 public class UserOrderActivity extends BaseActivity implements OnItemClickListener
 {
@@ -59,6 +61,15 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 		title.setText("ÎÒµÄÔ¤Ô¼");
 	}
 
+
+	@OnClick(R.id.back)
+	public void toHome(View v)
+	{
+		Intent intent = new Intent(UserOrderActivity.this, MainPageActivity.class);
+		startActivity(intent);
+		exit();
+	}
+	
 	@Override
 	protected void initValue()
 	{

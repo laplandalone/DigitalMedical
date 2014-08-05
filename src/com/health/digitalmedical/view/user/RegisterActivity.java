@@ -143,7 +143,7 @@ public class RegisterActivity extends BaseActivity
 			return;
 		}else
 		{
-			RequestParams param = webInterface.getAuthCode(userNameET.getText()+"","");
+			RequestParams param = webInterface.getAuthCode(userNameET.getText()+"","NEW_USER");
 			invokeWebServer(param, AUTH_CODE);
 //			pswBtn.setTextColor(color.white);
 //			pswBtn.setBackgroundResource(R.drawable.time_default);
@@ -254,10 +254,17 @@ public class RegisterActivity extends BaseActivity
 				JsonElement jsonElementT = jsonParser.parse(returnObj);
 				JsonObject jsonObjectT = jsonElementT.getAsJsonObject();
 				String status=jsonObjectT.get("status").getAsString();
+				if("000".equals(status))
+				{
+					cancelTimer();
+					HealthUtil.infoAlert(RegisterActivity.this, "该号码已注册，请重试...");
+					return;
+				}
 				if(!"100".equals(status))
 				{
 					cancelTimer();
 					HealthUtil.infoAlert(RegisterActivity.this, "获取验证码失败，请重试...");
+					return;
 				}else
 				{
 					showSuccessDialog();
@@ -281,6 +288,7 @@ public class RegisterActivity extends BaseActivity
 			}
 		} catch (Exception e)
 		{
+			e.printStackTrace();
 			switch (responseCode)
 			{
 			    case AUTH_CODE:

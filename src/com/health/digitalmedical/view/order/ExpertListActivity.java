@@ -14,6 +14,8 @@ import com.google.gson.JsonParser;
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
+import com.health.digitalmedical.XListView;
+import com.health.digitalmedical.XListView.IXListViewListener;
 import com.health.digitalmedical.adapter.OrderExpertAdapter;
 import com.health.digitalmedical.model.OrderExpert;
 import com.health.digitalmedical.model.OrderExpertList;
@@ -31,10 +33,10 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
  * 
- * ×¨¼ÒÁÐ±í
+ * ×¨ï¿½ï¿½ï¿½Ð±ï¿½
  *
  */
-public class ExpertListActivity extends BaseActivity  implements OnItemClickListener
+public class ExpertListActivity extends BaseActivity  implements IXListViewListener,OnItemClickListener
 {
 
 	@ViewInject(R.id.title)
@@ -44,7 +46,7 @@ public class ExpertListActivity extends BaseActivity  implements OnItemClickList
 	private TextView textTitle;
 	
 	
-	private ListView list;
+	private XListView list;
 
 	private Team team;
 	private OrderExpertList expertList;
@@ -53,7 +55,7 @@ public class ExpertListActivity extends BaseActivity  implements OnItemClickList
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.order_faculty_list);
-		this.list=(ListView) findViewById(R.id.asklist);
+		this.list=(XListView) findViewById(R.id.asklist);
 		this.team=(Team) getIntent().getSerializableExtra("team");
 		ViewUtils.inject(this);
 		addActivity(this);
@@ -72,13 +74,13 @@ public class ExpertListActivity extends BaseActivity  implements OnItemClickList
 	{
 		// TODO Auto-generated method stubtotal_count
 		textTitle.setVisibility(View.GONE);
-		title.setText("Ò½ÉúÁÐ±í");
+		title.setText("Ò½ï¿½ï¿½ï¿½Ð±ï¿½");
 	}
 
 	@Override
 	protected void initValue()
 	{
-		dialog.setMessage("ÕýÔÚ¼ÓÔØ,ÇëÉÔºó...");
+		dialog.setMessage("ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ôºï¿½...");
 		dialog.show();
 		// TODO Auto-generated method stub
 		RequestParams param = webInterface.queryOrderDoctorList(team.getTeamId());
@@ -86,7 +88,7 @@ public class ExpertListActivity extends BaseActivity  implements OnItemClickList
 	}
 	
 	/**
-	 * Á´½Óweb·þÎñ
+	 * tï¿½ï¿½webï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param param
 	 */
@@ -102,7 +104,7 @@ public class ExpertListActivity extends BaseActivity  implements OnItemClickList
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊý¾Ý
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -127,7 +129,7 @@ public class ExpertListActivity extends BaseActivity  implements OnItemClickList
 			{
 				// list.stopLoadMore();
 			}
-			HealthUtil.infoAlert(ExpertListActivity.this, "ÐÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(ExpertListActivity.this, "ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		}
 
 		@Override
@@ -153,7 +155,7 @@ public class ExpertListActivity extends BaseActivity  implements OnItemClickList
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊý¾Ý
+	 * ï¿½ï¿½ï¿½?ï¿½Ø½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private void returnMsg(String json, int code)
 	{
@@ -178,6 +180,17 @@ public class ExpertListActivity extends BaseActivity  implements OnItemClickList
 		intent.putExtras(bundle);
 		startActivity(intent);
 		finish();
+	}
+	
+	@Override
+	public void onRefresh() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void onLoadMore() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

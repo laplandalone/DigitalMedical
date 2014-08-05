@@ -264,7 +264,7 @@ public class LoginActivity extends BaseActivity
 	{
 		try
 		{
-			JsonParser jsonParser = new JsonParser();
+ 			JsonParser jsonParser = new JsonParser();
 			JsonElement jsonElement = jsonParser.parse(json);
 			JsonObject jsonObject = jsonElement.getAsJsonObject();
 			

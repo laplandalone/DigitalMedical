@@ -25,9 +25,9 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	}
 
 	@Override
-	public RequestParams queryOrderByDoctorIdList(String orderId)
+	public RequestParams queryOrderByDoctorIdList(String doctorId,String weekStr,String dateStr)
 	{
-		return HealthUtil.getRequestParams("BUS2004", new String[]{"orderId"},new Object[]{orderId});
+		return HealthUtil.getRequestParams("BUS2004", new String[]{"doctorId","week","date"},new Object[]{doctorId,weekStr,dateStr});
 	}
 
 	@Override
@@ -94,9 +94,9 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	}
 
 	@Override
-	public RequestParams getUserQuestionsByIds(String userId, String doctorId)
+	public RequestParams getUserQuestionsByIds(String questionId)
 	{
-		return HealthUtil.getRequestParams("BUS20016", new String[]{"userId","doctorId"},new Object[]{userId,doctorId});
+		return HealthUtil.getRequestParams("BUS20016", new String[]{"questionId"},new Object[]{questionId});
 	}
 
 	@Override
@@ -126,7 +126,7 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	@Override
 	public RequestParams getAuthCode(String accNbr,String type)
 	{
-		return HealthUtil.getRequestParams("BUS20021", new String[]{"accNbr","type"},new Object[]{accNbr,"type"});
+		return HealthUtil.getRequestParams("BUS20021", new String[]{"accNbr","type"},new Object[]{accNbr,type});
 	}
 
 	public RequestParams checkAuthCode(String accNbr,String authCode)
