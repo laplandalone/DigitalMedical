@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
+import com.health.digitalmedical.tools.HealthUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -82,6 +84,11 @@ public class RegisteredMain extends BaseActivity
 	@ViewInject(R.id.regist_memo21)
 	private TextView regist_memo21;
 	
+	@ViewInject(R.id.ready)
+	private ImageButton read;
+	
+	private Boolean readFlag=false;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -140,9 +147,29 @@ public class RegisteredMain extends BaseActivity
 		
 	}
 	
+	@OnClick(R.id.ready)
+	public void read(View v)
+	{
+		if(readFlag)
+		{
+			readFlag=false;
+			read.setBackgroundResource(R.drawable.symptom_select_false);
+		}else
+		{
+			readFlag=true;
+			read.setBackgroundResource(R.drawable.symptom_select_true);
+		}
+		
+	}
+	
 	@OnClick(R.id.expert)
 	public void expertOrder(View v)
 	{
+		if(!readFlag)
+		{
+			HealthUtil.infoAlert(RegisteredMain.this, "请先阅读并同意声明");
+			return;
+		}
 		Intent intent = new Intent(RegisteredMain.this,FacultyExpertListActivity.class);
 		intent.putExtra("orderType", "expert");
 		startActivity(intent);
@@ -160,6 +187,11 @@ public class RegisteredMain extends BaseActivity
 	@OnClick(R.id.normal)
 	public void normalOrder(View v)
 	{
+		if(!readFlag)
+		{
+			HealthUtil.infoAlert(RegisteredMain.this, "请先阅读并同意声明");
+			return;
+		}
 		Intent intent = new Intent(RegisteredMain.this,FacultyExpertListActivity.class);
 		intent.putExtra("orderType", "normal");
 		startActivity(intent);
