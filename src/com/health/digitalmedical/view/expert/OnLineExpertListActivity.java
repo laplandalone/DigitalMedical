@@ -47,7 +47,10 @@ public class OnLineExpertListActivity extends BaseActivity  implements OnItemCli
 
 	@ViewInject(R.id.title)
 	private TextView title;
-
+	
+	@ViewInject(R.id.textTitle)
+	private TextView textTitle;
+	
 	private ListView list;
 
 	private String teamId;
@@ -69,6 +72,7 @@ public class OnLineExpertListActivity extends BaseActivity  implements OnItemCli
 	@Override
 	protected void initView()
 	{
+		textTitle.setVisibility(View.GONE);
 		// TODO Auto-generated method stubtotal_count
 		title.setText("医生列表");
 	}
