@@ -116,7 +116,7 @@ public class UserUpdateActivity extends BaseActivity
 		{
 			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名为空！");
 			return;
-		}else if(userNameT.length()>4)
+		}else if(userNameT.length()>50)
 		{
 			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名长度无效！");
 			return;

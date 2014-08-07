@@ -30,8 +30,16 @@ public class OrderExpert implements Serializable
 	String userOrderNum;
 	@Expose
 	String week;
+	public String getUserFlag() {
+		return userFlag;
+	}
+	public void setUserFlag(String userFlag) {
+		this.userFlag = userFlag;
+	}
 	@Expose
 	String display;
+	@Expose
+	String userFlag;
 	
 	public String getDisplay() {
 		return display;

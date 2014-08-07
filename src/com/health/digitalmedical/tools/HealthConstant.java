@@ -4,7 +4,6 @@ import android.os.Environment;
 
 public class HealthConstant
 {
-	//133.0.179.151   61.183.0.35:7110  61.183.0.37:7170  
 //	public static final String URL ="http://192.168.137.1:7001/mobile.htm?method=axis";
 //	public static final String URL ="http://58.53.209.120:9100/mobile.htm?method=axis";
 	public static final String URL ="http://58.53.209.107:10821/mobile.htm?method=axis";

@@ -10,6 +10,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.health.digitalmedical.tools.HealthConstant;
+import com.health.digitalmedical.tools.HealthUtil;
 import com.health.digitalmedical.view.other.CheckNewVersion;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -45,11 +47,16 @@ public class WelcomeActivity extends BaseActivity
 		intent.putExtra("flag", "auto");
 		startService(intent);
 	}
-
+    
+	/**
+	 * 清华阳光医院：hospital_id:101
+	 * @param v
+	 */
 	@OnClick(R.id.line1)
 	public void toMain(View v)
 	{
 		Intent intent = new Intent(WelcomeActivity.this, MainPageActivity.class);
+		HealthUtil.writeHospitalId("101");
 		startActivity(intent);
 		finish();
 	}

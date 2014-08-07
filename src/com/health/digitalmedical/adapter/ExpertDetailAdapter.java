@@ -63,8 +63,10 @@ public class ExpertDetailAdapter extends BaseAdapter
 			 TextView textView4 = (TextView)convertView.findViewById( R.id.text4);
 			 ImageView localImageView = (ImageView)convertView.findViewById(R.id.icon);
 			 OrderExpert expert=orders.get(position);
-			 
-			// localImageView.setVisibility(0);
+			 if("Y".equals(expert.getUserFlag()))
+			 {
+				 localImageView.setVisibility(View.VISIBLE);
+			 }
 			 textView.setText(expert.getWorkTime());
 			 textView2.setText("2");
 			 textView3.setText(expert.getUserOrderNum());

@@ -165,7 +165,7 @@ public class ExpertListActivity extends BaseActivity  implements IXListViewListe
 	{
 		// TODO Auto-generated method stub
 		Intent intent = new Intent(ExpertListActivity.this,ExpertDetailActivity.class);
-		OrderExpert expert =expertList.getOrders().get(position);
+		OrderExpert expert =expertList.getOrders().get(position-1);
 		Bundle bundle = new Bundle();
 		bundle.putSerializable("expert", expert);
 		intent.putExtras(bundle);

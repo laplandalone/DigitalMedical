@@ -79,7 +79,7 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 		// TODO Auto-generated method stub
 		// getListRst();
 		String orderTypeT=getIntent().getStringExtra("orderType");
-		//this.hospitalId=getIntent().getStringExtra("hospitalId");
+		this.hospitalId=HealthUtil.readHospitalId();
 		if(orderTypeT!=null && !"".equals(orderTypeT))
 		{
 			this.orderType=orderTypeT;
