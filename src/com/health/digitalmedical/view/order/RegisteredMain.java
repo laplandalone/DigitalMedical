@@ -87,7 +87,7 @@ public class RegisteredMain extends BaseActivity
 	@ViewInject(R.id.ready)
 	private ImageButton read;
 	
-	private Boolean readFlag=false;
+	private Boolean readFlag=true;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)

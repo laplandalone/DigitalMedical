@@ -34,6 +34,7 @@ public class OtherActivity extends BaseActivity
 		setContentView(R.layout.other);
 		ViewUtils.inject(this);
 		addActivity(this);
+		initView();
 	}
 
 	@Override
