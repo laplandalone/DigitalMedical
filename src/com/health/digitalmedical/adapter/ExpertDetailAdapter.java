@@ -63,7 +63,13 @@ public class ExpertDetailAdapter extends BaseAdapter
 			 TextView textView4 = (TextView)convertView.findViewById( R.id.text4);
 			 ImageView localImageView = (ImageView)convertView.findViewById(R.id.icon);
 			 OrderExpert expert=orders.get(position);
-			 if("Y".equals(expert.getUserFlag()))
+			 /*已预约标示*/
+			
+			 if("true".equals(expert.getNumMax()))
+			 {
+				 localImageView.setVisibility(View.VISIBLE);
+				 localImageView.setBackgroundResource(R.drawable.reservation_icon);
+			 }else if("Y".equals(expert.getUserFlag()))
 			 {
 				 localImageView.setVisibility(View.VISIBLE);
 			 }

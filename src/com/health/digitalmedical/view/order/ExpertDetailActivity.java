@@ -19,6 +19,7 @@ import com.health.digitalmedical.model.OrderExpert;
 import com.health.digitalmedical.model.OrderExpertList;
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
+import com.health.digitalmedical.tools.ObjectCensor;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -194,6 +195,26 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 		String teamId=orderExpert.getTeamId();
 		String teamName=orderExpert.getTeamName();
 		String day=orderExpert.getDay();
+		
+		String orderTeamCount=orderExpert.getOrderTeamCount();
+		String numMax=orderExpert.getNumMax();
+		
+		if(ObjectCensor.isStrRegular(orderTeamCount))
+		{
+			int num= Integer.parseInt(orderTeamCount);
+			if(num>=2)
+			{
+				HealthUtil.infoAlert(ExpertDetailActivity.this, "同一科室最多能预约二个号");
+				return;
+			}
+		}
+		
+		if("true".equals(numMax))
+		{
+			HealthUtil.infoAlert(ExpertDetailActivity.this, "该时间预约号已满,请选择其他时间");
+			return;
+		}
+		
 		intent.putExtra("doctorName", doctorName);
 		intent.putExtra("registerTime", day+" "+registerTime);
 		intent.putExtra("fee", fee);

@@ -40,7 +40,23 @@ public class OrderExpert implements Serializable
 	String display;
 	@Expose
 	String userFlag;
+	@Expose
+	String numMax;
+	public String getNumMax() {
+		return numMax;
+	}
+	public void setNumMax(String numMax) {
+		this.numMax = numMax;
+	}
+	@Expose
+	String orderTeamCount;
 	
+	public String getOrderTeamCount() {
+		return orderTeamCount;
+	}
+	public void setOrderTeamCount(String orderTeamCount) {
+		this.orderTeamCount = orderTeamCount;
+	}
 	public String getDisplay() {
 		return display;
 	}
