@@ -39,7 +39,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
- * Ò½Ôºµ¼º½
+ * åŒ»é™¢å¯¼èˆª
  *
  */
 @SuppressLint("NewApi")
@@ -91,11 +91,11 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 		if(maxLine==9)
 		{
 			description.setMaxLines(description.getLineCount());
-			descText.setText("ÊÕÆğ");
+			descText.setText("æ”¶èµ·");
 		}else
 		{
 			description.setMaxLines(9);
-			descText.setText("¸ü¶à");
+			descText.setText("æ›´å¤š");
 		}
 		
 	}
@@ -112,13 +112,13 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 	{   
 		int heigths=0;
 		String text = hospitalTextMore.getText().toString();
-		if("¸ü¶à".equals(text))
+		if("æ›´å¤š".equals(text))
 		{
-			this.hospitalTextMore.setText("ÊÕÆğ");
+			this.hospitalTextMore.setText("æ”¶èµ·");
 			heigths=getHeight(list,teamTs.size());
 		}else
 		{
-			this.hospitalTextMore.setText("¸ü¶à");
+			this.hospitalTextMore.setText("æ›´å¤š");
 			heigths=getHeight(list,2);
 		}
 		ViewGroup.LayoutParams params = this.list.getLayoutParams(); 
@@ -138,7 +138,7 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
         	if(i==num)break;
             View listItem=listAdapter.getView(i,null,listView);
             listItem.measure(0,0);
-            int thisHeight=listItem.getMeasuredHeight();//¼ÆËã×ÓÏîViewµÄ¿í¸ß
+            int thisHeight=listItem.getMeasuredHeight();//è®¡ç®—å­é¡¹Viewçš„å®½é«˜
             maxHeight+=thisHeight;
         }
         return maxHeight;
@@ -148,7 +148,7 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 	{
 		try
 		{
-			String uri = "intent://map/marker?location=30.584072,114.266477,&title=123&content=4567&src=½¡¿µ¹Ü¼Ò#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end";
+			String uri = "intent://map/marker?location=30.584072,114.266477,&title=123&content=4567&src=å¥åº·ç®¡å®¶#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end";
 			@SuppressWarnings("deprecation")
 			Intent intent = Intent.getIntent(uri);
 			startActivity(intent);
@@ -165,7 +165,7 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 	@Override
 	protected void initValue()
 	{
-		dialog.setMessage("ÕıÔÚ¼ÓÔØ,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨åŠ è½½,è¯·ç¨å...");
 		dialog.show();
 		// TODO Auto-generated method stub
 		RequestParams param = webInterface.getTeamByHospitalId("101");
@@ -173,7 +173,7 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 	}
 	
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -189,7 +189,7 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -214,7 +214,7 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 			{
 				// list.stopLoadMore();
 			}
-			HealthUtil.infoAlert(HospitalDetailActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(HospitalDetailActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -241,7 +241,7 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 
 	
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int code)
 	{
@@ -271,7 +271,7 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 		TeamT teamT = teamTs.get(position);
 		try
 		{
-			String uri = "intent://map/marker?location="+teamT.getY()+","+teamT.getX()+",&title="+teamT.getTeamName()+"&content=&src=ºÃ³ÔÀĞ#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end";
+			String uri = "intent://map/marker?location="+teamT.getY()+","+teamT.getX()+",&title="+teamT.getTeamName()+"&content=&src=å¥½åƒä½¬#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end";
 			@SuppressWarnings("deprecation")
 			Intent intent = Intent.getIntent(uri);
 			startActivity(intent);

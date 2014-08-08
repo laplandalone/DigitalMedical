@@ -57,12 +57,12 @@ public abstract class BaseActivity extends FragmentActivity
 		RegApplication.getInstance().exit();
 	}
 	/**
-	 * ³õÊ¼»¯¶ÔÏó
+	 * åˆå§‹åŒ–å¯¹è±¡
 	 */
 	protected abstract void initView();
 
 	/**
-	 * ³õÊ¼»¯¸³Öµ
+	 * åˆå§‹åŒ–èµ‹å€¼
 	 */
 	protected abstract void initValue();
 	

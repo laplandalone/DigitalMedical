@@ -73,7 +73,7 @@ public class TalkActivity extends BaseActivity
 	protected void initValue()
 	{
 		// TODO Auto-generated method stub
-		dialog.setMessage("ÕıÔÚ¼ÓÔØ,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨åŠ è½½,è¯·ç¨å...");
 		dialog.show();
 		this.questionType=getIntent().getStringExtra("questionType");
 		UserQuestionT questionT = (UserQuestionT) getIntent().getSerializableExtra("questioin");
@@ -86,7 +86,7 @@ public class TalkActivity extends BaseActivity
 	}
 
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -102,7 +102,7 @@ public class TalkActivity extends BaseActivity
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -124,7 +124,7 @@ public class TalkActivity extends BaseActivity
 				dialog.cancel();
 			}
 			
-			HealthUtil.infoAlert(TalkActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(TalkActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -147,7 +147,7 @@ public class TalkActivity extends BaseActivity
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int code)
 	{

@@ -75,7 +75,7 @@ public class HisOrderActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
-		title.setText("¸öÈËĞÅÏ¢");
+		title.setText("ä¸ªäººä¿¡æ¯");
 	}
 
 	@Override
@@ -118,11 +118,11 @@ public class HisOrderActivity extends BaseActivity
 		String idCheckRst = IDCard.IDCardValidate(userNo);
 		if("".equals(userName))
 		{
-			HealthUtil.infoAlert(HisOrderActivity.this, "ÓÃ»§ÃûÎª¿Õ!");
+			HealthUtil.infoAlert(HisOrderActivity.this, "ç”¨æˆ·åä¸ºç©º!");
 		}
 		if (!HealthUtil.isMobileNum(userTelephone))
 		{
-			HealthUtil.infoAlert(HisOrderActivity.this, "ÊÖ»úºÅÂëÎª¿Õ»ò¸ñÊ½´íÎó!");
+			HealthUtil.infoAlert(HisOrderActivity.this, "æ‰‹æœºå·ç ä¸ºç©ºæˆ–æ ¼å¼é”™è¯¯!");
 			return;
 		}
 		if (!"YES".equals(idCheckRst))
@@ -132,19 +132,19 @@ public class HisOrderActivity extends BaseActivity
 		}
 		if(radioButton==null)
 		{
-			HealthUtil.infoAlert(HisOrderActivity.this, "ÓÃ»§ĞÔ±ğÎª¿Õ!");
+			HealthUtil.infoAlert(HisOrderActivity.this, "ç”¨æˆ·æ€§åˆ«ä¸ºç©º!");
 			return;
 		}else
 		{
 			this.sex=radioButton.getText().toString();
 		}
-		dialog.setMessage("ÕıÔÚÔ¤Ô¼,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨é¢„çº¦,è¯·ç¨å...");
 		dialog.show();
 		RequestParams param = webInterface.addUserRegisterOrder(userId, registerId, doctorId, doctorName, userOrderNum, fee, registerTime, userName, userNo, userTelephone,sex, teamId, teamName);
 		invokeWebServer(param,ADD_REGISTER_ORDER);
 	}
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -160,7 +160,7 @@ public class HisOrderActivity extends BaseActivity
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -182,7 +182,7 @@ public class HisOrderActivity extends BaseActivity
 				dialog.cancel();
 			}
 			
-			HealthUtil.infoAlert(HisOrderActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(HisOrderActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -211,7 +211,7 @@ public class HisOrderActivity extends BaseActivity
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int responseCode)
 	{
@@ -231,7 +231,7 @@ public class HisOrderActivity extends BaseActivity
 			String result = jsonObject.get("returnMsg").toString();
 			if("true".equals(result))
 			{
-				HealthUtil.infoAlert(HisOrderActivity.this, "Ô¤Ô¼³É¹¦...");
+				HealthUtil.infoAlert(HisOrderActivity.this, "é¢„çº¦æˆåŠŸ...");
 				Intent intent = new Intent(HisOrderActivity.this,ConfirmOrderActivity.class);
 				intent.putExtra("doctorName", doctorName   ); 
 				intent.putExtra("registerTime", registerTime ); 
@@ -246,13 +246,13 @@ public class HisOrderActivity extends BaseActivity
 				finish();
 			}else
 			{
-				HealthUtil.infoAlert(HisOrderActivity.this, "Ô¤Ô¼Ê§°Ü£¬ÇëÖØÊÔ...");
+				HealthUtil.infoAlert(HisOrderActivity.this, "é¢„çº¦å¤±è´¥ï¼Œè¯·é‡è¯•...");
 			}
 			break;
 		}
 		}catch(Exception e)
 		{
-			HealthUtil.infoAlert(HisOrderActivity.this, "Ô¤Ô¼Ê§°Ü£¬ÇëÖØÊÔ...");
+			HealthUtil.infoAlert(HisOrderActivity.this, "é¢„çº¦å¤±è´¥ï¼Œè¯·é‡è¯•...");
 		}
 		
 	}

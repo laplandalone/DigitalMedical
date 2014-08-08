@@ -24,13 +24,13 @@ public class RegApplication extends Application
 		return applicationContext;
 	}
 
-	// 添加Activity 到容器中
+	// 娣诲姞Activity 鍒板鍣ㄤ腑
 	public void addActivity(Activity activity)
 	{
 		activityList.add(activity);
 	}
 
-	// 遍历所有Activity 并finish
+	// 閬嶅巻鎵�鏈堿ctivity 骞秄inish
 	public void exit()
 	{
 		for (Activity activity : activityList)

@@ -13,30 +13,30 @@ import android.util.Log;
 import com.health.digitalmedical.tools.HealthUtil;
 
 /**
- * ÉÏ´«ÎÄ¼şµ½·şÎñÆ÷
+ * ä¸Šä¼ æ–‡ä»¶åˆ°æœåŠ¡å™¨
  * 
  * @author Administrator
  *
  */
 public class SocketHttpRequester {
     /**
-     * Ö±½ÓÍ¨¹ıHTTPĞ­ÒéÌá½»Êı¾İµ½·şÎñÆ÷,ÊµÏÖÈçÏÂÃæ±íµ¥Ìá½»¹¦ÄÜ:
+     * ç›´æ¥é€šè¿‡HTTPåè®®æäº¤æ•°æ®åˆ°æœåŠ¡å™¨,å®ç°å¦‚ä¸‹é¢è¡¨å•æäº¤åŠŸèƒ½:
      *   <FORM METHOD=POST ACTION="http://192.168.1.101:8083/upload/servlet/UploadServlet" enctype="multipart/form-data">
             <INPUT TYPE="text" NAME="name">
             <INPUT TYPE="text" NAME="id">
             <input type="file" name="imagefile"/>
             <input type="file" name="zip"/>
          </FORM>
-     * @param path ÉÏ´«Â·¾¶(×¢£º±ÜÃâÊ¹ÓÃlocalhost»ò127.0.0.1ÕâÑùµÄÂ·¾¶²âÊÔ£¬ÒòÎªËü»áÖ¸ÏòÊÖ»úÄ£ÄâÆ÷£¬Äã¿ÉÒÔÊ¹ÓÃhttp://www.iteye.cn»òhttp://192.168.1.101:8083ÕâÑùµÄÂ·¾¶²âÊÔ)
-     * @param params ÇëÇó²ÎÊı keyÎª²ÎÊıÃû,valueÎª²ÎÊıÖµ
-     * @param file ÉÏ´«ÎÄ¼ş
+     * @param path ä¸Šä¼ è·¯å¾„(æ³¨ï¼šé¿å…ä½¿ç”¨localhostæˆ–127.0.0.1è¿™æ ·çš„è·¯å¾„æµ‹è¯•ï¼Œå› ä¸ºå®ƒä¼šæŒ‡å‘æ‰‹æœºæ¨¡æ‹Ÿå™¨ï¼Œä½ å¯ä»¥ä½¿ç”¨http://www.iteye.cnæˆ–http://192.168.1.101:8083è¿™æ ·çš„è·¯å¾„æµ‹è¯•)
+     * @param params è¯·æ±‚å‚æ•° keyä¸ºå‚æ•°å,valueä¸ºå‚æ•°å€¼
+     * @param file ä¸Šä¼ æ–‡ä»¶
      */
     public static String post(String path, Map<String, String> params, FormFile[] files) throws Exception{     
-        final String BOUNDARY = "---------------------------7da2137580612"; //Êı¾İ·Ö¸ôÏß
-        final String endline = "--" + BOUNDARY + "--\r\n";//Êı¾İ½áÊø±êÖ¾
+        final String BOUNDARY = "---------------------------7da2137580612"; //æ•°æ®åˆ†éš”çº¿
+        final String endline = "--" + BOUNDARY + "--\r\n";//æ•°æ®ç»“æŸæ ‡å¿—
         HealthUtil.LOG_D(SocketHttpRequester.class, "upload--->post");
         int fileDataLength = 0;
-        for(FormFile uploadFile : files){//µÃµ½ÎÄ¼şÀàĞÍÊı¾İµÄ×Ü³¤¶È
+        for(FormFile uploadFile : files){//å¾—åˆ°æ–‡ä»¶ç±»å‹æ•°æ®çš„æ€»é•¿åº¦
             StringBuilder fileExplain = new StringBuilder();
              fileExplain.append("--");
              fileExplain.append(BOUNDARY);
@@ -56,7 +56,7 @@ public class SocketHttpRequester {
              }
         }
         StringBuilder textEntity = new StringBuilder();
-        for (Map.Entry<String, String> entry : params.entrySet()) {//¹¹ÔìÎÄ±¾ÀàĞÍ²ÎÊıµÄÊµÌåÊı¾İ
+        for (Map.Entry<String, String> entry : params.entrySet()) {//æ„é€ æ–‡æœ¬ç±»å‹å‚æ•°çš„å®ä½“æ•°æ®
             textEntity.append("--");
             textEntity.append(BOUNDARY);
             textEntity.append("\r\n");
@@ -64,7 +64,7 @@ public class SocketHttpRequester {
             textEntity.append(entry.getValue());
             textEntity.append("\r\n");
         }
-        //¼ÆËã´«Êä¸ø·şÎñÆ÷µÄÊµÌåÊı¾İ×Ü³¤¶È
+        //è®¡ç®—ä¼ è¾“ç»™æœåŠ¡å™¨çš„å®ä½“æ•°æ®æ€»é•¿åº¦
         int dataLength = textEntity.toString() .getBytes().length + fileDataLength +  endline.getBytes().length;
         
         URL url = new URL(path);
@@ -72,7 +72,7 @@ public class SocketHttpRequester {
         Socket socket = new Socket(InetAddress.getByName(url.getHost()), port);   
         Log.i("hbgz", "socket connected is " + socket.isConnected());
         OutputStream outStream = socket.getOutputStream();
-        //ÏÂÃæÍê³ÉHTTPÇëÇóÍ·µÄ·¢ËÍ
+        //ä¸‹é¢å®ŒæˆHTTPè¯·æ±‚å¤´çš„å‘é€
         String requestmethod = "POST "+ url.getPath()+" HTTP/1.1\r\n";
         outStream.write(requestmethod.getBytes());
         String accept = "Accept: image/gif, image/jpeg, image/pjpeg, image/pjpeg, application/x-shockwave-flash, application/xaml+xml, application/vnd.ms-xpsdocument, application/x-ms-xbap, application/x-ms-application, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*\r\n";
@@ -87,11 +87,11 @@ public class SocketHttpRequester {
         outStream.write(alive.getBytes());
         String host = "Host: "+ url.getHost() +":"+ port +"\r\n";
         outStream.write(host.getBytes());
-        //Ğ´ÍêHTTPÇëÇóÍ·ºó¸ù¾İHTTPĞ­ÒéÔÙĞ´Ò»¸ö»Ø³µ»»ĞĞ
+        //å†™å®ŒHTTPè¯·æ±‚å¤´åæ ¹æ®HTTPåè®®å†å†™ä¸€ä¸ªå›è½¦æ¢è¡Œ
         outStream.write("\r\n".getBytes());
-        //°ÑËùÓĞÎÄ±¾ÀàĞÍµÄÊµÌåÊı¾İ·¢ËÍ³öÀ´
+        //æŠŠæ‰€æœ‰æ–‡æœ¬ç±»å‹çš„å®ä½“æ•°æ®å‘é€å‡ºæ¥
         outStream.write(textEntity.toString().getBytes());           
-        //°ÑËùÓĞÎÄ¼şÀàĞÍµÄÊµÌåÊı¾İ·¢ËÍ³öÀ´
+        //æŠŠæ‰€æœ‰æ–‡ä»¶ç±»å‹çš„å®ä½“æ•°æ®å‘é€å‡ºæ¥
         for(FormFile uploadFile : files){
             StringBuilder fileEntity = new StringBuilder();
              fileEntity.append("--");
@@ -112,7 +112,7 @@ public class SocketHttpRequester {
              }
              outStream.write("\r\n".getBytes());
         }
-        //ÏÂÃæ·¢ËÍÊı¾İ½áÊø±êÖ¾£¬±íÊ¾Êı¾İÒÑ¾­½áÊø
+        //ä¸‹é¢å‘é€æ•°æ®ç»“æŸæ ‡å¿—ï¼Œè¡¨ç¤ºæ•°æ®å·²ç»ç»“æŸ
         outStream.write(endline.getBytes());
         outStream.flush();
         
@@ -146,10 +146,10 @@ public class SocketHttpRequester {
     }
     
     /**
-     * Ìá½»Êı¾İµ½·şÎñÆ÷
-     * @param path ÉÏ´«Â·¾¶(×¢£º±ÜÃâÊ¹ÓÃlocalhost»ò127.0.0.1ÕâÑùµÄÂ·¾¶²âÊÔ£¬ÒòÎªËü»áÖ¸ÏòÊÖ»úÄ£ÄâÆ÷£¬Äã¿ÉÒÔÊ¹ÓÃhttp://www.itcast.cn»òhttp://192.168.1.10:8080ÕâÑùµÄÂ·¾¶²âÊÔ)
-     * @param params ÇëÇó²ÎÊı keyÎª²ÎÊıÃû,valueÎª²ÎÊıÖµ
-     * @param file ÉÏ´«ÎÄ¼ş
+     * æäº¤æ•°æ®åˆ°æœåŠ¡å™¨
+     * @param path ä¸Šä¼ è·¯å¾„(æ³¨ï¼šé¿å…ä½¿ç”¨localhostæˆ–127.0.0.1è¿™æ ·çš„è·¯å¾„æµ‹è¯•ï¼Œå› ä¸ºå®ƒä¼šæŒ‡å‘æ‰‹æœºæ¨¡æ‹Ÿå™¨ï¼Œä½ å¯ä»¥ä½¿ç”¨http://www.itcast.cnæˆ–http://192.168.1.10:8080è¿™æ ·çš„è·¯å¾„æµ‹è¯•)
+     * @param params è¯·æ±‚å‚æ•° keyä¸ºå‚æ•°å,valueä¸ºå‚æ•°å€¼
+     * @param file ä¸Šä¼ æ–‡ä»¶
      */
     public static String post(String path, Map<String, String> params, FormFile file) throws Exception{
        return post(path, params, new FormFile[]{file});

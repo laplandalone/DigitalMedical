@@ -42,37 +42,37 @@ public class MyHealthActivity extends BaseActivity
 	@OnClick(R.id.health_1)
 	public void health1(View v)
 	{
-		HealthUtil.infoAlert(MyHealthActivity.this, "ÕýÔÚ½¨ÉèÖÐ...");
+		HealthUtil.infoAlert(MyHealthActivity.this, "æ­£åœ¨å»ºè®¾ä¸­...");
 	}
 	
 	@OnClick(R.id.health_2)
 	public void health2(View v)
 	{
-		HealthUtil.infoAlert(MyHealthActivity.this, "ÕýÔÚ½¨ÉèÖÐ...");
+		HealthUtil.infoAlert(MyHealthActivity.this, "æ­£åœ¨å»ºè®¾ä¸­...");
 	}
 	
 	@OnClick(R.id.health_3)
 	public void health3(View v)
 	{
-		HealthUtil.infoAlert(MyHealthActivity.this, "ÕýÔÚ½¨ÉèÖÐ...");
+		HealthUtil.infoAlert(MyHealthActivity.this, "æ­£åœ¨å»ºè®¾ä¸­...");
 	}
 	
 	@OnClick(R.id.health_4)
 	public void health4(View v)
 	{
-		HealthUtil.infoAlert(MyHealthActivity.this, "ÕýÔÚ½¨ÉèÖÐ...");
+		HealthUtil.infoAlert(MyHealthActivity.this, "æ­£åœ¨å»ºè®¾ä¸­...");
 	}
 	
 	@OnClick(R.id.health_5)
 	public void health5(View v)
 	{
-		HealthUtil.infoAlert(MyHealthActivity.this, "ÕýÔÚ½¨ÉèÖÐ...");
+		HealthUtil.infoAlert(MyHealthActivity.this, "æ­£åœ¨å»ºè®¾ä¸­...");
 	}
 	
 	@OnClick(R.id.health_6)
 	public void health6(View v)
 	{
-		HealthUtil.infoAlert(MyHealthActivity.this, "ÕýÔÚ½¨ÉèÖÐ...");
+		HealthUtil.infoAlert(MyHealthActivity.this, "æ­£åœ¨å»ºè®¾ä¸­...");
 	}
 	
 	@Override
@@ -86,7 +86,7 @@ public class MyHealthActivity extends BaseActivity
 	protected void initValue()
 	{
 		// TODO Auto-generated method stub
-		title.setText("¾ÍÕïµµ°¸");
+		title.setText("å°±è¯Šæ¡£æ¡ˆ");
 	}
 
 }

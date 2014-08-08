@@ -61,8 +61,8 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 	String questionType = "";
 	List<UserQuestionT> questionTs;
 	private Doctor doctor;
-	private View view1, view2;// ĞèÒª»¬¶¯µÄÒ³¿¨
-	private List<View> viewList;//°ÑĞèÒª»¬¶¯µÄÒ³¿¨Ìí¼Óµ½Õâ¸ölistÖĞ  
+	private View view1, view2;// éœ€è¦æ»‘åŠ¨çš„é¡µå¡
+	private List<View> viewList;//æŠŠéœ€è¦æ»‘åŠ¨çš„é¡µå¡æ·»åŠ åˆ°è¿™ä¸ªlistä¸­  
 
 	@ViewInject(R.id.tv_tab_hot)
 	TextView tabHot;
@@ -137,7 +137,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 	@OnClick(R.id.tv_tab_my)
 	public void toTabmy(View v)
 	{
-		HealthUtil.infoAlert(TabQuestionActivity.this, "ÕıÔÚ½¨ÉèÖĞ");
+		HealthUtil.infoAlert(TabQuestionActivity.this, "æ­£åœ¨å»ºè®¾ä¸­");
 	}
 	
 	
@@ -145,7 +145,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		title.setText("ÔÚÏßÌáÎÊ");
+		title.setText("åœ¨çº¿æé—®");
 		settings.setVisibility(View.VISIBLE);
 		settings.setBackgroundResource(R.drawable.btn_my_online);
 		
@@ -177,7 +177,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 		
 		Button questionBtn = (Button) view2.findViewById(R.id.submit);
 		
-		viewList = new ArrayList<View>();// ½«Òª·ÖÒ³ÏÔÊ¾µÄView×°ÈëÊı×éÖĞ
+		viewList = new ArrayList<View>();// å°†è¦åˆ†é¡µæ˜¾ç¤ºçš„Viewè£…å…¥æ•°ç»„ä¸­
 		viewList.add(view1);
 		viewList.add(view2);
 		viewPager.setAdapter(new ViewPagerAdapter(viewList));  
@@ -230,7 +230,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 	protected void initValue()
 	{
 		// TODO Auto-generated method stub
-		dialog.setMessage("ÕıÔÚ¼ÓÔØ,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨åŠ è½½,è¯·ç¨å...");
 		dialog.show();
 		
 		Doctor doctor = (Doctor) getIntent().getSerializableExtra("doctor");
@@ -241,7 +241,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 	}
 
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -257,7 +257,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -279,7 +279,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 				dialog.cancel();
 			}
 
-			HealthUtil.infoAlert(TabQuestionActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(TabQuestionActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -302,7 +302,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int code)
 	{

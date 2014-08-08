@@ -24,7 +24,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
- * ¿ÆÊÒÒ½Éú
+ * ç§‘å®¤åŒ»ç”Ÿ
  * 
  */
 public class OfficeDoctorListActivity extends BaseActivity implements OnItemClickListener

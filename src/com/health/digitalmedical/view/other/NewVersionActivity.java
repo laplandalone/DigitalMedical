@@ -46,7 +46,7 @@ public class NewVersionActivity extends BaseActivity implements OnClickListener{
 		mApplicationVersionCode = mBundle.getString("applicationVersionCode");
 		mApplicationUrl = mBundle.getString("applicationUrl");
 		mForceUpdateFlag = mBundle.getString("forceUpdateFlag");
-		remarkTxt.setText("°æ±¾£º" + mApplicationVersionCode + "\n¸üĞÂÄÚÈİ£º\n" + mBundle.getString("remark"));
+		remarkTxt.setText("ç‰ˆæœ¬ï¼š" + mApplicationVersionCode + "\næ›´æ–°å†…å®¹ï¼š\n" + mBundle.getString("remark"));
 		if (!"N".equalsIgnoreCase(mForceUpdateFlag)) {
 			cancelBtn.setVisibility(View.GONE);
 		}
@@ -71,13 +71,13 @@ public class NewVersionActivity extends BaseActivity implements OnClickListener{
 				
 				float size = current / 1024F /1024F;
 //				float totalSize = total / 1024F /1024F;
-				updateBtn.setText("ÕıÔÚÏÂÔØ(ÒÑÏÂÔØ" + size + "M)");
+				updateBtn.setText("æ­£åœ¨ä¸‹è½½(å·²ä¸‹è½½" + size + "M)");
 				super.onLoading(total, current, isUploading);
 			}
 
 			@Override
 			public void onSuccess(ResponseInfo<File> arg0) {
-				updateBtn.setText("ÏÂÔØÍê³É");
+				updateBtn.setText("ä¸‹è½½å®Œæˆ");
 				installApkByGuide(HealthConstant.Download_path+"digitalhealth" + mApplicationVersionCode + ".apk");
 			}
 			
@@ -87,7 +87,7 @@ public class NewVersionActivity extends BaseActivity implements OnClickListener{
 				if (arg0 != null && arg0.getExceptionCode() == 416) {
 					installApkByGuide(HealthConstant.Download_path+"haochilao" + mApplicationVersionCode + ".apk");
 				} else {
-					updateBtn.setText("µã»÷ÖØÊÔ");
+					updateBtn.setText("ç‚¹å‡»é‡è¯•");
 					updateBtn.setEnabled(true);
 				}
 			}

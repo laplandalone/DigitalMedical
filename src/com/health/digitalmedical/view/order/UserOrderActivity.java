@@ -58,7 +58,7 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		title.setText("ÎÒµÄÔ¤Ô¼");
+		title.setText("æˆ‘çš„é¢„çº¦");
 	}
 
 
@@ -74,7 +74,7 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 	protected void initValue()
 	{
 		// TODO Auto-generated method stub
-		dialog.setMessage("ÕıÔÚ¼ÓÔØ,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨åŠ è½½,è¯·ç¨å...");
 		dialog.show();
 		this.user=HealthUtil.getUserInfo();
 		String userId=user.getUserId();
@@ -83,7 +83,7 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 	}
 	
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -99,7 +99,7 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -124,7 +124,7 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 			{
 				// list.stopLoadMore();
 			}
-			HealthUtil.infoAlert(UserOrderActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(UserOrderActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -150,7 +150,7 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int code)
 	{

@@ -103,7 +103,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 	private String userTelephone;
 	private String sex;
 	private Team team;
-    private String dayTime="ÉÏÎç";
+    private String dayTime="ä¸Šåˆ";
     private String dayWeek="";
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -122,10 +122,10 @@ public class CommonOrderRegisterActivity extends BaseActivity
 		String dateStr=registerDate.getText().toString()+" 12:00:00";
 		if(DateUtils.checkDay(dateStr))
 		{
-			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "Ô¤Ô¼Ê±¼äÒÑ¹ı£¡");
+			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "é¢„çº¦æ—¶é—´å·²è¿‡ï¼");
 			return;
 		}
-		this.dayTime="ÉÏÎç";
+		this.dayTime="ä¸Šåˆ";
 		imageTime1.setVisibility(View.VISIBLE);
 		imageTime2.setVisibility(View.GONE);
 	}
@@ -135,7 +135,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 	{
 		imageTime1.setVisibility(View.GONE);
 		imageTime2.setVisibility(View.VISIBLE);
-		this.dayTime="ÏÂÎç";
+		this.dayTime="ä¸‹åˆ";
 	}
 	
 	@OnClick(R.id.edit_user_info)
@@ -144,14 +144,14 @@ public class CommonOrderRegisterActivity extends BaseActivity
 		String dateStr=registerDate.getText().toString()+" 16:30:00";
 		if(DateUtils.checkDay(dateStr))
 		{
-			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "Ô¤Ô¼Ê±¼äÒÑ¹ı£¡");
+			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "é¢„çº¦æ—¶é—´å·²è¿‡ï¼");
 			return;
 		}
 		Intent intent = new Intent(CommonOrderRegisterActivity.this, HisOrderActivity.class);
 		
 		dayWeek=DateUtils.getWeekOfStr(registerDate.getText().toString());
 		intent.putExtra("doctorName", doctorName);
-		intent.putExtra("registerTime", registerDate.getText()+" ĞÇÆÚ"+dayWeek+" "+dayTime);
+		intent.putExtra("registerTime", registerDate.getText()+" æ˜ŸæœŸ"+dayWeek+" "+dayTime);
 		intent.putExtra("fee", fee);
 		intent.putExtra("registerId",registerId);
 		intent.putExtra("userOrderNum", userOrderNum);
@@ -173,7 +173,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 	@OnClick(R.id.calendar_btn)
 	public void clickCalendarBtn(View v)
 	{
-		new AlertDialog.Builder(CommonOrderRegisterActivity.this).setTitle("ÌáÊ¾").setIcon(android.R.drawable.ic_dialog_map)
+		new AlertDialog.Builder(CommonOrderRegisterActivity.this).setTitle("æç¤º").setIcon(android.R.drawable.ic_dialog_map)
 				.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data), new DialogInterface.OnClickListener()
 				{
 					@Override
@@ -187,7 +187,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
-		title.setText("ĞÅÏ¢È·ÈÏ");
+		title.setText("ä¿¡æ¯ç¡®è®¤");
 		stepTwo.setBackgroundResource(R.drawable.bg_step_2);
 		// TODO Auto-generated method stub
 		registerDate.setText(thisDate);
@@ -196,12 +196,12 @@ public class CommonOrderRegisterActivity extends BaseActivity
 		{
 			imageTime1.setVisibility(View.GONE);
 			imageTime2.setVisibility(View.VISIBLE);
-			this.dayTime="ÏÂÎç";
+			this.dayTime="ä¸‹åˆ";
 		}else
 		{
 			imageTime1.setVisibility(View.VISIBLE);
 			imageTime2.setVisibility(View.GONE);
-			this.dayTime="ÉÏÎç";
+			this.dayTime="ä¸Šåˆ";
 		}
 		
 		group.setOnCheckedChangeListener(new OnCheckedChangeListener()
@@ -209,11 +209,11 @@ public class CommonOrderRegisterActivity extends BaseActivity
 			@Override
 			public void onCheckedChanged(RadioGroup arg0, int arg1)
 			{
-				// »ñÈ¡±ä¸üºóµÄÑ¡ÖĞÏîµÄID
+				// è·å–å˜æ›´åçš„é€‰ä¸­é¡¹çš„ID
 				int radioButtonId = arg0.getCheckedRadioButtonId();
-				// ¸ù¾İID»ñÈ¡RadioButtonµÄÊµÀı
+				// æ ¹æ®IDè·å–RadioButtonçš„å®ä¾‹
 				RadioButton rb = (RadioButton) CommonOrderRegisterActivity.this.findViewById(radioButtonId);
-				// ¸üĞÂÎÄ±¾ÄÚÈİ£¬ÒÔ·ûºÏÑ¡ÖĞÏî
+				// æ›´æ–°æ–‡æœ¬å†…å®¹ï¼Œä»¥ç¬¦åˆé€‰ä¸­é¡¹
 				sex=rb.getText().toString();
 			}
 		});
@@ -271,12 +271,12 @@ public class CommonOrderRegisterActivity extends BaseActivity
 		this.userTelephone = editPhone.getText().toString().trim();
 		dayWeek=DateUtils.getWeekOfStr(registerDate.getText().toString());
 		
-		this.registerTime=registerDate.getText().toString().trim()+" ĞÇÆÚ"+dayWeek+" "+dayTime;
+		this.registerTime=registerDate.getText().toString().trim()+" æ˜ŸæœŸ"+dayWeek+" "+dayTime;
 		
 		String dateStr=registerDate.getText().toString()+" 16:30:00";
 		if(DateUtils.checkDay(dateStr))
 		{
-			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "Ô¤Ô¼Ê±¼äÒÑ¹ı£¡");
+			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "é¢„çº¦æ—¶é—´å·²è¿‡ï¼");
 			return;
 		}
 	
@@ -284,7 +284,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 		RadioButton radioButton = (RadioButton)findViewById(group.getCheckedRadioButtonId());
 		if(radioButton==null)
 		{
-			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "ÓÃ»§ĞÔ±ğÎª¿Õ!");
+			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "ç”¨æˆ·æ€§åˆ«ä¸ºç©º!");
 			return;
 		}else
 		{
@@ -292,12 +292,12 @@ public class CommonOrderRegisterActivity extends BaseActivity
 		}
 		if ("".equals(userName))
 		{
-			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "ÓÃ»§ÃûÎª¿Õ!");
+			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "ç”¨æˆ·åä¸ºç©º!");
 			return;
 		}
 		if (!HealthUtil.isMobileNum(userTelephone))
 		{
-			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "ÊÖ»úºÅÂëÎª¿Õ»ò¸ñÊ½´íÎó!");
+			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "æ‰‹æœºå·ç ä¸ºç©ºæˆ–æ ¼å¼é”™è¯¯!");
 			return;
 		}
 		if (!"YES".equals(idCheckRst))
@@ -306,7 +306,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 			return;
 		}
 		
-		dialog.setMessage("ÕıÔÚÔ¤Ô¼,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨é¢„çº¦,è¯·ç¨å...");
 		dialog.show();
 
 		RequestParams param = webInterface.addUserRegisterOrder(userId, registerId, doctorId, doctorName, userOrderNum, fee, registerTime, userName,
@@ -316,7 +316,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 	}
 
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -332,7 +332,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -354,7 +354,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 				dialog.cancel();
 			}
 
-			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -377,7 +377,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int responseCode)
 	{
@@ -396,7 +396,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 				String result = jsonObject.get("returnMsg").toString();
 				if ("true".equals(result))
 				{
-					HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "Ô¤Ô¼³É¹¦...");
+					HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "é¢„çº¦æˆåŠŸ...");
 					Intent intent = new Intent(CommonOrderRegisterActivity.this, ConfirmOrderActivity.class);
 					intent.putExtra("doctorName", doctorName);
 					intent.putExtra("registerTime", registerTime);
@@ -411,13 +411,13 @@ public class CommonOrderRegisterActivity extends BaseActivity
 					finish();
 				} else
 				{
-					HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "Ô¤Ô¼Ê§°Ü£¬ÇëÖØÊÔ...");
+					HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "é¢„çº¦å¤±è´¥ï¼Œè¯·é‡è¯•...");
 				}
 				break;
 			}
 		} catch (Exception e)
 		{
-			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "Ô¤Ô¼Ê§°Ü£¬ÇëÖØÊÔ...");
+			HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "é¢„çº¦å¤±è´¥ï¼Œè¯·é‡è¯•...");
 		}
 
 	}

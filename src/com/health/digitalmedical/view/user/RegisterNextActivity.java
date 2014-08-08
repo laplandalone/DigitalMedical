@@ -58,15 +58,15 @@ public class RegisterNextActivity extends BaseActivity
 		String confirmPd=confirmPasswordET.getText()+"";
 		if("".equals(password) || "".equals(confirmPd))
 		{
-			HealthUtil.infoAlert(RegisterNextActivity.this, "ÃÜÂëÎª¿Õ£¬ÇëÊäÈë");
+			HealthUtil.infoAlert(RegisterNextActivity.this, "å¯†ç ä¸ºç©ºï¼Œè¯·è¾“å…¥");
 			
 		}else if( password.length()<6 || password.length()>12)
 		{
-			HealthUtil.infoAlert(RegisterNextActivity.this, "ÃÜÂë³¤¶ÈÓĞÎó£¬ÖØĞÂÊäÈë");
+			HealthUtil.infoAlert(RegisterNextActivity.this, "å¯†ç é•¿åº¦æœ‰è¯¯ï¼Œé‡æ–°è¾“å…¥");
 			
 		}else if(!password.equals(confirmPd))
 		{
-			HealthUtil.infoAlert(RegisterNextActivity.this, "ÃÜÂë²»Ò»ÖÂ£¬ÇëÖØĞÂÊäÈë");
+			HealthUtil.infoAlert(RegisterNextActivity.this, "å¯†ç ä¸ä¸€è‡´ï¼Œè¯·é‡æ–°è¾“å…¥");
 			
 		}else if(password.equals(confirmPd))
 		{
@@ -94,7 +94,7 @@ public class RegisterNextActivity extends BaseActivity
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		title.setText("ÊäÈëÃÜÂë");
+		title.setText("è¾“å…¥å¯†ç ");
 	}
 
 	@Override
@@ -105,7 +105,7 @@ public class RegisterNextActivity extends BaseActivity
 	}
 
 /**
- * Á´½Óweb·şÎñ
+ * é“¾æ¥webæœåŠ¡
  * 
  * @param param
  */
@@ -121,7 +121,7 @@ private void invokeWebServer(RequestParams param, int responseCode)
 }
 
 /**
- * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+ * è·å–åå°è¿”å›çš„æ•°æ®
  */
 class MineRequestCallBack extends RequestCallBack<String>
 {
@@ -143,7 +143,7 @@ class MineRequestCallBack extends RequestCallBack<String>
 			dialog.cancel();
 		}
 		
-		HealthUtil.infoAlert(RegisterNextActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+		HealthUtil.infoAlert(RegisterNextActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 	}
 
 	@Override
@@ -167,7 +167,7 @@ class MineRequestCallBack extends RequestCallBack<String>
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int code)
 	{
@@ -179,17 +179,17 @@ class MineRequestCallBack extends RequestCallBack<String>
 			String executeType = jsonObject.get("executeType").toString();
 			if (!"success".equals(executeType))
 			{
-				HealthUtil.infoAlert(RegisterNextActivity.this, "×¢²áÊ§°Ü£¬ÇëÖØÊÔ");
+				HealthUtil.infoAlert(RegisterNextActivity.this, "æ³¨å†Œå¤±è´¥ï¼Œè¯·é‡è¯•");
 			
 			}else
 			{
 				String returnMsg = jsonObject.get("returnMsg").toString();
 				if(returnMsg.equals("1"))
 				{
-					HealthUtil.infoAlert(RegisterNextActivity.this, "¸ÃÊÖ»úºÅÒÑ×¢²á");
+					HealthUtil.infoAlert(RegisterNextActivity.this, "è¯¥æ‰‹æœºå·å·²æ³¨å†Œ");
 				}else
 				{
-					HealthUtil.infoAlert(RegisterNextActivity.this, "×¢²á³É¹¦");
+					HealthUtil.infoAlert(RegisterNextActivity.this, "æ³¨å†ŒæˆåŠŸ");
 					Intent intent = new Intent(RegisterNextActivity.this,LoginActivity.class);
 					startActivity(intent);
 					exit();

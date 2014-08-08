@@ -58,10 +58,10 @@ public class NewsTypeActivity extends BaseActivity implements OnItemClickListene
 		this.type=getIntent().getStringExtra("type");
 		if("BAIKE".equals(type))
 		{
-			title.setText("½¡¿µ°Ù¿Æ");
+			title.setText("å¥åº·ç™¾ç§‘");
 		}else
 		{
-			title.setText("»¼½ÌÖĞĞÄ");
+			title.setText("æ‚£æ•™ä¸­å¿ƒ");
 		}
 	}
 
@@ -70,7 +70,7 @@ public class NewsTypeActivity extends BaseActivity implements OnItemClickListene
 	{
 		// TODO Auto-generated method stub
 		// getListRst();
-		dialog.setMessage("ÕıÔÚ¼ÓÔØ,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨åŠ è½½,è¯·ç¨å...");
 		dialog.show();
 		String hospitalId=HealthUtil.readHospitalId();
 		RequestParams param = webInterface.getNewsType(hospitalId, this.type);
@@ -86,7 +86,7 @@ public class NewsTypeActivity extends BaseActivity implements OnItemClickListene
 	}
 	
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -102,7 +102,7 @@ public class NewsTypeActivity extends BaseActivity implements OnItemClickListene
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -127,7 +127,7 @@ public class NewsTypeActivity extends BaseActivity implements OnItemClickListene
 			{
 				// list.stopLoadMore();
 			}
-			HealthUtil.infoAlert(NewsTypeActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(NewsTypeActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -153,7 +153,7 @@ public class NewsTypeActivity extends BaseActivity implements OnItemClickListene
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 * executeType
 	 */
 	private void returnMsg(String json, int code)
@@ -165,7 +165,7 @@ public class NewsTypeActivity extends BaseActivity implements OnItemClickListene
 		String executeType = jsonObject.get("executeType").getAsString();
 		if (!"success".equals(executeType))
 		{
-			HealthUtil.infoAlert(NewsTypeActivity.this, "¼ÓÔØÊ§°ÜÇëÖØÊÔ.");
+			HealthUtil.infoAlert(NewsTypeActivity.this, "åŠ è½½å¤±è´¥è¯·é‡è¯•.");
 			return;
 		}
 		this.jsonArray = jsonObject.getAsJsonArray("returnMsg");

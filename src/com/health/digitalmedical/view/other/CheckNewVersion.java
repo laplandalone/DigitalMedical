@@ -60,7 +60,7 @@ public class CheckNewVersion extends Service{
 	}
 	
 	/**
-	 * Á´½Ó·şÎñÆ÷
+	 * é“¾æ¥æœåŠ¡å™¨
 	 * 
 	 * @param param
 	 */
@@ -76,7 +76,7 @@ public class CheckNewVersion extends Service{
 	}
 
 	/**
-	 * ·µ»Ø½á¹û´¦Àí
+	 * è¿”å›ç»“æœå¤„ç†
 	 */
 	class MineRequestCallBack extends RequestCallBack<String> {
 
@@ -114,12 +114,12 @@ public class CheckNewVersion extends Service{
 			JSONObject returnJson = jsonObject.getJSONObject("returnMsg");
 			if (!"success".equals(executeType))
 			{
-				Toast toast = Toast.makeText(this, "¼ÓÔØÊ§°ÜÇëÖØÊÔ.", Toast.LENGTH_SHORT);
+				Toast toast = Toast.makeText(this, "åŠ è½½å¤±è´¥è¯·é‡è¯•.", Toast.LENGTH_SHORT);
 				toast.setGravity(Gravity.CENTER, 0, 0);
 				toast.show();
 				return;
 			}
-			/** xjz 2014-05-21 µ±returnJsonÎª¿ÕµÄÊ±ºò»á±¨Òì³£ end*/
+			/** xjz 2014-05-21 å½“returnJsonä¸ºç©ºçš„æ—¶å€™ä¼šæŠ¥å¼‚å¸¸ end*/
 			if(returnJson.length() > 0)
 			{
 				String remark = returnJson.getString("remark");
@@ -142,7 +142,7 @@ public class CheckNewVersion extends Service{
 				{
 					if("hand".equals(this.flag))
 					{
-						Toast toast = Toast.makeText(this, "µ±Ç°ÒÑÊÇ×îĞÂ°æ±¾,°æ±¾ºÅ:"+versionName, Toast.LENGTH_SHORT);
+						Toast toast = Toast.makeText(this, "å½“å‰å·²æ˜¯æœ€æ–°ç‰ˆæœ¬,ç‰ˆæœ¬å·:"+versionName, Toast.LENGTH_SHORT);
 						toast.setGravity(Gravity.CENTER, 0, 0);
 						toast.show();
 					}

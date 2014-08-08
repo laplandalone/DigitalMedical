@@ -14,7 +14,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 /**
  * 
- * �Һ�ԤԼ
+ * 挂号预约
  *
  */
 public class ConfirmOrderActivity extends BaseActivity
@@ -87,7 +87,7 @@ public class ConfirmOrderActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
-		title.setText("ԤԼ����");
+		title.setText("预约详情");
 		// TODO Auto-generated method stub
 		String registerNum=getIntent().getStringExtra("userOrderNum"  );
 		String fee=getIntent().getStringExtra("fee"           );

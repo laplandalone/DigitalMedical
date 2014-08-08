@@ -59,7 +59,7 @@ public class DoctorDetailActivity extends BaseActivity
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		title.setText("Ò½ÉúÏêÇé");
+		title.setText("åŒ»ç”Ÿè¯¦æƒ…");
 	}
 
 	@Override

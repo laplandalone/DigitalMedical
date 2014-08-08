@@ -22,7 +22,7 @@ public class StringUtil
 	  {
 	    if (paramString == null)
 	      return "";
-	    return paramString.replace("&ldquo;", "°∞").replace("&rdquo;", "°±").replace("&quot;", "\"").replaceAll("<p>", "").replaceAll("</p>", "").replaceAll("<o:p>", "").replaceAll("</o:p>", "");
+	    return paramString.replace("&ldquo;", "‚Äú").replace("&rdquo;", "‚Äù").replace("&quot;", "\"").replaceAll("<p>", "").replaceAll("</p>", "").replaceAll("<o:p>", "").replaceAll("</o:p>", "");
 	  }
 	/**
      * @author : tiankang

@@ -12,32 +12,32 @@ public class ViewPagerAdapter extends PagerAdapter
 
 	public ViewPagerAdapter(List<View> mListViews)
 	{
-		this.mListViews = mListViews;// ¹¹Ôì·½·¨£¬²ÎÊıÊÇÎÒÃÇµÄÒ³¿¨£¬ÕâÑù±È½Ï·½±ã¡£
+		this.mListViews = mListViews;// æ„é€ æ–¹æ³•ï¼Œå‚æ•°æ˜¯æˆ‘ä»¬çš„é¡µå¡ï¼Œè¿™æ ·æ¯”è¾ƒæ–¹ä¾¿ã€‚
 	}
 
 	@Override
 	public void destroyItem(ViewGroup container, int position, Object object)
 	{
-		container.removeView(mListViews.get(position));// É¾³ıÒ³¿¨
+		container.removeView(mListViews.get(position));// åˆ é™¤é¡µå¡
 	}
 
 	@Override
 	public Object instantiateItem(ViewGroup container, int position)
-	{ // Õâ¸ö·½·¨ÓÃÀ´ÊµÀı»¯Ò³¿¨
-		container.addView(mListViews.get(position), 0);// Ìí¼ÓÒ³¿¨
+	{ // è¿™ä¸ªæ–¹æ³•ç”¨æ¥å®ä¾‹åŒ–é¡µå¡
+		container.addView(mListViews.get(position), 0);// æ·»åŠ é¡µå¡
 		return mListViews.get(position);
 	}
 
 	@Override
 	public int getCount()
 	{
-		return mListViews.size();// ·µ»ØÒ³¿¨µÄÊıÁ¿
+		return mListViews.size();// è¿”å›é¡µå¡çš„æ•°é‡
 	}
 
 	@Override
 	public boolean isViewFromObject(View arg0, Object arg1)
 	{
-		return arg0 == arg1;// ¹Ù·½ÌáÊ¾ÕâÑùĞ´
+		return arg0 == arg1;// å®˜æ–¹æç¤ºè¿™æ ·å†™
 	}
 
 }

@@ -25,7 +25,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
- * ¿ÆÊÒ½éÉÜ
+ * ç§‘å®¤ä»‹ç»
  *
  */
 public class OnLineFacultyDescActivity extends BaseActivity
@@ -44,11 +44,11 @@ public class OnLineFacultyDescActivity extends BaseActivity
 	private TextView content;
 	
 	@ViewInject(R.id.imgViewPager)
-	ImgViewPager myPager; // Í¼Æ¬ÈİÆ÷
+	ImgViewPager myPager; // å›¾ç‰‡å®¹å™¨
 	
 	private Team team;
 	
-	private List<View> listViews; // Í¼Æ¬×é
+	private List<View> listViews; // å›¾ç‰‡ç»„
 	
 	private BitmapUtils bitmapUtils;
 	
@@ -91,7 +91,7 @@ public class OnLineFacultyDescActivity extends BaseActivity
 	}
 	
 	/**
-	 * ³õÊ¼»¯Í¼Æ¬
+	 * åˆå§‹åŒ–å›¾ç‰‡
 	 */
 	private void InitViewPager()
 	{
@@ -119,9 +119,9 @@ public class OnLineFacultyDescActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
-		title.setText("¿ÆÊÒ½éÉÜ");
+		title.setText("ç§‘å®¤ä»‹ç»");
 		// TODO Auto-generated method stub
-		InitViewPager();// ³õÊ¼»¯Í¼Æ¬
+		InitViewPager();// åˆå§‹åŒ–å›¾ç‰‡
 		myPager.start(this, listViews, 4000, null, R.layout.ad_bottom_item, R.id.ad_item_v,
 				R.drawable.dot_focused, R.drawable.dot_normal);
 	}

@@ -62,8 +62,8 @@ public class DoctorListAdapter  extends BaseAdapter
 			 TextView goodJob = (TextView)convertView.findViewById( R.id.good_job);
 			 String value=unhandList.get(position).get("text").toString();
 			 textView.setText(value);
-			 doctorPosition.setText(value+"¸±½ÌÊÚ2");
-			 goodJob.setText(value+"´ÓÊÂÒ½ÁÆºÃ¶àÄê1");
+			 doctorPosition.setText(value+"å‰¯æ•™æŽˆ2");
+			 goodJob.setText(value+"ä»Žäº‹åŒ»ç–—å¥½å¤šå¹´1");
 		}
 		return convertView;
 	}

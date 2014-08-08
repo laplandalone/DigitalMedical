@@ -125,7 +125,7 @@ public class RegisterActivity extends BaseActivity
 			e.printStackTrace();
 		}
 		Count=0;
-		pswBtn.setText("»ñÈ¡ÑéÖ¤Âë");
+		pswBtn.setText("è·å–éªŒè¯ç ");
 	}
 	@OnClick(R.id.get_config_num)
 	public void getConfiNum(View v)
@@ -139,7 +139,7 @@ public class RegisterActivity extends BaseActivity
 	
 		if (!HealthUtil.isMobileNum(telephone))
 		{
-			HealthUtil.infoAlert(RegisterActivity.this, "ÊÖ»úºÅÂëÎª¿Õ»ò¸ñÊ½´íÎó!");
+			HealthUtil.infoAlert(RegisterActivity.this, "æ‰‹æœºå·ç ä¸ºç©ºæˆ–æ ¼å¼é”™è¯¯!");
 			return;
 		}else
 		{
@@ -171,7 +171,7 @@ public class RegisterActivity extends BaseActivity
 	}
 
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -187,7 +187,7 @@ public class RegisterActivity extends BaseActivity
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -209,7 +209,7 @@ public class RegisterActivity extends BaseActivity
 				dialog.cancel();
 			}
 			cancelTimer();
-			HealthUtil.infoAlert(RegisterActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(RegisterActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -235,7 +235,7 @@ public class RegisterActivity extends BaseActivity
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int responseCode)
 	{
@@ -257,13 +257,13 @@ public class RegisterActivity extends BaseActivity
 				if("000".equals(status))
 				{
 					cancelTimer();
-					HealthUtil.infoAlert(RegisterActivity.this, "¸ÃºÅÂëÒÑ×¢²á£¬ÇëÖØÊÔ...");
+					HealthUtil.infoAlert(RegisterActivity.this, "è¯¥å·ç å·²æ³¨å†Œï¼Œè¯·é‡è¯•...");
 					return;
 				}
 				if(!"100".equals(status))
 				{
 					cancelTimer();
-					HealthUtil.infoAlert(RegisterActivity.this, "»ñÈ¡ÑéÖ¤ÂëÊ§°Ü£¬ÇëÖØÊÔ...");
+					HealthUtil.infoAlert(RegisterActivity.this, "è·å–éªŒè¯ç å¤±è´¥ï¼Œè¯·é‡è¯•...");
 					return;
 				}else
 				{
@@ -282,7 +282,7 @@ public class RegisterActivity extends BaseActivity
 					finish();
 			    }else
 			    {
-			    	HealthUtil.infoAlert(RegisterActivity.this, "ÊÖ»úºÅ»òÑéÖ¤ÂëÊäÈëÓĞÎó£¬ÇëÖØÊÔ...");
+			    	HealthUtil.infoAlert(RegisterActivity.this, "æ‰‹æœºå·æˆ–éªŒè¯ç è¾“å…¥æœ‰è¯¯ï¼Œè¯·é‡è¯•...");
 			    }
 			    break;
 			}
@@ -293,10 +293,10 @@ public class RegisterActivity extends BaseActivity
 			{
 			    case AUTH_CODE:
 			    	cancelTimer();
-					HealthUtil.infoAlert(RegisterActivity.this, "»ñÈ¡ÑéÖ¤ÂëÊ§°Ü,ÇëÖØÊÔ...");
+					HealthUtil.infoAlert(RegisterActivity.this, "è·å–éªŒè¯ç å¤±è´¥,è¯·é‡è¯•...");
 					break;
 			    case CHECK_AUTH_CODE:
-			    	HealthUtil.infoAlert(RegisterActivity.this, "ÊÖ»úºÅ»òÑéÖ¤ÂëÊäÈëÓĞÎó,ÇëÖØÊÔ...");
+			    	HealthUtil.infoAlert(RegisterActivity.this, "æ‰‹æœºå·æˆ–éªŒè¯ç è¾“å…¥æœ‰è¯¯,è¯·é‡è¯•...");
 			    	break;
 			}
 			 
@@ -313,12 +313,12 @@ public class RegisterActivity extends BaseActivity
 		
 		if (!HealthUtil.isMobileNum(telephone))
 		{
-			HealthUtil.infoAlert(RegisterActivity.this, "ÊÖ»úºÅÂëÎª¿Õ»ò¸ñÊ½´íÎó!");
+			HealthUtil.infoAlert(RegisterActivity.this, "æ‰‹æœºå·ç ä¸ºç©ºæˆ–æ ¼å¼é”™è¯¯!");
 			return;
 		}
 		if("".equals(authCode))
 		{
-			HealthUtil.infoAlert(RegisterActivity.this, "ÑéÖ¤ÂëÎª¿Õ!");
+			HealthUtil.infoAlert(RegisterActivity.this, "éªŒè¯ç ä¸ºç©º!");
 			return;
 		}
 		RequestParams param = webInterface.checkAuthCode(telephone, authCode);
@@ -336,7 +336,7 @@ public class RegisterActivity extends BaseActivity
 	private void showSuccessDialog()
 	{
 		AlertDialog alertDialog = new AlertDialog.Builder(this)
-				.setPositiveButton("È·¶¨", new OnClickListener()
+				.setPositiveButton("ç¡®å®š", new OnClickListener()
 				{
 
 					@Override
@@ -345,7 +345,7 @@ public class RegisterActivity extends BaseActivity
 						// TODO Auto-generated method stub
 
 					}
-				}).setTitle("ÌáÊ¾").setMessage("ÑéÖ¤ÂëÒÑ·¢ËÍ³É¹¦Çë×¢Òâ²éÊÕ£¬60Ãëºó¿ÉÖØĞÂ»ñÈ¡").create();
+				}).setTitle("æç¤º").setMessage("éªŒè¯ç å·²å‘é€æˆåŠŸè¯·æ³¨æ„æŸ¥æ”¶ï¼Œ60ç§’åå¯é‡æ–°è·å–").create();
 		alertDialog.setCanceledOnTouchOutside(false);
 		alertDialog.show();
 	}
@@ -354,7 +354,7 @@ public class RegisterActivity extends BaseActivity
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		title.setText("ÓÃ»§×¢²á");
+		title.setText("ç”¨æˆ·æ³¨å†Œ");
 	}
 
 	@Override

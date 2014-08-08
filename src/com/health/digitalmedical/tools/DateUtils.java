@@ -44,7 +44,7 @@ public class DateUtils
 	public static final String dateString = "2014-6-30";
 
 	/**
-	 * ÅĞ¶ÏÊÇÉÏÎç»¹ÊÇÏÂÎç true£ºÊÇÏÂÎç£¬falseÊÇÉÏÎç
+	 * åˆ¤æ–­æ˜¯ä¸Šåˆè¿˜æ˜¯ä¸‹åˆ trueï¼šæ˜¯ä¸‹åˆï¼Œfalseæ˜¯ä¸Šåˆ
 	 * @param dateStr xxx:12:00:00
 	 * @return
 	 */
@@ -550,8 +550,8 @@ public class DateUtils
 
 	public static String getWeekOfDate(Date date)
 	{
-		String[] weekDaysName = { "ĞÇÆÚÈÕ", "ĞÇÆÚÒ»", "ĞÇÆÚ¶ş", "ĞÇÆÚÈı", "ĞÇÆÚËÄ", "ĞÇÆÚÎå", "ĞÇÆÚÁù" };
-		String[] weekDaysCode = { "Æß", "Ò»", "¶ş", "Èı", "ËÄ", "Îå", "Áù" };
+		String[] weekDaysName = { "æ˜ŸæœŸæ—¥", "æ˜ŸæœŸä¸€", "æ˜ŸæœŸäºŒ", "æ˜ŸæœŸä¸‰", "æ˜ŸæœŸå››", "æ˜ŸæœŸäº”", "æ˜ŸæœŸå…­" };
+		String[] weekDaysCode = { "ä¸ƒ", "ä¸€", "äºŒ", "ä¸‰", "å››", "äº”", "å…­" };
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		int intWeek = calendar.get(Calendar.DAY_OF_WEEK) - 1;
@@ -564,8 +564,8 @@ public class DateUtils
 		try
 		{
 			date = CHN_DATE_FORMAT.parse(dateStr);
-			String[] weekDaysName = { "ĞÇÆÚÈÕ", "ĞÇÆÚÒ»", "ĞÇÆÚ¶ş", "ĞÇÆÚÈı", "ĞÇÆÚËÄ", "ĞÇÆÚÎå", "ĞÇÆÚÁù" };
-			String[] weekDaysCode = { "Æß", "Ò»", "¶ş", "Èı", "ËÄ", "Îå", "Áù" };
+			String[] weekDaysName = { "æ˜ŸæœŸæ—¥", "æ˜ŸæœŸä¸€", "æ˜ŸæœŸäºŒ", "æ˜ŸæœŸä¸‰", "æ˜ŸæœŸå››", "æ˜ŸæœŸäº”", "æ˜ŸæœŸå…­" };
+			String[] weekDaysCode = { "ä¸ƒ", "ä¸€", "äºŒ", "ä¸‰", "å››", "äº”", "å…­" };
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(date);
 			int intWeek = calendar.get(Calendar.DAY_OF_WEEK) - 1;
@@ -579,7 +579,7 @@ public class DateUtils
 	}
 
 	/**
-	 * µ±Ç°ÈÕÆÚÇ°¼¸Ìì»òÕßºó¼¸ÌìµÄÈÕÆÚ
+	 * å½“å‰æ—¥æœŸå‰å‡ å¤©æˆ–è€…åå‡ å¤©çš„æ—¥æœŸ
 	 * 
 	 * @param n
 	 * @return
@@ -602,7 +602,7 @@ public class DateUtils
 	}
 
 	/**
-	 * µ±Ç°ÈÕÆÚÇ°¼¸Ìì»òÕßºó¼¸ÌìµÄÈÕÆÚ
+	 * å½“å‰æ—¥æœŸå‰å‡ å¤©æˆ–è€…åå‡ å¤©çš„æ—¥æœŸ
 	 * 
 	 * @param n
 	 * @return

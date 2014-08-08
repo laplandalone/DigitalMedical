@@ -30,7 +30,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
- * ×¨¼ÒÏêÇé
+ * ä¸“å®¶è¯¦æƒ…
  *
  */
 public class ExpertDetailActivity extends BaseActivity implements OnItemClickListener
@@ -74,14 +74,14 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		title.setText("Ô¤Ô¼Ê±¼ä");
+		title.setText("é¢„çº¦æ—¶é—´");
 	}
 
 	@Override
 	protected void initValue()
 	{
 		
-		dialog.setMessage("ÕıÔÚ¼ÓÔØ,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨åŠ è½½,è¯·ç¨å...");
 		dialog.show();
 		
 		this.doctorName.setText(expert.getDoctorName());
@@ -98,7 +98,7 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 	}
 	
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -114,7 +114,7 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -139,7 +139,7 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 			{
 				// list.stopLoadMore();
 			}
-			HealthUtil.infoAlert(ExpertDetailActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(ExpertDetailActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -165,7 +165,7 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int code)
 	{
@@ -204,14 +204,14 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 			int num= Integer.parseInt(orderTeamCount);
 			if(num>=2)
 			{
-				HealthUtil.infoAlert(ExpertDetailActivity.this, "Í¬Ò»¿ÆÊÒ×î¶àÄÜÔ¤Ô¼¶ş¸öºÅ");
+				HealthUtil.infoAlert(ExpertDetailActivity.this, "åŒä¸€ç§‘å®¤æœ€å¤šèƒ½é¢„çº¦äºŒä¸ªå·");
 				return;
 			}
 		}
 		
 		if("true".equals(numMax))
 		{
-			HealthUtil.infoAlert(ExpertDetailActivity.this, "¸ÃÊ±¼äÔ¤Ô¼ºÅÒÑÂú,ÇëÑ¡ÔñÆäËûÊ±¼ä");
+			HealthUtil.infoAlert(ExpertDetailActivity.this, "è¯¥æ—¶é—´é¢„çº¦å·å·²æ»¡,è¯·é€‰æ‹©å…¶ä»–æ—¶é—´");
 			return;
 		}
 		

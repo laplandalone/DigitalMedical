@@ -105,7 +105,7 @@ public class UserMainActivity extends BaseActivity
 			if (user != null && !"".equals(user))
 			{
 				loginNameTV.setText(user.getUserName());
-				if("ÄÐ".equals(user.getSex()))
+				if("ç”·".equals(user.getSex()))
 				{
 					photo.setBackgroundResource(R.drawable.male);
 				}else
@@ -123,11 +123,11 @@ public class UserMainActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
-		title.setText("¸öÈËÖÐÐÄ");
+		title.setText("ä¸ªäººä¸­å¿ƒ");
 		// TODO Auto-generated method stub
 		User user = HealthUtil.getUserInfo();
 		loginNameTV.setText(user.getUserName());
-		if("ÄÐ".equals(user.getSex()))
+		if("ç”·".equals(user.getSex()))
 		{
 			photo.setBackgroundResource(R.drawable.male);
 		}else

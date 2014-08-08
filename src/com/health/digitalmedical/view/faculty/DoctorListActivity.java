@@ -68,7 +68,7 @@ public class DoctorListActivity extends BaseActivity implements OnItemClickListe
 	{
 
 		HashMap localHashMap = new HashMap();
-		localHashMap.put("text", "ÄÄÌì");
+		localHashMap.put("text", "å“ªå¤©");
 
 		unhandList.add(localHashMap);
 		DoctorListAdapter adapter = new DoctorListAdapter(DoctorListActivity.this, unhandList);

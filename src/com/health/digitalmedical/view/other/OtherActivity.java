@@ -16,7 +16,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
- * ¸ü¶à
+ * æ›´å¤š
  * 
  */
 public class OtherActivity extends BaseActivity
@@ -41,7 +41,7 @@ public class OtherActivity extends BaseActivity
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		title.setText("¸ü¶à");
+		title.setText("æ›´å¤š");
 	}
 
 	@Override
@@ -79,13 +79,13 @@ public class OtherActivity extends BaseActivity
 	@OnClick(R.id.about_law)
 	public void aboutLaw(View v)
 	{
-		HealthUtil.infoAlert(OtherActivity.this, "ÕýÔÚ½¨ÉèÖÐ...");
+		HealthUtil.infoAlert(OtherActivity.this, "æ­£åœ¨å»ºè®¾ä¸­...");
 	}
 	
 
 	@OnClick(R.id.qanda)
 	public void qanda(View v)
 	{
-		HealthUtil.infoAlert(OtherActivity.this, "ÕýÔÚ½¨ÉèÖÐ...");
+		HealthUtil.infoAlert(OtherActivity.this, "æ­£åœ¨å»ºè®¾ä¸­...");
 	}
 }

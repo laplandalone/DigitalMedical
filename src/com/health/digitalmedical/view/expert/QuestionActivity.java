@@ -83,14 +83,14 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 	@Override
 	protected void initView()
 	{
-		title.setText("ÎÒµÄÌáÎÊ");
+		title.setText("æˆ‘çš„æé—®");
 	}
 
 	@Override
 	protected void initValue()
 	{
 		// TODO Auto-generated method stub
-		dialog.setMessage("ÕıÔÚ¼ÓÔØ,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨åŠ è½½,è¯·ç¨å...");
 		dialog.show();
 		this.questionType = getIntent().getStringExtra("questionType");
 		if ("expert".equals(questionType))
@@ -141,7 +141,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 	}
 
 	/**
-	 * Á´½Óweb·şÎñ  ºË¶ÔĞÅÏ¢
+	 * é“¾æ¥webæœåŠ¡  æ ¸å¯¹ä¿¡æ¯
 	 * 
 	 * @param param
 	 */
@@ -157,7 +157,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -179,7 +179,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 				dialog.cancel();
 			}
 
-			HealthUtil.infoAlert(QuestionActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(QuestionActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -202,7 +202,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int code)
 	{
@@ -213,7 +213,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		String executeType = jsonObject.get("executeType").getAsString();
 		if (!"success".equals(executeType))
 		{
-			HealthUtil.infoAlert(QuestionActivity.this, "¼ÓÔØÊ§°ÜÇëÖØÊÔ.");
+			HealthUtil.infoAlert(QuestionActivity.this, "åŠ è½½å¤±è´¥è¯·é‡è¯•.");
 			return;
 		}
 		JsonArray jsonArray = jsonObject.getAsJsonArray("returnMsg");

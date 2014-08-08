@@ -29,7 +29,7 @@ import com.lidroid.xutils.http.RequestParams;
 
 /**
  * 
- * ¹¤¾ßÀà
+ * å·¥å…·ç±»
  *
  */
 public class HealthUtil {
@@ -164,10 +164,10 @@ public class HealthUtil {
 	  }
 	  
 	  /**
-	   * µ÷ÓÃweb·şÎñÆ÷µÄÈë²Î£¬×ª»»³Éjson
-	   * @param methodName web·şÎñµÄ½Ó¿ÚÃû³Æ
-	   * @param keys ²ÎÊıµÄÃû³Æ
-	   * @param values ²ÎÊıÖµ
+	   * è°ƒç”¨webæœåŠ¡å™¨çš„å…¥å‚ï¼Œè½¬æ¢æˆjson
+	   * @param methodName webæœåŠ¡çš„æ¥å£åç§°
+	   * @param keys å‚æ•°çš„åç§°
+	   * @param values å‚æ•°å€¼
 	   * @return
 	   */
 	  	public static String convert2Json (String methodName, String[] keys, Object[] values) {
@@ -219,7 +219,7 @@ public class HealthUtil {
 		 return requestParams;
 	 }
 	  	
-	  	/*JSON½âÎö*/
+	  	/*JSONè§£æ*/
 	  public static <T> T json2Object(String json,Class<T> clazz) {
 		  if (json == null) {
 			  return null;
@@ -229,7 +229,7 @@ public class HealthUtil {
 			 json = tempStr[tempStr.length - 1];
 		 }
 		  GsonBuilder builder = new GsonBuilder();   
-        // ²»×ª»»Ã»ÓĞ @Expose ×¢½âµÄ×Ö¶Î   
+        // ä¸è½¬æ¢æ²¡æœ‰ @Expose æ³¨è§£çš„å­—æ®µ   
         builder.excludeFieldsWithoutExposeAnnotation();  
         Gson gson = builder.create();
         T object = null;
@@ -242,7 +242,7 @@ public class HealthUtil {
 
 	  }
 	  
-	  //¸ù¾İjsonobjectµÄkey»ñÈ¡value £¬·µ»ØÀàĞÍÎªString
+	  //æ ¹æ®jsonobjectçš„keyè·å–value ï¼Œè¿”å›ç±»å‹ä¸ºString
 	  public static String getJSONObjectKeyVal(JSONObject object, String key)
 	  {
 		if(object == null)
@@ -272,8 +272,8 @@ public class HealthUtil {
 	  }
 	  
 	  /**  
-      * ÑéÖ¤ÊÖ»úºÅÂë  
-      * @param mobiles ÊÖ»úºÅ
+      * éªŒè¯æ‰‹æœºå·ç   
+      * @param mobiles æ‰‹æœºå·
       * @return  [0-9]{5,9}  
       */  
      public static boolean isMobileNum(String phoneNum){
@@ -288,7 +288,7 @@ public class HealthUtil {
     	 return flag;
      }
     /**
-     * ×Ô¶¨ÒåToast
+     * è‡ªå®šä¹‰Toast
      * @param activity
      * @param msg
      */
@@ -299,16 +299,16 @@ public class HealthUtil {
 	}
 	
 	/**
-	 * »ñÈ¡sd¿¨µÄÂ·¾¶
+	 * è·å–sdå¡çš„è·¯å¾„
 	 * 
-	 * @return Â·¾¶µÄ×Ö·û´®
+	 * @return è·¯å¾„çš„å­—ç¬¦ä¸²
 	 */
 	public static String getSDPath() {
 		File sdDir = null;
 		boolean sdCardExist = Environment.getExternalStorageState().equals(
-				android.os.Environment.MEDIA_MOUNTED); // ÅĞ¶Ïsd¿¨ÊÇ·ñ´æÔÚ
+				android.os.Environment.MEDIA_MOUNTED); // åˆ¤æ–­sdå¡æ˜¯å¦å­˜åœ¨
 		if (sdCardExist) {
-			sdDir = Environment.getExternalStorageDirectory();// »ñÈ¡Íâ´æÄ¿Â¼
+			sdDir = Environment.getExternalStorageDirectory();// è·å–å¤–å­˜ç›®å½•
 		} else {
 			sdDir = Environment.getDownloadCacheDirectory();
 		}

@@ -90,10 +90,10 @@ public class LoginActivity extends BaseActivity
 		String telephone=userName.getText().toString().trim();
 		if (!HealthUtil.isMobileNum(telephone))
 		{
-			HealthUtil.infoAlert(LoginActivity.this, "ÊÖ»úºÅÂëÎª¿Õ»ò¸ñÊ½´íÎó!");
+			HealthUtil.infoAlert(LoginActivity.this, "æ‰‹æœºå·ç ä¸ºç©ºæˆ–æ ¼å¼é”™è¯¯!");
 			return;
 		}
-		dialog.setMessage("ÃÜÂëÖØÖÃÖĞ,ÇëÉÔºò...");
+		dialog.setMessage("å¯†ç é‡ç½®ä¸­,è¯·ç¨å€™...");
 		dialog.show();
 		RequestParams param = webInterface.getAuthCode(telephone,"set_psw");
 		invokeWebServer(param, SET_PSW);
@@ -134,7 +134,7 @@ public class LoginActivity extends BaseActivity
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		title.setText("ÓÃ»§µÇÂ¼");
+		title.setText("ç”¨æˆ·ç™»å½•");
 	}
 
 	@Override
@@ -169,16 +169,16 @@ public class LoginActivity extends BaseActivity
 		String passwordT = password.getText().toString().trim();
 		if (!HealthUtil.isMobileNum(telephone))
 		{
-			HealthUtil.infoAlert(LoginActivity.this, "ÊÖ»úºÅÂëÎª¿Õ»ò¸ñÊ½´íÎó!");
+			HealthUtil.infoAlert(LoginActivity.this, "æ‰‹æœºå·ç ä¸ºç©ºæˆ–æ ¼å¼é”™è¯¯!");
 			return;
 		}
 		
 		if ("".equals(passwordT))
 		{
-			HealthUtil.infoAlert(LoginActivity.this, "ÃÜÂëÎª¿Õ");
+			HealthUtil.infoAlert(LoginActivity.this, "å¯†ç ä¸ºç©º");
 			return;
 		}
-		dialog.setMessage("µÇÂ¼ÖĞ,ÇëÉÔºó...");
+		dialog.setMessage("ç™»å½•ä¸­,è¯·ç¨å...");
 		dialog.show();
 		if (remberPswFlag)
 		{
@@ -194,7 +194,7 @@ public class LoginActivity extends BaseActivity
 		invokeWebServer(param, USER_LOGIN);
 	}
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -210,7 +210,7 @@ public class LoginActivity extends BaseActivity
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -232,7 +232,7 @@ public class LoginActivity extends BaseActivity
 				dialog.cancel();
 			}
 
-			HealthUtil.infoAlert(LoginActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(LoginActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -258,7 +258,7 @@ public class LoginActivity extends BaseActivity
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int responseCode)
 	{
@@ -278,7 +278,7 @@ public class LoginActivity extends BaseActivity
 					HealthUtil.writeUserInfo(returnObj.toString());
 					User user = HealthUtil.getUserInfo();
 					HealthUtil.writeUserId(user.getUserId());
-					HealthUtil.infoAlert(LoginActivity.this, "µÇÂ¼³É¹¦");
+					HealthUtil.infoAlert(LoginActivity.this, "ç™»å½•æˆåŠŸ");
 					this.setResult(RESULT_OK, getIntent());
 					finish();
 					break;
@@ -290,7 +290,7 @@ public class LoginActivity extends BaseActivity
 					String status=jsonObjectT.get("status").getAsString();
 					if(!"100".equals(status))
 					{
-						HealthUtil.infoAlert(LoginActivity.this, "ÖØÖÃÃÜÂëÊ§°Ü£¬ÇëÖØÊÔ...");
+						HealthUtil.infoAlert(LoginActivity.this, "é‡ç½®å¯†ç å¤±è´¥ï¼Œè¯·é‡è¯•...");
 					}else
 					{
 						showSuccessDialog();
@@ -300,7 +300,7 @@ public class LoginActivity extends BaseActivity
 			}
 		} catch (Exception e)
 		{
-			HealthUtil.infoAlert(LoginActivity.this, "´¦ÀíÊ§°Ü£¬ÇëÖØÊÔ...");
+			HealthUtil.infoAlert(LoginActivity.this, "å¤„ç†å¤±è´¥ï¼Œè¯·é‡è¯•...");
 		}
 
 	}
@@ -308,7 +308,7 @@ public class LoginActivity extends BaseActivity
 	private void showSuccessDialog()
 	{
 		AlertDialog alertDialog = new AlertDialog.Builder(this)
-				.setPositiveButton("È·¶¨", new OnClickListener()
+				.setPositiveButton("ç¡®å®š", new OnClickListener()
 				{
 
 					@Override
@@ -317,7 +317,7 @@ public class LoginActivity extends BaseActivity
 						// TODO Auto-generated method stub
 
 					}
-				}).setTitle("ÌáÊ¾").setMessage("ÃÜÂëÒÑÖØÖÃÇë²éÊÕ").create();
+				}).setTitle("æç¤º").setMessage("å¯†ç å·²é‡ç½®è¯·æŸ¥æ”¶").create();
 		alertDialog.setCanceledOnTouchOutside(false);
 		alertDialog.show();
 	}

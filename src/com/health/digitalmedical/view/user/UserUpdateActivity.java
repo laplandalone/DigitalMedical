@@ -73,7 +73,7 @@ public class UserUpdateActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
-		title.setText("×ÊÁÏ¸üĞÂ");
+		title.setText("èµ„æ–™æ›´æ–°");
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		this.user = HealthUtil.getUserInfo();
@@ -81,10 +81,10 @@ public class UserUpdateActivity extends BaseActivity
 		idCardET.setText(user.getUserNo());
 		telephoneET.setText(user.getTelephone());
 		
-		if ("ÄĞ".equals(user.getSex()))
+		if ("ç”·".equals(user.getSex()))
 		{
 			maleRadio.setChecked(true);
-		} else if ("Å®".equals(user.getSex()))
+		} else if ("å¥³".equals(user.getSex()))
 		{
 			femaleRadio.setChecked(true);
 		}
@@ -114,16 +114,16 @@ public class UserUpdateActivity extends BaseActivity
 		String userNameT=realNameET.getText() + "";
 		if("".equals(userNameT))
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "ÓÃ»§ÃûÎª¿Õ£¡");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "ç”¨æˆ·åä¸ºç©ºï¼");
 			return;
 		}else if(userNameT.length()>50)
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "ÓÃ»§Ãû³¤¶ÈÎŞĞ§£¡");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "ç”¨æˆ·åé•¿åº¦æ— æ•ˆï¼");
 			return;
 		}
 		if (!HealthUtil.isMobileNum(phoneNum))
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "ÊÖ»úºÅÂëÎª¿Õ»ò¸ñÊ½´íÎó!");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "æ‰‹æœºå·ç ä¸ºç©ºæˆ–æ ¼å¼é”™è¯¯!");
 			return;
 		} else if (!"YES".equals(idCheckRst))
 		{
@@ -133,7 +133,7 @@ public class UserUpdateActivity extends BaseActivity
 
 		if (radioButton == null)
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "ÓÃ»§ĞÔ±ğÎª¿Õ!");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "ç”¨æˆ·æ€§åˆ«ä¸ºç©º!");
 			return;
 		} else
 		{
@@ -149,14 +149,14 @@ public class UserUpdateActivity extends BaseActivity
 
 		Gson gson = new Gson();
 		String userStr = gson.toJson(userT);
-		dialog.setMessage("¸üĞÂÖĞ,ÇëÉÔºó...");
+		dialog.setMessage("æ›´æ–°ä¸­,è¯·ç¨å...");
 		dialog.show();
 		RequestParams param = webInterface.updateUser(userStr);
 		invokeWebServer(param, UPDATE_USER);
 	}
 
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 *            2131493634
@@ -173,7 +173,7 @@ public class UserUpdateActivity extends BaseActivity
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -195,7 +195,7 @@ public class UserUpdateActivity extends BaseActivity
 				dialog.cancel();
 			}
 
-			HealthUtil.infoAlert(UserUpdateActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -216,7 +216,7 @@ public class UserUpdateActivity extends BaseActivity
 		}
 
 		/*
-		 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+		 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 		 */
 		private void returnMsg(String json, int code)
 		{
@@ -233,11 +233,11 @@ public class UserUpdateActivity extends BaseActivity
 				HealthUtil.writeUserInfo(userStr);
 				HealthUtil.writeUserId(userT.getUserId());
 				
-				HealthUtil.infoAlert(UserUpdateActivity.this, "ÓÃ»§×ÊÁÏ¸üĞÂ³É¹¦.");
+				HealthUtil.infoAlert(UserUpdateActivity.this, "ç”¨æˆ·èµ„æ–™æ›´æ–°æˆåŠŸ.");
 				finish();
 			} else
 			{
-				HealthUtil.infoAlert(UserUpdateActivity.this, "ÓÃ»§×ÊÁÏ¸üĞÂÊ§°ÜÇëÖØÊÔ.");
+				HealthUtil.infoAlert(UserUpdateActivity.this, "ç”¨æˆ·èµ„æ–™æ›´æ–°å¤±è´¥è¯·é‡è¯•.");
 			}
 
 		}

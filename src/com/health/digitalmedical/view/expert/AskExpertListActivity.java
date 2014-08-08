@@ -33,7 +33,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
- * ÔÚÏß×ÉÑ¯×¨¼ÒÁĞ±í
+ * åœ¨çº¿å’¨è¯¢ä¸“å®¶åˆ—è¡¨
  *
  * 
  */
@@ -67,13 +67,13 @@ public class AskExpertListActivity extends BaseActivity  implements OnItemClickL
 	protected void initView()
 	{
 		// TODO Auto-generated method stub 2130903241
-		title.setText("ÔÚÏßÒ½Éú");
+		title.setText("åœ¨çº¿åŒ»ç”Ÿ");
 	}
 
 	@Override
 	protected void initValue()
 	{
-		dialog.setMessage("ÕıÔÚ¼ÓÔØ,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨åŠ è½½,è¯·ç¨å...");
 		dialog.show();
 		// TODO Auto-generated method stub
 		RequestParams param = webInterface.queryDoctorList(null,null,teamId);
@@ -87,7 +87,7 @@ public class AskExpertListActivity extends BaseActivity  implements OnItemClickL
 		exit();
 	}
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -103,7 +103,7 @@ public class AskExpertListActivity extends BaseActivity  implements OnItemClickL
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -128,7 +128,7 @@ public class AskExpertListActivity extends BaseActivity  implements OnItemClickL
 			{
 				// list.stopLoadMore();
 			}
-			HealthUtil.infoAlert(AskExpertListActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(AskExpertListActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -154,7 +154,7 @@ public class AskExpertListActivity extends BaseActivity  implements OnItemClickL
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int code)
 	{

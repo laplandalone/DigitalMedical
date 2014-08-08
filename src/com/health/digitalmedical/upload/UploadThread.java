@@ -45,9 +45,9 @@ public class UploadThread implements Runnable{
 	}
 	
 	/**
-     * ÉÏ´«Í¼Æ¬µ½·şÎñÆ÷
+     * ä¸Šä¼ å›¾ç‰‡åˆ°æœåŠ¡å™¨
      * 
-     * @param imageFile °üº¬Â·¾¶
+     * @param imageFile åŒ…å«è·¯å¾„
      */
     public String uploadFile(FormFile[] formFiles) {
         try {
@@ -58,7 +58,7 @@ public class UploadThread implements Runnable{
         		HealthUtil.LOG_D(getClass(), "userInfo is null");
         		return null;
         	}
-            //ÇëÇóÆÕÍ¨ĞÅÏ¢
+            //è¯·æ±‚æ™®é€šä¿¡æ¯
             Map<String, String> params = new HashMap<String, String>();
             params.put("method", "uploadFile");
             params.put("questionT", questionT);

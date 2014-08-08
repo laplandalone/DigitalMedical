@@ -49,7 +49,7 @@ public class WelcomeActivity extends BaseActivity
 	}
     
 	/**
-	 * Çå»ªÑô¹âÒ½Ôº£ºhospital_id:101
+	 * æ¸…åé˜³å…‰åŒ»é™¢ï¼šhospital_id:101
 	 * @param v
 	 */
 	@OnClick(R.id.line1)
@@ -65,10 +65,10 @@ public class WelcomeActivity extends BaseActivity
 	public void toPhone(View v)
 	{
 		Intent intent = new Intent();
-		// ¼¤»îÔ´´úÂë,Ìí¼Óintent¶ÔÏó
+		// æ¿€æ´»æºä»£ç ,æ·»åŠ intentå¯¹è±¡
 		intent.setAction("android.intent.action.CALL");
 		intent.setData(Uri.parse("tel:114"));
-		// ¼¤»îIntent
+		// æ¿€æ´»Intent
 		startActivity(intent);
 	}
 
@@ -85,10 +85,10 @@ public class WelcomeActivity extends BaseActivity
 		int h = scrrenHeight - dip2px(this, 300);
 		int itemHeight = h / 2-120;
 		LinearLayout.LayoutParams hint_page_params = new LinearLayout.LayoutParams(ww, itemHeight);
-		// hint_page_params.setMargins(10,100,0, 0);//ÉèÖÃ±ß¾à
+		// hint_page_params.setMargins(10,100,0, 0);//è®¾ç½®è¾¹è·
 		
 		LinearLayout.LayoutParams hint_space_params = new LinearLayout.LayoutParams(ww, itemHeight);
-		hint_space_params.setMargins(40,0,0, 0);//ÉèÖÃ±ß¾à
+		hint_space_params.setMargins(40,0,0, 0);//è®¾ç½®è¾¹è·
 		
 		layout1.setLayoutParams(hint_page_params);
 		layout2.setLayoutParams(hint_space_params);

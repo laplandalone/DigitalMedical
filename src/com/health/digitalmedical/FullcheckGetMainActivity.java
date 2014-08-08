@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.lidroid.xutils.ViewUtils;
 
 /**
- * 取报告单
+ * 鍙栨姤鍛婂崟
  *
  */
 public class FullcheckGetMainActivity extends BaseActivity

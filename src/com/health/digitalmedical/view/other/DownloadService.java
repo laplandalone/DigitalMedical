@@ -66,7 +66,7 @@ public class DownloadService extends Service{
 			localDir = intent.getStringExtra("file_dir");
 //			isUpdate = intent.getShortExtra("is_update", (short)2);
 			  if (!SDCard.IS_MOUNTED) {
-				  Toast.makeText(this, "Çë¼ì²éSD¿¨ÊÇ·ñ°²×°", Toast.LENGTH_LONG).show();
+				  Toast.makeText(this, "è¯·æ£€æŸ¥SDå¡æ˜¯å¦å®‰è£…", Toast.LENGTH_LONG).show();
 			  } else {
 //				  File file = new File(localDir);
 //				  if (!file.exists()) {
@@ -107,7 +107,7 @@ public class DownloadService extends Service{
 	        lastDownload = downloadManager.enqueue(request);
 	        onComplete.setLastDownloadId(lastDownload);
 	    } catch (IllegalArgumentException e) {
-	    	Toast.makeText(this, "ÏÂÔØÂ·¾¶ÎŞĞ§", Toast.LENGTH_LONG).show();
+	    	Toast.makeText(this, "ä¸‹è½½è·¯å¾„æ— æ•ˆ", Toast.LENGTH_LONG).show();
 	    	
 	    }
 	    
@@ -125,13 +125,13 @@ public class DownloadService extends Service{
 	    		String uri = c.getString(c.getColumnIndex(DownloadManager.COLUMN_URI));
 	    		if (uri != null && uri.equals(downloadPath)) {
 	    			 c.close();
-	    			 Toast.makeText(this, "ÈÎÎñÒÑ¾­ÔÚÏÂÔØÁĞ±í", Toast.LENGTH_LONG).show();
+	    			 Toast.makeText(this, "ä»»åŠ¡å·²ç»åœ¨ä¸‹è½½åˆ—è¡¨", Toast.LENGTH_LONG).show();
 	    			 return true;
 	    		}
 	    	}
 	    }
 	    c.close();
-//	    Toast.makeText(this, "„1¤7„1¤7„1¤71†3„1¤70¶3", Toast.LENGTH_LONG).show();
+//	    Toast.makeText(this, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", Toast.LENGTH_LONG).show();
 	    return false;
 	  }
 	  
@@ -186,7 +186,7 @@ public class DownloadService extends Service{
 	
 
 	  
-	  //„1¤7„1¤7„1¤7„1¤70Ç00õ4„1¤7„1¤7„1¤70‘4„1¤7„1¤7„1¤7„1¤7„1¤7
+	  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	BroadcastReceiver onNotificationClick=new BroadcastReceiver() {
 	    @Override
 		public void onReceive(Context ctxt, Intent intent) {
@@ -194,7 +194,7 @@ public class DownloadService extends Service{
 	    }
 	};
 
-	//„1¤7„1¤7„1¤7„1¤7„1¤7„1¤70¯20‘5„1¤7„1¤7„1¤7„1¤7„1¤7
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private class OnCompleteReceiver extends BroadcastReceiver {
 		
 		private long lastDownloadId;

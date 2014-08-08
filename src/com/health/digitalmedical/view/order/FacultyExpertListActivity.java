@@ -30,7 +30,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
- * ×¨¼Ò¿ÆÊÒÁĞ±í
+ * ä¸“å®¶ç§‘å®¤åˆ—è¡¨
  * 
  */
 public class FacultyExpertListActivity extends BaseActivity implements OnItemClickListener
@@ -69,7 +69,7 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		title.setText("¿ÆÊÒÁĞ±í");
+		title.setText("ç§‘å®¤åˆ—è¡¨");
 		
 	}
 
@@ -84,14 +84,14 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 		{
 			this.orderType=orderTypeT;
 		}
-		dialog.setMessage("ÕıÔÚ¼ÓÔØ,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨åŠ è½½,è¯·ç¨å...");
 		dialog.show();
 		RequestParams param = webInterface.queryTeamList(this.hospitalId,null);
 		invokeWebServer(param, GET_LIST);
 	}
 
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -107,7 +107,7 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -132,7 +132,7 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 			{
 				// list.stopLoadMore();
 			}
-			HealthUtil.infoAlert(FacultyExpertListActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(FacultyExpertListActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -158,7 +158,7 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int code)
 	{

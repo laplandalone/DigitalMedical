@@ -70,13 +70,13 @@ public class ExpertListActivity extends BaseActivity  implements IXListViewListe
 	{
 		// TODO Auto-generated method stubtotal_count
 		textTitle.setVisibility(View.GONE);
-		title.setText("Ò½ÉúÁĞ±í");
+		title.setText("åŒ»ç”Ÿåˆ—è¡¨");
 	}
 
 	@Override
 	protected void initValue()
 	{
-		dialog.setMessage("ÕıÔÚ¼ÓÔØ,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨åŠ è½½,è¯·ç¨å...");
 		dialog.show();
 		// TODO Auto-generated method stub
 		RequestParams param = webInterface.queryOrderDoctorList(team.getTeamId());
@@ -119,7 +119,7 @@ public class ExpertListActivity extends BaseActivity  implements IXListViewListe
 			{
 				// list.stopLoadMore();
 			}
-			HealthUtil.infoAlert(ExpertListActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(ExpertListActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override

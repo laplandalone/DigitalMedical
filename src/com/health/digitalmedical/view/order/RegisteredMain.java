@@ -16,7 +16,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
- * ÊÖ»ú¹ÒºÅ
+ * æ‰‹æœºæŒ‚å·
  *
  */
 public class RegisteredMain extends BaseActivity
@@ -121,7 +121,7 @@ public class RegisteredMain extends BaseActivity
 			regist_memo19.setVisibility(View.VISIBLE);
 			regist_memo20.setVisibility(View.VISIBLE);
 			regist_memo21.setVisibility(View.VISIBLE);
-			open_memo.setText("ÊÕÆğ");
+			open_memo.setText("æ”¶èµ·");
 		}else
 		{
 			regist_memo5.setVisibility(View.GONE);
@@ -141,7 +141,7 @@ public class RegisteredMain extends BaseActivity
 			regist_memo19.setVisibility(View.GONE);
 			regist_memo20.setVisibility(View.GONE);
 			regist_memo21.setVisibility(View.GONE);
-			open_memo.setText("Õ¹¿ª");
+			open_memo.setText("å±•å¼€");
 		}
 		
 		
@@ -167,7 +167,7 @@ public class RegisteredMain extends BaseActivity
 	{
 		if(!readFlag)
 		{
-			HealthUtil.infoAlert(RegisteredMain.this, "ÇëÏÈÔÄ¶Á²¢Í¬ÒâÉùÃ÷");
+			HealthUtil.infoAlert(RegisteredMain.this, "è¯·å…ˆé˜…è¯»å¹¶åŒæ„å£°æ˜");
 			return;
 		}
 		Intent intent = new Intent(RegisteredMain.this,FacultyExpertListActivity.class);
@@ -189,7 +189,7 @@ public class RegisteredMain extends BaseActivity
 	{
 		if(!readFlag)
 		{
-			HealthUtil.infoAlert(RegisteredMain.this, "ÇëÏÈÔÄ¶Á²¢Í¬ÒâÉùÃ÷");
+			HealthUtil.infoAlert(RegisteredMain.this, "è¯·å…ˆé˜…è¯»å¹¶åŒæ„å£°æ˜");
 			return;
 		}
 		Intent intent = new Intent(RegisteredMain.this,FacultyExpertListActivity.class);
@@ -201,7 +201,7 @@ public class RegisteredMain extends BaseActivity
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		title.setText("ÊÖ»ú¹ÒºÅ");
+		title.setText("æ‰‹æœºæŒ‚å·");
 	}
 
 	@Override

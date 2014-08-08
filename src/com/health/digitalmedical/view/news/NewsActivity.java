@@ -33,7 +33,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
- * Ò½Ôº×ÊÑ¶
+ * åŒ»é™¢èµ„è®¯
  * 
  */
 public class NewsActivity extends BaseActivity implements OnItemClickListener
@@ -76,7 +76,7 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 	protected void initValue()
 	{
 		// TODO Auto-generated method stub
-		dialog.setMessage("ÕıÔÚ¼ÓÔØ,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨åŠ è½½,è¯·ç¨å...");
 		dialog.show();
 		String type=getIntent().getStringExtra("type");
 		String typeId=getIntent().getStringExtra("typeId");
@@ -87,7 +87,7 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 	}
 
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -103,7 +103,7 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -125,7 +125,7 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 				dialog.cancel();
 			}
 
-			HealthUtil.infoAlert(NewsActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(NewsActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -148,7 +148,7 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int code)
 	{
@@ -158,7 +158,7 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 		String executeType = jsonObject.get("executeType").getAsString();
 		if (!"success".equals(executeType))
 		{
-			HealthUtil.infoAlert(NewsActivity.this, "¼ÓÔØÊ§°ÜÇëÖØÊÔ.");
+			HealthUtil.infoAlert(NewsActivity.this, "åŠ è½½å¤±è´¥è¯·é‡è¯•.");
 			return;
 		}
 		JsonArray jsonArray = jsonObject.getAsJsonArray("returnMsg");

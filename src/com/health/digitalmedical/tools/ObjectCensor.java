@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Collection;
 
 /**
- * ´ËÀàÎªobject¼ì²éÀà£¬¼ì²éobjectÊÇ·ñÎª¿Õ£¬´ËÀàËùÓÃÄ£Ê½ÎªÎŞÉÏÏŞ¶àÀıÄ£Ê½
+ * æ­¤ç±»ä¸ºobjectæ£€æŸ¥ç±»ï¼Œæ£€æŸ¥objectæ˜¯å¦ä¸ºç©ºï¼Œæ­¤ç±»æ‰€ç”¨æ¨¡å¼ä¸ºæ— ä¸Šé™å¤šä¾‹æ¨¡å¼
  */
 public class ObjectCensor
 {
@@ -15,9 +15,9 @@ public class ObjectCensor
 
 
     /**
-     * ¼ì²éobjectÊÇ·ñÎªnull
-     * @param Object obj - ĞèÒª¼ì²éµÄ0bject
-     * @return boolean -true(0bjectÎª¿Õ) -false(object²»Îª¿Õ)
+     * æ£€æŸ¥objectæ˜¯å¦ä¸ºnull
+     * @param Object obj - éœ€è¦æ£€æŸ¥çš„0bject
+     * @return boolean -true(0bjectä¸ºç©º) -false(objectä¸ä¸ºç©º)
      */
     public static boolean checkObjectIsNull( Object obj )
     {
@@ -51,9 +51,9 @@ public class ObjectCensor
     }
 
     /**
-     * ¼ì²é×Ö·û´®ÊÇ·ñÎª""
-     * @param String str - ĞèÒª¼ì²éµÄ×Ö·û´®
-     * @return boolean -true(×Ö·û´®Îª"") -false(×Ö·û´®²»Îª"")
+     * æ£€æŸ¥å­—ç¬¦ä¸²æ˜¯å¦ä¸º""
+     * @param String str - éœ€è¦æ£€æŸ¥çš„å­—ç¬¦ä¸²
+     * @return boolean -true(å­—ç¬¦ä¸²ä¸º"") -false(å­—ç¬¦ä¸²ä¸ä¸º"")
      */
     private static boolean checkStringIsNull( String str )
     {
@@ -68,9 +68,9 @@ public class ObjectCensor
     }
 
     /**
-     * ¼ì²éMapµÄsizeÊÇ·ñÎª0
+     * æ£€æŸ¥Mapçš„sizeæ˜¯å¦ä¸º0
      * @param Map map - Map
-     * @return boolean -true(MapµÄsizeÎª0) -false(MapµÄsize²»Îª0)
+     * @return boolean -true(Mapçš„sizeä¸º0) -false(Mapçš„sizeä¸ä¸º0)
      */
     private static boolean checkMapIsNull( Map map )
     {
@@ -82,9 +82,9 @@ public class ObjectCensor
     }
 
     /**
-     * ¼ì²éCollectionµÄsizeÊÇ·ñÎª0
-     * @param Collection collection - ĞèÒª¼ì²éµÄCollection
-     * @return boolean -true(CollectionµÄsizeÎª0) -false(CollectionµÄsize²»Îª0)
+     * æ£€æŸ¥Collectionçš„sizeæ˜¯å¦ä¸º0
+     * @param Collection collection - éœ€è¦æ£€æŸ¥çš„Collection
+     * @return boolean -true(Collectionçš„sizeä¸º0) -false(Collectionçš„sizeä¸ä¸º0)
      */
     private static boolean checkCollectionIsNull( Collection collection )
     {
@@ -96,9 +96,9 @@ public class ObjectCensor
      }
 
     /**
-     * ¼ì²éÊı×éµÄlengthÊÇ·ñÎª0£¬¼ì²éÊı×éÀïµÄÊı¾İÊÇ·ñ¶¼Îªnull
-     * @param Object[] obj - ĞèÒª¼ì²éµÄ0bject
-     * @return boolean -true(0bject[]Îª¿Õ) -false(object[]²»Îª¿Õ)
+     * æ£€æŸ¥æ•°ç»„çš„lengthæ˜¯å¦ä¸º0ï¼Œæ£€æŸ¥æ•°ç»„é‡Œçš„æ•°æ®æ˜¯å¦éƒ½ä¸ºnull
+     * @param Object[] obj - éœ€è¦æ£€æŸ¥çš„0bject
+     * @return boolean -true(0bject[]ä¸ºç©º) -false(object[]ä¸ä¸ºç©º)
      */
     private static boolean checkArrayIsNull( Object[] obj )
     {
@@ -122,9 +122,9 @@ public class ObjectCensor
     
     /**
      * @author : tiankang
-     * @param str £º ±ä³¤×Ö·û´®Êı×é
+     * @param str ï¼š å˜é•¿å­—ç¬¦ä¸²æ•°ç»„
      * @return
-     * ¼ì²é×Ö·û´®Êı×éÖĞ¸÷ÔªËØÊÇ·ñÎª¿ÕÊÇ·ñÎª¿Õ´®
+     * æ£€æŸ¥å­—ç¬¦ä¸²æ•°ç»„ä¸­å„å…ƒç´ æ˜¯å¦ä¸ºç©ºæ˜¯å¦ä¸ºç©ºä¸²
      */
     public static boolean isStrRegular(String... str)
     {
@@ -140,9 +140,9 @@ public class ObjectCensor
     
     /**
      * @author : tiankang
-     * @param list : Òª¼ì²éµÄList¼¯ºÏ
+     * @param list : è¦æ£€æŸ¥çš„Listé›†åˆ
      * @return
-     * ¼ì²éList¼¯ºÏÊÇ·ñÎª¿ÕÊÇ·ñ³¤¶ÈÎªÁã
+     * æ£€æŸ¥Listé›†åˆæ˜¯å¦ä¸ºç©ºæ˜¯å¦é•¿åº¦ä¸ºé›¶
      */
     public static boolean checkListIsNull(List list)
     {

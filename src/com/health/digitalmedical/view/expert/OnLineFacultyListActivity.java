@@ -38,7 +38,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
- * ÔÚÏß×¨¼Ò¿ÆÊÒÁĞ±í
+ * åœ¨çº¿ä¸“å®¶ç§‘å®¤åˆ—è¡¨
  * 
  */
 public class OnLineFacultyListActivity extends BaseActivity implements OnItemClickListener
@@ -76,7 +76,7 @@ public class OnLineFacultyListActivity extends BaseActivity implements OnItemCli
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		title.setText("¿ÆÊÒÁĞ±í");
+		title.setText("ç§‘å®¤åˆ—è¡¨");
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class OnLineFacultyListActivity extends BaseActivity implements OnItemCli
 	{
 		// TODO Auto-generated method stub
 		// getListRst();
-		dialog.setMessage("ÕıÔÚ¼ÓÔØ,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨åŠ è½½,è¯·ç¨å...");
 		dialog.show();
 		String hospitalId=HealthUtil.readHospitalId();
 		RequestParams param = webInterface.queryTeamList(hospitalId,"0");
@@ -92,7 +92,7 @@ public class OnLineFacultyListActivity extends BaseActivity implements OnItemCli
 	}
 
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -108,7 +108,7 @@ public class OnLineFacultyListActivity extends BaseActivity implements OnItemCli
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -133,7 +133,7 @@ public class OnLineFacultyListActivity extends BaseActivity implements OnItemCli
 			{
 				// list.stopLoadMore();
 			}
-			HealthUtil.infoAlert(OnLineFacultyListActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(OnLineFacultyListActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -159,7 +159,7 @@ public class OnLineFacultyListActivity extends BaseActivity implements OnItemCli
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int code)
 	{

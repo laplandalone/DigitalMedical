@@ -6,20 +6,20 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 /**
- * ÉÏ´«ÎÄ¼ş
+ * ä¸Šä¼ æ–‡ä»¶
  */
 public class FormFile {
-    /* ÉÏ´«ÎÄ¼şµÄÊı¾İ */
+    /* ä¸Šä¼ æ–‡ä»¶çš„æ•°æ® */
     private byte[] data;
     private InputStream inStream;
     private File file;
     
     private int fileSize;
-    /* ÎÄ¼şÃû³Æ */
+    /* æ–‡ä»¶åç§° */
     private String filname;
-    /* ÇëÇó²ÎÊıÃû³Æ*/
+    /* è¯·æ±‚å‚æ•°åç§°*/
     private String parameterName;
-    /* ÄÚÈİÀàĞÍ */
+    /* å†…å®¹ç±»å‹ */
     private String contentType = "application/octet-stream";
     
     public FormFile(String filname, byte[] data, String parameterName, String contentType) {

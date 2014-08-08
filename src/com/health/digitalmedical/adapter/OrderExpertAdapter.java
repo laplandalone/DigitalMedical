@@ -81,7 +81,7 @@ public class OrderExpertAdapter  extends BaseAdapter
 		 if("Y".equals(display))
 		 {
 			 viewHolder.weekView.setVisibility(View.VISIBLE);
-			 viewHolder.weekView.setText(weekDay+" ÐÇÆÚ"+week);
+			 viewHolder.weekView.setText(weekDay+" æ˜ŸæœŸ"+week);
 			 day=weekDay;
 		 }
 		 viewHolder.layout.setVisibility(View.GONE);

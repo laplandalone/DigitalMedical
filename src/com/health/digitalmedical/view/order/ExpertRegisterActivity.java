@@ -138,7 +138,7 @@ public class ExpertRegisterActivity extends BaseActivity
 		RadioButton radioButton = (RadioButton)findViewById(group.getCheckedRadioButtonId());
 		if(radioButton==null)
 		{
-			HealthUtil.infoAlert(ExpertRegisterActivity.this, "ÓÃ»§ĞÔ±ğÎª¿Õ!");
+			HealthUtil.infoAlert(ExpertRegisterActivity.this, "ç”¨æˆ·æ€§åˆ«ä¸ºç©º!");
 			return;
 		}else
 		{
@@ -147,12 +147,12 @@ public class ExpertRegisterActivity extends BaseActivity
 		String idCheckRst = IDCard.IDCardValidate(userNo);
 		if ("".equals(userName))
 		{
-			HealthUtil.infoAlert(ExpertRegisterActivity.this, "ÓÃ»§ÃûÎª¿Õ!");
+			HealthUtil.infoAlert(ExpertRegisterActivity.this, "ç”¨æˆ·åä¸ºç©º!");
 			return;
 		}
 		if (!HealthUtil.isMobileNum(userTelephone))
 		{
-			HealthUtil.infoAlert(ExpertRegisterActivity.this, "ÊÖ»úºÅÂëÎª¿Õ»ò¸ñÊ½´íÎó!");
+			HealthUtil.infoAlert(ExpertRegisterActivity.this, "æ‰‹æœºå·ç ä¸ºç©ºæˆ–æ ¼å¼é”™è¯¯!");
 			return;
 		}
 		if (!"YES".equals(idCheckRst))
@@ -160,7 +160,7 @@ public class ExpertRegisterActivity extends BaseActivity
 			HealthUtil.infoAlert(ExpertRegisterActivity.this, idCheckRst);
 			return;
 		}
-		dialog.setMessage("ÕıÔÚÔ¤Ô¼,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨é¢„çº¦,è¯·ç¨å...");
 		dialog.show();
 		RequestParams param = webInterface.addUserRegisterOrder(userId, registerId, doctorId, doctorName, userOrderNum, fee, registerTime, userName,
 				userNo, userTelephone, sex,teamId, teamName);
@@ -171,7 +171,7 @@ public class ExpertRegisterActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
-		title.setText("ĞÅÏ¢È·ÈÏ");
+		title.setText("ä¿¡æ¯ç¡®è®¤");
 		stepTwo.setBackgroundResource(R.drawable.bg_step_2);
 		this.doctorName = getIntent().getStringExtra("doctorName");
 		this.registerTime = getIntent().getStringExtra("registerTime");
@@ -192,11 +192,11 @@ public class ExpertRegisterActivity extends BaseActivity
 			@Override
 			public void onCheckedChanged(RadioGroup arg0, int arg1)
 			{
-				// »ñÈ¡±ä¸üºóµÄÑ¡ÖĞÏîµÄID
+				// è·å–å˜æ›´åçš„é€‰ä¸­é¡¹çš„ID
 				int radioButtonId = arg0.getCheckedRadioButtonId();
-				// ¸ù¾İID»ñÈ¡RadioButtonµÄÊµÀı
+				// æ ¹æ®IDè·å–RadioButtonçš„å®ä¾‹
 				RadioButton rb = (RadioButton) ExpertRegisterActivity.this.findViewById(radioButtonId);
-				// ¸üĞÂÎÄ±¾ÄÚÈİ£¬ÒÔ·ûºÏÑ¡ÖĞÏî
+				// æ›´æ–°æ–‡æœ¬å†…å®¹ï¼Œä»¥ç¬¦åˆé€‰ä¸­é¡¹
 				sex=rb.getText().toString();
 			}
 		});
@@ -216,10 +216,10 @@ public class ExpertRegisterActivity extends BaseActivity
 			this.editPhone.setText(user.getTelephone());
 			this.editIdCard.setText(user.getUserNo());
 			this.sex = user.getSex();
-			if ("ÄĞ".equals(user.getSex()))
+			if ("ç”·".equals(user.getSex()))
 			{
 				maleRadio.setChecked(true);
-			} else if ("Å®".equals(user.getSex()))
+			} else if ("å¥³".equals(user.getSex()))
 			{
 				femaleRadio.setChecked(true);
 			}
@@ -243,10 +243,10 @@ public class ExpertRegisterActivity extends BaseActivity
 				this.editPhone.setText(user.getTelephone());
 				this.editIdCard.setText(user.getUserNo());
 				this.sex = user.getSex();
-				if ("ÄĞ".equals(user.getSex()))
+				if ("ç”·".equals(user.getSex()))
 				{
 					maleRadio.setChecked(true);
-				} else if ("Å®".equals(user.getSex()))
+				} else if ("å¥³".equals(user.getSex()))
 				{
 					femaleRadio.setChecked(true);
 				}
@@ -259,7 +259,7 @@ public class ExpertRegisterActivity extends BaseActivity
 	}
 
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -275,7 +275,7 @@ public class ExpertRegisterActivity extends BaseActivity
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -297,7 +297,7 @@ public class ExpertRegisterActivity extends BaseActivity
 				dialog.cancel();
 			}
 
-			HealthUtil.infoAlert(ExpertRegisterActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(ExpertRegisterActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -326,7 +326,7 @@ public class ExpertRegisterActivity extends BaseActivity
 	}
 
 	/*
-	 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+	 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 	 */
 	private void returnMsg(String json, int responseCode)
 	{
@@ -345,7 +345,7 @@ public class ExpertRegisterActivity extends BaseActivity
 				String result = jsonObject.get("returnMsg").toString();
 				if ("true".equals(result))
 				{
-					HealthUtil.infoAlert(ExpertRegisterActivity.this, "Ô¤Ô¼³É¹¦...");
+					HealthUtil.infoAlert(ExpertRegisterActivity.this, "é¢„çº¦æˆåŠŸ...");
 					Intent intent = new Intent(ExpertRegisterActivity.this, ConfirmOrderActivity.class);
 					intent.putExtra("doctorName", doctorName);
 					intent.putExtra("registerTime", registerTime);
@@ -360,13 +360,13 @@ public class ExpertRegisterActivity extends BaseActivity
 					finish();
 				} else
 				{
-					HealthUtil.infoAlert(ExpertRegisterActivity.this, "Ô¤Ô¼Ê§°Ü£¬ÇëÖØÊÔ...");
+					HealthUtil.infoAlert(ExpertRegisterActivity.this, "é¢„çº¦å¤±è´¥ï¼Œè¯·é‡è¯•...");
 				}
 				break;
 			}
 		} catch (Exception e)
 		{
-			HealthUtil.infoAlert(ExpertRegisterActivity.this, "Ô¤Ô¼Ê§°Ü£¬ÇëÖØÊÔ...");
+			HealthUtil.infoAlert(ExpertRegisterActivity.this, "é¢„çº¦å¤±è´¥ï¼Œè¯·é‡è¯•...");
 		}
 
 	}

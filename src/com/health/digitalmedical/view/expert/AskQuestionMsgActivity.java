@@ -123,13 +123,13 @@ public class AskQuestionMsgActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
-		title.setText("Ãâ·ÑÌáÎÊ");
+		title.setText("å…è´¹æé—®");
 	}
 
 	@OnClick(R.id.input_img)
 	public void addImage(View v)
 	{
-		new AlertDialog.Builder(AskQuestionMsgActivity.this).setTitle("ÌáÊ¾").setIcon(android.R.drawable.ic_dialog_map)
+		new AlertDialog.Builder(AskQuestionMsgActivity.this).setTitle("æç¤º").setIcon(android.R.drawable.ic_dialog_map)
 				.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data), new DialogInterface.OnClickListener()
 				{
 					@Override
@@ -185,8 +185,8 @@ public class AskQuestionMsgActivity extends BaseActivity
 			Intent intent = new Intent(AskQuestionMsgActivity.this, LoginActivity.class);
 			startActivityForResult(intent, 0);
 		}
-		data.add("ÅÄÕÕ");
-		data.add("´ÓÏà²áÑ¡Ôñ");
+		data.add("æ‹ç…§");
+		data.add("ä»ç›¸å†Œé€‰æ‹©");
 	}
 
 	@Override
@@ -225,15 +225,15 @@ public class AskQuestionMsgActivity extends BaseActivity
 				break;
 			} else
 			{
-				HealthUtil.infoAlert(AskQuestionMsgActivity.this, "×î¶à¿ÉÌí¼ÓÈıÕÅÍ¼Æ¬");
+				HealthUtil.infoAlert(AskQuestionMsgActivity.this, "æœ€å¤šå¯æ·»åŠ ä¸‰å¼ å›¾ç‰‡");
 				break;
 			}
 		case 2:
 			if (intent != null)
 			{
-				// È¡µÃ·µ»ØµÄUri,»ù±¾ÉÏÑ¡ÔñÕÕÆ¬µÄÊ±ºò·µ»ØµÄÊÇÒÔUriĞÎÊ½£¬µ«ÊÇÔÚÅÄÕÕÖĞÓĞµÃ»ú×ÓÄØUriÊÇ¿ÕµÄ£¬ËùÒÔÒªÌØ±ğ×¢Òâ
+				// å–å¾—è¿”å›çš„Uri,åŸºæœ¬ä¸Šé€‰æ‹©ç…§ç‰‡çš„æ—¶å€™è¿”å›çš„æ˜¯ä»¥Uriå½¢å¼ï¼Œä½†æ˜¯åœ¨æ‹ç…§ä¸­æœ‰å¾—æœºå­å‘¢Uriæ˜¯ç©ºçš„ï¼Œæ‰€ä»¥è¦ç‰¹åˆ«æ³¨æ„
 				Uri mImageCaptureUri = intent.getData();
-				// ·µ»ØµÄUri²»Îª¿ÕÊ±£¬ÄÇÃ´Í¼Æ¬ĞÅÏ¢Êı¾İ¶¼»áÔÚUriÖĞ»ñµÃ¡£Èç¹ûÎª¿Õ£¬ÄÇÃ´ÎÒÃÇ¾Í½øĞĞÏÂÃæµÄ·½Ê½»ñÈ¡
+				// è¿”å›çš„Uriä¸ä¸ºç©ºæ—¶ï¼Œé‚£ä¹ˆå›¾ç‰‡ä¿¡æ¯æ•°æ®éƒ½ä¼šåœ¨Uriä¸­è·å¾—ã€‚å¦‚æœä¸ºç©ºï¼Œé‚£ä¹ˆæˆ‘ä»¬å°±è¿›è¡Œä¸‹é¢çš„æ–¹å¼è·å–
 				if (mImageCaptureUri != null)
 				{
 					Bitmap image;
@@ -241,13 +241,13 @@ public class AskQuestionMsgActivity extends BaseActivity
 					{
 						String[] proj = { MediaStore.Images.Media.DATA };
 						Cursor cursor = managedQuery(mImageCaptureUri, proj, null, null, null);
-						// °´ÎÒ¸öÈËÀí½â Õâ¸öÊÇ»ñµÃÓÃ»§Ñ¡ÔñµÄÍ¼Æ¬µÄË÷ÒıÖµ
+						// æŒ‰æˆ‘ä¸ªäººç†è§£ è¿™ä¸ªæ˜¯è·å¾—ç”¨æˆ·é€‰æ‹©çš„å›¾ç‰‡çš„ç´¢å¼•å€¼
 						int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-						// ½«¹â±êÒÆÖÁ¿ªÍ· £¬Õâ¸öºÜÖØÒª£¬²»Ğ¡ĞÄºÜÈİÒ×ÒıÆğÔ½½ç
+						// å°†å…‰æ ‡ç§»è‡³å¼€å¤´ ï¼Œè¿™ä¸ªå¾ˆé‡è¦ï¼Œä¸å°å¿ƒå¾ˆå®¹æ˜“å¼•èµ·è¶Šç•Œ
 						cursor.moveToFirst();
-						// ×îºó¸ù¾İË÷ÒıÖµ»ñÈ¡Í¼Æ¬Â·¾¶
+						// æœ€åæ ¹æ®ç´¢å¼•å€¼è·å–å›¾ç‰‡è·¯å¾„
 						String path = cursor.getString(column_index);
-						// Õâ¸ö·½·¨ÊÇ¸ù¾İUri»ñÈ¡BitmapÍ¼Æ¬µÄ¾²Ì¬·½·¨
+						// è¿™ä¸ªæ–¹æ³•æ˜¯æ ¹æ®Uriè·å–Bitmapå›¾ç‰‡çš„é™æ€æ–¹æ³•
 						image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), mImageCaptureUri);
 						addImage(path);
 						if (image != null)
@@ -270,7 +270,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 								break;
 							} else
 							{
-								HealthUtil.infoAlert(AskQuestionMsgActivity.this, "×î¶à¿ÉÌí¼ÓÈıÕÅÍ¼Æ¬");
+								HealthUtil.infoAlert(AskQuestionMsgActivity.this, "æœ€å¤šå¯æ·»åŠ ä¸‰å¼ å›¾ç‰‡");
 								break;
 							}
 						}
@@ -306,7 +306,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 				imagesUrl.add(imagePath);
 			} else
 			{
-				HealthUtil.infoAlert(this, "ÕÕÆ¬¸öÊıÒÑ¾­´ïµ½ÉÏÏŞ£¬ÇëÉ¾³ıÖ®ºóĞÂÔö");
+				HealthUtil.infoAlert(this, "ç…§ç‰‡ä¸ªæ•°å·²ç»è¾¾åˆ°ä¸Šé™ï¼Œè¯·åˆ é™¤ä¹‹åæ–°å¢");
 			}
 		} catch (Exception e)
 		{
@@ -353,7 +353,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 		
 		if("".equals(content))
 		{
-			HealthUtil.infoAlert(this, "ÌáÎÊÄÚÈİÎª¿Õ");
+			HealthUtil.infoAlert(this, "æé—®å†…å®¹ä¸ºç©º");
 			return;
 		}
 		if (this.user == null )
@@ -361,7 +361,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 			Intent intent = new Intent(AskQuestionMsgActivity.this, LoginActivity.class);
 			startActivityForResult(intent, 0);
 		}
-		dialog.setMessage("ÕıÔÚÌá½»,ÇëÉÔºó...");
+		dialog.setMessage("æ­£åœ¨æäº¤,è¯·ç¨å...");
 		dialog.show();
 
 		
@@ -404,7 +404,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 				}
 				if (msg.obj == null)
 				{
-					showFailureDialog("Ìá½»Ê§°Ü£¬ÇëºË¶ÔĞÅÏ¢Ö®ºóÖØĞÂÌá½»");
+					showFailureDialog("æäº¤å¤±è´¥ï¼Œè¯·æ ¸å¯¹ä¿¡æ¯ä¹‹åé‡æ–°æäº¤");
 					return;
 				}
 				switch (msg.arg1)
@@ -435,23 +435,23 @@ public class AskQuestionMsgActivity extends BaseActivity
 				showSuccessDialog();
 			} else
 			{
-				showFailureDialog("Ìá½»Ê§°Ü£¬ÇëºË¶ÔĞÅÏ¢Ö®ºóÖØĞÂÌá½»");
+				showFailureDialog("æäº¤å¤±è´¥ï¼Œè¯·æ ¸å¯¹ä¿¡æ¯ä¹‹åé‡æ–°æäº¤");
 				return;
 			}
 		} catch (JSONException e)
 		{
-			HealthUtil.infoAlert(this, "·µ»Ø½á¹û½âÎöÊ§°Ü");
+			HealthUtil.infoAlert(this, "è¿”å›ç»“æœè§£æå¤±è´¥");
 			e.printStackTrace();
 		} catch (Exception e)
 		{
-			HealthUtil.infoAlert(this, "Ìá½»Ê§°Ü");
+			HealthUtil.infoAlert(this, "æäº¤å¤±è´¥");
 			e.printStackTrace();
 		}
 	}
 
 	private void showSuccessDialog()
 	{
-		AlertDialog alertDialog = new AlertDialog.Builder(this).setPositiveButton("È·¶¨", new OnClickListener()
+		AlertDialog alertDialog = new AlertDialog.Builder(this).setPositiveButton("ç¡®å®š", new OnClickListener()
 		{
 
 			@Override
@@ -460,7 +460,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 				// TODO Auto-generated method stub
 				finish();
 			}
-		}).setTitle("ÌáÊ¾").setMessage("Ìá½»³É¹¦").create();
+		}).setTitle("æç¤º").setMessage("æäº¤æˆåŠŸ").create();
 		alertDialog.setCanceledOnTouchOutside(false);
 		alertDialog.show();
 	}
@@ -468,13 +468,13 @@ public class AskQuestionMsgActivity extends BaseActivity
 	private void showFailureDialog(String msg)
 	{
 
-		AlertDialog alertDialog = new AlertDialog.Builder(this).setPositiveButton("È·¶¨", null).setTitle("Ê§°ÜÌáĞÑ").setMessage(msg).create();
+		AlertDialog alertDialog = new AlertDialog.Builder(this).setPositiveButton("ç¡®å®š", null).setTitle("å¤±è´¥æé†’").setMessage(msg).create();
 		alertDialog.setCanceledOnTouchOutside(false);
 		alertDialog.show();
 	}
 
 	/**
-	 * Á´½Óweb·şÎñ
+	 * é“¾æ¥webæœåŠ¡
 	 * 
 	 * @param param
 	 */
@@ -490,7 +490,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 	}
 
 	/**
-	 * »ñÈ¡ºóÌ¨·µ»ØµÄÊı¾İ
+	 * è·å–åå°è¿”å›çš„æ•°æ®
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -512,7 +512,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 				dialog.cancel();
 			}
 
-			HealthUtil.infoAlert(AskQuestionMsgActivity.this, "ĞÅÏ¢¼ÓÔØÊ§°Ü£¬Çë¼ì²éÍøÂçºóÖØÊÔ");
+			HealthUtil.infoAlert(AskQuestionMsgActivity.this, "ä¿¡æ¯åŠ è½½å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œåé‡è¯•");
 		}
 
 		@Override
@@ -533,7 +533,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 		}
 
 		/*
-		 * ´¦Àí·µ»Ø½á¹ûÊı¾İ
+		 * å¤„ç†è¿”å›ç»“æœæ•°æ®
 		 */
 		private void returnMsg(String json, int code)
 		{
@@ -544,18 +544,18 @@ public class AskQuestionMsgActivity extends BaseActivity
 			String executeType = jsonObject.get("executeType").getAsString();
 			if ("success".equals(executeType))
 			{
-				HealthUtil.infoAlert(AskQuestionMsgActivity.this, "´¦Àí³É¹¦.");
+				HealthUtil.infoAlert(AskQuestionMsgActivity.this, "å¤„ç†æˆåŠŸ.");
 				finish();
 			} else
 			{
-				HealthUtil.infoAlert(AskQuestionMsgActivity.this, "´¦ÀíÊ§°ÜÇëÖØÊÔ.");
+				HealthUtil.infoAlert(AskQuestionMsgActivity.this, "å¤„ç†å¤±è´¥è¯·é‡è¯•.");
 			}
 
 		}
 	}
 
 	/**
-	 * ÅĞ¶ÏÎÄ¼şÊÇ·ñ´æÔÚ£¬Èç¹û²»´æÔÚÔòĞÂ½¨
+	 * åˆ¤æ–­æ–‡ä»¶æ˜¯å¦å­˜åœ¨ï¼Œå¦‚æœä¸å­˜åœ¨åˆ™æ–°å»º
 	 */
 	private void isDirIsExist(boolean bool)
 	{

@@ -33,34 +33,34 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.lurencun.android.system.DoubleClickExit;
 
 /**
- * ¹¦ÄÜ£º Ö÷Ò³
+ * åŠŸèƒ½ï¼š ä¸»é¡µ
  * 
  * @author Lapland_Alone 
  */
 public class MainPageActivity extends BaseActivity
 {
-	/* ¿ÆÊÒÒ½Éú */
+	/* ç§‘å®¤åŒ»ç”Ÿ */
 	@ViewInject(R.id.faculty_doctor)
 	private LinearLayout doctorList;
-	/* ÊÖ»ú¹ÒºÅ */
+	/* æ‰‹æœºæŒ‚å· */
 	@ViewInject(R.id.order_number)
 	private LinearLayout order;
-	/* È¡±¨¸æµ¥ */
+	/* å–æŠ¥å‘Šå• */
 	@ViewInject(R.id.get_full_check)
 	private LinearLayout report;
-	/* ×¨¼ÒÔÚÏß */
+	/* ä¸“å®¶åœ¨çº¿ */
 	@ViewInject(R.id.ask_online)
 	private LinearLayout doctorOnLine;
-	/* Ò½Ôºµ¼º½ */
+	/* åŒ»é™¢å¯¼èˆª */
 	@ViewInject(R.id.hos_navigate)
 	private LinearLayout hospitalMap;
-	/* ½¡¿µ×ÊÑ¶ */
+	/* å¥åº·èµ„è®¯ */
 	@ViewInject(R.id.health_lesson)
 	private LinearLayout healthMsg;
-	/* ½¡¿µ°Ù¿Æ */
+	/* å¥åº·ç™¾ç§‘ */
 	@ViewInject(R.id.health_baike)
 	private LinearLayout healthTool;
-	/* ÖÇÄÜ·ÖÕï */
+	/* æ™ºèƒ½åˆ†è¯Š */
 	@ViewInject(R.id.symptom_check)
 	private LinearLayout temp;
 
@@ -89,12 +89,12 @@ public class MainPageActivity extends BaseActivity
 	private LinearLayout layout6;
 
 	@ViewInject(R.id.imgViewPager)
-	ImgViewPager myPager; // Í¼Æ¬ÈİÆ÷
+	ImgViewPager myPager; // å›¾ç‰‡å®¹å™¨
 
 	@ViewInject(R.id.vb)
-	LinearLayout ovalLayout; // Ô²µãÈİÆ÷
+	LinearLayout ovalLayout; // åœ†ç‚¹å®¹å™¨
 
-	private List<View> listViews; // Í¼Æ¬×é
+	private List<View> listViews; // å›¾ç‰‡ç»„
 
 	private DoubleClickExit doubleClickExit;
 	
@@ -119,21 +119,21 @@ public class MainPageActivity extends BaseActivity
 		if(screenWidth==480)
 		{
 			space=dip2px(this, spacedip480);
-			imgPagerHeigth=dip2px(this, 40);//40£ºtitle¸ß¶È+¼ä¸ô¸ß¶È
+			imgPagerHeigth=dip2px(this, 40);//40ï¼štitleé«˜åº¦+é—´éš”é«˜åº¦
 		}else
 		{
 			space=dip2px(this, spacedip720);
-			imgPagerHeigth=dip2px(this, 30);//30:title¸ß¶È+¼ä¸ô¸ß¶È
+			imgPagerHeigth=dip2px(this, 30);//30:titleé«˜åº¦+é—´éš”é«˜åº¦
 		}
 		int spaceX =space*4;
 		Log.e("spaceX",spaceX+"");
 		int w=screenWidth-spaceX;
 		int ww = w / 3;
-		int hh=ww*296/206;// 296/206:Í¼Æ¬±ÈÀı
+		int hh=ww*296/206;// 296/206:å›¾ç‰‡æ¯”ä¾‹
 		Log.e("itemHH",hh+"");
 		LinearLayout.LayoutParams hint_page_params = new LinearLayout.LayoutParams(ww, hh);
 		//int left, int top, int right, int bottom
-		hint_page_params.setMargins(space,0,0, 0);//ÉèÖÃ±ß¾à
+		hint_page_params.setMargins(space,0,0, 0);//è®¾ç½®è¾¹è·
 		layout1.setLayoutParams(hint_page_params);
 		layout2.setLayoutParams(hint_page_params);
 		layout3.setLayoutParams(hint_page_params);
@@ -142,7 +142,7 @@ public class MainPageActivity extends BaseActivity
 		layout6.setLayoutParams(hint_page_params);
 
 		myPager.setLayoutParams(new LinearLayout.LayoutParams(screenWidth,scrrenHeight-hh*3-imgPagerHeigth));
-		InitViewPager();// ³õÊ¼»¯Í¼Æ¬
+		InitViewPager();// åˆå§‹åŒ–å›¾ç‰‡
 		myPager.start(this, listViews, 4000, ovalLayout, R.layout.ad_bottom_item, R.id.ad_item_v,
 				R.drawable.pager_select, R.drawable.pager_item);
 
@@ -244,7 +244,7 @@ public class MainPageActivity extends BaseActivity
 	}
 	
 	/**
-	 * ³õÊ¼»¯Í¼Æ¬
+	 * åˆå§‹åŒ–å›¾ç‰‡
 	 */
 	private void InitViewPager()
 	{
