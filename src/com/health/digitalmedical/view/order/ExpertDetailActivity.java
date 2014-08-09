@@ -92,7 +92,9 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 		String date=expert.getDay();
 		String week=expert.getWeek();
 		// TODO Auto-generated method stub
-		RequestParams param = webInterface.queryOrderByDoctorIdList(expert.getDoctorId(),week,date);
+		String teamId=expert.getTeamId();
+		String userId=HealthUtil.readUserId();
+		RequestParams param = webInterface.queryOrderByDoctorIdList(userId,teamId,expert.getDoctorId(),week,date);
 		//RequestParams param = webInterface.queryOrderDoctorList("10001");
 		invokeWebServer(param, GET_LIST);
 	}

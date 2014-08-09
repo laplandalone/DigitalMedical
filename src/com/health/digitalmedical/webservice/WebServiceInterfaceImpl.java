@@ -25,9 +25,9 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	}
 
 	@Override
-	public RequestParams queryOrderByDoctorIdList(String doctorId,String weekStr,String dateStr)
+	public RequestParams queryOrderByDoctorIdList(String userId,String orderTeamId,String doctorId,String weekStr,String dateStr)
 	{
-		return HealthUtil.getRequestParams("BUS2004", new String[]{"doctorId","week","date"},new Object[]{doctorId,weekStr,dateStr});
+		return HealthUtil.getRequestParams("BUS2004", new String[]{"userId","orderTeamId","doctorId","week","date"},new Object[]{userId,orderTeamId,doctorId,weekStr,dateStr});
 	}
 
 	@Override

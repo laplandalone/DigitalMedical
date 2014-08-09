@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.health.digitalmedical"
     android:versionCode="1"
-    android:versionName="2.4" >
+    android:versionName="2.5" >
 
     <uses-sdk
         android:minSdkVersion="9"
@@ -252,7 +252,11 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-         
+          <activity
+            android:name="com.health.digitalmedical.view.other.WebActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
             
         <service android:name="com.health.digitalmedical.view.other.CheckNewVersion" >
         </service>

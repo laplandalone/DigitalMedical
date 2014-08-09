@@ -46,6 +46,6 @@ public interface IWebServiceInterface {
 	
 	public RequestParams checkAuthCode(String accNbr,String authCode);
 
-	RequestParams queryOrderByDoctorIdList(String doctorId, String weekStr,
+	RequestParams queryOrderByDoctorIdList(String userId,String orderTeamId,String doctorId, String weekStr,
 			String dateStr);
 }

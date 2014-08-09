@@ -79,7 +79,8 @@ public class OtherActivity extends BaseActivity
 	@OnClick(R.id.about_law)
 	public void aboutLaw(View v)
 	{
-		HealthUtil.infoAlert(OtherActivity.this, "正在建设中...");
+		Intent intent = new Intent(OtherActivity.this, WebActivity.class);
+		startActivity(intent);
 	}
 	
 
