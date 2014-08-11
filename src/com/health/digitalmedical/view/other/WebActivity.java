@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
-import com.health.digitalmedical.view.user.LoginActivity;
+import com.health.digitalmedical.tools.HealthUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -30,16 +30,29 @@ public class WebActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_webview);
 		 web = (WebView) findViewById(R.id.webview);  
-		String url = "http://hiseemedical.com:10821/declare.html"; 
+		String url = "http://hiseemedical.com:10822/declare.html"; 
 		 if(web != null) 
 	        { 
 	            web.setWebViewClient(new WebViewClient() 
 	            { 
+	            	
 	                @Override 
 	                public void onPageFinished(WebView view,String url) 
 	                { 
+	                	System.out.println("1");
 	                    dialog.dismiss(); 
-	                } 
+	                }
+
+					@Override
+					public void onReceivedError(WebView view, int errorCode,
+							String description, String failingUrl) 
+					{
+						System.out.println("2");
+						HealthUtil.infoAlert(WebActivity.this, "加载失败,请重试...");
+						web.setVisibility(View.GONE);
+						super.onReceivedError(view, errorCode, description, failingUrl);
+					} 
+	                
 	            }); 
 	             
 	            loadUrl(url); 

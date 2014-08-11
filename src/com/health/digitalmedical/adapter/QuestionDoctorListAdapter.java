@@ -57,7 +57,12 @@ public class QuestionDoctorListAdapter extends BaseAdapter
 			TextView textView = (TextView) convertView.findViewById(R.id.telephone);
 			TextView content = (TextView) convertView.findViewById(R.id.contentItem);
 			UserQuestionT questionT = questionTs.get(position);
-			textView.setText(questionT.getUserTelephone()+" "+questionT.getCreateDate());
+			String phone=questionT.getUserTelephone()+"";
+			if(phone.length()==11)
+			{
+				phone=phone.substring(0,7);
+			}
+			textView.setText(phone+"**** "+questionT.getCreateDate());
 			content.setText(questionT.getContent());
 			// doctorPosition.setText(doctors.get(position).getPost());
 			// facultyName.setText(doctors.get(position).getSkill());

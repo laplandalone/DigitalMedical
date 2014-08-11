@@ -33,7 +33,6 @@ import com.health.digitalmedical.model.Doctor;
 import com.health.digitalmedical.model.UserQuestionT;
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
-import com.health.digitalmedical.view.user.UserMainActivity;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;

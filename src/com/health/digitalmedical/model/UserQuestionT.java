@@ -19,8 +19,17 @@ public class UserQuestionT implements java.io.Serializable {
 	private String content;
 	private String state="00A";
 	private String createDate;
+	private String name;
 
 	// Constructors
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	/** default constructor */
 	public UserQuestionT() {

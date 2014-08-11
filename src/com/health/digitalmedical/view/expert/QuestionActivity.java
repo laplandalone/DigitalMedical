@@ -20,7 +20,7 @@ import com.google.gson.reflect.TypeToken;
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
-import com.health.digitalmedical.adapter.QuestionDoctorListAdapter;
+import com.health.digitalmedical.adapter.MyQuestionListAdapter;
 import com.health.digitalmedical.model.Doctor;
 import com.health.digitalmedical.model.User;
 import com.health.digitalmedical.model.UserQuestionT;
@@ -56,7 +56,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.online_question_list);
 		this.list = (ListView) findViewById(R.id.list);
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		ViewUtils.inject(this);
 		addActivity(this);
 		initValue();
@@ -221,7 +221,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		this.questionTs = gson.fromJson(jsonArray, new TypeToken<List<UserQuestionT>>()
 		{
 		}.getType());
-		QuestionDoctorListAdapter adapter = new QuestionDoctorListAdapter(QuestionActivity.this, questionTs);
+		MyQuestionListAdapter adapter = new MyQuestionListAdapter(QuestionActivity.this, questionTs);
 		this.list.setAdapter(adapter);
 		this.list.setOnItemClickListener(this);
 	}
