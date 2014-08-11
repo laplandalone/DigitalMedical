@@ -347,7 +347,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 	}
 
 	@OnClick(R.id.submit_question)
-	public void submitQueestion(View v)
+	public void submitQuestion(View v)
 	{
 		String content = contentET.getText() + "";
 		

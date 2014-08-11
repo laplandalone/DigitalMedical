@@ -230,7 +230,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
 		// TODO Auto-generated method stub
-		Intent intent = new Intent(QuestionActivity.this, TalkActivity.class);
+		Intent intent = new Intent(QuestionActivity.this, MyTalkActivity.class);
 		UserQuestionT questionT = this.questionTs.get(position);
 		Bundle bundle = new Bundle();
 		bundle.putSerializable("questioin", questionT);

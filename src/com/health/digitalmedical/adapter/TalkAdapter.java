@@ -54,12 +54,12 @@ public class TalkAdapter extends BaseAdapter
 	{
 		UserQuestionT questionT = questionTs.get(position);
 		String recordType=questionT.getRecordType();
-		if("ask".equals(recordType))
+		if("ask".equals(recordType) || "copy".equals(recordType))
 		{
 			convertView = LayoutInflater.from(mContext).inflate(R.layout.ask_text_item, null);
 			TextView textView = (TextView) convertView.findViewById(R.id.content);
 			textView.setText(questionT.getContent());
-		}else if("ans".equals(recordType))
+		}else if("ans".equals(recordType) )
 		{
 			convertView = LayoutInflater.from(mContext).inflate(R.layout.answer_text_item, null);
 			TextView textView = (TextView) convertView.findViewById(R.id.anscontent);
