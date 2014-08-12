@@ -206,7 +206,7 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 			int num= Integer.parseInt(orderTeamCount);
 			if(num>=2)
 			{
-				HealthUtil.infoAlert(ExpertDetailActivity.this, "同一科室最多能预约二个号");
+				HealthUtil.infoAlert(ExpertDetailActivity.this, "同一天最多能预约二个号");
 				return;
 			}
 		}

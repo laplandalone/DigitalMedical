@@ -271,11 +271,18 @@ public class LoginActivity extends BaseActivity
 			switch (responseCode)
 			{
 			    case USER_LOGIN:
-			    JsonObject returnObj = jsonObject.getAsJsonObject("returnMsg");
-				this.user = HealthUtil.json2Object(returnObj.toString(), User.class);
+			    String executeType = jsonObject.get("executeType").getAsString();
+			    String returnMsg = jsonObject.get("returnMsg").toString();
+			    if("success".equals(executeType) && "null".equals(returnMsg))
+			    {
+			    	HealthUtil.infoAlert(LoginActivity.this, "用户名或密码错误,请重试...");
+			    	return;
+			    }
+			   
+				this.user = HealthUtil.json2Object(returnMsg.toString(), User.class);
 				if (this.user != null)
 				{
-					HealthUtil.writeUserInfo(returnObj.toString());
+					HealthUtil.writeUserInfo(returnMsg.toString());
 					User user = HealthUtil.getUserInfo();
 					HealthUtil.writeUserId(user.getUserId());
 					HealthUtil.infoAlert(LoginActivity.this, "登录成功");
