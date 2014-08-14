@@ -123,11 +123,11 @@ public class UserUpdateActivity extends BaseActivity
 		
 		if("".equals(userNameT))
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名为空！");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名为空!");
 			return;
 		}else if(userNameT.length()>50)
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名长度无效！");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名长度无效!");
 			return;
 		}
 		if (!HealthUtil.isMobileNum(phoneNum))
@@ -151,19 +151,19 @@ public class UserUpdateActivity extends BaseActivity
 		
 		if("".equals(pswStr))
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "密码为空！");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "密码为空!");
 			return;
 		}
 		
 		if(pswStr.length()<6 || pswStr.length()>12)
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "密码长度有误");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "密码长度有误!");
 			return;
 		}
 		
 		if(!pswStr.equals(confirmPswStr))
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "密码不一致！");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "密码不一致!");
 			return;
 		}
 		
