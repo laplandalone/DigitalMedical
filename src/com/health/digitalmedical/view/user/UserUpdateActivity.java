@@ -52,6 +52,12 @@ public class UserUpdateActivity extends BaseActivity
 	@ViewInject(R.id.female)
 	private RadioButton femaleRadio;
 	
+	@ViewInject(R.id.psw)
+	private EditText psw;
+	
+	@ViewInject(R.id.confirmPsw)
+	private EditText confirmPsw;
+	
 	private User user;
 
 	private User userT = new User();
@@ -112,6 +118,9 @@ public class UserUpdateActivity extends BaseActivity
 		String idCheckRst = IDCard.IDCardValidate(idNum);
 		RadioButton radioButton = (RadioButton) findViewById(group.getCheckedRadioButtonId());
 		String userNameT=realNameET.getText() + "";
+		String pswStr = psw.getText().toString();
+		String confirmPswStr = confirmPsw.getText().toString();
+		
 		if("".equals(userNameT))
 		{
 			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名为空！");
@@ -140,13 +149,31 @@ public class UserUpdateActivity extends BaseActivity
 			this.sex = radioButton.getText().toString();
 		}
 		
+		if("".equals(pswStr))
+		{
+			HealthUtil.infoAlert(UserUpdateActivity.this, "密码为空！");
+			return;
+		}
+		
+		if(pswStr.length()<6 || pswStr.length()>12)
+		{
+			HealthUtil.infoAlert(UserUpdateActivity.this, "密码长度有误");
+			return;
+		}
+		
+		if(!pswStr.equals(confirmPswStr))
+		{
+			HealthUtil.infoAlert(UserUpdateActivity.this, "密码不一致！");
+			return;
+		}
+		
 		this.userT.setUserId(user.getUserId());
 		this.userT.setTelephone(telephoneET.getText() + "");
 		this.userT.setUserName(userNameT);
 		this.userT.setUserNo(idCardET.getText() + "");
 		this.userT.setPassword(user.getPassword());
 		this.userT.setSex(this.sex);
-
+		this.userT.setPassword(pswStr);
 		Gson gson = new Gson();
 		String userStr = gson.toJson(userT);
 		dialog.setMessage("更新中,请稍后...");

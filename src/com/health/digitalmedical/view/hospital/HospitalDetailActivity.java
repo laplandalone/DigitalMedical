@@ -28,7 +28,6 @@ import com.health.digitalmedical.adapter.HospitalBranchAdapter;
 import com.health.digitalmedical.model.TeamT;
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
-import com.health.digitalmedical.view.faculty.DoctorDetailActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -40,6 +39,7 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 /**
  * 医院导航
+ * @author Lapland_Alone
  *
  */
 @SuppressLint("NewApi")
@@ -60,9 +60,7 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 	@ViewInject(R.id.description)
 	private TextView description;
 	
-	private int  initItemCount=2;
-	private int itemHeight=132;
-	List<TeamT> teamTs;
+	private List<TeamT> teamTs;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -168,7 +166,8 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
 		// TODO Auto-generated method stub
-		RequestParams param = webInterface.getTeamByHospitalId("101");
+		String hospitalId=HealthUtil.readHospitalId();
+		RequestParams param = webInterface.getTeamByHospitalId(hospitalId);
 		invokeWebServer(param, GET_LIST);
 	}
 	

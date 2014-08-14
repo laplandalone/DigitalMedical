@@ -10,13 +10,17 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
 import com.health.digitalmedical.view.other.CheckNewVersion;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
+/**
+ * 
+ * @author Lapland_Alone
+ *
+ */
 public class WelcomeActivity extends BaseActivity
 {
 	@ViewInject(R.id.hospital)

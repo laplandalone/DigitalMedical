@@ -30,7 +30,7 @@ public class WebActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_webview);
 		 web = (WebView) findViewById(R.id.webview);  
-		String url = "http://hiseemedical.com:10822/declare.html"; 
+		String url = "http://hiseemedical.com:10821/declare.html"; 
 		 if(web != null) 
 	        { 
 	            web.setWebViewClient(new WebViewClient() 
@@ -39,7 +39,6 @@ public class WebActivity extends BaseActivity
 	                @Override 
 	                public void onPageFinished(WebView view,String url) 
 	                { 
-	                	System.out.println("1");
 	                    dialog.dismiss(); 
 	                }
 
@@ -47,7 +46,6 @@ public class WebActivity extends BaseActivity
 					public void onReceivedError(WebView view, int errorCode,
 							String description, String failingUrl) 
 					{
-						System.out.println("2");
 						HealthUtil.infoAlert(WebActivity.this, "加载失败,请重试...");
 						web.setVisibility(View.GONE);
 						super.onReceivedError(view, errorCode, description, failingUrl);
