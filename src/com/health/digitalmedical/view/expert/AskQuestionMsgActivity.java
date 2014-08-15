@@ -356,6 +356,12 @@ public class AskQuestionMsgActivity extends BaseActivity
 			HealthUtil.infoAlert(this, "提问内容为空");
 			return;
 		}
+
+		if(content.length()>300)
+		{
+			HealthUtil.infoAlert(this, "提问内容过长");
+			return;
+		}
 		if (this.user == null )
 		{
 			Intent intent = new Intent(AskQuestionMsgActivity.this, LoginActivity.class);
