@@ -185,7 +185,7 @@ public class ExpertRegisterActivity extends BaseActivity
 		textViewName.setText(this.doctorName);
 		textViewTime.setText(this.registerTime);
 		textViewNumber.setText(this.userOrderNum);
-		textViewFee.setText(this.fee);
+		textViewFee.setText(this.fee+"元");
 
 		group.setOnCheckedChangeListener(new OnCheckedChangeListener()
 		{

@@ -107,6 +107,7 @@ public class MainPageActivity extends BaseActivity
 		ViewUtils.inject(this);
 		addActivity(this);
 		initView();
+		initValue();
 		WindowManager windowManager = getWindowManager();
 		Display display = windowManager.getDefaultDisplay();
 		int screenWidth = display.getWidth();
@@ -301,6 +302,10 @@ public class MainPageActivity extends BaseActivity
 	protected void initValue()
 	{
 		// TODO Auto-generated method stub
-
+		if(!isNetworkAvailable(this))
+		{
+			HealthUtil.infoAlert(MainPageActivity.this, "网络不可用，请检查！");
+			return;
+		}
 	}
 }

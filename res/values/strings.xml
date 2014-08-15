@@ -562,7 +562,7 @@
     <string name="info_temp70">)</string>
     <string name="info_temp71">确认密码不能为空</string>
     <string name="info_temp72">密码和重复密码不相同</string>
-    <string name="info_temp73">密码长度长度为6～16之间</string>
+    <string name="info_temp73">密码长度长度为6～12之间</string>
     <string name="info_temp74">用户注册失败</string>
     <string name="info_temp75">流水号</string>
     <string name="info_temp76">U米退还</string>

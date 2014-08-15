@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
+import com.health.digitalmedical.WelcomeActivity;
 import com.health.digitalmedical.tools.HealthUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -71,6 +72,11 @@ public class OtherActivity extends BaseActivity
 	@OnClick(R.id.soft_update)
 	public void checkVersion(View v)
 	{
+		if(!isNetworkAvailable(this))
+		{
+			HealthUtil.infoAlert(OtherActivity.this, "网络不可用，请检查！");
+			return;
+		}
 		Intent intent = new Intent(this, CheckNewVersion.class);
 		intent.putExtra("flag", "hand");
 		startService(intent);

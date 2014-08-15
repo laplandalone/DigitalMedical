@@ -72,7 +72,7 @@ public class DoctorDetailActivity extends BaseActivity
 		this.doctotIntroduction.setText(doctor.getSkill());
 		this.doctorPosition.setText(doctor.getPost());
 		this.outPatientTime.setText(doctor.getWorkTime());
-		this.guahaoFee.setText(doctor.getRegisterFee());
+		this.guahaoFee.setText(doctor.getRegisterFee()+"元");
 		this.outPatientPlace.setText(doctor.getWorkAddress());
 		String photoUrl=doctor.getPhotoUrl();
 		 if(photoUrl.endsWith("jpg") || photoUrl.endsWith("png"))

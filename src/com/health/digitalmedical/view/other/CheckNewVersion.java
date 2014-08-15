@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
-import com.health.digitalmedical.view.news.NewsActivity;
 import com.health.digitalmedical.webservice.IWebServiceInterface;
 import com.health.digitalmedical.webservice.WebServiceInterfaceImpl;
 import com.lidroid.xutils.HttpUtils;

@@ -94,7 +94,7 @@ public class RegisterActivity extends BaseActivity
 							}
 							pswBtn.setTextSize(16);
 //							pswBtn.setTextColor(color.TextColorWhite);
-							pswBtn.setText(60-yunshu+"");	
+							pswBtn.setText(60-yunshu+"秒后重发");	
 //							pswBtn.setText(String.format("%1$02d:%2$02d:%3$d",mai,sec,yunshu));						  	
 						}
 					} catch (Exception e) {

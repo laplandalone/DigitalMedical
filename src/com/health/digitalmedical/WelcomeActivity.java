@@ -47,6 +47,7 @@ public class WelcomeActivity extends BaseActivity
 		ViewUtils.inject(this);
 		addActivity(this);
 		initView();
+		initValue();
 		Intent intent = new Intent(this, CheckNewVersion.class);
 		intent.putExtra("flag", "auto");
 		startService(intent);
@@ -116,6 +117,6 @@ public class WelcomeActivity extends BaseActivity
 	protected void initValue()
 	{
 		// TODO Auto-generated method stub
-
+		
 	}
 }
