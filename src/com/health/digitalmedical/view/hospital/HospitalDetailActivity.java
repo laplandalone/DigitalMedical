@@ -270,7 +270,7 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 		TeamT teamT = teamTs.get(position);
 		try
 		{
-			String uri = "intent://map/marker?location="+teamT.getY()+","+teamT.getX()+",&title="+teamT.getTeamName()+"&content=&src=好吃佬#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end";
+			String uri = "intent://map/marker?location="+teamT.getY()+","+teamT.getX()+",&title="+teamT.getTeamName()+"&content=&src=健康管家#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end";
 			@SuppressWarnings("deprecation")
 			Intent intent = Intent.getIntent(uri);
 			startActivity(intent);

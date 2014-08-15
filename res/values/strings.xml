@@ -1007,7 +1007,7 @@
     <string name="layout_temp192">普通号预约：</string>
     <string name="layout_temp193">挂号须知</string>
     <string name="layout_temp194">挂号要点：</string>
-    <string name="layout_temp195">1、预约挂号功能仅面向复诊患者；</string>
+    <string name="layout_temp195">1、预约挂号功能面向所有患者；</string>
     <string name="layout_temp196">2、普通号挂号时间为当日上午06:00-11:30，下午12:00-16:30；专家号提前6天放号，支持24小时预约，但不支持预约挂号。</string>
     <string name="layout_temp197">3、普通号预约可凭挂号凭证直接就诊；专家号预约须到医院付费取号；</string>
     <string name="layout_temp198">4、专家号预约完成后，上午/下午的号须在就诊当天上午10:00/15:00以前，凭您本人身份证付费取号，否则该号源自动作废，且视为一次违约；</string>
