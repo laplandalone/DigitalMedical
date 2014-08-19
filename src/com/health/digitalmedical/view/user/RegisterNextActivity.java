@@ -190,9 +190,7 @@ class MineRequestCallBack extends RequestCallBack<String>
 				}else
 				{
 					HealthUtil.infoAlert(RegisterNextActivity.this, "注册成功");
-					Intent intent = new Intent(RegisterNextActivity.this,LoginActivity.class);
-					startActivity(intent);
-					exit();
+					finish();
 				}
 			}
 		} catch (JSONException e)
