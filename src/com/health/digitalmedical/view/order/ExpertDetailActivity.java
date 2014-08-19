@@ -116,7 +116,7 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 	}
 
 	/**
-	 * 获取后台返回的数据
+	 * 获取后台返回的数据 
 	 */
 	class MineRequestCallBack extends RequestCallBack<String>
 	{
@@ -229,4 +229,12 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 		startActivity(intent);
 	}
 
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		initView();
+		initValue();
+	}
 }

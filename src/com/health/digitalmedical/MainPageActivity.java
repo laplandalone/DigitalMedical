@@ -301,7 +301,7 @@ public class MainPageActivity extends BaseActivity
 	@Override
 	protected void initValue()
 	{
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 退出
 		if(!isNetworkAvailable(this))
 		{
 			HealthUtil.infoAlert(MainPageActivity.this, "网络不可用，请检查！");

@@ -1,7 +1,9 @@
 package com.health.digitalmedical.view.order;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -136,14 +138,7 @@ public class ExpertRegisterActivity extends BaseActivity
 		this.userNo = editIdCard.getText().toString().trim();
 		this.userTelephone = editPhone.getText().toString().trim();
 		RadioButton radioButton = (RadioButton)findViewById(group.getCheckedRadioButtonId());
-		if(radioButton==null)
-		{
-			HealthUtil.infoAlert(ExpertRegisterActivity.this, "用户性别为空!");
-			return;
-		}else
-		{
-			this.sex=radioButton.getText().toString();
-		}
+		
 		String idCheckRst = IDCard.IDCardValidate(userNo);
 		if ("".equals(userName))
 		{
@@ -159,6 +154,14 @@ public class ExpertRegisterActivity extends BaseActivity
 		{
 			HealthUtil.infoAlert(ExpertRegisterActivity.this, idCheckRst);
 			return;
+		}
+		if(radioButton==null)
+		{
+			HealthUtil.infoAlert(ExpertRegisterActivity.this, "用户性别为空!");
+			return;
+		}else
+		{
+			this.sex=radioButton.getText().toString();
 		}
 		dialog.setMessage("正在预约,请稍后...");
 		dialog.show();
@@ -370,5 +373,4 @@ public class ExpertRegisterActivity extends BaseActivity
 		}
 
 	}
-
 }

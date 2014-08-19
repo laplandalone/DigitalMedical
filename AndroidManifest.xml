@@ -67,7 +67,7 @@
             android:value="534c880756240b1b3b249bf8" />
 
         <activity
-            android:name="com.health.digitalmedical.WelcomeActivity"
+            android:name="com.health.digitalmedical.WelcomeActivity" android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

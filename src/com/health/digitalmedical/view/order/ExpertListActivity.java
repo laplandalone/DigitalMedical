@@ -170,13 +170,12 @@ public class ExpertListActivity extends BaseActivity  implements IXListViewListe
 		bundle.putSerializable("expert", expert);
 		intent.putExtras(bundle);
 		startActivity(intent);
-		finish();
 	}
 	
 	@Override
 	public void onRefresh() {
 		// TODO Auto-generated method stub
-		
+	
 	}
 	@Override
 	public void onLoadMore() {
