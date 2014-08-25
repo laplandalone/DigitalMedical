@@ -6,15 +6,16 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.provider.SyncStateContract.Helpers;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 
 import com.health.digitalmedical.application.RegApplication;
-import com.health.digitalmedical.tools.HealthUtil;
 import com.health.digitalmedical.webservice.IWebServiceInterface;
 import com.health.digitalmedical.webservice.WebServiceInterfaceImpl;
 import com.lidroid.xutils.HttpUtils;
@@ -99,4 +100,20 @@ public abstract class BaseActivity extends FragmentActivity {
 		}
 		return false;
 	}
+	
+	protected OnKeyListener onKeyListener = new OnKeyListener() {  
+        
+        @Override  
+        public boolean onKey(View v, int keyCode, KeyEvent event) {  
+            if(keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN){  
+                /*隐藏软键盘*/  
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);  
+                if(inputMethodManager.isActive()){  
+                    inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);  
+                }  
+                return true;  
+            }  
+            return false;  
+        }  
+    }; 
 }

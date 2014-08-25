@@ -68,16 +68,24 @@ public class DoctorDetailActivity extends BaseActivity
 		bitmapUtils = new BitmapUtils(this);
 		bitmapUtils.closeCache();
 		// TODO Auto-generated method stub
-		this.doctorName.setText(doctor.getName());
-		this.doctotIntroduction.setText(doctor.getSkill());
-		this.doctorPosition.setText(doctor.getPost());
-		this.outPatientTime.setText(doctor.getWorkTime());
-		this.guahaoFee.setText(doctor.getRegisterFee()+"元");
-		this.outPatientPlace.setText(doctor.getWorkAddress());
-		String photoUrl=doctor.getPhotoUrl();
+		this.doctorName.setText(this.doctor.getName());
+		this.doctotIntroduction.setText(this.doctor.getSkill());
+		this.doctorPosition.setText(this.doctor.getPost());
+		this.outPatientTime.setText(this.doctor.getWorkTime());
+		String fee = this.doctor.getRegisterFee();
+		if(null==fee ||  "".equals( fee ) || "null".equals( fee ))
+		{
+			fee="无";
+		}else
+		{
+			fee+="元";
+		}
+		this.guahaoFee.setText(fee);
+		this.outPatientPlace.setText(this.doctor.getWorkAddress());
+		String photoUrl=this.doctor.getPhotoUrl();
 		 if(photoUrl.endsWith("jpg") || photoUrl.endsWith("png"))
 		 {
-			 bitmapUtils.display(photo,photoUrl);
+			 bitmapUtils.display(this.photo,photoUrl);
 		 }
 	}
 	

@@ -43,5 +43,17 @@ public class StringUtil
     	}
     	return str;
     }
+    
+    public static boolean checkStringIsNull( String str )
+    {
+        if ( null==str ||  "".equals( str ) || "null".equals( str ) )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 

@@ -63,7 +63,7 @@ public class ExpertDetailAdapter extends BaseAdapter
 			 TextView textView4 = (TextView)convertView.findViewById( R.id.text4);
 			 ImageView localImageView = (ImageView)convertView.findViewById(R.id.icon);
 			 OrderExpert expert=orders.get(position);
-			 /*已预约标示*/
+			 /*已预约标示元*/
 			
 			 if("true".equals(expert.getNumMax()))
 			 {

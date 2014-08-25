@@ -1,7 +1,6 @@
 package com.health.digitalmedical.view.faculty;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,8 +15,6 @@ import android.widget.TextView;
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
-import com.health.digitalmedical.adapter.DoctorListAdapter;
-import com.health.digitalmedical.view.order.RegisteredMain;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -54,7 +51,6 @@ public class DoctorListActivity extends BaseActivity implements OnItemClickListe
 	{
 		// TODO Auto-generated method stub
 		title.setText(R.string.btn_hospital_doctor);
-		getListRst();
 	}
 
 	@Override
@@ -62,18 +58,6 @@ public class DoctorListActivity extends BaseActivity implements OnItemClickListe
 	{
 		// TODO Auto-generated method stub
 
-	}
-
-	public void getListRst()
-	{
-
-		HashMap localHashMap = new HashMap();
-		localHashMap.put("text", "哪天");
-
-		unhandList.add(localHashMap);
-		DoctorListAdapter adapter = new DoctorListAdapter(DoctorListActivity.this, unhandList);
-		this.list.setAdapter(adapter);
-		this.list.setOnItemClickListener(this);
 	}
 
 	@Override
