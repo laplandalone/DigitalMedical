@@ -2,6 +2,8 @@ package com.health.digitalmedical.tools;
 
 import android.os.Environment;
 
+import com.umeng.socialize.bean.SHARE_MEDIA;
+
 public class HealthConstant
 {
 // 	public static final String URL ="http://192.168.137.1:7001/mobile.htm?method=axis";
@@ -16,4 +18,9 @@ public class HealthConstant
 	public static final String IMG_PATH = Environment.getExternalStorageDirectory().getPath()+"/hbgzocr/";
 	
 	public static final String Download_path = Environment.getExternalStorageDirectory().getPath() + "/health/download/";
+	
+	public static final String WX_APPID = "wxa65538aa31a275d0";
+
+	@SuppressWarnings("rawtypes")
+	public static final Enum WECHAT = SHARE_MEDIA.WEIXIN;  //微信分享名称
 }
