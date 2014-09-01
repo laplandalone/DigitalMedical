@@ -76,7 +76,7 @@ public class ExpertDetailAdapter extends BaseAdapter
 			 textView.setText(expert.getWorkTime());
 			 textView2.setText("2");
 			 textView3.setText(expert.getUserOrderNum());
-			 textView4.setText(expert.getFee());
+			 textView4.setText(expert.getFee()+"元");
 		}
 		return convertView;
 	}

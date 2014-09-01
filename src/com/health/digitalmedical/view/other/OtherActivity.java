@@ -1,10 +1,8 @@
 package com.health.digitalmedical.view.other;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,7 +19,6 @@ import com.umeng.socialize.bean.SocializeEntity;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.listener.SocializeListeners.SnsPostListener;
-import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.sso.SmsHandler;
 import com.umeng.socialize.sso.UMQQSsoHandler;
 import com.umeng.socialize.weixin.controller.UMWXHandler;
@@ -74,7 +71,7 @@ public class OtherActivity extends BaseActivity{
 		smsHandler.addToSocialSDK();
 		
 		// 添加微信平台
-		UMWXHandler wxHandler = new UMWXHandler(this,"53ccc48056240b1b82032960");
+		UMWXHandler wxHandler = new UMWXHandler(this,"wx3fa73ee18d8a1fd0");
 		wxHandler.addToSocialSDK();
 	}
 

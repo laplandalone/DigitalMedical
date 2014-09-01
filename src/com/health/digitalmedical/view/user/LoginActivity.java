@@ -275,7 +275,7 @@ public class LoginActivity extends BaseActivity
 			    String returnMsg = jsonObject.get("returnMsg").toString();
 			    if("success".equals(executeType) && "null".equals(returnMsg))
 			    {
-			    	HealthUtil.infoAlert(LoginActivity.this, "用户名或密码错误,请重试...");
+			    	HealthUtil.infoAlert(LoginActivity.this, "用户名或密码错误,请重试");
 			    	return;
 			    }
 			   
@@ -295,9 +295,12 @@ public class LoginActivity extends BaseActivity
 					JsonElement jsonElementT = jsonParser.parse(returnObjT);
 					JsonObject jsonObjectT = jsonElementT.getAsJsonObject();
 					String status=jsonObjectT.get("status").getAsString();
-					if(!"100".equals(status))
+					if(!"100".equals(status) && !"001".equals(status))
 					{
-						HealthUtil.infoAlert(LoginActivity.this, "重置密码失败，请重试...");
+						HealthUtil.infoAlert(LoginActivity.this, "重置密码失败，请重试");
+					}if("001".equals(status))
+					{
+						HealthUtil.infoAlert(LoginActivity.this, "用户不存在,请注册");
 					}else
 					{
 						showSuccessDialog();

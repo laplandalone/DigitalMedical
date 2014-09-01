@@ -359,7 +359,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 
 		if(content.length()>300)
 		{
-			HealthUtil.infoAlert(this, "提问内容过长");
+			HealthUtil.infoAlert(this, "提问内容过长,最多300字");
 			return;
 		}
 		if (this.user == null )

@@ -825,7 +825,7 @@
     <string name="layout_temp17">如何获取MRI医嘱号>></string>
     <string name="layout_temp18">如何获取X线医嘱号>></string>
     <string name="layout_temp19">如何获取超声医嘱号>></string>
-    <string name="layout_temp20">*请尽量详细描述您的病情，包括年龄、性别、主要病症、检查结果，并写下您想获得的帮助… …</string>
+    <string name="layout_temp20">*请尽量详细描述您的病情，包括年龄、性别、主要病症、检查结果，并写下您想获得的帮助(最多输入300字)… …</string>
     <string name="layout_temp21">用心服务,满意一百</string>
     <string name="layout_temp22">手机挂号</string>
     <string name="layout_temp23">掌上实时挂号、叫号查询</string>

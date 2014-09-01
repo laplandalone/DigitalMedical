@@ -86,7 +86,8 @@ public class UserUpdateActivity extends BaseActivity
 		realNameET.setText(user.getUserName());
 		idCardET.setText(user.getUserNo());
 		telephoneET.setText(user.getTelephone());
-		
+		psw.setText(user.getPassword());
+		confirmPsw.setText(user.getPassword());
 		if ("男".equals(user.getSex()))
 		{
 			maleRadio.setChecked(true);
@@ -125,7 +126,7 @@ public class UserUpdateActivity extends BaseActivity
 		{
 			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名为空!");
 			return;
-		}else if(userNameT.length()>50)
+		}else if(userNameT.length()>6)
 		{
 			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名长度无效!");
 			return;
