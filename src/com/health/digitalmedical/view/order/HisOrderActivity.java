@@ -123,11 +123,17 @@ public class HisOrderActivity extends BaseActivity
 		String idCheckRst = IDCard.IDCardValidate(userNo);
 		if("".equals(userName))
 		{
-			HealthUtil.infoAlert(HisOrderActivity.this, "用户名为空!");
+			HealthUtil.infoAlert(HisOrderActivity.this, "用户名为空.");
+			return;
+		}
+		if(userName.length()>6)
+		{
+			HealthUtil.infoAlert(HisOrderActivity.this, "用户名长度无效.");
+			return;
 		}
 		if (!HealthUtil.isMobileNum(userTelephone))
 		{
-			HealthUtil.infoAlert(HisOrderActivity.this, "手机号码为空或格式错误!");
+			HealthUtil.infoAlert(HisOrderActivity.this, "手机号码为空或格式错误.");
 			return;
 		}
 		if (!"YES".equals(idCheckRst))
@@ -137,7 +143,7 @@ public class HisOrderActivity extends BaseActivity
 		}
 		if(radioButton==null)
 		{
-			HealthUtil.infoAlert(HisOrderActivity.this, "用户性别为空!");
+			HealthUtil.infoAlert(HisOrderActivity.this, "用户性别为空.");
 			return;
 		}else
 		{

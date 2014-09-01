@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -24,6 +25,7 @@ import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
 import com.health.digitalmedical.tools.IDCard;
 import com.health.digitalmedical.view.user.LoginActivity;
+import com.health.digitalmedical.view.user.UserUpdateActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -142,12 +144,17 @@ public class ExpertRegisterActivity extends BaseActivity
 		String idCheckRst = IDCard.IDCardValidate(userNo);
 		if ("".equals(userName))
 		{
-			HealthUtil.infoAlert(ExpertRegisterActivity.this, "用户名为空!");
+			HealthUtil.infoAlert(ExpertRegisterActivity.this, "用户名为空.");
+			return;
+		}
+		if(userName.length()>6)
+		{
+			HealthUtil.infoAlert(ExpertRegisterActivity.this, "用户名长度无效.");
 			return;
 		}
 		if (!HealthUtil.isMobileNum(userTelephone))
 		{
-			HealthUtil.infoAlert(ExpertRegisterActivity.this, "手机号码为空或格式错误!");
+			HealthUtil.infoAlert(ExpertRegisterActivity.this, "手机号码为空或格式错误.");
 			return;
 		}
 		if (!"YES".equals(idCheckRst))
@@ -157,7 +164,7 @@ public class ExpertRegisterActivity extends BaseActivity
 		}
 		if(radioButton==null)
 		{
-			HealthUtil.infoAlert(ExpertRegisterActivity.this, "用户性别为空!");
+			HealthUtil.infoAlert(ExpertRegisterActivity.this, "用户性别为空.");
 			return;
 		}else
 		{
@@ -359,6 +366,13 @@ public class ExpertRegisterActivity extends BaseActivity
 					intent.putExtra("userNo", userNo);
 					intent.putExtra("userTelephone", userTelephone);
 					intent.putExtra("sex", sex);
+					
+					user.setUserName(userName);
+					user.setUserNo(userNo);
+					Gson gson = new Gson();
+					String userStr = gson.toJson(user);
+					HealthUtil.writeUserInfo(userStr);
+					
 					startActivity(intent);
 					finish();
 				} else

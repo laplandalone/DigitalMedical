@@ -124,16 +124,16 @@ public class UserUpdateActivity extends BaseActivity
 		
 		if("".equals(userNameT))
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名为空!");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名为空.");
 			return;
 		}else if(userNameT.length()>6)
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名长度无效!");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "用户名长度无效.");
 			return;
 		}
 		if (!HealthUtil.isMobileNum(phoneNum))
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "手机号码为空或格式错误!");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "手机号码为空或格式错误.");
 			return;
 		} else if (!"YES".equals(idCheckRst))
 		{
@@ -143,7 +143,7 @@ public class UserUpdateActivity extends BaseActivity
 
 		if (radioButton == null)
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "用户性别为空!");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "用户性别为空.");
 			return;
 		} else
 		{
@@ -152,19 +152,19 @@ public class UserUpdateActivity extends BaseActivity
 		
 		if("".equals(pswStr))
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "密码为空!");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "密码为空.");
 			return;
 		}
 		
 		if(pswStr.length()<6 || pswStr.length()>12)
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "密码长度有误!");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "密码长度有误.");
 			return;
 		}
 		
 		if(!pswStr.equals(confirmPswStr))
 		{
-			HealthUtil.infoAlert(UserUpdateActivity.this, "密码不一致!");
+			HealthUtil.infoAlert(UserUpdateActivity.this, "密码不一致.");
 			return;
 		}
 		
