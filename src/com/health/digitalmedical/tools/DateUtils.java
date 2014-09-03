@@ -565,7 +565,7 @@ public class DateUtils
 		{
 			date = CHN_DATE_FORMAT.parse(dateStr);
 			String[] weekDaysName = { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
-			String[] weekDaysCode = { "七", "一", "二", "三", "四", "五", "六" };
+			String[] weekDaysCode = { "日", "一", "二", "三", "四", "五", "六" };
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(date);
 			int intWeek = calendar.get(Calendar.DAY_OF_WEEK) - 1;
