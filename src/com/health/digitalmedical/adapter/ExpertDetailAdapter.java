@@ -54,8 +54,6 @@ public class ExpertDetailAdapter extends BaseAdapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		if (convertView == null)
-		{
 			 convertView = LayoutInflater.from(mContext).inflate(R.layout.doctor_schedul_list_item, null);
 			 TextView textView =  (TextView)convertView.findViewById( R.id.text1);
 			 TextView textView2 = (TextView)convertView.findViewById( R.id.text22);
@@ -77,7 +75,7 @@ public class ExpertDetailAdapter extends BaseAdapter
 			 textView2.setText("2");
 			 textView3.setText(expert.getUserOrderNum());
 			 textView4.setText(expert.getFee()+"元");
-		}
+		
 		return convertView;
 	}
 

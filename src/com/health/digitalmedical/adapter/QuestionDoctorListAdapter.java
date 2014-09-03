@@ -51,8 +51,7 @@ public class QuestionDoctorListAdapter extends BaseAdapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		if (convertView == null)
-		{
+		
 			convertView = LayoutInflater.from(mContext).inflate(R.layout.online_doctor_question_item, null);
 			TextView textView = (TextView) convertView.findViewById(R.id.telephone);
 			TextView content = (TextView) convertView.findViewById(R.id.contentItem);
@@ -66,7 +65,7 @@ public class QuestionDoctorListAdapter extends BaseAdapter
 			content.setText(questionT.getContent());
 			// doctorPosition.setText(doctors.get(position).getPost());
 			// facultyName.setText(doctors.get(position).getSkill());
-		}
+	
 		return convertView;
 	}
 

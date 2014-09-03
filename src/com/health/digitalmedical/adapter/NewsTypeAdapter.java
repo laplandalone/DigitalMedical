@@ -73,8 +73,7 @@ public class NewsTypeAdapter  extends BaseAdapter
 		{
 			flag=0;
 		}
-		if (convertView == null)
-		{
+		
 			 convertView = LayoutInflater.from(mContext).inflate(R.layout.common_list_two_item, null);
 			 TextView textView =  (TextView)convertView.findViewById( R.id.text1);
 			 ImageView imageView = (ImageView)convertView.findViewById( R.id.msg_icon);
@@ -85,7 +84,7 @@ public class NewsTypeAdapter  extends BaseAdapter
 			 imageView.setVisibility(View.VISIBLE);
 			 textView.setText(jsonObject.get("configVal").getAsString());
 			 flag++;
-		}
+		
 		return convertView;
 	}
 

@@ -60,8 +60,7 @@ public class NewsListAdapter extends BaseAdapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		if (convertView == null)
-		{
+		
 			 convertView = LayoutInflater.from(mContext).inflate(R.layout.common_article_list_item, null);
 			 TextView textView =  (TextView)convertView.findViewById( R.id.newsTitle);
 			 TextView textView2 = (TextView)convertView.findViewById( R.id.newsContent);
@@ -78,7 +77,7 @@ public class NewsListAdapter extends BaseAdapter
 			 textView2.setText(hospitalNewsT.getNewsContent());
 			 textView3.setText(hospitalNewsT.getCreateDate());
 			 
-		}
+		
 		return convertView;
 	}
 

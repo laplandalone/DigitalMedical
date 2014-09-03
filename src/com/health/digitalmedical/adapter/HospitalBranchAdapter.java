@@ -52,8 +52,7 @@ public class HospitalBranchAdapter extends BaseAdapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		if (convertView == null)
-		{
+		
 			convertView = LayoutInflater.from(mContext).inflate(R.layout.hospital_list_item, null);
 			TextView textView = (TextView) convertView.findViewById(R.id.name);
 			TextView textView1 = (TextView) convertView.findViewById(R.id.faculty_name);
@@ -62,7 +61,7 @@ public class HospitalBranchAdapter extends BaseAdapter
 			textView.setText(teamT.getTeamName());
 			textView1.setText(teamT.getAddress());
 			textView2.setText(teamT.getBusRoute());
-		}
+		
 		return convertView;
 	}
 

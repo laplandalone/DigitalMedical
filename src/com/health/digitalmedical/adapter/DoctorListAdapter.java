@@ -54,8 +54,7 @@ public class DoctorListAdapter  extends BaseAdapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		if (convertView == null)
-		{
+		
 			 convertView = LayoutInflater.from(mContext).inflate(R.layout.common_doctor_list_item, null);
 			 TextView textView = (TextView)convertView.findViewById( R.id.comdoctor_name);
 			 TextView doctorPosition = (TextView)convertView.findViewById( R.id.comdoctor_position);
@@ -64,7 +63,7 @@ public class DoctorListAdapter  extends BaseAdapter
 			 textView.setText(value);
 			 doctorPosition.setText(value+"副教授2");
 			 goodJob.setText(value+"从事医疗好多年1");
-		}
+		
 		return convertView;
 	}
 

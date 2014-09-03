@@ -51,8 +51,7 @@ public class MyQuestionListAdapter extends BaseAdapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		if (convertView == null)
-		{
+		
 			convertView = LayoutInflater.from(mContext).inflate(R.layout.online_user_question_item, null);
 			TextView doctorName = (TextView) convertView.findViewById(R.id.doctorName);
 			TextView question = (TextView) convertView.findViewById(R.id.question);
@@ -61,7 +60,7 @@ public class MyQuestionListAdapter extends BaseAdapter
 			doctorName.setText(questionT.getName());
 			question.setText(questionT.getContent());
 			createDate.setText(questionT.getCreateDate());
-		}
+		
 		return convertView;
 	}
 

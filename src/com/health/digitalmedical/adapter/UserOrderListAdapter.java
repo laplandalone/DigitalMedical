@@ -54,8 +54,6 @@ public class UserOrderListAdapter extends BaseAdapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		if (convertView == null)
-		{
 			 convertView = LayoutInflater.from(mContext).inflate(R.layout.user_order_list_item, null);
 			 TextView textView =  (TextView)convertView.findViewById( R.id.text1);
 			 TextView textView2 = (TextView)convertView.findViewById( R.id.text22);
@@ -68,7 +66,7 @@ public class UserOrderListAdapter extends BaseAdapter
 			 textView.setText(registerOrderT.getRegisterTime());
 			 textView3.setText(registerOrderT.getTeamName());
 			 textView4.setText(registerOrderT.getOrderNum());
-		}
+		
 		return convertView;
 	}
 

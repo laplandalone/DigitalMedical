@@ -53,13 +53,12 @@ public class AskExpertListAdapter extends BaseAdapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		if (convertView == null)
-		{
+		
 			convertView = LayoutInflater.from(mContext).inflate(R.layout.common_askdoctor_list_item, null);
 			TextView textView = (TextView) convertView.findViewById(R.id.doctor_name);
 			String value = unhandList.get(position).get("text").toString();
 			textView.setText(value);
-		}
+		
 		return convertView;
 	}
 }
