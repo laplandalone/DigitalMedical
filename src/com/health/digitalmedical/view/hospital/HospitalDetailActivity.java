@@ -57,6 +57,9 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 	@ViewInject(R.id.descText)
 	private TextView descText;
 	
+	@ViewInject(R.id.title)
+	private TextView title;
+	
 	@ViewInject(R.id.description)
 	private TextView description;
 	
@@ -68,9 +71,10 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.hospital_hospital_detail);
 		this.list=(ListView) findViewById(R.id.comlist);
+		ViewUtils.inject(this);
 		initValue();
 		initView();
-		ViewUtils.inject(this);
+		
 		addActivity(this);
 	}
 
@@ -98,12 +102,11 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 		
 	}
 	
-	
 	@Override
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-
+		title.setText(HealthUtil.readHospitalName());
 	}
 
 	private void setListView()

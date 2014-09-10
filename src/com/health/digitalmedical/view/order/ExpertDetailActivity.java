@@ -46,7 +46,11 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 	private TextView position;
 	@ViewInject(R.id.departNameDec)
 	private TextView departNameDec;
-
+	@ViewInject(R.id.orderTime)
+	private TextView orderTime;
+	@ViewInject(R.id.weekTime)
+	private TextView weekTime;
+	
 	private ListView list;
 	
 	private OrderExpert expert; 
@@ -88,10 +92,12 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 		this.facultyName.setText(expert.getTeamName());
 		this.position.setText(expert.getPost());
 		this.departNameDec.setText(expert.getIntroduce());
-		
+	
 		String date=expert.getDay();
 		String week=expert.getWeek();
 		// TODO Auto-generated method stub
+		this.orderTime.setText(date);
+		this.weekTime.setText("星期"+week);
 		String teamId=expert.getTeamId();
 		String userId=HealthUtil.readUserId();
 		RequestParams param = webInterface.queryOrderByDoctorIdList(userId,teamId,expert.getDoctorId(),week,date);
@@ -197,7 +203,7 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 		String teamId=orderExpert.getTeamId();
 		String teamName=orderExpert.getTeamName();
 		String day=orderExpert.getDay();
-		
+		String userFlag=orderExpert.getUserFlag();
 		String orderTeamCount=orderExpert.getOrderTeamCount();
 		String numMax=orderExpert.getNumMax();
 		
@@ -210,7 +216,11 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 				return;
 			}
 		}
-		
+		if("Y".equals(userFlag))
+		{
+			HealthUtil.infoAlert(ExpertDetailActivity.this, "已预约,请重新选择");
+			return;
+		}
 		if("true".equals(numMax))
 		{
 			HealthUtil.infoAlert(ExpertDetailActivity.this, "该时间预约号已满,请选择其他时间");

@@ -218,11 +218,13 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
     <style name="AppBaseTheme" parent="@android:style/Theme.Light.NoTitleBar" />
+    
     <style name="AppTheme" parent="@style/AppBaseTheme">
-        <item name="android:windowBackground">@color/symptom_question_bg</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
+    
     <style name="title">
-        <item name="android:textSize">24.0sp</item>
+        <item name="android:textSize">16.0sp</item>
         <item name="android:textColor">#ffffffff</item>
         <item name="android:ellipsize">marquee</item>
         <item name="android:gravity">center</item>
@@ -287,7 +289,7 @@
         <item name="android:layout_height">fill_parent</item>
     </style>
     <style name="layout_common_color" parent="@style/layout_full">
-        <item name="android:background">@color/common_background</item>
+        <item name="android:background">@color/white</item>
     </style>
     <style name="layout_wrap">
         <item name="android:layout_width">wrap_content</item>

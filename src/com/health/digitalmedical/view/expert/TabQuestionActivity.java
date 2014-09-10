@@ -151,7 +151,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 		this.doctor=(Doctor) getIntent().getSerializableExtra("doctor");
 		LayoutInflater lf = getLayoutInflater().from(this);
 		
-		view1 = lf.inflate(R.layout.tab_doctor_detail, null);
+		view1 = lf.inflate(R.layout.common_doctor_detail, null);
 		view2 = lf.inflate(R.layout.tab_online_question_list, null);
 		
 		TextView doctorName=(TextView) view1.findViewById(R.id.doctor_name);
@@ -165,7 +165,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 		TextView outPatientPlace=(TextView) view1.findViewById(R.id.out_patient_place);
 		outPatientPlace.setText(doctor.getWorkAddress());
 		TextView guahaoFee=(TextView) view1.findViewById(R.id.guahao_fee);
-		guahaoFee.setText(doctor.getRegisterFee());
+		guahaoFee.setText(doctor.getRegisterFee()+"元");
 		ImageView imageView = (ImageView) view1.findViewById( R.id.doctor_photo);
 		String photoUrl=doctor.getPhotoUrl();
 		if(photoUrl.endsWith("jpg") || photoUrl.endsWith("png"))

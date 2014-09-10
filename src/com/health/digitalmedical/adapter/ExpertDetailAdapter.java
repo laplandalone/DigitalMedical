@@ -69,6 +69,7 @@ public class ExpertDetailAdapter extends BaseAdapter
 				 localImageView.setBackgroundResource(R.drawable.reservation_icon);
 			 }else if("Y".equals(expert.getUserFlag()))
 			 {
+				 localImageView.setBackgroundResource(R.drawable.order);
 				 localImageView.setVisibility(View.VISIBLE);
 			 }
 			 textView.setText(expert.getWorkTime());

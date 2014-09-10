@@ -56,14 +56,18 @@ public class UserOrderListAdapter extends BaseAdapter
 	{
 			 convertView = LayoutInflater.from(mContext).inflate(R.layout.user_order_list_item, null);
 			 TextView textView =  (TextView)convertView.findViewById( R.id.text1);
-			 TextView textView2 = (TextView)convertView.findViewById( R.id.text22);
+			 TextView textView2 = (TextView)convertView.findViewById( R.id.text2);
 			 TextView textView3 = (TextView)convertView.findViewById( R.id.text3);
 			 TextView textView4 = (TextView)convertView.findViewById( R.id.text4);
 			 ImageView localImageView = (ImageView)convertView.findViewById(R.id.icon);
 			 RegisterOrderT registerOrderT=registerOrderTs.get(position);
 			 
 			// localImageView.setVisibility(0);
-			 textView.setText(registerOrderT.getRegisterTime());
+			 String registerTime= registerOrderT.getRegisterTime();
+			 String dateTime=registerTime.substring(0,12);
+			 String weekTime=registerTime.substring(12,registerTime.length());
+			  textView2.setText(weekTime);
+			 textView.setText(dateTime);
 			 textView3.setText(registerOrderT.getTeamName());
 			 textView4.setText(registerOrderT.getOrderNum());
 		

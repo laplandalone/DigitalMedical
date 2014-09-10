@@ -1,9 +1,7 @@
 package com.health.digitalmedical.view.order;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +23,6 @@ import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
 import com.health.digitalmedical.tools.IDCard;
 import com.health.digitalmedical.view.user.LoginActivity;
-import com.health.digitalmedical.view.user.UserUpdateActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -182,7 +179,7 @@ public class ExpertRegisterActivity extends BaseActivity
 	protected void initView()
 	{
 		title.setText("信息确认");
-		stepTwo.setBackgroundResource(R.drawable.bg_step_2);
+//		stepTwo.setBackgroundResource(R.drawable.bg_step_2);
 		this.doctorName = getIntent().getStringExtra("doctorName");
 		this.registerTime = getIntent().getStringExtra("registerTime");
 		this.fee = getIntent().getStringExtra("fee");

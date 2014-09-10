@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.health.digitalmedical.R;
@@ -54,38 +54,30 @@ public class OrderExpertAdapter  extends BaseAdapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		View view = convertView;
-		ViewHolder viewHolder = null;
-//		if (view == null)
-//		{
-			 viewHolder = new ViewHolder();
-			 view = LayoutInflater.from(mContext).inflate(R.layout.expert_doctor_list_item, null);		
-			 viewHolder.textView = (TextView)view.findViewById( R.id.name);
-			 viewHolder.weekView =   (TextView)view.findViewById( R.id.date);
-			 viewHolder.doctorPosition = (TextView)view.findViewById( R.id.position);
-			 viewHolder.layout =(LinearLayout) view.findViewById(R.id.countLayout);
-			 
-//			 view.setTag(viewHolder);
-//		}else
-//		{
-//			viewHolder = (ViewHolder) view.getTag();
-//		}
-	
+		 View view = convertView;
+		 ViewHolder viewHolder = null;
+
+		 viewHolder = new ViewHolder();
+		 view = LayoutInflater.from(mContext).inflate(R.layout.expert_doctor_list_item, null);		
+		 viewHolder.textView = (TextView)view.findViewById( R.id.name);
+		 viewHolder.dateView = (TextView)view.findViewById( R.id.date);
+		 viewHolder.weekView = (TextView)view.findViewById( R.id.week);
+		 ImageView img = (ImageView) view.findViewById(R.id.time_circle);
 		 OrderExpert  expert=orders.get(position);
 		 String value=expert.getDoctorName();
 		 String weekDay=expert.getDay();
 		 String week=expert.getWeek();
 		 String display=expert.getDisplay();
 		 viewHolder.textView.setText(value);
-		 viewHolder.doctorPosition.setText(expert.getTeamName());
+	
 		 if("Y".equals(display))
 		 {
+			 img.setBackgroundResource(R.drawable.time_item_circle);
 			 viewHolder.weekView.setVisibility(View.VISIBLE);
-			 viewHolder.weekView.setText(weekDay+" 星期"+week);
-			 day=weekDay;
+			 viewHolder.dateView.setVisibility(View.VISIBLE);
+			 viewHolder.dateView.setText(weekDay);
+			 viewHolder.weekView.setText("星期"+week);
 		 }
-		 viewHolder.layout.setVisibility(View.GONE);
-		 
 		return view;
 	}
 	
@@ -93,8 +85,7 @@ public class OrderExpertAdapter  extends BaseAdapter
 	private class ViewHolder
 	{
 		public TextView textView;
+		public TextView dateView;
 		public TextView weekView;
-		public TextView doctorPosition;
-		LinearLayout layout;
 	}
 }

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/symptom_question_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical"  android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include layout="@layout/hospital_map_title" />
+    <ImageView android:background="@drawable/register_title" android:layout_width="fill_parent" android:layout_height="160.0dip" />
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip">
         <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.1">
             <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                 
                 <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/guahao_title_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
                     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
                         <TextView android:textSize="20.0sp" android:textColor="#ffb32b2b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/layout_temp193" android:singleLine="true" android:layout_weight="0.1" />
@@ -65,9 +67,9 @@
                 <ImageButton android:layout_gravity="center" android:id="@+id/ready" android:background="@drawable/symptom_select_true" android:layout_width="28.0dip" android:layout_height="28.0dip" />
                 <TextView android:textSize="16.0sp" android:textColor="#ff7a7a7a" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="我已阅读并同意声明" android:singleLine="true" />
             </LinearLayout>
-            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="18.0dip">
-                <Button android:textSize="19.0sp" android:textColor="@color/white" android:id="@id/expert" android:background="@drawable/new_bg_btn_login_press" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="@string/layout_temp216" android:layout_weight="1.0" />
-                <Button android:textSize="19.0sp" android:textColor="@color/white" android:id="@+id/normal" android:background="@drawable/new_bg_btn_login_press" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="@string/layout_temp215" android:layout_weight="1.0" />
+            <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="18.0dip">
+                <Button  android:id="@id/expert" android:background="@drawable/new_bg_btn_login_press" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip"  android:layout_weight="1.0" />
+                <Button  android:id="@+id/normal" android:layout_marginLeft="10.0dip" android:background="@drawable/normal_register" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip"  android:layout_weight="1.0" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -1,5 +1,8 @@
 package com.health.digitalmedical;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,7 +12,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.ImageView.ScaleType;
 
+import com.health.digitalmedical.adapter.ImgViewPager;
 import com.health.digitalmedical.tools.HealthUtil;
 import com.health.digitalmedical.view.other.CheckNewVersion;
 import com.lidroid.xutils.ViewUtils;
@@ -23,6 +29,9 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
  */
 public class WelcomeActivity extends BaseActivity
 {
+	@ViewInject(R.id.back)
+	private ImageView back;
+	
 	@ViewInject(R.id.hospital)
 	private ImageView hospital;
 
@@ -32,27 +41,51 @@ public class WelcomeActivity extends BaseActivity
 	@ViewInject(R.id.line2)
 	private LinearLayout layout2;
 
-	@ViewInject(R.id.line3)
-	private LinearLayout layout3;
+	@ViewInject(R.id.title)
+	private TextView title;
 	
-	@ViewInject(R.id.line4)
-	private LinearLayout layout4;
+	@ViewInject(R.id.imgViewPager)
+	ImgViewPager myPager; // 图片容器
+
+	@ViewInject(R.id.vb)
+	LinearLayout ovalLayout; // 圆点容器
+	
+	private List<View> listViews; // 图片组
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.hospital_page);
+		setContentView(R.layout.new_hospital_page);
 		ViewUtils.inject(this);
 		addActivity(this);
 		initView();
 		initValue();
+	
 		Intent intent = new Intent(this, CheckNewVersion.class);
 		intent.putExtra("flag", "auto");
 		startService(intent);
 	}
+	
     
+	/**
+	 * 初始化图片
+	 */
+	private void initViewPager()
+	{
+		listViews = new ArrayList<View>();
+		int[] imageResId = new int[]
+		{ R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d};
+		for (int i = 0; i < imageResId.length; i++)
+		{
+			ImageView imageView = new ImageView(this);
+			imageView.setImageResource(imageResId[i]);
+			imageView.setScaleType(ScaleType.CENTER_CROP);
+			listViews.add(imageView);
+		}
+	}
+	
 	/**
 	 * 清华阳光医院：hospital_id:101
 	 * @param v
@@ -80,25 +113,51 @@ public class WelcomeActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
+		back.setVisibility(View.GONE);
+		title.setText(HealthUtil.readHospitalName());
 		
 		WindowManager windowManager = getWindowManager();
 		Display display = windowManager.getDefaultDisplay();
 		int screenWidth = display.getWidth();
 		int scrrenHeight = display.getHeight();
-		int w = screenWidth - 4;
-		int ww = w / 2-120;
-		int h = scrrenHeight - dip2px(this, 300);
-		int itemHeight = h / 2-120;
-		LinearLayout.LayoutParams hint_page_params = new LinearLayout.LayoutParams(ww, itemHeight);
-		// hint_page_params.setMargins(10,100,0, 0);//设置边距
 		
-		LinearLayout.LayoutParams hint_space_params = new LinearLayout.LayoutParams(ww, itemHeight);
-		hint_space_params.setMargins(40,0,0, 0);//设置边距
+		int  spacedip480=12;
+		int  spacedip720=12;
+		int  imgPagerHeigth=0;
+		int intersectionPoint480=35;//大圆和小圆交集长度
+		int intersectionPoint720=22;//大圆和小圆交集长度
+		int maxCircle480=30;//大圆比小圆大 诊疗服务
+		int maxCircle720=30;//大圆比小圆大 诊疗服务
+		int space=0;
+		int intersectionPoint=0;//大圆和小圆交集长度
+		int maxCircle=0;//大圆比小圆大 诊疗服务
 		
-		layout1.setLayoutParams(hint_page_params);
-		layout2.setLayoutParams(hint_space_params);
-		layout3.setLayoutParams(hint_page_params);
-		layout4.setLayoutParams(hint_space_params);
+		if(screenWidth==480)
+		{
+			space=dip2px(this, spacedip480);
+			maxCircle=dip2px(this, maxCircle480);
+			intersectionPoint=dip2px(this, intersectionPoint480);
+			imgPagerHeigth=dip2px(this, 40);//40：title高度+间隔高度
+		}else
+		{
+			space=dip2px(this, spacedip720);
+			maxCircle=dip2px(this, maxCircle720);
+			intersectionPoint=dip2px(this, intersectionPoint720);
+			imgPagerHeigth=dip2px(this, 30);//30:title高度+间隔高度
+		}
+		int spaceX =space*5;//其他服务下，小圆圈间隔
+		int minCircleWhith=(screenWidth-spaceX)/4;//其他服务下，小圆圈图片宽度
+		int minCircleHeight=minCircleWhith*190/160;// 其他服务下，小圆圈图片高度 ： 190/160图片比例
+		int myPagerHight=scrrenHeight-minCircleHeight*5-imgPagerHeigth;
+		myPager.setLayoutParams(new LinearLayout.LayoutParams(screenWidth,myPagerHight));
+		
+		layout2.setLayoutParams(new LinearLayout.LayoutParams(screenWidth,scrrenHeight-screenWidth-intersectionPoint));
+		
+	
+		
+		initViewPager();// 初始化图片
+		myPager.start(this, listViews, 4000, ovalLayout, R.layout.ad_bottom_item, R.id.ad_item_v,
+				R.drawable.pager_select, R.drawable.pager_item);
 	}
 
 	public static int dip2px(Context context, float dipValue)

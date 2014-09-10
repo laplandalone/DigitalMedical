@@ -55,7 +55,7 @@ public class FacultyListAdapter extends BaseAdapter
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
 		
-			convertView = LayoutInflater.from(mContext).inflate(R.layout.common_list_item, null);
+			convertView = LayoutInflater.from(mContext).inflate(R.layout.img_list_item, null);
 			TextView textView = (TextView) convertView.findViewById(R.id.comtext1);
 			String value = teams.get(position).getTeamName().toString();
 			textView.setText(value);

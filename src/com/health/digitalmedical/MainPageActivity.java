@@ -14,6 +14,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.health.digitalmedical.adapter.ImgViewPager;
 import com.health.digitalmedical.tools.HealthUtil;
@@ -85,20 +87,35 @@ public class MainPageActivity extends BaseActivity
 
 	@ViewInject(R.id.lineout6)
 	private LinearLayout layout6;
+	
+	@ViewInject(R.id.lineout7)
+	private LinearLayout layout7;
 
+	@ViewInject(R.id.lineout8)
+	private LinearLayout layout8;
+	
 	@ViewInject(R.id.imgViewPager)
 	ImgViewPager myPager; // 图片容器
 
 	@ViewInject(R.id.vb)
 	LinearLayout ovalLayout; // 圆点容器
 
+	
+	@ViewInject(R.id.title)
+	private TextView title;
 	private List<View> listViews; // 图片组
 
 	private DoubleClickExit doubleClickExit;
 	
-	int  spacedip480=10;
+	int  spacedip480=12;
 	int  spacedip720=12;
 	int  imgPagerHeigth=0;
+	
+	int intersectionPoint480=25;//大圆和小圆交集长度
+	int intersectionPoint720=30;//大圆和小圆交集长度
+	int maxCircle480=30;//大圆比小圆大 诊疗服务
+	int maxCircle720=30;//大圆比小圆大 诊疗服务
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -115,33 +132,52 @@ public class MainPageActivity extends BaseActivity
 		Log.e("screenWidth",screenWidth+"");
 		Log.e("scrrenHeight",scrrenHeight+"");
 		int space=0;
+		int intersectionPoint=0;//大圆和小圆交集长度
+		int maxCircle=0;//大圆比小圆大 诊疗服务
 		if(screenWidth==480)
 		{
 			space=dip2px(this, spacedip480);
+			maxCircle=dip2px(this, maxCircle480);
+			intersectionPoint=dip2px(this, intersectionPoint480);
 			imgPagerHeigth=dip2px(this, 40);//40：title高度+间隔高度
 		}else
 		{
 			space=dip2px(this, spacedip720);
+			maxCircle=dip2px(this, maxCircle720);
+			intersectionPoint=dip2px(this, intersectionPoint720);
 			imgPagerHeigth=dip2px(this, 30);//30:title高度+间隔高度
 		}
-		int spaceX =space*4;
-		Log.e("spaceX",spaceX+"");
-		int w=screenWidth-spaceX;
-		int ww = w / 3;
-		int hh=ww*296/206;// 296/206:图片比例
-		Log.e("itemHH",hh+"");
-		LinearLayout.LayoutParams hint_page_params = new LinearLayout.LayoutParams(ww, hh);
+		
+		int ww=screenWidth/3-space*2;
+		
+		int spaceX =space*5;//其他服务下，小圆圈间隔
+		int minCircleWhith=(screenWidth-spaceX)/4;//其他服务下，小圆圈图片宽度
+		int minCircleHeight=minCircleWhith*190/160;// 其他服务下，小圆圈图片高度 ： 190/160图片比例
+		
+		
+		
+		RelativeLayout.LayoutParams layout1LayoutParams = new RelativeLayout.LayoutParams(ww+maxCircle, ww+maxCircle);
+		RelativeLayout.LayoutParams layout2LayoutParams = new RelativeLayout.LayoutParams(ww, ww);
+		RelativeLayout.LayoutParams layout5LayoutParams = new RelativeLayout.LayoutParams(ww, ww);
+		
 		//int left, int top, int right, int bottom
-		hint_page_params.setMargins(space,0,0, 0);//设置边距
-		layout1.setLayoutParams(hint_page_params);
-		layout2.setLayoutParams(hint_page_params);
-		layout3.setLayoutParams(hint_page_params);
-		layout4.setLayoutParams(hint_page_params);
-		layout5.setLayoutParams(hint_page_params);
-		layout6.setLayoutParams(hint_page_params);
-
-		myPager.setLayoutParams(new LinearLayout.LayoutParams(screenWidth,scrrenHeight-hh*3-imgPagerHeigth));
-		InitViewPager();// 初始化图片
+		layout1LayoutParams.setMargins(screenWidth/2-(ww+maxCircle)/2,0,0, 0);//设置边距
+		layout2LayoutParams.setMargins(screenWidth/2-(ww+maxCircle)/2-ww+intersectionPoint,maxCircle/2,0, 0);//设置边距
+		layout5LayoutParams.setMargins(screenWidth/2+(ww+maxCircle)/2-intersectionPoint,maxCircle/2,0, 0);//设置边距
+		layout1.setLayoutParams(layout1LayoutParams);
+		layout2.setLayoutParams(layout2LayoutParams);
+		layout5.setLayoutParams(layout5LayoutParams);
+		
+		LinearLayout.LayoutParams linearLayout = new LinearLayout.LayoutParams(minCircleWhith, minCircleHeight);
+		linearLayout.setMargins(space,0,0, 0);//设置边距
+		layout3.setLayoutParams(linearLayout);
+		layout4.setLayoutParams(linearLayout);
+		layout6.setLayoutParams(linearLayout);
+		layout7.setLayoutParams(linearLayout);
+		
+		
+		myPager.setLayoutParams(new LinearLayout.LayoutParams(screenWidth,scrrenHeight-minCircleHeight*5-imgPagerHeigth));
+		initViewPager();// 初始化图片
 		myPager.start(this, listViews, 4000, ovalLayout, R.layout.ad_bottom_item, R.id.ad_item_v,
 				R.drawable.pager_select, R.drawable.pager_item);
 
@@ -245,7 +281,7 @@ public class MainPageActivity extends BaseActivity
 	/**
 	 * 初始化图片
 	 */
-	private void InitViewPager()
+	private void initViewPager()
 	{
 		listViews = new ArrayList<View>();
 		int[] imageResId = new int[]
@@ -262,6 +298,7 @@ public class MainPageActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
+		title.setText(HealthUtil.readHospitalName());
 		doubleClickExit = new DoubleClickExit(this);
 		// TODO Auto-generated method stub
 		String user = HealthUtil.readUserInfo();

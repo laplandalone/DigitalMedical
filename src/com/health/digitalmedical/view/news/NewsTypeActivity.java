@@ -58,7 +58,7 @@ public class NewsTypeActivity extends BaseActivity implements OnItemClickListene
 		this.type=getIntent().getStringExtra("type");
 		if("BAIKE".equals(type))
 		{
-			title.setText("健康百科");
+			title.setText("就医帮助");
 		}else
 		{
 			title.setText("患教中心");

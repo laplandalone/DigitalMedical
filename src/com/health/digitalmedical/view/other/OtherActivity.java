@@ -71,7 +71,7 @@ public class OtherActivity extends BaseActivity{
 		smsHandler.addToSocialSDK();
 		
 		// 添加微信平台
-		UMWXHandler wxHandler = new UMWXHandler(this,"wx3fa73ee18d8a1fd0");
+		UMWXHandler wxHandler = new UMWXHandler(this,"wx655d7918ef562780");
 		wxHandler.addToSocialSDK();
 	}
 

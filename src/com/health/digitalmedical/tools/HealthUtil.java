@@ -58,6 +58,18 @@ public class HealthUtil {
 			return userPreferences.getString("hospitalId", "101");
 		}
 		
+		public static String readHospitalName() 
+		{
+			if("101".equals(readHospitalId()))
+			{
+				return  "清华阳光口腔医院";
+			}else if("102".equals(readHospitalId()))
+			{
+				return  "亚洲心脏病医院";
+			}
+			return userPreferences.getString("hospitalName", "");
+		}
+		
 		public static void writeLoginAuto(String loginAuto)
 		{
 			userPreferences.edit().putString("loginAuto", loginAuto).commit();

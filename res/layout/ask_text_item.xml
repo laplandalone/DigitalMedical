@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
         <ImageView android:background="@drawable/patient_ask_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="18.0sp" android:textColor="@color/black" android:id="@+id/content" android:background="@drawable/ask_text_bg" android:padding="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="  " />
+        <TextView android:textSize="18.0sp" android:layout_marginTop="12.0dip" android:textColor="@color/black" android:id="@+id/content" android:background="@drawable/ask_text_bg" android:padding="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="  " />
     </LinearLayout>
     <TextView android:textColor="@color/bg_gray" android:gravity="left" android:id="@id/send_time" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" />
 </LinearLayout>

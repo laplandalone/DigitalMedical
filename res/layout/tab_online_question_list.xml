@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/symptom_question_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="0.1">
-        <ListView android:id="@+id/list" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:cacheColorHint="#00000000" android:divider="@null" />
+        <ListView android:id="@+id/list" android:layout_width="fill_parent" android:layout_height="fill_parent"  />
     </LinearLayout>
-    <Button android:textSize="20.0sp" android:textColor="@color/white" android:id="@id/submit" android:background="@drawable/btn_expert" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="7.0dip" android:text="@string/layout_temp286" />
+    <Button android:id="@id/submit" android:background="@drawable/user_question" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_margin="10.0dip"  />
 </LinearLayout>

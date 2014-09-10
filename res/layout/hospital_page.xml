@@ -1,34 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout style="@style/layout_common_color"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/front_bar" android:background="@drawable/hospital_title" android:layout_width="fill_parent" android:layout_height="50.0dip">
-        
-    </RelativeLayout>
-    <com.health.digitalmedical.view.PageScrollView android:id="@id/pageScroll" android:background="@drawable/hospital_bg" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"  android:layout_below="@id/front_bar">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            
-            <LinearLayout android:orientation="horizontal" android:paddingTop="80.0dip"  android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <LinearLayout  android:orientation="horizontal" android:id="@+id/line1"  android:layout_width="120.0dip" android:layout_height="120.0dip" android:layout_marginLeft="6.0dip">
-                        <ImageView android:background="@drawable/qinghua" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/layout_common_color"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+     <LinearLayout
+        android:orientation="horizontal"
+        android:id="@id/front_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:background="@xml/repeat_line" >
+      <RelativeLayout android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView
+            android:id="@+id/title"
+            style="@style/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="35.0dip"
+            android:layout_marginRight="35.0dip"
+            android:text="选择医院" />
+      </RelativeLayout>
+      </LinearLayout>
+      
+     
+     <LinearLayout android:layout_marginTop="50.0dip" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+         <com.health.digitalmedical.adapter.ImgViewPager
+             android:id="@+id/imgViewPager"
+             android:layout_width="fill_parent"
+             android:layout_height="160dp" >
+         </com.health.digitalmedical.adapter.ImgViewPager>
+
+			    <LinearLayout
+			        android:id="@+id/vb"
+			        android:layout_width="match_parent"
+			        android:layout_height="8dp"
+			        android:layout_marginTop="3dip"
+			        android:gravity="center"
+			        android:orientation="horizontal" >
+			    </LinearLayout>
+       </LinearLayout>
+       
+       <LinearLayout  android:layout_weight="1.0" android:layout_marginLeft="20.0dip" android:layout_marginTop="210.0dip" android:orientation="horizontal"  android:layout_width="fill_parent" android:layout_height="wrap_content">
+		    <ImageView android:background="@drawable/vip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+		    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" >
+		        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+		            <TextView android:textSize="18.0sp" android:textColor="#ff31b0b7" android:id="@+id/telephone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.1"  android:text="清华阳光口腔医院"/>
+		        </LinearLayout>
+		        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+		            <TextView android:textSize="14.0sp" android:textColor="@color/black" android:ellipsize="end" android:id="@+id/contentItem" android:paddingTop="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="以质量为核心，以科技为动力" />
+		        </LinearLayout>
+		    </LinearLayout>
+	   </LinearLayout>
+				
+      <LinearLayout android:orientation="vertical"     android:background="@drawable/hospital_background"  android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="200dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                >
+
+               <LinearLayout
+                   android:id="@+id/arrow_left"
+                   android:layout_width="wrap_content"
+                   android:layout_height="40.0dip"
+                   android:gravity="right"
+                   android:orientation="horizontal" >
+
+                <ImageView android:background="@drawable/arrow_left" android:layout_width="40.0dip" android:layout_height="40.0dip" />
                 </LinearLayout>
-                <LinearLayout android:gravity="center" android:id="@+id/line2"  android:layout_width="120.0dip" android:layout_height="120.0dip" android:layout_marginLeft="40.0dip">
-                        <ImageView android:background="@drawable/hospital_item_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-                </LinearLayout>
-            </LinearLayout>
            
-            <LinearLayout android:paddingTop="40.0dip"  android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <LinearLayout   android:id="@+id/line3"   android:layout_width="120.0dip" android:layout_height="120.0dip"  >
-                        <ImageView android:background="@drawable/hospital_item_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-                    </LinearLayout>
-                    <LinearLayout   android:id="@+id/line4"  android:layout_width="120.0dip" android:layout_height="120.0dip" android:layout_marginLeft="40.0dip">
-                        <ImageView android:background="@drawable/hospital_item_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-                    </LinearLayout>
+				
+				
+               <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+	               <LinearLayout  android:background="@drawable/guahao_title_bg"  android:orientation="horizontal" android:id="@+id/line1"  android:layout_width="fill_parent" android:layout_height="fill_parent">
+	  				<TextView
+	                    android:id="@id/description"
+	                    android:layout_width="fill_parent"
+	                    android:layout_height="250.0dip"
+	                    android:paddingLeft="8.0dip"
+	                    android:paddingRight="8.0dip"
+	                    android:text="@string/layout_temp230"
+	                    android:textColor="@color/TextColorGray"
+	                    android:textSize="14.0sp" />
+	                </LinearLayout>
+                </ScrollView>
+                <LinearLayout
+                    android:id="@+id/line1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40.0dip"
+                  
+                    android:layout_marginLeft="6.0dip"
+                    android:gravity="right"
+                    android:orientation="horizontal" >
+
+                 <ImageView android:background="@drawable/arrow_right" android:layout_width="40.0dip" android:layout_height="40.0dip" />
+
+                </LinearLayout>
+                
+               
             </LinearLayout>
-            
-        </LinearLayout>
+      
         
-    </com.health.digitalmedical.view.PageScrollView>
-     <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@+id/phone114"  android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true"  android:layout_marginBottom="50dip">
+     <LinearLayout android:layout_marginTop="10.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12dip" android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@+id/phone114"  android:layout_width="fill_parent" android:layout_height="35.0dip"   android:layout_marginBottom="30.0dip" >
         <ImageView android:layout_gravity="right" android:background="@drawable/phone114" android:layout_width="wrap_content" android:layout_height="fill_parent" />
     </LinearLayout>
+      </LinearLayout>
 </RelativeLayout>

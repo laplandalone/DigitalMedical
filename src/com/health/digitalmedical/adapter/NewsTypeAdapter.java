@@ -26,14 +26,7 @@ public class NewsTypeAdapter  extends BaseAdapter
 			{
 			R.drawable.bg_article_title_logo1, 
 			R.drawable.bg_article_title_logo2, 
-			R.drawable.bg_article_title_logo3,
-			R.drawable.bg_article_title_logo4,
-			R.drawable.bg_article_title_logo5,
-			R.drawable.bg_article_title_logo6,
-			R.drawable.bg_article_title_logo7,
-			R.drawable.bg_article_title_logo8,
-			R.drawable.bg_article_title_logo9,
-			R.drawable.bg_article_title_logo10,
+			R.drawable.bg_article_title_logo3
 			};
 	private int flag=0;
 	public NewsTypeAdapter(Context context,JsonArray jsonArray)
@@ -69,7 +62,7 @@ public class NewsTypeAdapter  extends BaseAdapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		if(flag>9)
+		if(flag>2)
 		{
 			flag=0;
 		}
