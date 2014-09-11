@@ -28,7 +28,7 @@ public interface IWebServiceInterface {
 	
 	public RequestParams getUserQuestionsByUserId(String userId);
 	
-	public RequestParams getUserHospitalBranchs(String hospitalId);
+	public RequestParams getHospitals(String hospitalId);
 	
 	public RequestParams getUserOrderById(String userId);
 	

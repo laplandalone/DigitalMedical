@@ -10,7 +10,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.health.digitalmedical.R;
-import com.health.digitalmedical.model.HospitalT;
 import com.health.digitalmedical.model.TeamT;
 
 public class HospitalBranchAdapter extends BaseAdapter

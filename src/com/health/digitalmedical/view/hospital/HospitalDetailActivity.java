@@ -25,6 +25,7 @@ import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
 import com.health.digitalmedical.adapter.HospitalBranchAdapter;
+import com.health.digitalmedical.model.HospitalT;
 import com.health.digitalmedical.model.TeamT;
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
@@ -62,6 +63,10 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 	
 	@ViewInject(R.id.description)
 	private TextView description;
+	
+	@ViewInject(R.id.website)
+	private TextView website;
+	
 	
 	private List<TeamT> teamTs;
 	@Override
@@ -106,7 +111,15 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 	protected void initView()
 	{
 		// TODO Auto-generated method stub
-		title.setText(HealthUtil.readHospitalName());
+		
+		String hospitalId = HealthUtil.readHospitalId();
+		HospitalT hospitalT = HealthUtil.getHospitalTById(hospitalId);
+		if(hospitalT!=null)
+		{
+			title.setText(hospitalT.getHospitalName());
+			website.setText(hospitalT.getWebUrl());
+			description.setText(hospitalT.getIntroduce());
+		}
 	}
 
 	private void setListView()

@@ -21,13 +21,13 @@
     </LinearLayout>
           
     <LinearLayout android:layout_marginTop="8.0dip"   android:layout_marginLeft="20.0dip"  android:orientation="horizontal"  android:layout_width="fill_parent" android:layout_height="wrap_content">
-	    <ImageView android:background="@drawable/vip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+	    <ImageView android:id="@+id/logo"  android:layout_width="wrap_content" android:layout_height="wrap_content" />
 	    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" >
 	        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-	            <TextView android:textSize="18.0sp" android:textColor="#ff31b0b7" android:id="@+id/telephone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.1"  android:text="清华阳光口腔医院"/>
+	            <TextView android:textSize="18.0sp" android:textColor="#ff31b0b7" android:id="@+id/hospitalName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.1"  android:text="清华阳光口腔医院"/>
 	        </LinearLayout>
 	        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
-	            <TextView android:textSize="14.0sp" android:textColor="@color/black" android:ellipsize="end" android:id="@+id/contentItem" android:paddingTop="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="以质量为核心，以科技为动力" />
+	            <TextView android:textSize="14.0sp" android:textColor="@color/black" android:ellipsize="end" android:id="@+id/remark" android:paddingTop="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="以质量为核心，以科技为动力" />
 	        </LinearLayout>
 	    </LinearLayout>
    </LinearLayout>
@@ -63,6 +63,7 @@
 	           </LinearLayout>
           </ScrollView>
           <LinearLayout
+               android:id="@+id/arrow_right"
               android:layout_width="wrap_content"
               android:layout_height="40.0dip"
               android:layout_marginLeft="6.0dip"
@@ -74,7 +75,7 @@
         
       <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
             <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="68.0dip" android:layout_marginTop="25.0dip">
-              <ImageView android:layout_gravity="right" android:background="@drawable/phone114" android:layout_width="wrap_content" android:layout_height="35.0dip" />
+              <ImageView android:id="@+id/phone114" android:layout_gravity="right" android:background="@drawable/phone114" android:layout_width="wrap_content" android:layout_height="35.0dip" />
             </LinearLayout>
         </LinearLayout>
 

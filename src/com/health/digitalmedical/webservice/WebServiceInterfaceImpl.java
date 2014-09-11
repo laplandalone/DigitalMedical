@@ -57,7 +57,7 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	}
 
 	@Override
-	public RequestParams getUserHospitalBranchs(String hospitalId)
+	public RequestParams getHospitals(String hospitalId)
 	{
 		return HealthUtil.getRequestParams("BUS20010", new String[]{"hospitalId"},new Object[]{hospitalId});
 	}

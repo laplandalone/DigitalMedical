@@ -1,6 +1,10 @@
 package com.health.digitalmedical.tools;
 
 import java.io.File;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,6 +18,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -22,8 +28,14 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 import com.health.digitalmedical.application.RegApplication;
+import com.health.digitalmedical.model.HospitalT;
 import com.health.digitalmedical.model.User;
 import com.lidroid.xutils.http.RequestParams;
 
@@ -48,6 +60,41 @@ public class HealthUtil {
 			  userPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
 			}
 		 }
+		
+		public static void writeHospitalTs(String hospitalTs)
+		{
+			userPreferences.edit().putString("hospitalTs", hospitalTs).commit();
+		}
+		
+		public static List<HospitalT> readHospitalTs()
+		{
+			String hospitalTs= userPreferences.getString("hospitalTs","");
+			if(hospitalTs!=null && !"".equals(hospitalTs))
+			{
+				JsonParser jsonParser = new JsonParser();
+				JsonElement jsonElement = jsonParser.parse(hospitalTs);
+				JsonObject jsonObject = jsonElement.getAsJsonObject();
+				JsonArray jsonArray = jsonObject.getAsJsonArray("returnMsg");
+				Gson gson = new Gson();  
+				List<HospitalT> hospitalTs2 =  gson.fromJson(jsonArray, new TypeToken<List<HospitalT>>(){}.getType());   
+				return hospitalTs2;
+			}
+			return null;
+		}
+		
+		public static HospitalT getHospitalTById(String hospitalId)
+		{
+			List<HospitalT> hospitalTs = readHospitalTs();
+			for(HospitalT hospitalT:hospitalTs)
+			{
+				if(hospitalT.getHospitalId().equals(hospitalId))
+				{
+					return hospitalT;
+				}
+			}
+			return null;
+		}
+		
 		public static void writeHospitalId(String hospitalId)
 		{
 			userPreferences.edit().putString("hospitalId", hospitalId).commit();
@@ -346,5 +393,36 @@ public class HealthUtil {
 	}
 	
 	
-
+	/**
+     * 获取网落图片资源 
+     * @param url
+     * @return
+     */
+    public static Bitmap getHttpBitmap(String url)
+    {
+        URL myFileURL;
+        Bitmap bitmap=null;
+        try{
+            myFileURL = new URL(url);
+            //获得连接
+            HttpURLConnection conn=(HttpURLConnection)myFileURL.openConnection();
+            //设置超时时间为6000毫秒，conn.setConnectionTiem(0);表示没有时间限制
+            conn.setConnectTimeout(6000);
+            //连接设置获得数据流
+            conn.setDoInput(true);
+            //不使用缓存
+            conn.setUseCaches(false);
+            //这句可有可无，没有影响
+            //conn.connect();
+            //得到数据流
+            InputStream is = conn.getInputStream();
+            //解析得到图片
+            bitmap = BitmapFactory.decodeStream(is);
+            //关闭数据流
+            is.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return bitmap;
+    }
 }
