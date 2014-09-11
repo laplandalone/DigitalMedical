@@ -80,7 +80,7 @@
                         <ImageView android:id="@+id/main_img6" android:background="@drawable/main_img4x" android:layout_width="fill_parent" android:layout_height="fill_parent" />
                 </LinearLayout>
                  <LinearLayout android:gravity="center" android:id="@+id/lineout7"  android:layout_width="75.0dip" android:layout_height="90.0dip" android:layout_marginLeft="6.0dip">
-                        <ImageView android:id="@+id/main_img6" android:background="@drawable/main_img7x" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                        <ImageView android:id="@+id/main_img7" android:background="@drawable/main_img7x" android:layout_width="fill_parent" android:layout_height="fill_parent" />
                 </LinearLayout>
             </LinearLayout>
             </RelativeLayout>

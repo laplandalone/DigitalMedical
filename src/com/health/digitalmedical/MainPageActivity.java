@@ -263,6 +263,12 @@ public class MainPageActivity extends BaseActivity
 		startActivity(intent);
 	}
 
+	@OnClick(R.id.main_img7)
+	public void toUserVisit(View v)
+	{
+		HealthUtil.infoAlert(MainPageActivity.this, "正在建设中...");
+	}
+	
 	@OnClick(R.id.LinearLayout_more)
 	public void toOther(View v)
 	{

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"  android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:background="@drawable/hospital_background_new" android:orientation="vertical"  android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/hospital_map_title" />
+
+    <include layout="@layout/common_title" />
+
    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
 
          <com.health.digitalmedical.adapter.ImgViewPager
