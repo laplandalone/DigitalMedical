@@ -151,7 +151,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 		this.doctor=(Doctor) getIntent().getSerializableExtra("doctor");
 		LayoutInflater lf = getLayoutInflater().from(this);
 		
-		view1 = lf.inflate(R.layout.common_doctor_detail, null);
+		view1 = lf.inflate(R.layout.tab_doctor_detail, null);
 		view2 = lf.inflate(R.layout.tab_online_question_list, null);
 		
 		TextView doctorName=(TextView) view1.findViewById(R.id.doctor_name);
