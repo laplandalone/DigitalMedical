@@ -912,9 +912,9 @@
     <string name="layout_temp100">手机号码</string>
     <string name="layout_temp101">性 别:</string>
     <string name="layout_temp102">挂号信息</string>
-    <string name="layout_temp103">身份证号:</string>
+    <string name="layout_temp103">身份证号</string>
     <string name="layout_temp104">身份证号</string>
-    <string name="layout_temp105">就诊卡号:</string>
+    <string name="layout_temp105">就诊卡号</string>
     <string name="layout_temp106">就诊卡号</string>
     <string name="layout_temp107">挂号信息属个人隐私，请妥善保管，防止泄漏。</string>
     <string name="layout_temp108">更新提醒</string>
@@ -924,17 +924,17 @@
     <string name="layout_temp112">费用</string>
     <string name="layout_temp113">预约号</string>
     <string name="layout_temp114">基本信息</string>
-    <string name="layout_temp115">用户姓名:</string>
+    <string name="layout_temp115">用户姓名</string>
     <string name="layout_temp116">用户姓名</string>
-    <string name="layout_temp117">用户性别:</string>
+    <string name="layout_temp117">用户性别</string>
     <string name="layout_temp118">确认预约</string>
     <string name="layout_temp119">您已成功预约</string>
-    <string name="layout_temp120">预约科室:</string>
-    <string name="layout_temp121">预约医生:</string>
-    <string name="layout_temp122">预约日期:</string>
-    <string name="layout_temp123">预约号:</string>
-    <string name="layout_temp124">预约凭证号码:</string>
-    <string name="layout_temp125">费用:</string>
+    <string name="layout_temp120">预约科室</string>
+    <string name="layout_temp121">预约医生</string>
+    <string name="layout_temp122">预约日期</string>
+    <string name="layout_temp123">预约号</string>
+    <string name="layout_temp124">预约凭证</string>
+    <string name="layout_temp125">费用</string>
     <string name="layout_temp126">"上午（下午）的预约号请于就诊当日上午10点前（下午15点前）凭就诊人的有效身份证和医保卡到我院付费取号；
 如需取消预约，请于就诊当日上午7点以前取消。如有疑问，也可在软件意见反馈处联系我们。"</string>
     <string name="layout_temp127">您可以到个人中心–我的预约记录查看本次预约凭证</string>
