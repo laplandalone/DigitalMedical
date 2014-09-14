@@ -4,5 +4,5 @@
     <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="0.1">
         <ListView android:id="@+id/list" android:layout_width="fill_parent" android:layout_height="fill_parent"  />
     </LinearLayout>
-    <Button android:id="@id/submit" android:background="@drawable/user_question" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_margin="10.0dip"  />
+    <Button android:id="@id/submit" android:background="@drawable/question_submit_btn" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_margin="10.0dip"  />
 </LinearLayout>

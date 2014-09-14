@@ -188,7 +188,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 	protected void initView()
 	{
 		title.setText("信息确认");
-		stepTwo.setBackgroundResource(R.drawable.bg_step_2);
+//		stepTwo.setBackgroundResource(R.drawable.bg_step_2);
 		// TODO Auto-generated method stub
 		registerDate.setText(thisDate);
 		String dateStr=thisDate+" 12:00:00";

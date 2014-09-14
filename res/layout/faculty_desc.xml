@@ -16,7 +16,7 @@
         </LinearLayout>
     </com.health.digitalmedical.view.PageScrollView>
     <LinearLayout android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="18.0dip">
-        <Button   android:id="@id/all_doctor" android:background="@drawable/online_doctor_list" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginBottom="5.0dip"  android:layout_weight="1.0" />
-        <Button  android:id="@id/online_doctor" android:layout_marginLeft="10.0dip" android:background="@drawable/online_doctor" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginBottom="5.0dip"  android:layout_weight="1.0"/>
+        <Button   android:id="@id/all_doctor" android:background="@drawable/online_doctor_all" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginBottom="5.0dip"  android:layout_weight="1.0" />
+        <Button  android:id="@id/online_doctor" android:layout_marginLeft="10.0dip" android:background="@drawable/online_doctor_ask_btn" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginBottom="5.0dip"  android:layout_weight="1.0"/>
     </LinearLayout>
 </LinearLayout>

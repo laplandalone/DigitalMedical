@@ -82,6 +82,6 @@
         </FrameLayout>
     </ScrollView>
     <LinearLayout android:gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
-        <Button  android:id="@id/submit" android:background="@drawable/order_submit" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginBottom="15.0dip"  />
+        <Button  android:id="@id/submit" android:background="@drawable/order_submit_btn" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginBottom="15.0dip"  />
     </LinearLayout>
 </LinearLayout>

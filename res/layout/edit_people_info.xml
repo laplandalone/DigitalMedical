@@ -43,7 +43,7 @@
             </LinearLayout>
             
             
-            <Button android:textSize="19.0sp" android:textColor="@color/white" android:id="@id/edit_commit" android:background="@drawable/update_submit" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginTop="15.0dip"  />
+            <Button android:textSize="19.0sp" android:textColor="@color/white" android:id="@id/edit_commit" android:background="@drawable/update_user" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginTop="15.0dip"  />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
