@@ -21,14 +21,14 @@
         </LinearLayout>
         <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip">
             <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:layout_weight="1.0">
-                <Button android:textSize="19.0sp" android:textColor="#ffffffff" android:id="@id/sign_in" android:background="@drawable/user_login_in_button" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/layout_temp616" />
+                <Button android:id="@id/sign_in" android:background="@drawable/user_login_in_button" android:layout_width="fill_parent" android:layout_height="35.0dip" />
             </LinearLayout>
             <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_weight="1.0">
-                <Button android:textSize="19.0sp" android:textColor="#ffffffff" android:id="@id/registration" android:background="@drawable/user_regesit_button" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/layout_temp617" />
+                <Button android:id="@id/registration" android:background="@drawable/user_regesit_button" android:layout_width="fill_parent" android:layout_height="35.0dip" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout android:gravity="right|center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
-            <TextView android:textSize="16.0sp" android:textColor="#ff52bbe7" android:id="@id/password_find" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/layout_temp618" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/TextColorGreen" android:id="@id/password_find" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/layout_temp618" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

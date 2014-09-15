@@ -88,6 +88,7 @@ public class UserMainActivity extends BaseActivity
 	{
 		HealthUtil.writeUserInfo("");
 		HealthUtil.writeLoginAuto("");
+		HealthUtil.writeHospitalTs("");
 		Intent intent = new Intent(UserMainActivity.this, MainPageActivity.class);
 		startActivity(intent);
 		exit();

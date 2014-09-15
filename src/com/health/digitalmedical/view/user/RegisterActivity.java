@@ -93,6 +93,7 @@ public class RegisterActivity extends BaseActivity
 								return;
 							}
 							pswBtn.setTextSize(16);
+							pswBtn.setBackgroundResource(R.drawable.user_registet_time);
 //							pswBtn.setTextColor(color.TextColorWhite);
 							pswBtn.setText(60-yunshu+"秒后重发");	
 //							pswBtn.setText(String.format("%1$02d:%2$02d:%3$d",mai,sec,yunshu));						  	
@@ -125,7 +126,8 @@ public class RegisterActivity extends BaseActivity
 			e.printStackTrace();
 		}
 		Count=0;
-		pswBtn.setText("获取验证码");
+		pswBtn.setText("");
+		pswBtn.setBackgroundResource(R.drawable.btn_confignum);
 	}
 	@OnClick(R.id.get_config_num)
 	public void getConfiNum(View v)
