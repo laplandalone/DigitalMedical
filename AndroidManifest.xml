@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="3.4" package="com.health.digitalmedical">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="3.5" package="com.health.digitalmedical">
 
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="17"/>
 

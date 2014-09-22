@@ -51,7 +51,7 @@ public class OtherActivity extends BaseActivity{
 	protected void initView() 
 	{
 	   title.setText("更多");
-	   mController.setShareContent("我正在使用‘健康管家’安卓版手机应用,手机预约专家号，专家在线与医生零距离沟通等功能等你体验！http://www.hiseemedical.com:10821/ImgWeb/DigitalMedical.apk");
+	   mController.setShareContent("我正在使用‘益健康’安卓版手机应用,手机预约专家号，专家在线与医生零距离沟通等功能等你体验！http://www.hiseemedical.com:10821/ImgWeb/DigitalMedical.apk");
 		// 设置分享图片, 参数2为图片的url地址
 //	   mController.setShareMedia(new UMImage(this,"http://www.umeng.com/images/pic/banner_module_social.png"));
 		// 设置分享图片，参数2为本地图片的资源引用
