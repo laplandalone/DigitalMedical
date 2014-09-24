@@ -28,7 +28,7 @@
                 </LinearLayout>
                
             </LinearLayout>
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/title_background" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/title_background_md" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <TextView android:textSize="16.0sp" android:textColor="@color/black" android:gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/layout_temp111" android:layout_weight="2.0" />
                 <TextView android:textSize="16.0sp" android:textColor="@color/black" android:gravity="left" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/layout_temp112" android:layout_weight="1.0" />
                 <TextView android:textSize="16.0sp" android:textColor="@color/black" android:gravity="center" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/layout_temp113" android:layout_weight="1.0" />

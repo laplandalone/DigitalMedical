@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -425,4 +427,37 @@ public class HealthUtil {
         }
         return bitmap;
     }
+    
+    
+    //解析支付宝支付以后返回的结果
+  	public static Map<String,String> parserAliResult(String result){
+  		String [] array = result.split(";");
+  		Map<String,String> map = new HashMap<String,String>();
+  		for(String s : array){
+  			int index = s.indexOf("=");
+  			String key = s.substring(0, index);
+  			String value = "";
+  			if(!s.substring(index+1).equals("{}")){
+  				value = s.substring(index+2, s.length()-1);
+  			}
+  			map.put(key, value);
+  		}
+  		return map;
+  	}
+  	
+  	//解析支付宝支付以后返回的结果中result的部分
+  	public static Map<String,String> parserAliPartner(String result){
+  		String [] array = result.split("&");
+  		Map<String,String> map = new HashMap<String,String>();
+  		for(String s : array){
+  			int index = s.indexOf("=");
+  			String key = s.substring(0, index);
+  			String value = "";
+  			if(!s.substring(index+1).equals("''")){
+  				value = s.substring(index+2, s.length()-1);
+  			}
+  			map.put(key, value);
+  		}
+  		return map;
+  	}
 }

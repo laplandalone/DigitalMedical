@@ -5,7 +5,7 @@
     <include android:id="@id/step_layout3" android:visibility="gone" layout="@layout/common_step_bottom3" />
    
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/title_background" android:layout_width="fill_parent" android:layout_height="40.0dip">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/title_background_md" android:layout_width="fill_parent" android:layout_height="40.0dip">
 
                 <TextView
                     android:layout_width="wrap_content"

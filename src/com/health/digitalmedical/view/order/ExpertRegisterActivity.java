@@ -1,7 +1,11 @@
 package com.health.digitalmedical.view.order;
 
+import java.util.Map;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
+import com.alipay.android.app.sdk.AliPay;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -88,6 +93,11 @@ public class ExpertRegisterActivity extends BaseActivity
 	public String sex;
 	private User user;
 
+	private static final int RQF_PAY = 1;   //支付宝支付
+	private static final int GET_ORDER_INFO = 2;   //加密
+	private static final int RECHARGE = 3;   //充值
+	private Map<String,String> map;  //解析支付宝返回结果后的map
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -167,6 +177,12 @@ public class ExpertRegisterActivity extends BaseActivity
 		{
 			this.sex=radioButton.getText().toString();
 		}
+		
+		String hospitalId=HealthUtil.readHospitalId();
+
+		String sss="partner=\"2088411973102512\"&out_trade_no=\"CZ201409221610330088\"&subject=\"添翼好吃佬-充值\"&body=\"充值\"&total_fee=\"1\"&notify_url=\"http%3A%2F%2Fnotify.java.jpxx.org%2Findex.jsp\"&service=\"mobile.securitypay.pay\"&_input_charset=\"UTF-8\"&show_url=\"http%3A%2F%2Fm.alipay.com\"&payment_type=\"1\"&seller_id=\"18907181680@189.cn\"&it_b_pay=\"30m\"&sign=\"XODoNu8B%2BkGSczkQLmE2xXLNP86tGlvyRFz%2FeLD%2F9LiXP9xc1maK5w8B6G8kZZ4uRNHSHDp0YfzNy9O2hLQp5x1GU9oo8TFtYp6k2QAXR9e8UoKjIzu9BAbRtV7xeXiE8xu9%2F9LM3g2M3zc50DXUMlw%2B2KvWlHvqhJ%2Bl4FceYF8%3D\"&sign_type=\"RSA\"";
+//		alipay(sss);
+		
 		dialog.setMessage("正在预约,请稍后...");
 		dialog.show();
 		RequestParams param = webInterface.addUserRegisterOrder(userId, registerId, doctorId, doctorName, userOrderNum, fee, registerTime, userName,
@@ -174,6 +190,46 @@ public class ExpertRegisterActivity extends BaseActivity
 		invokeWebServer(param, ADD_REGISTER_ORDER);
 
 	}
+	
+
+	/**
+	 * 调用手机支付宝进行支付，支付成功后会返回结果信息
+	 * @param orderInfo
+	 */
+	public void alipay(final String orderInfo) {
+		new Thread() {
+			public void run() {
+				AliPay alipay = new AliPay(ExpertRegisterActivity.this, handler);
+				//设置为沙箱模式，不设置默认为线上环境
+//				alipay.setSandBox(true);
+				String result = alipay.pay(orderInfo);
+				Message msg = new Message();
+				msg.what = RQF_PAY;
+				msg.obj = result;
+				handler.sendMessage(msg);
+			}
+		}.start();
+	}
+	
+	private Handler handler = new Handler()
+	{
+		@Override
+		public void handleMessage(Message msg) {
+			map = HealthUtil.parserAliResult(msg.obj.toString());
+			String message = map.get("memo");
+			if(map.containsKey("resultStatus")){
+				if("9000".equals(map.get("resultStatus")))
+				{
+					//请求服务。调用（用户充值）接口
+//					recharge();
+				}else
+				{
+				
+				}
+			}
+			super.handleMessage(msg);
+		}
+	};
 
 	@Override
 	protected void initView()

@@ -13,7 +13,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="30.0dip"
-                    android:background="@drawable/title_background"
+                    android:background="@drawable/title_background_md"
                     android:gravity="left|center"
                     android:paddingLeft="10.0dip"
                     android:text="@string/layout_temp221"
@@ -54,7 +54,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="30.0dip"
-                    android:background="@drawable/title_background"
+                    android:background="@drawable/title_background_md"
                     android:gravity="left|center"
                     android:paddingLeft="10.0dip"
                     android:text="@string/layout_temp223"
@@ -83,7 +83,7 @@
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="30.0dip"
-                        android:background="@drawable/title_background"
+                        android:background="@drawable/title_background_md"
                         android:gravity="left|center"
                         android:paddingLeft="10.0dip"
                         android:text="@string/layout_temp229"
