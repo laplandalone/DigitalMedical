@@ -19,15 +19,15 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	}
 
 	@Override
-	public RequestParams queryOrderDoctorList(String teamId)
+	public RequestParams queryOrderDoctorList(String hospitalId,String teamId)
 	{
-		return HealthUtil.getRequestParams("BUS2003", new String[]{"teamId"},new Object[]{teamId});
+		return HealthUtil.getRequestParams("BUS2003", new String[]{"hospitalId","teamId"},new Object[]{hospitalId,teamId});
 	}
 
 	@Override
-	public RequestParams queryOrderByDoctorIdList(String userId,String orderTeamId,String doctorId,String weekStr,String dateStr)
+	public RequestParams queryOrderByDoctorIdList(String hospitalId,String userId,String orderTeamId,String doctorId,String weekStr,String dateStr)
 	{
-		return HealthUtil.getRequestParams("BUS2004", new String[]{"userId","orderTeamId","doctorId","week","date"},new Object[]{userId,orderTeamId,doctorId,weekStr,dateStr});
+		return HealthUtil.getRequestParams("BUS2004", new String[]{"hospitalId","userId","orderTeamId","doctorId","week","date"},new Object[]{hospitalId,userId,orderTeamId,doctorId,weekStr,dateStr});
 	}
 
 	@Override
@@ -37,11 +37,11 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	}
 
 	@Override
-	public RequestParams addUserRegisterOrder( String userId, String registerId, String doctorId, String doctorName, String orderNum,
+	public RequestParams addUserRegisterOrder(String hospitalId,String userId, String registerId, String doctorId, String doctorName, String orderNum,
 			String orderFee, String registerTime, String userName, String userNo, String userTelephone,String sex, String teamId,
 			String teamName)
 	{
-		return HealthUtil.getRequestParams("BUS2006", new String[]{ "userId", "registerId", "doctorId", "doctorName", "orderNum",  "orderFee", "registerTime", "userName", "userNo", "userTelephone","sex", "teamId", "teamName" },new Object[]{  userId       , registerId   , doctorId     , doctorName   , orderNum     ,  orderFee     , registerTime , userName     , userNo       , userTelephone, sex,teamId       , teamName});
+		return HealthUtil.getRequestParams("BUS2006", new String[]{"hospitalId", "userId", "registerId", "doctorId", "doctorName", "orderNum",  "orderFee", "registerTime", "userName", "userNo", "userTelephone","sex", "teamId", "teamName" },new Object[]{hospitalId , userId       , registerId   , doctorId     , doctorName   , orderNum     ,  orderFee     , registerTime , userName     , userNo       , userTelephone, sex,teamId       , teamName});
 	}
 
 	@Override

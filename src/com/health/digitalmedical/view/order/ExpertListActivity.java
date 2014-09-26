@@ -78,7 +78,8 @@ public class ExpertListActivity extends BaseActivity  implements IXListViewListe
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
 		// TODO Auto-generated method stub
-		RequestParams param = webInterface.queryOrderDoctorList(team.getTeamId());
+		String hospitalId=HealthUtil.readHospitalId();
+		RequestParams param = webInterface.queryOrderDoctorList(hospitalId,team.getTeamId());
 		invokeWebServer(param, GET_LIST);
 	}
 	

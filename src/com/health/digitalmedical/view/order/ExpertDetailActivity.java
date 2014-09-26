@@ -100,7 +100,8 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 		this.weekTime.setText("星期"+week);
 		String teamId=expert.getTeamId();
 		String userId=HealthUtil.readUserId();
-		RequestParams param = webInterface.queryOrderByDoctorIdList(userId,teamId,expert.getDoctorId(),week,date);
+		String hospitalId=HealthUtil.readHospitalId();
+		RequestParams param = webInterface.queryOrderByDoctorIdList(hospitalId,userId,teamId,expert.getDoctorId(),week,date);
 		//RequestParams param = webInterface.queryOrderDoctorList("10001");
 		invokeWebServer(param, GET_LIST);
 	}
