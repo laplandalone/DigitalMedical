@@ -171,6 +171,7 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 		// TODO Auto-generated method stub
 		Intent intent = new Intent(UserOrderActivity.this,ConfirmOrderActivity.class);
 		RegisterOrderT registerOrderT =registerOrderTs.get(position);
+		intent.putExtra("orderId", registerOrderT.getOrderId());
 		intent.putExtra("doctorName", registerOrderT.getDoctorName());
 		intent.putExtra("registerTime", registerOrderT.getRegisterTime());
 		intent.putExtra("fee", registerOrderT.getOrderFee());

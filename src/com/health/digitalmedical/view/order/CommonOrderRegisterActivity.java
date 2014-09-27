@@ -393,11 +393,12 @@ public class CommonOrderRegisterActivity extends BaseActivity
 
 				break;
 			case ADD_REGISTER_ORDER:
-				String result = jsonObject.get("returnMsg").toString();
-				if ("true".equals(result))
+				String result = jsonObject.get("returnMsg").getAsString();
+				if (!"".equals(result))
 				{
 					HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "预约成功...");
 					Intent intent = new Intent(CommonOrderRegisterActivity.this, ConfirmOrderActivity.class);
+					intent.putExtra("orderId", result);
 					intent.putExtra("doctorName", doctorName);
 					intent.putExtra("registerTime", registerTime);
 					intent.putExtra("fee", fee);

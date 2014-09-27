@@ -38,6 +38,7 @@ public abstract class BaseActivity extends FragmentActivity {
 	public static final int AUTH_CODE = 10010;
 	public static final int CHECK_AUTH_CODE = 10011;
 	public static final int SET_PSW = 10012;
+	public static final int PAY_STATE=10003;
 	protected ProgressDialog dialog;
 
 	protected IWebServiceInterface webInterface = new WebServiceInterfaceImpl();

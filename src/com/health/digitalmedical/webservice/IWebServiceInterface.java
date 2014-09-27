@@ -48,4 +48,6 @@ public interface IWebServiceInterface {
 
 	public RequestParams queryOrderByDoctorIdList(String hospitalId,String userId,String orderTeamId,String doctorId, String weekStr,
 			String dateStr);
+	
+	public RequestParams orderPay(String orderdId,String payState);
 }

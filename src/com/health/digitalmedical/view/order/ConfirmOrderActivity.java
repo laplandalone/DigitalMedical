@@ -6,10 +6,20 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
+import com.health.digitalmedical.tools.HealthConstant;
+import com.health.digitalmedical.tools.HealthUtil;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 /**
@@ -65,6 +75,7 @@ public class ConfirmOrderActivity extends BaseActivity
 	@ViewInject(R.id.feelayout)
 	private LinearLayout linearLayout2;
 	
+	private String orderId="";
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -84,11 +95,20 @@ public class ConfirmOrderActivity extends BaseActivity
 		exit();
 	}
 	
+	@OnClick(R.id.taobao)
+	public void pay(View v)
+	{
+		String payState="101";
+		RequestParams param = webInterface.orderPay(this.orderId,payState);
+		invokeWebServer(param, PAY_STATE);
+	}
+	
 	@Override
 	protected void initView()
 	{
 		title.setText("预约详情");
 		// TODO Auto-generated method stub
+		this.orderId=getIntent().getStringExtra("orderId");
 		String registerNum=getIntent().getStringExtra("userOrderNum"  );
 		String fee=getIntent().getStringExtra("fee"           );
 		String doctorName=getIntent().getStringExtra("doctorName"    );
@@ -120,5 +140,77 @@ public class ConfirmOrderActivity extends BaseActivity
 	protected void initValue()
 	{
 		
+	}
+	
+	/**
+	 * 链接web服务
+	 * 
+	 * @param param
+	 */
+	private void invokeWebServer(RequestParams param, int responseCode)
+	{
+		HealthUtil.LOG_D(getClass(), "connect to web server");
+		MineRequestCallBack requestCallBack = new MineRequestCallBack(responseCode);
+		if (httpHandler != null)
+		{
+			httpHandler.stop();
+		}
+		httpHandler = mHttpUtils.send(HttpMethod.POST, HealthConstant.URL, param, requestCallBack);
+	}
+
+	/**
+	 * 获取后台返回的数据 
+	 */
+	class MineRequestCallBack extends RequestCallBack<String>
+	{
+
+		private int responseCode;
+
+		public MineRequestCallBack(int responseCode)
+		{
+			super();
+			this.responseCode = responseCode;
+		}
+
+		@Override
+		public void onFailure(HttpException error, String msg)
+		{
+			HealthUtil.LOG_D(getClass(), "onFailure-->msg=" + msg);
+			if (dialog.isShowing())
+			{
+				dialog.cancel();
+			}
+			HealthUtil.infoAlert(ConfirmOrderActivity.this, "信息加载失败，请检查网络后重试");
+		}
+
+		@Override
+		public void onSuccess(ResponseInfo<String> arg0)
+		{
+			// TODO Auto-generated method stub
+			HealthUtil.LOG_D(getClass(), "result=" + arg0.result);
+			if (dialog.isShowing())
+			{
+				dialog.cancel();
+			}
+			switch (responseCode)
+			{
+			case PAY_STATE:
+				returnMsg(arg0.result, PAY_STATE);
+				break;
+			}
+		}
+
+	}
+
+	/*
+	 * 处理返回结果数据
+	 */
+	private void returnMsg(String json, int code)
+	{
+		JsonParser jsonParser = new JsonParser();
+		JsonElement jsonElement = jsonParser.parse(json);
+		
+		JsonObject jsonObject = jsonElement.getAsJsonObject();
+		JsonObject returnObj = jsonObject.getAsJsonObject("returnMsg");
 	}
 }
