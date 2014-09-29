@@ -1,11 +1,18 @@
 package com.health.digitalmedical.view.order;
 
+import java.net.URLEncoder;
+import java.util.Map;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.alipay.android.app.sdk.AliPay;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -75,7 +82,20 @@ public class ConfirmOrderActivity extends BaseActivity
 	@ViewInject(R.id.feelayout)
 	private LinearLayout linearLayout2;
 	
+	@ViewInject(R.id.taobao)
+	private Button taobaoBtn;
+	
 	private String orderId="";
+	
+	private String payState="100";/*初始未支付*/
+	
+	private String orderHospitalId="";
+	
+	private static final int RQF_PAY = 1;   //支付宝支付
+	private static final int GET_ORDER_INFO = 2;   //加密
+	private static final int RECHARGE = 3;   //充值
+	private Map<String,String> map;  //解析支付宝返回结果后的map
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -97,17 +117,60 @@ public class ConfirmOrderActivity extends BaseActivity
 	
 	@OnClick(R.id.taobao)
 	public void pay(View v)
-	{
-		String payState="101";
-		RequestParams param = webInterface.orderPay(this.orderId,payState);
-		invokeWebServer(param, PAY_STATE);
+	{		
+		RequestParams param = webInterface.getRsaSign(this.orderId);
+		invokeWebServer(param, RSA_SIGN);
 	}
+	
+   
+	/**
+	 * 调用手机支付宝进行支付，支付成功后会返回结果信息
+	 * @param orderInfo
+	 */
+	public void alipay(final String orderInfo) {
+		new Thread() {
+			public void run() {
+				AliPay alipay = new AliPay(ConfirmOrderActivity.this, handler);
+				//设置为沙箱模式，不设置默认为线上环境
+//				alipay.setSandBox(true);
+				String result = alipay.pay(orderInfo);
+				Message msg = new Message();
+				msg.what = RQF_PAY;
+				msg.obj = result;
+				handler.sendMessage(msg);
+			}
+		}.start();
+	}
+	
+	private Handler handler = new Handler()
+	{
+		@Override
+		public void handleMessage(Message msg) {
+			map = HealthUtil.parserAliResult(msg.obj.toString());
+			String message = map.get("memo");
+			if(map.containsKey("resultStatus"))
+			{
+				if("9000".equals(map.get("resultStatus")))/*支付成功*/
+				{
+					RequestParams param = webInterface.orderPay(orderId, "101");
+					invokeWebServer(param, PAY_STATE);
+				}else
+				{
+//					 System.out.println("2");
+				}
+			}
+			super.handleMessage(msg);
+		}
+	};
+
 	
 	@Override
 	protected void initView()
 	{
 		title.setText("预约详情");
 		// TODO Auto-generated method stub
+		this.payState= getIntent().getStringExtra("payState");
+		this.orderHospitalId=getIntent().getStringExtra("hospitalId");
 		this.orderId=getIntent().getStringExtra("orderId");
 		String registerNum=getIntent().getStringExtra("userOrderNum"  );
 		String fee=getIntent().getStringExtra("fee"           );
@@ -124,6 +187,7 @@ public class ConfirmOrderActivity extends BaseActivity
 		{
 			linearLayout2.setVisibility(View.GONE);
 		}
+		
 		doctorNameT.setText(doctorName); 
 		dateT.setText(getIntent().getStringExtra("registerTime"  )); 
 		confirmPriceT.setText(fee); 
@@ -139,7 +203,19 @@ public class ConfirmOrderActivity extends BaseActivity
 	@Override
 	protected void initValue()
 	{
+		/**
+		 * 什么时候可以支付
+		 * 1.预约成功后，hospitalId为订单医院ID，这时根据医院ID判断是否支持支付宝支付；
+		 * 2.通过我的预约，查看预约记录，根据订单归属orderHospitalId判断是否支持支付宝支付；
+		 * 3.
+		 * */
+		String hospitalId=HealthUtil.readHospitalId();
 		
+		if(("102".equals(orderHospitalId) || "102".equals(hospitalId)) && "100".equals(payState) )/*亚心医院未支付状态支持支付宝支付*/
+		{
+			taobaoBtn.setVisibility(View.VISIBLE);
+			taobaoBtn.setText("支付宝");
+		}
 	}
 	
 	/**
@@ -197,9 +273,11 @@ public class ConfirmOrderActivity extends BaseActivity
 			case PAY_STATE:
 				returnMsg(arg0.result, PAY_STATE);
 				break;
+			case RSA_SIGN:
+				returnMsg(arg0.result, RSA_SIGN);
+				break;
 			}
 		}
-
 	}
 
 	/*
@@ -211,6 +289,23 @@ public class ConfirmOrderActivity extends BaseActivity
 		JsonElement jsonElement = jsonParser.parse(json);
 		
 		JsonObject jsonObject = jsonElement.getAsJsonObject();
-		JsonObject returnObj = jsonObject.getAsJsonObject("returnMsg");
+		
+		switch (code)
+		{
+		    case RSA_SIGN:
+		    	JsonObject rtn = jsonObject.getAsJsonObject("returnMsg");	
+		    	String sign=rtn.get("sign").getAsString();
+		    	System.out.println(sign);
+		    	alipay(sign);
+		    case PAY_STATE:	
+		      String payRst=jsonObject.get("returnMsg").getAsString();
+		      if("true".equals(payRst))
+		      {
+		    	  HealthUtil.infoAlert(ConfirmOrderActivity.this, "支付成功");
+		    	  taobaoBtn.setVisibility(View.GONE);
+		      }
+		      default:
+		}
+		
 	}
 }

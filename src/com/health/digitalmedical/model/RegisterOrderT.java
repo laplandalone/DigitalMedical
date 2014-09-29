@@ -28,8 +28,18 @@ public class RegisterOrderT implements java.io.Serializable {
 	private String state;
 	private String createDate;
 	private String hospitalId;
+	private String payState;
+	
 
 	// Constructors
+
+	public String getPayState() {
+		return payState;
+	}
+
+	public void setPayState(String payState) {
+		this.payState = payState;
+	}
 
 	/** default constructor */
 	public RegisterOrderT() {
@@ -59,7 +69,7 @@ public class RegisterOrderT implements java.io.Serializable {
 			String orderState, String orderFee, String registerTime,
 			String userName, String userNo, String userTelephone, String sex,
 			String teamId, String teamName, String state, String createDate,
-			String hospitalId) {
+			String hospitalId,String payState) {
 		this.orderId = orderId;
 		this.userId = userId;
 		this.registerId = registerId;
@@ -78,6 +88,7 @@ public class RegisterOrderT implements java.io.Serializable {
 		this.state = state;
 		this.createDate = createDate;
 		this.hospitalId = hospitalId;
+		this.payState=payState;
 	}
 
 	// Property accessors

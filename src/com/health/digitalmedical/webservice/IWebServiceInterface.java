@@ -50,4 +50,7 @@ public interface IWebServiceInterface {
 			String dateStr);
 	
 	public RequestParams orderPay(String orderdId,String payState);
+	
+	public RequestParams getRsaSign(String orderdId);
+	
 }

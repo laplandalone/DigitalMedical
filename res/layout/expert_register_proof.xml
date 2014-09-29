@@ -49,6 +49,6 @@
         </LinearLayout>
     </ScrollView>
     <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:visibility="visible" android:textSize="19.0sp" android:textColor="@color/white" android:id="@+id/taobao" android:background="@drawable/btn_nomorl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="13.0dip" android:text="查看记录" />
+        <Button android:visibility="gone" android:textSize="19.0sp" android:textColor="@color/white" android:id="@+id/taobao" android:background="@drawable/btn_nomorl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="13.0dip" android:text="查看记录" />
     </LinearLayout>
 </LinearLayout>

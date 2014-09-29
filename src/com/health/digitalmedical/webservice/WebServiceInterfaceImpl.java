@@ -139,6 +139,12 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	{
 		return HealthUtil.getRequestParams("BUS20023", new String[]{"orderdId","payState"},new Object[]{orderdId,payState});
 	}
+
+	@Override
+	public RequestParams getRsaSign(String orderdId)
+	{
+		return HealthUtil.getRequestParams("BUS20024", new String[]{"orderdId"},new Object[]{orderdId});
+	}
 	
 	
 }
