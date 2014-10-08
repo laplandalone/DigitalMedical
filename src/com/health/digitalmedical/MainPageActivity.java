@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.health.digitalmedical.adapter.ImgViewPager;
+import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
 import com.health.digitalmedical.view.expert.OnLineFacultyListActivity;
 import com.health.digitalmedical.view.hospital.HospitalDetailActivity;
@@ -27,6 +28,7 @@ import com.health.digitalmedical.view.other.OtherActivity;
 import com.health.digitalmedical.view.user.LoginActivity;
 import com.health.digitalmedical.view.user.MyHealthActivity;
 import com.health.digitalmedical.view.user.UserMainActivity;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -116,6 +118,7 @@ public class MainPageActivity extends BaseActivity
 	int maxCircle480=30;//大圆比小圆大 诊疗服务
 	int maxCircle720=30;//大圆比小圆大 诊疗服务
 	
+	private BitmapUtils bitmapUtils;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -123,6 +126,8 @@ public class MainPageActivity extends BaseActivity
 		setContentView(R.layout.aabg_fontpage);
 		ViewUtils.inject(this);
 		addActivity(this);
+		bitmapUtils = new BitmapUtils(this);
+		bitmapUtils.closeCache();
 		initView();
 		initValue();
 		WindowManager windowManager = getWindowManager();
@@ -290,14 +295,17 @@ public class MainPageActivity extends BaseActivity
 	private void initViewPager()
 	{
 		listViews = new ArrayList<View>();
-		int[] imageResId = new int[]
-		{ R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d};
-		for (int i = 0; i < imageResId.length; i++)
+		String [] imgNames= new String[]{"a.jpg","b.jpg","c.jpg","d.jpg"};
+		String hospitalId=HealthUtil.readHospitalId();
+		for(int i = 0; i < imgNames.length; i++)
 		{
 			ImageView imageView = new ImageView(this);
-			imageView.setImageResource(imageResId[i]);
+//			bitmapUtils.configDefaultLoadingImage(R.drawable.default_loading_img);
+//			bitmapUtils.configDefaultLoadFailedImage(R.drawable.load_failure);
+			bitmapUtils.display(imageView,HealthConstant.imgUrl+"/"+hospitalId+"/head/"+imgNames[i]);
 			imageView.setScaleType(ScaleType.CENTER_CROP);
 			listViews.add(imageView);
+			
 		}
 	}
 

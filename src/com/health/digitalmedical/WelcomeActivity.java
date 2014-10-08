@@ -108,6 +108,7 @@ public class WelcomeActivity extends BaseActivity
 		listViews = new ArrayList<View>();
 		
 		String [] imgNames= new String[]{"a.jpg","b.jpg","c.jpg","d.jpg"};
+		
 		for(int i = 0; i < imgNames.length; i++)
 		{
 			ImageView imageView = new ImageView(this);

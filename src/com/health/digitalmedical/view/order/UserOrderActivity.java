@@ -70,6 +70,14 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 		exit();
 	}
 	
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		initView();
+		initValue();
+	}
 	@Override
 	protected void initValue()
 	{
@@ -171,6 +179,7 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 		// TODO Auto-generated method stub
 		Intent intent = new Intent(UserOrderActivity.this,ConfirmOrderActivity.class);
 		RegisterOrderT registerOrderT =registerOrderTs.get(position);
+		intent.putExtra("orderType", "old");
 		intent.putExtra("hospitalId", registerOrderT.getHospitalId());
 		intent.putExtra("payState", registerOrderT.getPayState());
 		intent.putExtra("orderId", registerOrderT.getOrderId());

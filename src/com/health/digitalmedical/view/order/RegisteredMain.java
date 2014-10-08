@@ -202,6 +202,10 @@ public class RegisteredMain extends BaseActivity
 	{
 		// TODO Auto-generated method stub
 		title.setText("手机挂号");
+		if("102".equals(HealthUtil.readHospitalId()))
+		{
+			normalBtn.setVisibility(View.GONE);
+		}
 	}
 
 	@Override

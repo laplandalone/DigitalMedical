@@ -219,6 +219,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 			{
 				Intent intent = new Intent(TabQuestionActivity.this, AskQuestionMsgActivity.class);
 				intent.putExtra("doctorId", doctor.getDoctorId());
+				intent.putExtra("teamId", doctor.getTeamId());
 				startActivity(intent);
 				finish();
 			}

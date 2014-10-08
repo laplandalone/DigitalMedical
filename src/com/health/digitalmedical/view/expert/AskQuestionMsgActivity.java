@@ -83,6 +83,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 	String userId;
 	String doctorId;
 	String userTelephone;
+	String teamId="";
 	User user;
 	ArrayList<String> data = new ArrayList<String>();
 
@@ -179,6 +180,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 		bitmapUtils.clearCache();
 		// TODO Auto-generated method stub
 		this.doctorId = getIntent().getStringExtra("doctorId");
+		this.teamId= getIntent().getStringExtra("teamId");
 		this.user = HealthUtil.getUserInfo();
 		if (this.user == null)
 		{
@@ -378,7 +380,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 		questionT.setDoctorId(this.doctorId);
 		questionT.setUserTelephone(this.user.getTelephone());
 		questionT.setContent(content);
-
+		questionT.setTeamId(this.teamId);
 		Gson gson = new Gson();
 		String questionStr = gson.toJson(questionT);
 		RequestParams param = webInterface.addUserQuestion(questionStr);

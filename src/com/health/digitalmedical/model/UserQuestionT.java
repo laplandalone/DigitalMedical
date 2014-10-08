@@ -20,8 +20,16 @@ public class UserQuestionT implements java.io.Serializable {
 	private String state="00A";
 	private String createDate;
 	private String name;
-
+	private String teamId;
 	// Constructors
+
+	public String getTeamId() {
+		return teamId;
+	}
+
+	public void setTeamId(String teamId) {
+		this.teamId = teamId;
+	}
 
 	public String getName() {
 		return name;

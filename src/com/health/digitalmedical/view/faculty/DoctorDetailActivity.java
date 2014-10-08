@@ -31,6 +31,8 @@ public class DoctorDetailActivity extends BaseActivity
 	private TextView outPatientPlace;
 	@ViewInject(R.id.guahao_fee)
 	private TextView guahaoFee;
+	@ViewInject(R.id.skill)
+	private TextView skill;
 	@ViewInject(R.id.doctor_photo)
 	private ImageView photo;
 	
@@ -69,7 +71,8 @@ public class DoctorDetailActivity extends BaseActivity
 		bitmapUtils.closeCache();
 		// TODO Auto-generated method stub
 		this.doctorName.setText(this.doctor.getName());
-		this.doctotIntroduction.setText(this.doctor.getSkill());
+		this.doctotIntroduction.setText(this.doctor.getIntroduce());
+		this.skill.setText(this.doctor.getSkill());
 		this.doctorPosition.setText(this.doctor.getPost());
 		this.outPatientTime.setText(this.doctor.getWorkTime());
 		String fee = this.doctor.getRegisterFee();

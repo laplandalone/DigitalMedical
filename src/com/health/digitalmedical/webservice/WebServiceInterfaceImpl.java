@@ -9,7 +9,7 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	@Override
 	public RequestParams queryDoctorList(String expertType, String onLineType, String teamId)
 	{
-		return HealthUtil.getRequestParams("BUS2001", new String[]{"expertType","onLineType","teamId"},new Object[]{"1","1",teamId});
+		return HealthUtil.getRequestParams("BUS2001", new String[]{"expertType","onLineType","teamId"},new Object[]{expertType,onLineType,teamId});
 	}
 
 	@Override

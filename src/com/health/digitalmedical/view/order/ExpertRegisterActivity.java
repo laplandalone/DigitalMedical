@@ -411,6 +411,7 @@ public class ExpertRegisterActivity extends BaseActivity
 				{
 					HealthUtil.infoAlert(ExpertRegisterActivity.this, "预约成功...");
 					Intent intent = new Intent(ExpertRegisterActivity.this, ConfirmOrderActivity.class);
+					intent.putExtra("hospitalId", HealthUtil.readHospitalId());
 					intent.putExtra("orderId", result);
 					intent.putExtra("doctorName", doctorName);
 					intent.putExtra("registerTime", registerTime);

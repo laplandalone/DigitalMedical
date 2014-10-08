@@ -1,6 +1,5 @@
 package com.health.digitalmedical.view.order;
 
-import java.net.URLEncoder;
 import java.util.Map;
 
 import android.content.Intent;
@@ -86,7 +85,7 @@ public class ConfirmOrderActivity extends BaseActivity
 	private Button taobaoBtn;
 	
 	private String orderId="";
-	
+	private String orderState="";
 	private String payState="100";/*初始未支付*/
 	
 	private String orderHospitalId="";
@@ -118,8 +117,12 @@ public class ConfirmOrderActivity extends BaseActivity
 	@OnClick(R.id.taobao)
 	public void pay(View v)
 	{		
-		RequestParams param = webInterface.getRsaSign(this.orderId);
-		invokeWebServer(param, RSA_SIGN);
+//		RequestParams param = webInterface.getRsaSign(this.orderId);
+//		invokeWebServer(param, RSA_SIGN);
+		dialog.setMessage("正在取消,请稍后...");
+		dialog.show();
+		RequestParams param = webInterface.orderPay(orderId, "00X");
+		invokeWebServer(param, PAY_STATE);
 	}
 	
    
@@ -169,12 +172,13 @@ public class ConfirmOrderActivity extends BaseActivity
 	{
 		title.setText("预约详情");
 		// TODO Auto-generated method stub
+		this.orderState=getIntent().getStringExtra("orderState");
 		this.payState= getIntent().getStringExtra("payState");
 		this.orderHospitalId=getIntent().getStringExtra("hospitalId");
 		this.orderId=getIntent().getStringExtra("orderId");
-		String registerNum=getIntent().getStringExtra("userOrderNum"  );
-		String fee=getIntent().getStringExtra("fee"           );
-		String doctorName=getIntent().getStringExtra("doctorName"    );
+		String registerNum=getIntent().getStringExtra("userOrderNum");
+		String fee=getIntent().getStringExtra("fee");
+		String doctorName=getIntent().getStringExtra("doctorName");
 		if("0".equals(registerNum) || "".equals(registerNum))
 		{
 			linearLayout.setVisibility(View.GONE);
@@ -203,18 +207,9 @@ public class ConfirmOrderActivity extends BaseActivity
 	@Override
 	protected void initValue()
 	{
-		/**
-		 * 什么时候可以支付
-		 * 1.预约成功后，hospitalId为订单医院ID，这时根据医院ID判断是否支持支付宝支付；
-		 * 2.通过我的预约，查看预约记录，根据订单归属orderHospitalId判断是否支持支付宝支付；
-		 * 3.
-		 * */
-		String hospitalId=HealthUtil.readHospitalId();
-		
-		if(("102".equals(orderHospitalId) || "102".equals(hospitalId)) && "100".equals(payState) )/*亚心医院未支付状态支持支付宝支付*/
+		if(!"00X".equals(orderState) && "102".equals(orderHospitalId))
 		{
 			taobaoBtn.setVisibility(View.VISIBLE);
-			taobaoBtn.setText("支付宝");
 		}
 	}
 	
@@ -297,13 +292,15 @@ public class ConfirmOrderActivity extends BaseActivity
 		    	String sign=rtn.get("sign").getAsString();
 		    	System.out.println(sign);
 		    	alipay(sign);
+		    	break;
 		    case PAY_STATE:	
 		      String payRst=jsonObject.get("returnMsg").getAsString();
 		      if("true".equals(payRst))
 		      {
-		    	  HealthUtil.infoAlert(ConfirmOrderActivity.this, "支付成功");
+		    	  HealthUtil.infoAlert(ConfirmOrderActivity.this, "取消成功");
 		    	  taobaoBtn.setVisibility(View.GONE);
 		      }
+		      break;
 		      default:
 		}
 		

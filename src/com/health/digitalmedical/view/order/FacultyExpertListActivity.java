@@ -85,7 +85,12 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 		}
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
-		RequestParams param = webInterface.queryTeamList(this.hospitalId,null);
+		String expertFlag="0";
+		if("normal".equals(orderTypeT))
+		{
+			expertFlag="2";
+		}
+		RequestParams param = webInterface.queryTeamList(this.hospitalId,expertFlag);/*专家预约挂号*/
 		invokeWebServer(param, GET_LIST);
 	}
 

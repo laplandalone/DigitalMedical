@@ -83,7 +83,7 @@ public class OnLineExpertListActivity extends BaseActivity  implements OnItemCli
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
 		// TODO Auto-generated method stub
-		RequestParams param = webInterface.queryDoctorList(null,null,teamId);
+		RequestParams param = webInterface.queryDoctorList("1",null,teamId);
 		invokeWebServer(param, GET_LIST);
 	}
 	

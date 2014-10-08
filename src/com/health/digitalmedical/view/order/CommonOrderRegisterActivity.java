@@ -398,6 +398,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 				{
 					HealthUtil.infoAlert(CommonOrderRegisterActivity.this, "预约成功...");
 					Intent intent = new Intent(CommonOrderRegisterActivity.this, ConfirmOrderActivity.class);
+					intent.putExtra("hospitalId", HealthUtil.readHospitalId());
 					intent.putExtra("orderId", result);
 					intent.putExtra("doctorName", doctorName);
 					intent.putExtra("registerTime", registerTime);

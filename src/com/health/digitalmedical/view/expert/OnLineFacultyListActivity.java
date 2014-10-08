@@ -87,7 +87,7 @@ public class OnLineFacultyListActivity extends BaseActivity implements OnItemCli
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
 		String hospitalId=HealthUtil.readHospitalId();
-		RequestParams param = webInterface.queryTeamList(hospitalId,"0");
+		RequestParams param = webInterface.queryTeamList(hospitalId,"1");
 		invokeWebServer(param, GET_LIST);
 	}
 
