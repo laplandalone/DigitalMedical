@@ -33,6 +33,7 @@ import com.health.digitalmedical.model.Doctor;
 import com.health.digitalmedical.model.UserQuestionT;
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
+import com.health.digitalmedical.tools.ObjectCensor;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -147,7 +148,7 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 		title.setText("在线提问");
 		settings.setVisibility(View.VISIBLE);
 		settings.setBackgroundResource(R.drawable.btn_my_online);
-		
+		tabMajor.setBackgroundResource(R.drawable.btn_main);
 		this.doctor=(Doctor) getIntent().getSerializableExtra("doctor");
 		LayoutInflater lf = getLayoutInflater().from(this);
 		
@@ -157,7 +158,9 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 		TextView doctorName=(TextView) view1.findViewById(R.id.doctor_name);
 		doctorName.setText(doctor.getName());
 		TextView introddoction=(TextView) view1.findViewById(R.id.doctot_introduction);
-		introddoction.setText(doctor.getSkill()); 
+		introddoction.setText(doctor.getIntroduce()); 
+		TextView skill=(TextView) view1.findViewById(R.id.skill);
+		skill.setText(doctor.getSkill()); 
 		TextView position=(TextView) view1.findViewById(R.id.doctor_position);
 		position.setText(doctor.getPost()); 
 		TextView outPatientTime=(TextView) view1.findViewById(R.id.out_patient_time);
@@ -165,7 +168,15 @@ public class TabQuestionActivity extends BaseActivity implements OnItemClickList
 		TextView outPatientPlace=(TextView) view1.findViewById(R.id.out_patient_place);
 		outPatientPlace.setText(doctor.getWorkAddress());
 		TextView guahaoFee=(TextView) view1.findViewById(R.id.guahao_fee);
-		guahaoFee.setText(doctor.getRegisterFee()+"元");
+		String fee=doctor.getRegisterFee();
+		if(ObjectCensor.isStrRegular(fee))
+		{
+			guahaoFee.setText(doctor.getRegisterFee()+"元");
+		}else
+		{
+			guahaoFee.setText("无");
+		}
+		
 		ImageView imageView = (ImageView) view1.findViewById( R.id.doctor_photo);
 		String photoUrl=doctor.getPhotoUrl();
 		if(photoUrl.endsWith("jpg") || photoUrl.endsWith("png"))
