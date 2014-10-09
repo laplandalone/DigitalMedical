@@ -81,16 +81,16 @@ public class WebServiceInterfaceImpl implements IWebServiceInterface{
 	}
 
 	@Override
-	public RequestParams getUserOrderById(String userId)
+	public RequestParams getUserOrderById(String userId,String hospitalId)
 	{
 		// TODO Auto-generated method stub
-		return HealthUtil.getRequestParams("BUS20014", new String[]{"userId"},new Object[]{userId});
+		return HealthUtil.getRequestParams("BUS20014", new String[]{"userId","hospitalId"},new Object[]{userId,hospitalId});
 	}
 
 	@Override
-	public RequestParams getUserQuestionsByUserId(String userId)
+	public RequestParams getUserQuestionsByUserId(String userId,String hospitalId)
 	{
-		return HealthUtil.getRequestParams("BUS20015", new String[]{"userId"},new Object[]{userId});
+		return HealthUtil.getRequestParams("BUS20015", new String[]{"userId","hospitalId"},new Object[]{userId,hospitalId});
 	}
 
 	@Override

@@ -26,11 +26,11 @@ public interface IWebServiceInterface {
 	
 	public RequestParams getUserQuestionsByIds(String questionId);
 	
-	public RequestParams getUserQuestionsByUserId(String userId);
+	public RequestParams getUserQuestionsByUserId(String userId,String hospitalId);
 	
 	public RequestParams getHospitals(String hospitalId);
 	
-	public RequestParams getUserOrderById(String userId);
+	public RequestParams getUserOrderById(String userId,String hospitalId);
 	
 	public RequestParams getTeamByHospitalId(String hospitalId);
 	

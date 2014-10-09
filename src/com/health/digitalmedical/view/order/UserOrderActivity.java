@@ -86,7 +86,7 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 		dialog.show();
 		this.user=HealthUtil.getUserInfo();
 		String userId=user.getUserId();
-		RequestParams param = webInterface.getUserOrderById(userId);
+		RequestParams param = webInterface.getUserOrderById(userId,HealthUtil.readHospitalId());
 		invokeWebServer(param, GET_LIST);
 	}
 	

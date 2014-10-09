@@ -21,7 +21,16 @@ public class UserQuestionT implements java.io.Serializable {
 	private String createDate;
 	private String name;
 	private String teamId;
+	private String hospitalId;
 	// Constructors
+
+	public String getHospitalId() {
+		return hospitalId;
+	}
+
+	public void setHospitalId(String hospitalId) {
+		this.hospitalId = hospitalId;
+	}
 
 	public String getTeamId() {
 		return teamId;

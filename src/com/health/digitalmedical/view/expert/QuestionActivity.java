@@ -92,6 +92,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		// TODO Auto-generated method stub
 		dialog.setMessage("正在加载,请稍后...");
 		dialog.show();
+		
 		this.questionType = getIntent().getStringExtra("questionType");
 		if ("expert".equals(questionType))
 		{
@@ -110,7 +111,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 			{
 				this.userId = user.getUserId();
 				submitBtn.setVisibility(View.GONE);
-				RequestParams param = webInterface.getUserQuestionsByUserId(userId);
+				RequestParams param = webInterface.getUserQuestionsByUserId(userId,HealthUtil.readHospitalId());
 				invokeWebServer(param, ADD_QUESTION);
 			}
 
@@ -131,7 +132,7 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 			{
 				this.userId = user.getUserId();
 				submitBtn.setVisibility(View.GONE);
-				RequestParams param = webInterface.getUserQuestionsByUserId(userId);
+				RequestParams param = webInterface.getUserQuestionsByUserId(userId,HealthUtil.readHospitalId());
 				invokeWebServer(param, ADD_QUESTION);
 			}
 			break;

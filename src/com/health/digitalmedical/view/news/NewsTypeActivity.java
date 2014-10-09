@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -33,7 +34,9 @@ public class NewsTypeActivity extends BaseActivity implements OnItemClickListene
 	
 	@ViewInject(R.id.title)
 	private TextView title;
-
+	
+	@ViewInject(R.id.contentnull)
+	private RelativeLayout layout;
 	private ListView list;
 	private String type;
 	
@@ -169,6 +172,12 @@ public class NewsTypeActivity extends BaseActivity implements OnItemClickListene
 			return;
 		}
 		this.jsonArray = jsonObject.getAsJsonArray("returnMsg");
+		if(this.jsonArray.size()==0)
+		{
+			layout.setVisibility(View.VISIBLE);
+			list.setVisibility(View.GONE);
+		}
+		
 		NewsTypeAdapter adapter = new NewsTypeAdapter(NewsTypeActivity.this, jsonArray);
 		this.list.setAdapter(adapter);
 		this.list.setOnItemClickListener(this);

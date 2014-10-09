@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.JsonElement;
@@ -37,6 +38,9 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 
 	@ViewInject(R.id.title)
 	private TextView title;
+
+	@ViewInject(R.id.contentnull)
+	private RelativeLayout layout;
 	
 	private ListView list;
 
@@ -69,7 +73,10 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 	{
 		// TODO Auto-generated method stub
 		title.setText("科室列表");
-		
+		if("102".equals(HealthUtil.readHospitalId()))
+		{
+			title.setText("门诊列表");
+		}
 	}
 
 	@Override
@@ -88,7 +95,7 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 		String expertFlag="0";
 		if("normal".equals(orderTypeT))
 		{
-			expertFlag="2";
+			expertFlag="1";
 		}
 		RequestParams param = webInterface.queryTeamList(this.hospitalId,expertFlag);/*专家预约挂号*/
 		invokeWebServer(param, GET_LIST);
@@ -172,6 +179,11 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 		JsonObject jsonObject = jsonElement.getAsJsonObject();
 		JsonObject returnObj = jsonObject.getAsJsonObject("returnMsg");
 		this.teamList = HealthUtil.json2Object(returnObj.toString(), TeamList.class);
+		if( teamList.getTeams().size()==0)
+		{
+			layout.setVisibility(View.VISIBLE);
+			list.setVisibility(View.GONE);
+		}
 		FacultyListAdapter adapter = new FacultyListAdapter(FacultyExpertListActivity.this, teamList);
 		this.list.setAdapter(adapter);
 		this.list.setOnItemClickListener(this);

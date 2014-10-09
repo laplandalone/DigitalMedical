@@ -43,8 +43,6 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
  */
 public class WelcomeActivity extends BaseActivity
 {
-	@ViewInject(R.id.back)
-	private ImageView back;
 	
 	@ViewInject(R.id.hospital)
 	private ImageView hospital;
@@ -58,9 +56,6 @@ public class WelcomeActivity extends BaseActivity
 	@ViewInject(R.id.line2)
 	private LinearLayout layout2;
 
-	@ViewInject(R.id.title)
-	private TextView title;
-	
 	@ViewInject(R.id.hospitalName)
 	private TextView hospitalName;
 	
@@ -156,7 +151,6 @@ public class WelcomeActivity extends BaseActivity
 		description.setText(hospitalT.getIntroduce());
 		remark.setText(hospitalT.getRemark());
 		hospitalName.setText(hospitalT.getHospitalName());
-		title.setText(hospitalT.getHospitalName());
 		bitmapUtils.display(logo,HealthConstant.imgUrl+hospitalT.getImageUrl());
 	}
 
@@ -173,7 +167,6 @@ public class WelcomeActivity extends BaseActivity
 		description.setText(hospitalT.getIntroduce());
 		remark.setText(hospitalT.getRemark());
 		hospitalName.setText(hospitalT.getHospitalName());
-		title.setText(hospitalT.getHospitalName());
 		bitmapUtils.display(logo,HealthConstant.imgUrl+hospitalT.getImageUrl());
 	}
 	
@@ -191,9 +184,6 @@ public class WelcomeActivity extends BaseActivity
 	@Override
 	protected void initView()
 	{
-		back.setVisibility(View.GONE);
-		
-		
 		WindowManager windowManager = getWindowManager();
 		Display display = windowManager.getDefaultDisplay();
 		int screenWidth = display.getWidth();
@@ -254,13 +244,12 @@ public class WelcomeActivity extends BaseActivity
 	protected void initValue()
 	{
 		this.hospitalTs = HealthUtil.readHospitalTs();
-		if(hospitalTs!=null)
+		if(hospitalTs==null)
 		{
 			HospitalT hospitalT = hospitalTs.get(0);
 			description.setText(hospitalT.getIntroduce());
 			remark.setText(hospitalT.getRemark());
 			hospitalName.setText(hospitalT.getHospitalName());
-			title.setText(hospitalT.getHospitalName());
 			bitmapUtils.display(logo,HealthConstant.imgUrl+hospitalT.getImageUrl());
 		}else
 		{
@@ -354,8 +343,6 @@ public class WelcomeActivity extends BaseActivity
 		description.setText(hospitalT.getIntroduce());
 		remark.setText(hospitalT.getRemark());
 		hospitalName.setText(hospitalT.getHospitalName());
-		title.setText(hospitalT.getHospitalName());
-		
 		bitmapUtils.display(logo,HealthConstant.imgUrl+hospitalT.getImageUrl());
 	}
 	

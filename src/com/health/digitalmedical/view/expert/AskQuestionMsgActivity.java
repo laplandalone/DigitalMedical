@@ -381,6 +381,7 @@ public class AskQuestionMsgActivity extends BaseActivity
 		questionT.setUserTelephone(this.user.getTelephone());
 		questionT.setContent(content);
 		questionT.setTeamId(this.teamId);
+		questionT.setHospitalId(HealthUtil.readHospitalId());
 		Gson gson = new Gson();
 		String questionStr = gson.toJson(questionT);
 		RequestParams param = webInterface.addUserQuestion(questionStr);

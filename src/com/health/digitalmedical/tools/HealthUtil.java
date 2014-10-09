@@ -104,7 +104,7 @@ public class HealthUtil {
 		
 		public static String readHospitalId() 
 		{
-			return userPreferences.getString("hospitalId", "101");
+			return userPreferences.getString("hospitalId", "102");
 		}
 		
 		public static String readHospitalName() 

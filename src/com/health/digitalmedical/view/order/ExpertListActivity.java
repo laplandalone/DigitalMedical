@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.RelativeLayout;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
@@ -40,6 +41,8 @@ public class ExpertListActivity extends BaseActivity  implements IXListViewListe
 	@ViewInject(R.id.textTitle)
 	private TextView textTitle;
 	
+	@ViewInject(R.id.contentnull)
+	private RelativeLayout layout;
 	
 	private XListView list;
 
@@ -154,6 +157,12 @@ public class ExpertListActivity extends BaseActivity  implements IXListViewListe
 		JsonObject returnObj = jsonObject.getAsJsonObject("returnMsg");
 		this.expertList = HealthUtil.json2Object(returnObj.toString(), OrderExpertList.class);
 		OrderExpertAdapter adapter = new OrderExpertAdapter(ExpertListActivity.this, expertList);
+	
+		if( expertList.getOrders().size()==0)
+		{
+			layout.setVisibility(View.VISIBLE);
+			list.setVisibility(View.GONE);
+		}
 		this.list.setAdapter(adapter);
 		this.list.setXListViewListener(this);
 		this.list.setPullLoadEnable(false);

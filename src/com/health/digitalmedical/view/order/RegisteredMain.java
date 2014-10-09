@@ -204,6 +204,7 @@ public class RegisteredMain extends BaseActivity
 		title.setText("手机挂号");
 		if("102".equals(HealthUtil.readHospitalId()))
 		{
+			expertBtn.setBackgroundResource(R.drawable.guahao_btnx);
 			normalBtn.setVisibility(View.GONE);
 		}
 	}
