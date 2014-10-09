@@ -1041,7 +1041,7 @@
     <string name="layout_temp218">更新提醒</string>
     <string name="layout_temp219">清华阳光口腔医院</string>
     <string name="layout_temp220">地址: 浙江省杭州市庆春路79号</string>
-    <string name="layout_temp221">医院交通</string>
+    <string name="layout_temp221">医院地图</string>
     <string name="layout_temp222">途经医院公交路线：</string>
     <string name="layout_temp223">官方网址</string>
     <string name="layout_temp224">【医院电话】</string>
@@ -1653,5 +1653,21 @@
     <string name="drug_remind_title_11">修改提醒</string>
     <string name="drug_remind_title_12">天</string>
     <string name="drug_remind_title_13">提醒时间不可为空</string>
+    
+    <string name="yaxinline1" >若您在武汉市，请参考以下乘车路线：</string> 
+	<string name="yaxinline2" >汉口到亚心：乘电3、508、706、726路公汽，到新华路车站下车。乘轻轨到友谊路站下车。</string>
+	<string name="yaxinline3" >汉阳到亚心：乘42、524、532、535、716、808路公汽，到新华路车站下车。</string>
+	<string name="yaxinline4" >武昌到亚心：乘64、522、549、703、712、802路公汽，到新华路车站下车。</string>
+	<string name="yaxinline5" >若您是外地患者，请参考以下乘车路线：</string>
+	<string name="yaxinline6" >乘坐火车：</string>
+	<string name="yaxinline7" >汉口火车站到亚心：乘9、38、561、595、803路公汽，到友谊路车站下车。</string>
+	<string name="yaxinline8" >武昌火车站到亚心：乘706路公汽，到新华路车站下车。</string>
+	<string name="yaxinline9" >乘坐长途汽车：</string>
+	<string name="yaxinline10" >傅家坡长途客运站：乘703路公汽，到新华路车站下车。</string>
+	<string name="yaxinline11" >乘坐飞机：您可乘坐机场大巴至新华路下车。</string>
+	<string name="yaxinline12" >乘坐轮船：</string>
+	<string name="yaxinline13" >在武汉客运港乘坐9、207、563、595路公汽，到新华路车站下车。</string>
+	<string name="yaxinline14" >乘坐地铁：</string>
+	<string name="yaxinline15" >在武汉乘坐地铁或者轻轨在循礼门站下车。</string>
 
 </resources>

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -49,6 +50,13 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 
 	private ListView list;
 	
+	@ViewInject(R.id.yaxinline)
+	private LinearLayout yaxinLayout;
+	
+	@ViewInject(R.id.hospital_more_detail)
+	private LinearLayout hospital_more_detail;
+	
+	
 	@ViewInject(R.id.hospital_more_img)
 	private ImageView hospitalImgMore;
 	
@@ -67,6 +75,42 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 	@ViewInject(R.id.website)
 	private TextView website;
 	
+	
+	@ViewInject(R.id.yaxinmoreText)
+	private TextView yaxinmoreText;
+	
+	@ViewInject(R.id.yaxinline5)
+	private TextView yaxinline5;
+	
+	@ViewInject(R.id.yaxinline6)
+	private TextView yaxinline6;
+	
+	@ViewInject(R.id.yaxinline7)
+	private TextView yaxinline7;
+	
+	@ViewInject(R.id.yaxinline8)
+	private TextView yaxinline8;
+	
+	@ViewInject(R.id.yaxinline9)
+	private TextView yaxinline9;
+	
+	@ViewInject(R.id.yaxinline10)
+	private TextView yaxinline10;
+	
+	@ViewInject(R.id.yaxinline11)
+	private TextView yaxinline11;
+	
+	@ViewInject(R.id.yaxinline12)
+	private TextView yaxinline12;
+	
+	@ViewInject(R.id.yaxinline13)
+	private TextView yaxinline13;
+	
+	@ViewInject(R.id.yaxinline14)
+	private TextView yaxinline14;
+	
+	@ViewInject(R.id.yaxinline15)
+	private TextView yaxinline15;
 	
 	private List<TeamT> teamTs;
 	@Override
@@ -89,6 +133,33 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 		Intent intent = new Intent(HospitalDetailActivity.this,MainPageActivity.class);
 		startActivity(intent);
 		exit();
+	}
+	
+	@OnClick(R.id.yaxinmore)
+	public void yaxinmore(View v)
+	{
+		   int display=0;
+		   if(yaxinline5.getVisibility()==View.VISIBLE)
+		   {
+			   display=View.GONE;
+			   yaxinmoreText.setText("更多");
+		   }else
+		   {
+			   display=View.VISIBLE;
+			   yaxinmoreText.setText("收起");
+		   }
+		   
+		    yaxinline5.setVisibility(display);
+			yaxinline6.setVisibility(display);
+			yaxinline7.setVisibility(display);
+			yaxinline8.setVisibility(display);
+			yaxinline9.setVisibility(display);
+			yaxinline10.setVisibility(display);
+			yaxinline11.setVisibility(display);
+			yaxinline12.setVisibility(display);
+			yaxinline13.setVisibility(display);
+			yaxinline14.setVisibility(display);
+			yaxinline15.setVisibility(display);
 	}
 	
 	@OnClick(R.id.more_detail)
@@ -114,22 +185,32 @@ public class HospitalDetailActivity extends BaseActivity implements OnItemClickL
 		
 		String hospitalId = HealthUtil.readHospitalId();
 		HospitalT hospitalT = HealthUtil.getHospitalTById(hospitalId);
+		
 		if(hospitalT!=null)
 		{
 			title.setText(hospitalT.getHospitalName());
 			website.setText(hospitalT.getWebUrl());
 			description.setText(hospitalT.getIntroduce());
 		}
+		if("102".equals(hospitalId))
+		{
+			yaxinLayout.setVisibility(View.VISIBLE);
+		}
 	}
 
 	private void setListView()
 	{   
+		if(teamTs.size()<3)
+		{
+			hospital_more_detail.setVisibility(View.GONE);
+		}
+		
 		int heigths=0;
 		String text = hospitalTextMore.getText().toString();
 		if("更多".equals(text))
 		{
 			this.hospitalTextMore.setText("收起");
-			heigths=getHeight(list,teamTs.size());
+			heigths=getHeight(list,teamTs.size())+4;
 		}else
 		{
 			this.hospitalTextMore.setText("更多");
