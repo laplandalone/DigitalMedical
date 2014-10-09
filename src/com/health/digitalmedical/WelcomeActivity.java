@@ -151,7 +151,7 @@ public class WelcomeActivity extends BaseActivity
 		description.setText(hospitalT.getIntroduce());
 		remark.setText(hospitalT.getRemark());
 		hospitalName.setText(hospitalT.getHospitalName());
-		bitmapUtils.display(logo,HealthConstant.imgUrl+hospitalT.getImageUrl());
+//		bitmapUtils.display(logo,HealthConstant.imgUrl+hospitalT.getImageUrl());
 	}
 
 	@OnClick(R.id.arrow_right)
@@ -167,7 +167,7 @@ public class WelcomeActivity extends BaseActivity
 		description.setText(hospitalT.getIntroduce());
 		remark.setText(hospitalT.getRemark());
 		hospitalName.setText(hospitalT.getHospitalName());
-		bitmapUtils.display(logo,HealthConstant.imgUrl+hospitalT.getImageUrl());
+//		bitmapUtils.display(logo,HealthConstant.imgUrl+hospitalT.getImageUrl());
 	}
 	
 	@OnClick(R.id.phone114)
@@ -243,15 +243,15 @@ public class WelcomeActivity extends BaseActivity
 	@Override
 	protected void initValue()
 	{
-		this.hospitalTs = HealthUtil.readHospitalTs();
-		if(hospitalTs==null)
-		{
-			HospitalT hospitalT = hospitalTs.get(0);
-			description.setText(hospitalT.getIntroduce());
-			remark.setText(hospitalT.getRemark());
-			hospitalName.setText(hospitalT.getHospitalName());
-			bitmapUtils.display(logo,HealthConstant.imgUrl+hospitalT.getImageUrl());
-		}else
+//		this.hospitalTs = HealthUtil.readHospitalTs();
+//		if(hospitalTs!=null)
+//		{
+//			HospitalT hospitalT = hospitalTs.get(0);
+//			description.setText(hospitalT.getIntroduce());
+//			remark.setText(hospitalT.getRemark());
+//			hospitalName.setText(hospitalT.getHospitalName());
+//			bitmapUtils.display(logo,HealthConstant.imgUrl+hospitalT.getImageUrl());
+//		}else
 		{
 			dialog.setMessage("正在加载,请稍后...");
 			dialog.show();
@@ -343,7 +343,7 @@ public class WelcomeActivity extends BaseActivity
 		description.setText(hospitalT.getIntroduce());
 		remark.setText(hospitalT.getRemark());
 		hospitalName.setText(hospitalT.getHospitalName());
-		bitmapUtils.display(logo,HealthConstant.imgUrl+hospitalT.getImageUrl());
+//		bitmapUtils.display(logo,HealthConstant.imgUrl+hospitalT.getImageUrl());
 	}
 	
 	

@@ -39,6 +39,9 @@ public class ConfirmOrderActivity extends BaseActivity
 	@ViewInject(R.id.title)
 	private TextView title;
 
+	@ViewInject(R.id.mark)  
+	private LinearLayout mark;
+	
 	@ViewInject(R.id.faculty_name)  
 	private TextView falcultyNameT;
 	
@@ -210,6 +213,10 @@ public class ConfirmOrderActivity extends BaseActivity
 		if(!"00X".equals(orderState) && "102".equals(orderHospitalId))
 		{
 			taobaoBtn.setVisibility(View.VISIBLE);
+		}
+		if("101".equals(orderHospitalId))
+		{
+			mark.setVisibility(View.GONE);
 		}
 	}
 	

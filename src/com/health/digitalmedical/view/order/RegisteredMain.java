@@ -33,14 +33,22 @@ public class RegisteredMain extends BaseActivity
 	@ViewInject(R.id.open_memo)
 	private TextView open_memo;
 	
+	@ViewInject(R.id.regist_memo)
+	private TextView regist_memo;
+	
+	@ViewInject(R.id.regist_memo3)
+	private TextView regist_memo3;
+	
+	@ViewInject(R.id.regist_memo4)
+	private TextView regist_memo4;
+	
 	@ViewInject(R.id.regist_memo5)
 	private TextView regist_memo5;
 	
 	@ViewInject(R.id.regist_memo6)
 	private TextView regist_memo6;
 	
-	@ViewInject(R.id.regist_memo7)
-	private TextView regist_memo7;
+	
 	
 	@ViewInject(R.id.regist_memo8)
 	private TextView regist_memo8;
@@ -50,12 +58,6 @@ public class RegisteredMain extends BaseActivity
 	
 	@ViewInject(R.id.regist_memo10)
 	private TextView regist_memo10;
-	
-	@ViewInject(R.id.regist_memo11)
-	private TextView regist_memo11;
-	
-	@ViewInject(R.id.regist_memo12)
-	private TextView regist_memo12;
 	
 	@ViewInject(R.id.regist_memo13)
 	private TextView regist_memo13;
@@ -106,12 +108,9 @@ public class RegisteredMain extends BaseActivity
 		{
 			regist_memo5.setVisibility(View.VISIBLE);
 			regist_memo6.setVisibility(View.VISIBLE);
-			regist_memo7.setVisibility(View.VISIBLE);
 			regist_memo8.setVisibility(View.VISIBLE);
 			regist_memo9.setVisibility(View.VISIBLE);
 			regist_memo10.setVisibility(View.VISIBLE);
-			regist_memo11.setVisibility(View.VISIBLE);
-			regist_memo12.setVisibility(View.VISIBLE);
 			regist_memo13.setVisibility(View.VISIBLE);
 			regist_memo14.setVisibility(View.VISIBLE);
 			regist_memo15.setVisibility(View.VISIBLE);
@@ -126,12 +125,9 @@ public class RegisteredMain extends BaseActivity
 		{
 			regist_memo5.setVisibility(View.GONE);
 			regist_memo6.setVisibility(View.GONE);
-			regist_memo7.setVisibility(View.GONE);
 			regist_memo8.setVisibility(View.GONE);
 			regist_memo9.setVisibility(View.GONE);
 			regist_memo10.setVisibility(View.GONE);
-			regist_memo11.setVisibility(View.GONE);
-			regist_memo12.setVisibility(View.GONE);
 			regist_memo13.setVisibility(View.GONE);
 			regist_memo14.setVisibility(View.GONE);
 			regist_memo15.setVisibility(View.GONE);
@@ -206,7 +202,12 @@ public class RegisteredMain extends BaseActivity
 		{
 			expertBtn.setBackgroundResource(R.drawable.guahao_btnx);
 			normalBtn.setVisibility(View.GONE);
+			regist_memo.setText(R.string.layout_temp1931);
+			regist_memo3.setText(R.string.layout_temp1961);
+			regist_memo4.setText(R.string.layout_temp1971);
 		}
+		
+		
 	}
 
 	@Override

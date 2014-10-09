@@ -77,6 +77,10 @@ public class OnLineFacultyListActivity extends BaseActivity implements OnItemCli
 	{
 		// TODO Auto-generated method stub
 		title.setText("科室列表");
+		if("102".equals(HealthUtil.readHospitalId()))
+		{
+			title.setText("门诊列表");
+		}
 	}
 
 	@Override
