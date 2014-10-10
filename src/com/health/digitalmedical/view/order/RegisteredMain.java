@@ -202,7 +202,6 @@ public class RegisteredMain extends BaseActivity
 		{
 			expertBtn.setBackgroundResource(R.drawable.guahao_btnx);
 			normalBtn.setVisibility(View.GONE);
-			regist_memo.setText(R.string.layout_temp1931);
 			regist_memo3.setText(R.string.layout_temp1961);
 			regist_memo4.setText(R.string.layout_temp1971);
 		}

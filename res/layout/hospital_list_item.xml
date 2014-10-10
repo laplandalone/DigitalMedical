@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout   android:background="@drawable/list_view_selector" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView  android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/map_point"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/list_view_selector"
         android:orientation="vertical" android:layout_weight="1.0">
 
         <LinearLayout android:gravity="left" android:layout_width="fill_parent" android:layout_height="fill_parent">

@@ -20,7 +20,18 @@ import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.HttpHandler;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
-
+/**
+ * 
+* @ClassName: NewVersionActivity 
+* @Description: 发现新版本后，显示下载更新界面
+* @author yang.jingwen
+* @date 2014-6-11 下午2:31:53 
+*
+*modified by yang.jingwen
+*解决当点击home键之后，此界面消失的问题
+*注意：当人为的退出此界面时，请设置HealthUtil.isNewVersionFlag = false;
+*
+ */
 public class NewVersionActivity extends BaseActivity implements OnClickListener{
 	private Button updateBtn;
 	private Button cancelBtn;
@@ -32,9 +43,10 @@ public class NewVersionActivity extends BaseActivity implements OnClickListener{
 	private String mApplicationVersionCode;
 	private HttpUtils mHttpUtils;
 	private HttpHandler<File> mHttpHandler;
+	
+	private boolean isDownloadCompleted = false;
 
 	protected void initView() {
-		// TODO Auto-generated method stub
 		updateBtn = (Button) findViewById(R.id.new_version_upload);
 		cancelBtn = (Button) findViewById(R.id.new_version_cancel);
 		remarkTxt = (TextView) findViewById(R.id.new_version_remark);
@@ -58,34 +70,43 @@ public class NewVersionActivity extends BaseActivity implements OnClickListener{
 		setContentView(R.layout.new_version);
 		mHttpUtils = new HttpUtils();
 		mBundle = this.getIntent().getExtras();
-		addActivity(this);
+		HealthUtil.isNewVersionFlag = true; //当此界面显示时，设置为true
 		initView();
 		initValue();
 	}
 	
 	public void updateBtn() {
 		updateBtn.setEnabled(false);
-		mHttpHandler = mHttpUtils.download(mApplicationUrl, HealthConstant.Download_path+"digitalhealth" + mApplicationVersionCode + ".apk", true, new RequestCallBack<File>() {
+		cancelBtn.setText("取消");
+		mHttpHandler = mHttpUtils.download(mApplicationUrl, HealthConstant.Download_path+"DigitalMedical" + mApplicationVersionCode + ".apk", true, new RequestCallBack<File>() {
 			@Override
 			public void onLoading(long total, long current, boolean isUploading) {
 				
 				float size = current / 1024F /1024F;
-//				float totalSize = total / 1024F /1024F;
-				updateBtn.setText("正在下载(已下载" + size + "M)");
+				float totalSize = total / 1024F /1024F;
+				int finish=Math.round(size/totalSize*100);
+				updateBtn.setText("正在下载(已下载" + finish + "%)");
 				super.onLoading(total, current, isUploading);
 			}
 
 			@Override
 			public void onSuccess(ResponseInfo<File> arg0) {
-				updateBtn.setText("下载完成");
-				installApkByGuide(HealthConstant.Download_path+"digitalhealth" + mApplicationVersionCode + ".apk");
+				updateBtn.setText("下载完成,点击安装");
+				isDownloadCompleted = true;
+				installApkByGuide(HealthConstant.Download_path+"DigitalMedical" + mApplicationVersionCode + ".apk");
+				updateBtn.setEnabled(true);
+				cancelBtn.setText("下次安装");
 			}
 			
 			@Override
 			public void onFailure(HttpException arg0, String arg1) {
 				HealthUtil.infoAlert(NewVersionActivity.this, arg1);
+				//code 416 表示下载已经完成，无需再下
 				if (arg0 != null && arg0.getExceptionCode() == 416) {
-					installApkByGuide(HealthConstant.Download_path+"haochilao" + mApplicationVersionCode + ".apk");
+					isDownloadCompleted = true;
+					updateBtn.setText("点击安装");
+					updateBtn.setEnabled(true);
+					installApkByGuide(HealthConstant.Download_path+"DigitalMedical" + mApplicationVersionCode + ".apk");
 				} else {
 					updateBtn.setText("点击重试");
 					updateBtn.setEnabled(true);
@@ -102,42 +123,49 @@ public class NewVersionActivity extends BaseActivity implements OnClickListener{
 	  }
 	
 	public void cancelBtn() {
+		HealthUtil.LOG_D(getClass(), ">>>>>>>>>>>>>>>>>>>cancelBtn");
+		if (mHttpHandler != null) {
+			if(cancelBtn.getText().toString().equals("取消")){
+				mHttpHandler.stop();
+				mHttpHandler = null;
+			}
+		}
+		HealthUtil.isNewVersionFlag = false; //当此界面销毁，设置为false
+		finish();
+	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		return false;
+	}
+
+	@Override
+	public void onBackPressed() {
+		if ("N".equalsIgnoreCase(mForceUpdateFlag)) {
+			super.onBackPressed();
+		}
+	}
+	
+	@Override
+	protected void onDestroy() {
+		HealthUtil.LOG_D(getClass(), "--------------------onDestroy");
 		if (mHttpHandler != null) {
 			mHttpHandler.stop();
 			mHttpHandler = null;
 		}
-		finish();
+		HealthUtil.isNewVersionFlag = false; //当此界面销毁，设置为false
+		super.onDestroy();
 	}
-//
-//	@Override
-//	public boolean onTouchEvent(MotionEvent event) {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
-//
-//	@Override
-//	public void onBackPressed() {
-//		if ("N".equalsIgnoreCase(mForceUpdateFlag)) {
-//			super.onBackPressed();
-//		}
-//	}
-//	
-//	
-//	
-//	@Override
-//	protected void onDestroy() {
-//		if (mHttpHandler != null) {
-//			mHttpHandler.stop();
-//			mHttpHandler = null;
-//		}
-//		super.onDestroy();
-//	}
 
 	@Override
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.new_version_upload:
-			updateBtn();
+			if (isDownloadCompleted) {
+				installApkByGuide(HealthConstant.Download_path+"DigitalMedical" + mApplicationVersionCode + ".apk");
+			} else {
+				updateBtn();
+			}
 			break;
 		case R.id.new_version_cancel:
 			cancelBtn();
@@ -145,9 +173,7 @@ public class NewVersionActivity extends BaseActivity implements OnClickListener{
 		}
 		
 	}
-	
-	
-	
+
 	
 
 }

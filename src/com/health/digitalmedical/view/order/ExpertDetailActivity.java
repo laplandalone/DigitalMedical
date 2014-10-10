@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import com.health.digitalmedical.model.OrderExpertList;
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
 import com.health.digitalmedical.tools.ObjectCensor;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -51,10 +53,16 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 	@ViewInject(R.id.weekTime)
 	private TextView weekTime;
 	
+	@ViewInject(R.id.doctor_head)
+	ImageView doctorHead;
+	
 	private ListView list;
 	
 	private OrderExpert expert; 
 	private OrderExpertList expertList;
+	
+	private BitmapUtils bitmapUtils;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -64,6 +72,8 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 		this.expert=(OrderExpert) getIntent().getSerializableExtra("expert");
 		ViewUtils.inject(this);
 		addActivity(this);
+		bitmapUtils = new BitmapUtils(this);
+		bitmapUtils.closeCache();
 		initView();
 		initValue();
 	}
@@ -187,6 +197,15 @@ public class ExpertDetailActivity extends BaseActivity implements OnItemClickLis
 		ExpertDetailAdapter adapter = new ExpertDetailAdapter(ExpertDetailActivity.this, expertList);
 		this.list.setAdapter(adapter);
 		this.list.setOnItemClickListener(this);
+		if(this.expertList!=null && this.expertList.getOrders().size()!=0)
+		{
+			OrderExpert expert = expertList.getOrders().get(0);
+			departNameDec.setText(expert.getSkill());
+			bitmapUtils.configDefaultLoadingImage(R.drawable.doctor_head);
+			bitmapUtils.configDefaultLoadFailedImage(R.drawable.doctor_head);
+			bitmapUtils.display(doctorHead,expert.getPhotoUrl());
+		}
+		
 	}
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)

@@ -6,6 +6,12 @@ import com.google.gson.annotations.Expose;
 
 public class OrderExpert implements Serializable
 {
+	public String getSkill() {
+		return skill;
+	}
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
 	@Expose
 	private String doctorName;
 	@Expose
@@ -27,9 +33,22 @@ public class OrderExpert implements Serializable
 	@Expose
 	private String post;
 	@Expose
-	String userOrderNum;
+	private String userOrderNum;
 	@Expose
-	String week;
+	private String week;
+	
+	@Expose
+	private String skill;
+	
+	@Expose
+	private String photoUrl;
+	
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
 	public String getUserFlag() {
 		return userFlag;
 	}

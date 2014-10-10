@@ -54,7 +54,7 @@ public class HealthUtil {
 	  private static SharedPreferences userPreferences;
 
 	  private static Context mContext = RegApplication.getInstance();
-	  
+	  public static boolean isNewVersionFlag = false ;
 		static 
 		{
 			if (userPreferences == null)
