@@ -1,7 +1,10 @@
 package com.health.digitalmedical;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import android.content.Context;
 import android.content.Intent;
@@ -125,6 +128,7 @@ public class WelcomeActivity extends BaseActivity
 //		}
 	}
 	
+	
 	/**
 	 * 清华阳光医院：hospital_id:101
 	 * @param v
@@ -132,6 +136,14 @@ public class WelcomeActivity extends BaseActivity
 	@OnClick(R.id.line1)
 	public void toMain(View v)
 	{
+		if(hospitalTs==null || hospitalTs.size()==0)
+		{
+			hospitalTs=HealthUtil.readHospitalTs();
+		}
+		if(hospitalTs==null || hospitalTs.size()==0)
+		{
+			HealthUtil.infoAlert(WelcomeActivity.this, "信息加载失败，请检查网络后重试");
+		}
 		Intent intent = new Intent(WelcomeActivity.this, MainPageActivity.class);
 		HealthUtil.writeHospitalId(hospitalTs.get(currentNum).getHospitalId());
 		startActivity(intent);
@@ -141,6 +153,14 @@ public class WelcomeActivity extends BaseActivity
 	@OnClick(R.id.arrow_left)
 	public void toLeft(View v)
 	{
+		if(hospitalTs==null || hospitalTs.size()==0)
+		{
+			hospitalTs=HealthUtil.readHospitalTs();
+		}
+		if(hospitalTs==null || hospitalTs.size()==0)
+		{
+			HealthUtil.infoAlert(WelcomeActivity.this, "信息加载失败，请检查网络后重试");
+		}
 		if(currentNum==0)
 		{
 			HealthUtil.infoAlert(WelcomeActivity.this, "当前第一页");
@@ -157,6 +177,14 @@ public class WelcomeActivity extends BaseActivity
 	@OnClick(R.id.arrow_right)
 	public void toRight(View v)
 	{
+		if(hospitalTs==null || hospitalTs.size()==0)
+		{
+			hospitalTs=HealthUtil.readHospitalTs();
+		}
+		if(hospitalTs==null || hospitalTs.size()==0)
+		{
+			HealthUtil.infoAlert(WelcomeActivity.this, "信息加载失败，请检查网络后重试");
+		}
 		if(currentNum+1==hospitalTs.size())
 		{
 			HealthUtil.infoAlert(WelcomeActivity.this, "当前最后一页");
@@ -243,21 +271,11 @@ public class WelcomeActivity extends BaseActivity
 	@Override
 	protected void initValue()
 	{
-//		this.hospitalTs = HealthUtil.readHospitalTs();
-//		if(hospitalTs!=null)
-//		{
-//			HospitalT hospitalT = hospitalTs.get(0);
-//			description.setText(hospitalT.getIntroduce());
-//			remark.setText(hospitalT.getRemark());
-//			hospitalName.setText(hospitalT.getHospitalName());
-//			bitmapUtils.display(logo,HealthConstant.imgUrl+hospitalT.getImageUrl());
-//		}else
-		{
-			dialog.setMessage("正在加载,请稍后...");
-			dialog.show();
-			RequestParams param = webInterface.getHospitals("");
-			invokeWebServer(param, GET_LIST);
-		}
+
+		dialog.setMessage("正在加载,请稍后...");
+		dialog.show();
+		RequestParams param = webInterface.getHospitals("");
+		invokeWebServer(param, GET_LIST);
 	}
 	
 	/**
