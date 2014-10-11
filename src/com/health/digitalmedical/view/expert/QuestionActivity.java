@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -40,7 +41,8 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 {
 	@ViewInject(R.id.title)
 	private TextView title;
-
+	@ViewInject(R.id.contentnull)
+	private RelativeLayout layout;
 	@ViewInject(R.id.submit)
 	private Button submitBtn;
 	private ListView list;
@@ -225,6 +227,11 @@ public class QuestionActivity extends BaseActivity implements OnItemClickListene
 		MyQuestionListAdapter adapter = new MyQuestionListAdapter(QuestionActivity.this, questionTs);
 		this.list.setAdapter(adapter);
 		this.list.setOnItemClickListener(this);
+		if(this.questionTs.size()==0)
+		{
+			layout.setVisibility(View.VISIBLE);
+			list.setVisibility(View.GONE);
+		}
 	}
 
 	@Override

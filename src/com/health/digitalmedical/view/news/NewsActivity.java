@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -40,7 +41,8 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 {
 	@ViewInject(R.id.title)
 	private TextView title;
-
+	@ViewInject(R.id.contentnull)
+	private RelativeLayout layout;
 	private List<HospitalNewsT> hospitalNewsTs;
 	private String hospitalId;
 	private ListView list;
@@ -169,6 +171,11 @@ public class NewsActivity extends BaseActivity implements OnItemClickListener
 		NewsListAdapter adapter = new NewsListAdapter(NewsActivity.this, hospitalNewsTs);
 		this.list.setAdapter(adapter);
 		this.list.setOnItemClickListener(this);
+		if(this.hospitalNewsTs.size()==0)
+		{
+			layout.setVisibility(View.VISIBLE);
+			list.setVisibility(View.GONE);
+		}
 	}
 
 	@Override

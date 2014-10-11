@@ -1,10 +1,7 @@
 package com.health.digitalmedical;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import android.content.Context;
 import android.content.Intent;
@@ -86,6 +83,7 @@ public class WelcomeActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.new_hospital_page);
 		bitmapUtils = new BitmapUtils(this);
+		bitmapUtils.closeCache();
 		ViewUtils.inject(this);
 		addActivity(this);
 		initView();
@@ -105,7 +103,7 @@ public class WelcomeActivity extends BaseActivity
 		
 		listViews = new ArrayList<View>();
 		
-		String [] imgNames= new String[]{"a.jpg","b.jpg","c.jpg","d.jpg"};
+		String [] imgNames= new String[]{"a.jpg"};
 		
 		for(int i = 0; i < imgNames.length; i++)
 		{

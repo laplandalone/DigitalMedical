@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -37,7 +39,11 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 {
 	@ViewInject(R.id.title)
 	private TextView title;
+	@ViewInject(R.id.contentnull)
+	private RelativeLayout layout;
 	
+	@ViewInject(R.id.orderTitle)
+	private LinearLayout orderTitle;
 	private User user;
 	private ListView list;
 	private List<RegisterOrderT> registerOrderTs;
@@ -169,9 +175,18 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 		JsonArray jsonArray = jsonObject.getAsJsonArray("returnMsg");
 		Gson gson = new Gson();
 		this.registerOrderTs =gson.fromJson(jsonArray, new TypeToken<List<RegisterOrderT>>(){}.getType());
+		if(this.registerOrderTs.size()==0)
+		{
+			layout.setVisibility(View.VISIBLE);
+			list.setVisibility(View.GONE);
+		}else
+		{
+			orderTitle.setVisibility(View.VISIBLE);
+		}
 		UserOrderListAdapter adapter = new UserOrderListAdapter(UserOrderActivity.this, registerOrderTs);
 		this.list.setAdapter(adapter);
 		this.list.setOnItemClickListener(this);
+		
 	}
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
