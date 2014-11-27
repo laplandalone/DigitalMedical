@@ -633,6 +633,38 @@ public class DateUtils
 		return list;
 	}
 
+	public static ArrayList<String> getTime(String type)
+	{
+		ArrayList<String> list = new ArrayList<String>();
+		if("AM".equals(type))
+		{
+			list.add("8:30--9:00");
+			list.add("9:00--9:30");
+			list.add("9:30--10:00");
+			list.add("10:00--10:30");
+			list.add("10:30--11:00");
+			list.add("11:00--11:30");
+			list.add("11:30--12:00");
+		}else
+		{
+			list.add("13:30--14:00");
+			list.add("14:00--14:30");
+			list.add("14:30--15:00");
+			list.add("15:00--15:30");
+			list.add("15:30--16:00");
+			list.add("16:00--16:30");
+			list.add("16:30--17:00");
+			list.add("17:00--17:30");
+			list.add("17:30--18:00");
+			list.add("18:00--18:30");
+			list.add("18:30--19:00");
+			list.add("19:00--19:30");
+			list.add("19:30--20:00");
+		}
+		
+		return list;
+	}
+	
 	public static void main(String[] args)
 	{
 		// System.out.println(checkDate());

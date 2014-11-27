@@ -310,7 +310,7 @@ public class CommonOrderRegisterActivity extends BaseActivity
 		dialog.show();
 		String hospitalId=HealthUtil.readHospitalId();
 		RequestParams param = webInterface.addUserRegisterOrder(hospitalId,userId, registerId, doctorId, doctorName, userOrderNum, fee, registerTime, userName,
-				userNo, userTelephone, sex, teamId, teamName);
+				userNo, userTelephone, sex, teamId, teamName,"","");
 		invokeWebServer(param, ADD_REGISTER_ORDER);
 
 	}

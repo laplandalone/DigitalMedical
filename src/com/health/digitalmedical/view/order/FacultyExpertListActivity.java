@@ -97,7 +97,7 @@ public class FacultyExpertListActivity extends BaseActivity implements OnItemCli
 		{
 			expertFlag="1";
 		}
-		RequestParams param = webInterface.queryTeamList(this.hospitalId,expertFlag);/*专家预约挂号*/
+		RequestParams param = webInterface.queryTeamList(this.hospitalId,expertFlag,null);/*专家预约挂号*/
 		invokeWebServer(param, GET_LIST);
 	}
 

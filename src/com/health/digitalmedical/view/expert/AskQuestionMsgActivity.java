@@ -204,6 +204,9 @@ public class AskQuestionMsgActivity extends BaseActivity
 			{
 				this.userTelephone = user.getTelephone();
 				this.userId = user.getUserId();
+			}else
+			{
+				finish();
 			}
 			break;
 		case 1:

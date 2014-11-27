@@ -224,7 +224,7 @@
     </style>
     
     <style name="title">
-        <item name="android:textSize">16.0sp</item>
+        <item name="android:textSize">20.0sp</item>
         <item name="android:textColor">#ffffffff</item>
         <item name="android:ellipsize">marquee</item>
         <item name="android:gravity">center</item>

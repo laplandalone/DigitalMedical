@@ -23,6 +23,8 @@ public class HealthConstant
 	
 	public static final String imgUrl = "http://58.53.209.107:10821/ImgWeb/photo/";
 
+	public static final String question_img_Url = "http://58.53.209.107:10821";
+	
 	@SuppressWarnings("rawtypes")
 	public static final Enum WECHAT = SHARE_MEDIA.WEIXIN;  //微信分享名称
 }

@@ -182,6 +182,7 @@ public class ConfirmOrderActivity extends BaseActivity
 		String registerNum=getIntent().getStringExtra("userOrderNum");
 		String fee=getIntent().getStringExtra("fee");
 		String doctorName=getIntent().getStringExtra("doctorName");
+		String detailTime=getIntent().getStringExtra("detailTime").toString();
 		if("0".equals(registerNum) || "".equals(registerNum))
 		{
 			linearLayout.setVisibility(View.GONE);
@@ -194,9 +195,9 @@ public class ConfirmOrderActivity extends BaseActivity
 		{
 			linearLayout2.setVisibility(View.GONE);
 		}
-		
+		String registerTime=getIntent().getStringExtra("registerTime");
 		doctorNameT.setText(doctorName); 
-		dateT.setText(getIntent().getStringExtra("registerTime"  )); 
+		dateT.setText(registerTime+"\n"+detailTime); 
 		confirmPriceT.setText(fee); 
 		registerNumT.setText(registerNum); 
 		falcultyNameT.setText(	getIntent().getStringExtra("teamName"      )); 

@@ -1,6 +1,7 @@
 package com.health.digitalmedical;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -16,10 +17,10 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 
 import com.health.digitalmedical.application.RegApplication;
-import com.health.digitalmedical.webservice.IWebServiceInterface;
-import com.health.digitalmedical.webservice.WebServiceInterfaceImpl;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.http.HttpHandler;
+import com.lurencun.android.webservice.IWebServiceInterface;
+import com.lurencun.android.webservice.WebServiceInterfaceImpl;
 
 public abstract class BaseActivity extends FragmentActivity {
 
@@ -117,5 +118,10 @@ public abstract class BaseActivity extends FragmentActivity {
             }  
             return false;  
         }  
-    }; 
+    };
+
+	public View isViewExisit() {
+		// TODO Auto-generated method stub
+		return null;
+	} 
 }

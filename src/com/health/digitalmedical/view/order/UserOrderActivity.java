@@ -211,6 +211,7 @@ public class UserOrderActivity extends BaseActivity implements OnItemClickListen
 		intent.putExtra("userNo", registerOrderT.getUserNo());
 		intent.putExtra("userTelephone", registerOrderT.getUserTelephone());
 		intent.putExtra("sex", registerOrderT.getSex());
+		intent.putExtra("detailTime", registerOrderT.getDetailTime());
 		startActivity(intent);
 	}
 }

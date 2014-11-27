@@ -190,7 +190,7 @@ public class LoginActivity extends BaseActivity
 			HealthUtil.writeUserPassword("");
 		}
 
-		RequestParams param = webInterface.queryUser(telephone, passwordT);
+		RequestParams param = webInterface.queryUser(telephone, passwordT,HealthUtil.readHospitalId());
 		invokeWebServer(param, USER_LOGIN);
 	}
 	/**

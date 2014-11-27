@@ -1,5 +1,7 @@
 package com.health.digitalmedical.view.other;
 
+import java.io.File;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,14 +15,14 @@ import android.widget.Toast;
 
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
-import com.health.digitalmedical.webservice.IWebServiceInterface;
-import com.health.digitalmedical.webservice.WebServiceInterfaceImpl;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
+import com.lurencun.android.webservice.IWebServiceInterface;
+import com.lurencun.android.webservice.WebServiceInterfaceImpl;
 
 public class CheckNewVersion extends Service{
 
@@ -28,6 +30,7 @@ public class CheckNewVersion extends Service{
 	private final static int CHECK_NEWVERSION = 1;
 	protected IWebServiceInterface webInterface = new WebServiceInterfaceImpl();
 	private String flag;
+	File file = new File(HealthConstant.Download_path); 
 	@Override
 	public IBinder onBind(Intent intent) {
 		return null;
@@ -58,6 +61,30 @@ public class CheckNewVersion extends Service{
 	
 	}
 	
+	public void deleteFile(File file)
+	{ 
+
+        if (file.exists() == false) 
+        { 
+            return; 
+        } else { 
+            if (file.isFile()) { 
+                file.delete(); 
+                return; 
+            } 
+            if (file.isDirectory()) { 
+                File[] childFile = file.listFiles(); 
+                if (childFile == null || childFile.length == 0) { 
+                    file.delete(); 
+                    return; 
+                } 
+                for (File f : childFile) { 
+                    deleteFile(f); 
+                } 
+                file.delete(); 
+            } 
+        } 
+    } 
 	/**
 	 * 链接服务器
 	 * 
@@ -121,6 +148,7 @@ public class CheckNewVersion extends Service{
 			/** xjz 2014-05-21 当returnJson为空的时候会报异常 end*/
 			if(returnJson.length() > 0)
 			{
+				deleteFile(file);
 				String remark = returnJson.getString("remark");
 				String applicationUrl = returnJson.getString("applicationUrl");
 				String forceUpdateFlag = returnJson.getString("forceUpdateFlag");

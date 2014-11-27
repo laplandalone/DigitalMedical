@@ -1,12 +1,16 @@
 package com.health.digitalmedical.view.order;
 
+import java.util.ArrayList;
 import java.util.Map;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,6 +28,7 @@ import com.health.digitalmedical.BaseActivity;
 import com.health.digitalmedical.MainPageActivity;
 import com.health.digitalmedical.R;
 import com.health.digitalmedical.model.User;
+import com.health.digitalmedical.tools.DateUtils;
 import com.health.digitalmedical.tools.HealthConstant;
 import com.health.digitalmedical.tools.HealthUtil;
 import com.health.digitalmedical.tools.IDCard;
@@ -48,6 +53,9 @@ public class ExpertRegisterActivity extends BaseActivity
 	@ViewInject(R.id.textView_name)
 	private TextView textViewName;
 
+	@ViewInject(R.id.register_time)
+	private TextView typeTime;
+	
 	@ViewInject(R.id.textView_time)
 	private TextView textViewTime;
 
@@ -97,7 +105,7 @@ public class ExpertRegisterActivity extends BaseActivity
 	private static final int GET_ORDER_INFO = 2;   //加密
 	private static final int RECHARGE = 3;   //充值
 	private Map<String,String> map;  //解析支付宝返回结果后的map
-	
+	ArrayList<String> data = new ArrayList<String>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -109,6 +117,20 @@ public class ExpertRegisterActivity extends BaseActivity
 		initValue();
 	}
 
+	@OnClick(R.id.calendar_btn)
+	public void clickCalendarBtn(View v)
+	{
+		new AlertDialog.Builder(ExpertRegisterActivity.this).setTitle("提示").setIcon(android.R.drawable.ic_dialog_map)
+				.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data), new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						typeTime.setText(data.get(which));
+					}
+				}).create().show();
+	}
+	
 	@OnClick(R.id.edit_user_info)
 	public void toHisOrder(View v)
 	{
@@ -186,8 +208,8 @@ public class ExpertRegisterActivity extends BaseActivity
 		dialog.setMessage("正在预约,请稍后...");
 		dialog.show();
 		
-		RequestParams param = webInterface.addUserRegisterOrder(hospitalId,userId, registerId, doctorId, doctorName, userOrderNum, fee, registerTime, userName,
-				userNo, userTelephone, sex,teamId, teamName);
+		RequestParams param = webInterface.addQHUserRegisterOrder(hospitalId,userId, registerId, doctorId, doctorName, userOrderNum, fee, registerTime, userName,
+				userNo, userTelephone, sex,teamId, teamName,typeTime.getText().toString());
 		invokeWebServer(param, ADD_REGISTER_ORDER);
 
 	}
@@ -251,6 +273,15 @@ public class ExpertRegisterActivity extends BaseActivity
 		textViewNumber.setText(this.userOrderNum);
 		textViewFee.setText(this.fee+"元");
 
+		if(registerTime.contains("上午"))
+		{
+			data=DateUtils.getTime("AM");
+			typeTime.setText(data.get(0));
+		}else
+		{
+			data=DateUtils.getTime("PM");
+			typeTime.setText(data.get(0));
+		}
 		group.setOnCheckedChangeListener(new OnCheckedChangeListener()
 		{
 			@Override
@@ -314,6 +345,9 @@ public class ExpertRegisterActivity extends BaseActivity
 				{
 					femaleRadio.setChecked(true);
 				}
+			}else
+			{
+				finish();
 			}
 			break;
 
@@ -422,6 +456,7 @@ public class ExpertRegisterActivity extends BaseActivity
 					intent.putExtra("userNo", userNo);
 					intent.putExtra("userTelephone", userTelephone);
 					intent.putExtra("sex", sex);
+					intent.putExtra("detailTime", typeTime.getText().toString());
 					
 					user.setUserName(userName);
 					user.setUserNo(userNo);
